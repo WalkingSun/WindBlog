@@ -34,8 +34,8 @@ AppAsset::register($this);
 <div class="wrap">
     <?php
     NavBar::begin([
-        'brandLabel' => '主页',
-        'brandUrl' => Yii::$app->homeUrl,
+        'brandLabel' => 'WindBlog',
+        'brandUrl' => 'https://walkingsun.github.io/WindBlog/',    //Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -44,20 +44,20 @@ AppAsset::register($this);
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
             ['label' => '博客自动化', 'url' => ['/metaweblog/index']],
-            ['label' => '关于', 'url' => ['/site/about']],
+            ['label' => '关于', 'url' => 'https://github.com/WalkingSun/WindBlog/blob/master/README.md'],
 //            ['label' => 'Contact', 'url' => ['/site/contact']],
-            Yii::$app->user->isGuest ? (
-                ['label' => '登录', 'url' => ['/site/login']]
-            ) : (
-                '<li>'
-                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-                . Html::submitButton(
-                    'Logout (' . Yii::$app->user->identity->username . ')',
-                    ['class' => 'btn btn-link']
-                )
-                . Html::endForm()
-                . '</li>'
-            )
+//            Yii::$app->user->isGuest ? (
+//                ['label' => '登录', 'url' => ['/site/login']]
+//            ) : (
+//                '<li>'
+//                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+//                . Html::submitButton(
+//                    'Logout (' . Yii::$app->user->identity->username . ')',
+//                    ['class' => 'btn btn-link']
+//                )
+//                . Html::endForm()
+//                . '</li>'
+//            )
         ],
     ]);
     NavBar::end();
