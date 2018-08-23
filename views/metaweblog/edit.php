@@ -19,25 +19,25 @@
             <input type="hidden" name="blogId" value="<?php echo $record['id'];?>">
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">博客标题</label>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <input class="form-control input-lg" type="text" name="title" value="<?php echo $record['title'];?>" placeholder="请输入标题">
                 </div>
                 <span class="glyphicon glyphicon-asterisk star"></span>
                 <label class="explain">请输入8个字的以内的中文字符</label>
             </div>
 
+<!--            <div class="form-group form-group-sm">-->
+<!--                <label class="control-label col-md-1">博客内容</label>-->
+<!--                <div class="col-md-3">-->
+<!--                    <textarea class="form-control input-lg" name="content" value="--><?php //echo $record['content'];?><!--" rows="10" placeholder="请输入博客内容">--><?php //echo $record['content'];?><!--</textarea>-->
+<!--                </div>-->
+<!--<!--                <span class="glyphicon glyphicon-asterisk star"></span>-->
+<!--                <label class="explain"></label>-->
+<!--            </div>-->
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1">博客内容</label>
-                <div class="col-md-3">
-                    <textarea class="form-control input-lg" name="content" value="<?php echo $record['content'];?>" rows="10" placeholder="请输入博客内容"><?php echo $record['content'];?></textarea>
-                </div>
-<!--                <span class="glyphicon glyphicon-asterisk star"></span>-->
-                <label class="explain"></label>
-            </div>
-            <div class="form-group form-group-sm">
-                <label class="control-label col-md-1">markdown地址</label>
+                <label class="control-label col-md-1">mark地址</label>
                 <div class="col-md-4">
-                    <input class="form-control input-lg" type="text" name="fileurl" value="<?php echo $record['fileurl'];?>" placeholder="请输入markdown地址">
+                    <input class="form-control input-lg" type="text" name="fileurl" value="<?php echo $record['fileurl'];?>" placeholder="请输入mark地址">
                 </div>
                 <span class="glyphicon glyphicon-asterisk star"></span>
                 <label class="explain">请输入url地址</label>

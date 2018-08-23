@@ -62,7 +62,7 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
         <tr>
             <th  scope="col">Id</th>
             <th scope="col" style="">标题</th>
-            <th  scope="col">内容</th>
+<!--            <th  scope="col">内容</th>-->
 <!--            <th  scope="col">mark文件</th>-->
             <th scope="col">cnblogs博客</th>
             <th scope="col">cnblogs博客分类</th>
@@ -76,7 +76,7 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
         <tr>
             <td ><?=$v['id'];?></td>
             <td ><?=$v['title'];?></td>
-            <td ><?=$v['content']?:'--';?></td>
+<!--            <td >--><?//=$v['content']?:'--';?><!--</td>-->
 <!--            <td >--><?//=$v['fileurl'];?><!--</td>-->
             <td ><a href="<?="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?>"  target="view_window"><?=$v['cnblogsId']?'查看':'--'//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?></a></td>
             <td ><?=$v['cnblogsType'];?></td>

@@ -1,54 +1,4 @@
-CREATE TABLE "public"."AM_user" (
-"userid" SERIAL primary key,    -- 自增 主键
-"mobile" varchar(30) COLLATE "default" NOT NULL,
-"password" varchar(30) COLLATE "default" NOT NULL,
-"userIn.userPasswd" varchar(255) COLLATE "default" NOT NULL,
-"imei" varchar(255) COLLATE "default" DEFAULT ''::character varying,
-"token" varchar(255) COLLATE "default" DEFAULT ''::character varying,
-"imsi" varchar(255) COLLATE "default" DEFAULT ''::character varying,
-"remark" varchar(255) COLLATE "default" DEFAULT ''::character varying NOT NULL,
-"isDelete" int2 DEFAULT 0,
-"loginClass" int2,
-"clientVersion" varchar(32) COLLATE "default" DEFAULT '5.1.4'::character varying
-)
-WITH (OIDS=FALSE)
-;
-
-ALTER TABLE "public"."AM_user" OWNER TO "postgres";
-
-COMMENT ON COLUMN "public"."AM_user"."userIn.userPasswd" IS '设备加密串';
-
-COMMENT ON COLUMN "public"."AM_user"."imei" IS '设备imei';
-
-COMMENT ON COLUMN "public"."AM_user"."token" IS '设备token';
-
-COMMENT ON COLUMN "public"."AM_user"."imsi" IS '设备imsi';
-
-COMMENT ON COLUMN "public"."AM_user"."isDelete" IS '是否删除 1是；0否';
-
-COMMENT ON COLUMN "public"."AM_user"."clientVersion" IS '版本';
-
-
-
-CREATE TABLE "public"."AM_failQueue" (
-"queue_id" SERIAL primary key,
-"mobile" varchar(30) COLLATE "default" NOT NULL,
-"userIn.userPasswd" varchar(64) COLLATE "default" NOT NULL,
-"imei" varchar(255) COLLATE "default" DEFAULT ''::character varying,
-"token" varchar(255) COLLATE "default" DEFAULT ''::character varying,
-"imsi" varchar(255) COLLATE "default" DEFAULT ''::character varying,
-"remark" varchar(255) COLLATE "default" DEFAULT ''::character varying,
-"count" int4 DEFAULT 0,
-"createtime" date,
-"isDelete" int2 DEFAULT 0
-)
-WITH (OIDS=FALSE)
-;
-
-ALTER TABLE "public"."AM_failQueue" OWNER TO "postgres";
-
-COMMENT ON COLUMN "public"."AM_failQueue"."count" IS '失败计数';
-
+-- 博客记录表
 CREATE TABLE "public"."jp_blogRecord" (
 "id"  SERIAL ,
 "title" varchar(255) COLLATE "default",
@@ -99,6 +49,7 @@ COMMENT ON COLUMN "public"."jp_blogRecord"."createtime" IS '创建时间';
 
 COMMENT ON COLUMN "public"."jp_blogRecord"."isDelete" IS '是否删除 1 是；0否';
 
+-- 博客队列表
 CREATE TABLE "public"."jp_blogQueue" (
 "queueId" SERIAL,
 "blogId" int4 NOT NULL,
@@ -127,6 +78,7 @@ COMMENT ON COLUMN "public"."jp_blogQueue"."updatetime" IS 'blog发送队列';
 
 COMMENT ON COLUMN "public"."jp_blogQueue"."blogType" IS '博客类型 1代表51cto;2 sina;3 csdn;4 163;5 oschina;6 cnblogs;7 chinaunix';
 
+-- 博客配置表
 CREATE TABLE "public"."jp_blogConfig" (
   "blogType" int2 NOT NULL,
   "username" varchar(64) COLLATE "default" NOT NULL,
@@ -148,3 +100,20 @@ COMMENT ON COLUMN "public"."jp_blogConfig"."password" IS '密码';
 COMMENT ON COLUMN "public"."jp_blogConfig"."blogid" IS '博客地址Id';
 
 COMMENT ON COLUMN "public"."jp_blogConfig"."isEnable" IS '是否启用 1是，0 否';
+
+-- 博客分类关联表
+CREATE TABLE "public"."jp_blogCategories" (
+"blogId" int4 NOT NULL,
+"blogType" int2 NOT NULL,
+"cates" varchar(64) COLLATE "default" NOT NULL
+)
+WITH (OIDS=FALSE)
+;
+
+ALTER TABLE "public"."jp_blogCategories" OWNER TO "postgres";
+
+COMMENT ON COLUMN "public"."jp_blogCategories"."blogId" IS '博客记录id';
+
+COMMENT ON COLUMN "public"."jp_blogCategories"."blogType" IS '博客类型 1代表51cto;2 sina;3 csdn;4 163;5 oschina;6 cnblogs;7 chinaunix';
+
+COMMENT ON COLUMN "public"."jp_blogCategories"."cates" IS '博客分类 以逗号分隔';
