@@ -1,0 +1,559 @@
+2018-08-23 16:28:21 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:28:21 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:28:21 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:28:21 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:28:21 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:28:21 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:28:21 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: ''
+2018-08-23 16:28:21 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: site/error
+2018-08-23 16:28:22 [192.168.33.1][-][-][trace][yii\base\Action::runWithParams] Running action: yii\web\ErrorAction::run()
+2018-08-23 16:28:22 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/site/error.php
+2018-08-23 16:28:22 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/layouts/main.php
+2018-08-23 16:28:23 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+    in /app/WindBlog/views/layouts/main.php:82
+2018-08-23 16:28:23 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:28:20 [192.168.33.1][-][-][info][application] $_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '50916'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535012900.4527
+    'REQUEST_TIME' => 1535012900
+]
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'metaweblog/index'
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: metaweblog/index
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\MetaweblogController::actionIndex()
+2018-08-23 16:28:28 [192.168.33.1][-][-][info][yii\db\Command::query] SELECT COUNT(*) FROM "jp_blogRecord" WHERE "isDelete"=0
+    in /app/WindBlog/controllers/MetaweblogController.php:38
+2018-08-23 16:28:28 [192.168.33.1][-][-][info][yii\db\Connection::open] Opening DB connection: pgsql:host=192.168.33.30;port=5432;dbname=jump
+    in /app/WindBlog/controllers/MetaweblogController.php:38
+2018-08-23 16:28:28 [192.168.33.1][-][-][info][yii\db\Command::query] SELECT * FROM "jp_blogRecord" WHERE (("isDelete"=0)) ORDER BY "createtime" DESC LIMIT 5
+    in /app/WindBlog/models/Basic.php:42
+    in /app/WindBlog/controllers/MetaweblogController.php:40
+2018-08-23 16:28:28 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/metaweblog/index.php
+    in /app/WindBlog/controllers/MetaweblogController.php:41
+2018-08-23 16:28:29 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:28:28 [192.168.33.1][-][-][info][application] $_GET = [
+    'r' => 'metaweblog/index'
+]
+
+$_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    '_csrf' => '9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y½0Ó¿­ĞÎØ#GïjªY{Ç+õ\\[ƒ?#<\";}'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh; _csrf=9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%1D%1Cy%1D%BD0%06%D3%BF%AD%D0%CE%90%D8%23G%EFj%AAY%7B%C7%2B%F5%5C%5B%83%3F%23%0C%3C%81%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://192.168.33.30:81/'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '50928'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=metaweblog%2Findex'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=metaweblog%2Findex'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535012907.9138
+    'REQUEST_TIME' => 1535012907
+]
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'metaweblog/index'
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: metaweblog/index
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\MetaweblogController::actionIndex()
+2018-08-23 16:31:27 [192.168.33.1][-][-][info][yii\db\Command::query] SELECT COUNT(*) FROM "jp_blogRecord" WHERE "isDelete"=0
+    in /app/WindBlog/controllers/MetaweblogController.php:38
+2018-08-23 16:31:27 [192.168.33.1][-][-][info][yii\db\Connection::open] Opening DB connection: pgsql:host=192.168.33.30;port=5432;dbname=jump
+    in /app/WindBlog/controllers/MetaweblogController.php:38
+2018-08-23 16:31:27 [192.168.33.1][-][-][info][yii\db\Command::query] SELECT * FROM "jp_blogRecord" WHERE (("isDelete"=0)) ORDER BY "createtime" DESC LIMIT 5
+    in /app/WindBlog/models/Basic.php:42
+    in /app/WindBlog/controllers/MetaweblogController.php:40
+2018-08-23 16:31:27 [192.168.33.1][-][-][info][yii\db\Command::query] SELECT * FROM "jp_blogConfig" WHERE "blogType"=6
+    in /app/WindBlog/controllers/MetaweblogController.php:41
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/metaweblog/index.php
+    in /app/WindBlog/controllers/MetaweblogController.php:42
+2018-08-23 16:31:27 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/layouts/main.php
+    in /app/WindBlog/controllers/MetaweblogController.php:42
+2018-08-23 16:31:27 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+    in /app/WindBlog/views/layouts/main.php:82
+    in /app/WindBlog/controllers/MetaweblogController.php:42
+2018-08-23 16:31:27 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:31:27 [192.168.33.1][-][-][info][application] $_GET = [
+    'r' => 'metaweblog/index'
+]
+
+$_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    '_csrf' => '9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y½0Ó¿­ĞÎØ#GïjªY{Ç+õ\\[ƒ?#<\";}'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh; _csrf=9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%1D%1Cy%1D%BD0%06%D3%BF%AD%D0%CE%90%D8%23G%EFj%AAY%7B%C7%2B%F5%5C%5B%83%3F%23%0C%3C%81%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://192.168.33.30:81/'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CACHE_CONTROL' => 'max-age=0'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '51229'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=metaweblog%2Findex'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=metaweblog%2Findex'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535013086.8617
+    'REQUEST_TIME' => 1535013086
+]
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'site/about'
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: site/about
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\SiteController::actionAbout()
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/site/about.php
+    in /app/WindBlog/controllers/SiteController.php:92
+2018-08-23 16:31:41 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/layouts/main.php
+    in /app/WindBlog/controllers/SiteController.php:92
+2018-08-23 16:31:41 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+    in /app/WindBlog/views/layouts/main.php:82
+    in /app/WindBlog/controllers/SiteController.php:92
+2018-08-23 16:31:41 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:31:41 [192.168.33.1][-][-][info][application] $_GET = [
+    'r' => 'site/about'
+]
+
+$_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    '_csrf' => '9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y½0Ó¿­ĞÎØ#GïjªY{Ç+õ\\[ƒ?#<\";}'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh; _csrf=9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%1D%1Cy%1D%BD0%06%D3%BF%AD%D0%CE%90%D8%23G%EFj%AAY%7B%C7%2B%F5%5C%5B%83%3F%23%0C%3C%81%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://192.168.33.30:81/index.php?r=metaweblog%2Findex'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '51254'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=site%2Fabout'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Fabout'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535013100.7597
+    'REQUEST_TIME' => 1535013100
+]
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'metaweblog/index'
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: metaweblog/index
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\MetaweblogController::actionIndex()
+2018-08-23 16:31:44 [192.168.33.1][-][-][info][yii\db\Command::query] SELECT COUNT(*) FROM "jp_blogRecord" WHERE "isDelete"=0
+    in /app/WindBlog/controllers/MetaweblogController.php:38
+2018-08-23 16:31:44 [192.168.33.1][-][-][info][yii\db\Connection::open] Opening DB connection: pgsql:host=192.168.33.30;port=5432;dbname=jump
+    in /app/WindBlog/controllers/MetaweblogController.php:38
+2018-08-23 16:31:44 [192.168.33.1][-][-][info][yii\db\Command::query] SELECT * FROM "jp_blogRecord" WHERE (("isDelete"=0)) ORDER BY "createtime" DESC LIMIT 5
+    in /app/WindBlog/models/Basic.php:42
+    in /app/WindBlog/controllers/MetaweblogController.php:40
+2018-08-23 16:31:44 [192.168.33.1][-][-][info][yii\db\Command::query] SELECT * FROM "jp_blogConfig" WHERE "blogType"=6
+    in /app/WindBlog/controllers/MetaweblogController.php:41
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/metaweblog/index.php
+    in /app/WindBlog/controllers/MetaweblogController.php:42
+2018-08-23 16:31:44 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/layouts/main.php
+    in /app/WindBlog/controllers/MetaweblogController.php:42
+2018-08-23 16:31:44 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+    in /app/WindBlog/views/layouts/main.php:82
+    in /app/WindBlog/controllers/MetaweblogController.php:42
+2018-08-23 16:31:44 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:31:44 [192.168.33.1][-][-][info][application] $_GET = [
+    'r' => 'metaweblog/index'
+]
+
+$_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    '_csrf' => '9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y½0Ó¿­ĞÎØ#GïjªY{Ç+õ\\[ƒ?#<\";}'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh; _csrf=9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%1D%1Cy%1D%BD0%06%D3%BF%AD%D0%CE%90%D8%23G%EFj%AAY%7B%C7%2B%F5%5C%5B%83%3F%23%0C%3C%81%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://192.168.33.30:81/index.php?r=site%2Fabout'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '51254'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=metaweblog%2Findex'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=metaweblog%2Findex'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535013104.3987
+    'REQUEST_TIME' => 1535013104
+]
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: ''
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: site/error
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\Action::runWithParams] Running action: yii\web\ErrorAction::run()
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/site/error.php
+2018-08-23 16:31:48 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/layouts/main.php
+2018-08-23 16:31:48 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+    in /app/WindBlog/views/layouts/main.php:82
+2018-08-23 16:31:48 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:31:48 [192.168.33.1][-][-][info][application] $_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    '_csrf' => '9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y½0Ó¿­ĞÎØ#GïjªY{Ç+õ\\[ƒ?#<\";}'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh; _csrf=9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%1D%1Cy%1D%BD0%06%D3%BF%AD%D0%CE%90%D8%23G%EFj%AAY%7B%C7%2B%F5%5C%5B%83%3F%23%0C%3C%81%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://192.168.33.30:81/index.php?r=metaweblog%2Findex'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '51254'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535013108.1235
+    'REQUEST_TIME' => 1535013108
+]
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: ''
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: site/error
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\Action::runWithParams] Running action: yii\web\ErrorAction::run()
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/site/error.php
+2018-08-23 16:31:56 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/layouts/main.php
+2018-08-23 16:31:56 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+    in /app/WindBlog/views/layouts/main.php:82
+2018-08-23 16:31:56 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:31:56 [192.168.33.1][-][-][info][application] $_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    '_csrf' => '9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y½0Ó¿­ĞÎØ#GïjªY{Ç+õ\\[ƒ?#<\";}'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh; _csrf=9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%1D%1Cy%1D%BD0%06%D3%BF%AD%D0%CE%90%D8%23G%EFj%AAY%7B%C7%2B%F5%5C%5B%83%3F%23%0C%3C%81%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://192.168.33.30:81/index.php?r=metaweblog%2Findex'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '51285'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535013116.2013
+    'REQUEST_TIME' => 1535013116
+]
+2018-08-23 16:32:30 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:32:30 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:32:30 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:32:30 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:32:30 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:32:30 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:32:30 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: ''
+2018-08-23 16:32:31 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: site/error
+2018-08-23 16:32:31 [192.168.33.1][-][-][trace][yii\base\Action::runWithParams] Running action: yii\web\ErrorAction::run()
+2018-08-23 16:32:31 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/site/error.php
+2018-08-23 16:32:31 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/layouts/main.php
+2018-08-23 16:32:31 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+    in /app/WindBlog/views/layouts/main.php:82
+2018-08-23 16:32:31 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:32:30 [192.168.33.1][-][-][info][application] $_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    '_csrf' => '9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y½0Ó¿­ĞÎØ#GïjªY{Ç+õ\\[ƒ?#<\";}'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh; _csrf=9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%1D%1Cy%1D%BD0%06%D3%BF%AD%D0%CE%90%D8%23G%EFj%AAY%7B%C7%2B%F5%5C%5B%83%3F%23%0C%3C%81%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://192.168.33.30:81/index.php?r=metaweblog%2Findex'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '51350'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => ''
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535013150.4396
+    'REQUEST_TIME' => 1535013150
+]
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\log\Dispatcher
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: debug
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\debug\Module::bootstrap()
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\Module::getModule] Loading module: gii
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\Application::bootstrap] Bootstrap with yii\gii\Module::bootstrap()
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\web\UrlManager::parseRequest] Pretty URL not enabled. Using default URL parsing logic.
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\web\Application::handleRequest] Route requested: 'site/about'
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\Controller::runAction] Route to run: site/about
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\InlineAction::runWithParams] Running action: app\controllers\SiteController::actionAbout()
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/site/about.php
+    in /app/WindBlog/controllers/SiteController.php:92
+2018-08-23 16:32:34 [192.168.33.1][-][-][trace][yii\base\View::renderFile] Rendering view file: /app/WindBlog/views/layouts/main.php
+    in /app/WindBlog/controllers/SiteController.php:92
+2018-08-23 16:32:34 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+    in /app/WindBlog/views/layouts/main.php:82
+    in /app/WindBlog/controllers/SiteController.php:92
+2018-08-23 16:32:34 [192.168.33.1][-][-][warning][yii\debug\Module::checkAccess] Access to debugger is denied due to IP address restriction. The requesting IP address is 192.168.33.1
+2018-08-23 16:32:34 [192.168.33.1][-][-][info][application] $_GET = [
+    'r' => 'site/about'
+]
+
+$_COOKIE = [
+    'jenkins-timestamper-offset' => '-28800000'
+    'ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE' => 'YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh'
+    '_csrf' => '9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a:2:{i:0;s:5:\"_csrf\";i:1;s:32:\"y½0Ó¿­ĞÎØ#GïjªY{Ç+õ\\[ƒ?#<\";}'
+]
+
+$_SERVER = [
+    'USER' => 'nobody'
+    'HOME' => '/'
+    'HTTP_COOKIE' => 'jenkins-timestamper-offset=-28800000; ACEGI_SECURITY_HASHED_REMEMBER_ME_COOKIE=YWRtaW46MTUzNTQ1Mzk5OTAzMTozODRjMzI1YmI5NDRiYTM1NTJkMmFkM2I3MWRlY2E5ZjM3YzViNGIzODFlNmRjY2YwZmJhNmUzZWNlOWEyODhh; _csrf=9fe1363b4ee6f0b35f307b2a8ea46cb5aa03ed8372060af3ee8b8027e4b1d0d5a%3A2%3A%7Bi%3A0%3Bs%3A5%3A%22_csrf%22%3Bi%3A1%3Bs%3A32%3A%22%1D%1Cy%1D%BD0%06%D3%BF%AD%D0%CE%90%D8%23G%EFj%AAY%7B%C7%2B%F5%5C%5B%83%3F%23%0C%3C%81%22%3B%7D'
+    'HTTP_ACCEPT_LANGUAGE' => 'zh-CN,zh;q=0.9'
+    'HTTP_ACCEPT_ENCODING' => 'gzip, deflate'
+    'HTTP_REFERER' => 'http://192.168.33.30:81/index.php?r=metaweblog%2Findex'
+    'HTTP_ACCEPT' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8'
+    'HTTP_USER_AGENT' => 'Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/68.0.3440.106 Safari/537.36'
+    'HTTP_UPGRADE_INSECURE_REQUESTS' => '1'
+    'HTTP_CONNECTION' => 'keep-alive'
+    'HTTP_HOST' => '192.168.33.30:81'
+    'SCRIPT_FILENAME' => '/app/WindBlog/web/index.php'
+    'REDIRECT_STATUS' => '200'
+    'SERVER_NAME' => 'jump.com'
+    'SERVER_PORT' => '81'
+    'SERVER_ADDR' => '172.17.63.6'
+    'REMOTE_PORT' => '51358'
+    'REMOTE_ADDR' => '192.168.33.1'
+    'SERVER_SOFTWARE' => 'nginx/1.11.1'
+    'GATEWAY_INTERFACE' => 'CGI/1.1'
+    'REQUEST_SCHEME' => 'http'
+    'SERVER_PROTOCOL' => 'HTTP/1.1'
+    'DOCUMENT_ROOT' => '/app/WindBlog/web'
+    'DOCUMENT_URI' => '/index.php'
+    'REQUEST_URI' => '/index.php?r=site%2Fabout'
+    'SCRIPT_NAME' => '/index.php'
+    'CONTENT_LENGTH' => ''
+    'CONTENT_TYPE' => ''
+    'REQUEST_METHOD' => 'GET'
+    'QUERY_STRING' => 'r=site%2Fabout'
+    'FCGI_ROLE' => 'RESPONDER'
+    'PHP_SELF' => '/index.php'
+    'REQUEST_TIME_FLOAT' => 1535013154.5247
+    'REQUEST_TIME' => 1535013154
+]
