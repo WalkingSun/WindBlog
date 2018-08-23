@@ -2,7 +2,7 @@
 #   Main Configs   #
 # ---------------- #
 baseurl:
-url: https://walkingsun.github.io
+url: https://walkingsun.github.io/WindBlog
 date_format: "ordinal"
 title: WalkingSun
 subtitle: "能做的还有很多"
