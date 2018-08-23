@@ -6,21 +6,23 @@
  * Time: 17:52
  */
 return [
-    'enablePrettyUrl' => true, // 路由美化
-    'enableStrictParsing' => true, // 严格检查路由美化,后缀加s
+//    'enablePrettyUrl' => true, // 路由美化
+//    'enableStrictParsing' => true, // 严格检查路由美化,后缀加s
     'showScriptName' => false,
     'cache' => false, // 关闭路由缓存
+//    'suffix' => '.html',
     'rules' => [
-        [
-            'class' => 'yii\rest\UrlRule',
-            'controller' => [
-                'site'
-            ],
-            'extraPatterns' => [
-                'index' => 'index',
-                'login' => 'login'
-            ],
-        ]
+//        '<controller:\w+>/<id:\d+>' => '<controller>/view',
+//        [
+//            'class' => 'yii\rest\UrlRule',
+//            'controller' => [
+//                'site'
+//            ],
+//            'extraPatterns' => [
+//                'index' => 'index',
+//                'login' => 'login'
+//            ],
+//        ]
     ],
 
 ];

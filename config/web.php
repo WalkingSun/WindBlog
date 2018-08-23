@@ -71,7 +71,7 @@ $config = [
             'keyPrefix' => 'jump',    // 唯一键前缀
 
         ],
-//        'urlManager' => require(__DIR__ . '/urlmanage.php'),
+        'urlManager' => require(__DIR__ . '/urlmanage.php'),
 
     ],
     'params' => $params,
