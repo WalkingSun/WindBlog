@@ -43,25 +43,37 @@
                 <label class="explain">请输入url地址</label>
             </div>
 
-            <div class="field-record-is_valid">
-                <label class="control-label col-md-1">cnblogs分类</label>
-                <div class="checkbox">
+            <?php
+            foreach ($Categories as $type => $cate){
+                $blogName = \app\models\Common::blogParamName($type);
 
-                        <?php
-                        $blogCategories = !empty($record['cnblogsType']) ? explode(',',$record['cnblogsType']) : ['[Markdown]'];
-                        foreach ($Categories as $v){
-                            if( strpos($v['title'],'网站分类')!==false ) continue;
-                            $checked = in_array($v['title'],$blogCategories) ? 'checked="checked"':'';
-                            echo '<label class="checkboxs"><input type="checkbox" '.$checked.' value="'.$v['title'].'" name="cnblogsType[]" > '.$v['title'].' </label>';
-                        }
-                        ?>
+                echo '<div class="field-record-is_valid">
+                <label class="control-label col-md-1">'.$blogName.'分类</label>
+                <div class="checkbox">';
+                foreach ($cate as $v){
+                    $blogCategories = !empty($record[$blogName.'Type']) ? explode(',',$record[$blogName.'Type']) : ['[Markdown]'];
 
-                    <p class="help-block help-block-error"></p>
+                    if( strpos($v['title'],'网站分类')!==false ) continue;
+                    $checked = in_array($v['title'],$blogCategories) ? 'checked="checked"':'';
+                    echo '<label class="checkboxs"><input type="checkbox"  '.$checked.' value="'.$v['title'].'" name="cnblogsType['.$type.'][]" > '.$v['title'].' </label>';
+                }
+                echo '    <p class="help-block help-block-error"></p>
 
                 </div>
             </div>
-
+';
+            }
+            ?>
         </form>
+
+<!--   todo 显示博客地址     -->
+<?php
+//foreach ($Categories as $type => $cate) {
+//    $blogName = \app\models\Common::blogParamName($type);
+//
+//
+//}
+    ?>
 
         <div class="form-group form-group-sm" style="margin-top: 30px;">
             <div class="col-md-3 col-md-offset-2">

@@ -182,4 +182,20 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
             }
         },'json');
     }
+
+    Sync = function Sync( queueid ){
+        var url = '<?=\yii\helpers\Url::to(['metaweblog/sync'])?>&queueid='+queueid;
+        var loading = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
+        $.post(url,{queueid:queueid},function (r) {
+            parent.layer.close(loading);
+            if(r.code==200){
+                layer.msg(r.msg);
+                setTimeout(function(){parent.layer.closeAll();}, 2000);
+            }  else{
+                layer.msg(r.msg);
+                // setTimeout(function(){parent.layer.closeAll();}, 1000);
+            }
+
+        },'json');
+    }
 </script>

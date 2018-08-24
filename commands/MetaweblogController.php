@@ -18,21 +18,16 @@ class MetaweblogController extends Controller
         $data = $model::find()->where(['publishStatus'=>0])->asArray()->all();
 
         $DB = new DB();
-//        Common::addLog('error.log',$data);
 
         if( $data ){
             foreach ($data as $v){
                 $blogConfig = JpBlogConfig::find()->where(['blogType'=>$v['blogType']])->asArray()->one();
 
                 $blogName = Common::blogParamName($v['blogType']);
-//                $blogid = $v['blogType']==6 ? \Yii::$app->params[$blogName]['blogid']:'';
                 $blogid = $blogConfig['blogid']?:'';
 
                 $blogMetaweblogUrl = Common::MetaweblogUrl($v['blogType'],$blogid);
                 $target = new MetaWeblog( $blogMetaweblogUrl );
-//                $username = \Yii::$app->params[$blogName]['username'];
-//                $passwd = \Yii::$app->params[$blogName]['password'];
-//                $target->setAuth( $username,$passwd );
                 $target->setAuth( $blogConfig['username'],$blogConfig['password'] );
 
 

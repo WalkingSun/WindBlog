@@ -50,6 +50,7 @@
         <thead>
         <tr>
             <th  scope="col">队列</th>
+            <th  scope="col">博客网站</th>
             <th scope="col" style="">发布状态</th>
             <th  scope="col">response内容</th>
             <th scope="col" >创建时间</th>
@@ -58,15 +59,19 @@
         </thead>
         <tbody>
         <?php if( $result ){
-            foreach ($result as $v){ ?>
+            foreach ($result as $v){
+                $blogName = \app\models\Common::blogParamName($v['blogType']);
+                ?>
                 <tr>
                     <td ><?=$v['queueId'];?></td>
-                    <td ><?=$v['publishStatus']==0||$v['publishStatus']==1?'发布中':($v['publishStatus']==2?'发布完成':'发布失败');?></td>
+                    <td ><?=$blogName;?></td>
+                    <td ><?=$v['publishStatus']==0? '未发布':($v['publishStatus']==1?'发布中':($v['publishStatus']==2?'发布完成':'发布失败') );?></td>
                     <td ><?=$v['response']?:'--';?></td>
                     <td ><?=$v['createtime'];?></td>
                     <td >
-                        <?php if( $v['publishStatus']==1 || $v['publishStatus']==3 ){ ?>
-                            <a href="javascript:parent.UpdateQueue('<?=$v['queueId'];?>')"> 点击重试</a>
+                        <?php if( in_array($v['publishStatus'],[0,1,3]) ){ ?>
+                            <a href="javascript:parent.Sync('<?=$v['queueId'];?>')"> 点击发布</a>
+<!--                            <a href="javascript:parent.UpdateQueue('--><?//=$v['queueId'];?><!--')"> 点击重试</a>-->
                         <?php }else{
                             echo '--';
                         }?>
