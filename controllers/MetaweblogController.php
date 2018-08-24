@@ -49,17 +49,24 @@ class MetaweblogController extends Controller
         $d = $this->data;
         $model = 'app\models\JpBlogQueue';
 
+        //查询配置
+        $configs = JpBlogConfig::find()->where(['isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
+
         $DB = new DB();
-        $data = [
-            'blogId'    => $d['blogId'],
-            'action'    => $d['action'],
-            'publishStatus'    => '0',
-            'response'    => '',
-            'createtime'    => date('Y-m-d'),
-            'updatetime'    => date('Y-m-d'),
-            'blogType'=> 6
-        ];
-        $DB->insert($model::tableName(),$data);
+        $data = [];
+        foreach ($configs as $v){
+            $data[] = [
+                'blogId'    => $d['blogId'],
+                'action'    => $d['action'],
+                'publishStatus'    => '0',
+                'response'    => '',
+                'createtime'    => date('Y-m-d'),
+                'updatetime'    => date('Y-m-d'),
+                'blogType'=> $v['blogType']
+            ];
+        }
+
+        $DB->batchInsert($model::tableName(),$data);
 
         echo json_encode(['code'=>200,'msg'=>'添加成功']);
     }
@@ -130,13 +137,19 @@ class MetaweblogController extends Controller
             $upData['content'] = !empty($d['content']) ? $d['content']:'';
             $upData['fileurl'] = !empty($d['fileurl']) ? $d['fileurl']:'';
             if(  !$upData['content'] && !$upData['fileurl']  ) Common::echoJson(403,'请输入博客内容');
-            $upData['cnblogsType'] = !empty($d['cnblogsType']) ? implode(",",$d['cnblogsType']):'';
+            //添加分类
+            if( $blogCates = $d['cnblogsType'] ){
+                foreach ($blogCates as $k=>$v){
+                    $blogName = Common::blogParamName($k);
+                    $upData[$blogName.'Type'] = !empty($v) ? implode(",",$v):'';
+                }
+            }
             $DB = new DB();
             $DB->update($model::tableName(),$upData,$filter);
             Common::echoJson('200','添加成功');
         }
 
-        return $this->render('edit',['Categories'=>$Categories[0],'record'=>$record]);
+        return $this->render('edit',['Categories'=>$Categories,'record'=>$record]);
     }
 
     public function actionDel(){
@@ -211,7 +224,93 @@ class MetaweblogController extends Controller
 
     //同步博客
     public function actionSync(){
+        $this->layout = false;
+        $d = $this->data;
+        $model = 'app\models\JpBlogQueue';
+        $modelBlogRecord = 'app\models\JpBlogRecord';
+        $DB = new DB();
 
+        if( !$d['queueid'] )   Common::echoJson(403,'参数缺失');
+
+        $queue = $model::find()->where(['queueId'=>$d['queueid']])->asArray()->one();
+        if( $queue['publishStatus']==3 ) Common::echoJson(400,'博客已发布');
+        $blogConfig = JpBlogConfig::find()->where(['blogType'=>$queue['blogType']])->asArray()->one();
+        $blogName = Common::blogParamName($queue['blogType']);
+        $blogid = $blogConfig['blogid']?:'';
+
+        try{
+            $blogMetaweblogUrl = Common::MetaweblogUrl($queue['blogType'],$blogid);
+            $target = new MetaWeblog( $blogMetaweblogUrl );
+            $target->setAuth( $blogConfig['username'],$blogConfig['password'] );
+            $blog = $modelBlogRecord::find()->where(['id'=>$queue['blogId']])->asArray()->one();
+            $DB->update($model::tableName(),['publishStatus'=>1],['queueId'=>$queue['queueId']]);   //更新队列状态  进行中
+
+            #执行动作，1 创建，2 更新，3 删除
+            if( $queue['action']==1 || $queue['action']==2 ){
+                $queue['action'] = $blog[$blogName.'Id'] ? 2:1;
+            }
+
+            switch ($queue['action']){
+                case   1:
+                    $this->save($target,$blog,$blogName,$queue);
+                    break;
+                case    2:
+                    $this->save($target,$blog,$blogName,$queue);
+                    break;
+                case    3:
+                    $this->delete($target);
+                    break;
+                default:
+                    continue;
+            }
+
+        }catch (\Exception $e){
+            Common::echoJson($e->getCode(),$e->getMessage());
+            Common::addLog('error.log',$e->getMessage());
+        }
+
+        Common::echoJson(200,'发布成功');
     }
-    
+
+    protected function save( MetaWeblog $target,$blog ,$blogName='',$queue){
+        $model = 'app\models\JpBlogQueue';
+        $modelBlogRecord = 'app\models\JpBlogRecord';
+        $DB = new DB();
+
+        $blogIteam = $blogName?$blog[$blogName.'Id']:'';
+        $content = $blog['content']?:file_get_contents($blog['fileurl']);
+
+        //xml替换不允许字符 参考： http://note.youdao.com/noteshare?id=f303e349322890f31aaea3bc84345d88&sub=wcp1529043319262675
+        $content = str_replace('&','&amp;',$content);
+        $content = str_replace('"','&quot;',$content);
+        $content = str_replace("'",'&apos;',$content);
+        $content = str_replace(">",'&gt;',$content);
+        $content = str_replace("<",'&lt;',$content);
+        $categories = $blog['cnblogsType']? explode(',',$blog['cnblogsType']) : [ '[Markdown]' ];
+        $params = [
+            'title'=> $blog['title'],
+            'description'=> $content,
+            'categories'=> $categories            //编辑器格式+分类
+        ];
+        if( !$blogIteam ){
+            if( $target->newPost( $params ) ){
+                $blog_id = $target->getBlogId();
+                $DB->update($modelBlogRecord::tableName(),[$blogName.'Id'=>$blog_id],['id'=>$blog['id']]);
+                $DB->update($model::tableName(),['publishStatus'=>2,'response'=>'success'],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布成功
+            }else{
+                $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$target->getErrorMessage()],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布失败
+                throw new \Exception($target->getErrorMessage(),501);
+            }
+        }else{
+            if( !$target->editPost( $blogIteam,$params ) ){
+                $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$target->getErrorMessage()],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布失败
+                throw new \Exception($target->getErrorMessage(),501);
+            }else{
+                $DB->update($modelBlogRecord::tableName(),[$blogName.'Id'=>$blogIteam],['id'=>$blog['id']]);
+                $DB->update($model::tableName(),['publishStatus'=>2,'response'=>'success'],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布成功
+            }
+        }
+        return ;
+    }
+
 }
