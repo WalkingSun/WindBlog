@@ -38,8 +38,11 @@ class MetaweblogController extends Controller
         $count = $model::find()->select('id')->where(['isDelete'=>0])->count();
         $pagination = new \yii\data\Pagination([ 'defaultPageSize' => 5, 'totalCount'=>$count,]);//print_r($pagination->limit);die;
         $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType ,$andWhereArray = []);
-        $blogConfig = JpBlogConfig::find()->where(['blogType'=>6])->asArray()->one();
-        return $this->render('index',['result'=>$this->result,'pagination'=>$pagination,'blogConfig'=>$blogConfig]);
+
+        //查询配置
+        $configs = JpBlogConfig::find()->where(['isEnable'=>1])->asArray()->all();
+
+        return $this->render('index',['result'=>$this->result,'pagination'=>$pagination,'blogConfig'=>$configs]);
     }
 
     public function actionQueue(){
@@ -63,10 +66,15 @@ class MetaweblogController extends Controller
 
     public function actionAdd(){
 
-        //查询分类
-        $blogConfig = JpBlogConfig::find()->where(['blogType'=>6])->asArray()->one();       //获取博客园配置
+        //查询配置
+        $configs = JpBlogConfig::find()->where(['isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
         $MetaWeblog = new MetaWeblog();
-        $Categories = $MetaWeblog->get( $blogConfig['blogType'],$blogConfig['username'] , $blogConfig['password'] ,$blogConfig['blogid'], $isCache = 1 );
+
+       foreach ($configs as $v){
+           //查询分类
+           $Categories[$v['blogType']] = $MetaWeblog->get( $v['blogType'],$v['username'] , $v['password'] ,$v['blogid'], $isCache = 1 );
+       }
+
         $model = $this->modelClass;
         $d = $this->data;
 
@@ -84,23 +92,35 @@ class MetaweblogController extends Controller
             $insertData['oschinaId'] = '';
             $insertData['chinaunixId'] = '';
             $insertData['createtime'] = date('Y-m-d');
-            $insertData['cnblogsType'] = !empty($d['cnblogsType']) ? implode(",",$d['cnblogsType']):'';
+
+            //添加分类
+            if( $blogCates = $d['cnblogsType'] ){
+                foreach ($blogCates as $k=>$v){
+                    $blogName = Common::blogParamName($k);
+                    $insertData[$blogName.'Type'] = !empty($v) ? implode(",",$v):'';
+                }
+            }
+
             $DB = new DB();
             $DB->insert($model::tableName(),$insertData);
             Common::echoJson('200','添加成功');
         }
 
-        return $this->render('add',['Categories'=>$Categories[0]]);
+        return $this->render('add',['Categories'=>$Categories]);
     }
 
     public function actionEdit(){
         $d = $this->data;
         if( empty($d['blogId']) ) Common::echoJson(403,'参数错误');
 
-        //查询分类
-        $blogConfig = JpBlogConfig::find()->where(['blogType'=>6])->asArray()->one();       //获取博客园配置
+        //查询配置
+        $configs = JpBlogConfig::find()->where(['isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
         $MetaWeblog = new MetaWeblog();
-        $Categories = $MetaWeblog->get( $blogConfig['blogType'],$blogConfig['username'] , $blogConfig['password'] ,$blogConfig['blogid'], $isCache = 1 );
+
+        foreach ($configs as $v){
+            //查询分类
+            $Categories[$v['blogType']] = $MetaWeblog->get( $v['blogType'],$v['username'] , $v['password'] ,$v['blogid'], $isCache = 1 );
+        }
 
         $model = $this->modelClass;
         $record = $model::find()->where(['id'=> $d['blogId']])->asArray()->one();

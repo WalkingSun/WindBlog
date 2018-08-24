@@ -63,9 +63,18 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
             <th  scope="col">Id</th>
             <th scope="col" style="">标题</th>
 <!--            <th  scope="col">内容</th>-->
-<!--            <th  scope="col">mark文件</th>-->
-            <th scope="col">cnblogs博客</th>
-            <th scope="col">cnblogs博客分类</th>
+            <th  scope="col">mark文件</th>
+<!--            <th scope="col">cnblogs博客</th>-->
+            <?php
+                if( $blogConfig ){
+                    foreach ($blogConfig as $v){
+                        $blogName = \app\models\Common::blogParamName($v['blogType']);
+                        echo '<th scope="col">'.$blogName.'博客分类</th>';
+                    }
+                }
+            ?>
+
+<!--            <th scope="col">cnblogs博客分类</th>-->
             <th scope="col" >创建时间</th>
             <th  scope="col">操作</th>
         </tr>
@@ -77,9 +86,18 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
             <td ><?=$v['id'];?></td>
             <td ><?=$v['title'];?></td>
 <!--            <td >--><?//=$v['content']?:'--';?><!--</td>-->
-<!--            <td >--><?//=$v['fileurl'];?><!--</td>-->
-            <td ><a href="<?="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?>"  target="view_window"><?=$v['cnblogsId']?'查看':'--'//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?></a></td>
-            <td ><?=$v['cnblogsType'];?></td>
+            <td ><a href="<?=$v['fileurl'];?>"  target="view_window"><?=$v['cnblogsId']?'查看':'--'//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?></a></td>
+<!--            <td ><a href="--><?//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?><!--"  target="view_window">--><?//=$v['cnblogsId']?'查看':'--'//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?><!--</a></td>-->
+            <?php
+            if( $blogConfig ){
+                foreach ($blogConfig as $v1){
+                    $blogName = \app\models\Common::blogParamName($v1['blogType']);
+                    echo '<td >'.$v[$blogName.'Type'].'</td>';
+                }
+            }
+            ?>
+
+<!--            <td >--><?//=$v['cnblogsType'];?><!--</td>-->
             <td ><?=$v['createtime'];?></td>
             <td >
                 <a href="javascript:checkQueue('<?=$v['id'];?>')"> 查看队列</a>

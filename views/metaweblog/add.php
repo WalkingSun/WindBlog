@@ -34,7 +34,7 @@
 <!--                <label class="explain"></label>-->
 <!--            </div>-->
             <div class="form-group form-group-sm">
-                <label class="control-label col-md-1">mark地址</label>
+                <label class="control-label col-md-1">Mark地址</label>
                 <div class="col-md-4">
                     <input class="form-control input-lg" type="text" name="fileurl" value="" placeholder="请输入mark地址">
                 </div>
@@ -42,22 +42,25 @@
                 <label class="explain">请输入url地址</label>
             </div>
 
-            <div class="field-record-is_valid">
-                <label class="control-label col-md-1">cnblogs分类</label>
-                <div class="checkbox">
+            <?php
+            foreach ($Categories as $type => $cate){
+                $blogName = \app\models\Common::blogParamName($type);
 
-                        <?php
-                        foreach ($Categories as $v){
-                            if( strpos($v['title'],'网站分类')!==false ) continue;
-                            echo '<label class="checkboxs"><input type="checkbox" value="'.$v['title'].'" name="cnblogsType[]" > '.$v['title'].' </label>';
-                        }
-                        ?>
-
-
-                    <p class="help-block help-block-error"></p>
+                echo '<div class="field-record-is_valid">
+                <label class="control-label col-md-1">'.$blogName.'分类</label>
+                <div class="checkbox">';
+                foreach ($cate as $v){
+                    if( strpos($v['title'],'网站分类')!==false ) continue;
+                    echo '<label class="checkboxs"><input type="checkbox" value="'.$v['title'].'" name="cnblogsType['.$type.'][]" > '.$v['title'].' </label>';
+                }
+                echo '    <p class="help-block help-block-error"></p>
 
                 </div>
             </div>
+';
+            }
+            ?>
+
 
         </form>
 
