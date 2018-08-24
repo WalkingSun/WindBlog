@@ -30,6 +30,7 @@ trait BlogCategoreis
             $passwd = $blogPassword;
             $target->setAuth( $username,$passwd );
             $Categories = $target->getCategories($blogid);
+            if( empty($Categories[0]) ) return [];
             $cache->set($blogType.'_'.$blogUsername.'_'.$blogid,json_encode($Categories[0]),60*60*24*30);
         }
         return json_decode($cache->get($blogType.'_'.$blogUsername.'_'.$blogid),1);

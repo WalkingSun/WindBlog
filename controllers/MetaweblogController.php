@@ -233,7 +233,7 @@ class MetaweblogController extends Controller
         if( !$d['queueid'] )   Common::echoJson(403,'参数缺失');
 
         $queue = $model::find()->where(['queueId'=>$d['queueid']])->asArray()->one();
-        if( $queue['publishStatus']==3 ) Common::echoJson(400,'博客已发布');
+        if( $queue['publishStatus']==2 ) Common::echoJson(400,'博客已发布');
         $blogConfig = JpBlogConfig::find()->where(['blogType'=>$queue['blogType']])->asArray()->one();
         $blogName = Common::blogParamName($queue['blogType']);
         $blogid = $blogConfig['blogid']?:'';
