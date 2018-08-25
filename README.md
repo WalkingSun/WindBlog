@@ -24,12 +24,12 @@ sql文件放在public.sql,数据库名称jump，用的是PostGresql，
 
 复杂度不高，觉得方便吧！
 
-## 赞助
+<!-- ## 赞助 -->
 
 喜欢点个赞呗(`・ω・´)
 
-<img src="https://files.cnblogs.com/files/followyou/zfb.bmp" width="256" height="350" style="display:inline;">
-<img src="https://files.cnblogs.com/files/followyou/wx.bmp" width="256" height="350" style="display:inline;">
+<!-- <img src="https://files.cnblogs.com/files/followyou/zfb.bmp" width="256" height="350" style="display:inline;"> -->
+<!-- <img src="https://files.cnblogs.com/files/followyou/wx.bmp" width="256" height="350" style="display:inline;"> -->
 
 ## 贡献
 
