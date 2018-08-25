@@ -13,6 +13,10 @@
 ## 博客同步系统
 基于Yii2.0框架，对博客的管理、发布做些自动化。
 
+### 数据库
+sql文件放在public.sql,数据库名称jump，用的是PostGresql，
+如果你用的事Mysql或者其他数据库，找些工具，例如DBConvert for MySQL & PostgreSQL，做下转换。
+
 ### 功能
 当前支持 博客园、CSDN、51CTO、sina、163、oscina、chinaunix
 - 初始化设置：配置你需要同步博客的账户信息

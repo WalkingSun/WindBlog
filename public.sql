@@ -1,6 +1,6 @@
 -- 博客记录表
 CREATE TABLE "public"."jp_blogRecord" (
-"id"  SERIAL ,
+"id" int4 DEFAULT nextval('"jp_blogRecord_id_seq"'::regclass) NOT NULL,
 "title" varchar(255) COLLATE "default",
 "content" varchar(8000) COLLATE "default",
 "fileurl" varchar(255) COLLATE "default",
@@ -14,6 +14,12 @@ CREATE TABLE "public"."jp_blogRecord" (
 "cnblogsType" varchar(32) COLLATE "default",
 "createtime" date,
 "isDelete" int2 DEFAULT 0,
+"51ctoType" varchar(32) COLLATE "default",
+"sinaType" varchar(32) COLLATE "default",
+"csdnType" varchar(32) COLLATE "default",
+"163Type" varchar(32) COLLATE "default",
+"oschinaType" varchar(32) COLLATE "default",
+"chinaunixType" varchar(32) COLLATE "default",
 CONSTRAINT "jp_blogRecord_pkey" PRIMARY KEY ("id")
 )
 WITH (OIDS=FALSE)
@@ -43,12 +49,23 @@ COMMENT ON COLUMN "public"."jp_blogRecord"."oschinaId" IS 'oschina博客id';
 
 COMMENT ON COLUMN "public"."jp_blogRecord"."chinaunixId" IS 'chinaunix博客id';
 
-COMMENT ON COLUMN "public"."jp_blogRecord"."cnblogsType" IS '博客分类';
+COMMENT ON COLUMN "public"."jp_blogRecord"."cnblogsType" IS '博客类型';
 
 COMMENT ON COLUMN "public"."jp_blogRecord"."createtime" IS '创建时间';
 
 COMMENT ON COLUMN "public"."jp_blogRecord"."isDelete" IS '是否删除 1 是；0否';
 
+COMMENT ON COLUMN "public"."jp_blogRecord"."51ctoType" IS '51cto分类';
+
+COMMENT ON COLUMN "public"."jp_blogRecord"."sinaType" IS 'sina分类';
+
+COMMENT ON COLUMN "public"."jp_blogRecord"."csdnType" IS 'csdn分类';
+
+COMMENT ON COLUMN "public"."jp_blogRecord"."163Type" IS '163分类';
+
+COMMENT ON COLUMN "public"."jp_blogRecord"."oschinaType" IS 'oschina分类';
+
+COMMENT ON COLUMN "public"."jp_blogRecord"."chinaunixType" IS 'chinaunix分类';
 -- 博客队列表
 CREATE TABLE "public"."jp_blogQueue" (
 "queueId" SERIAL,
@@ -101,19 +118,3 @@ COMMENT ON COLUMN "public"."jp_blogConfig"."blogid" IS '博客地址Id';
 
 COMMENT ON COLUMN "public"."jp_blogConfig"."isEnable" IS '是否启用 1是，0 否';
 
--- 博客分类关联表
-CREATE TABLE "public"."jp_blogCategories" (
-"blogId" int4 NOT NULL,
-"blogType" int2 NOT NULL,
-"cates" varchar(64) COLLATE "default" NOT NULL
-)
-WITH (OIDS=FALSE)
-;
-
-ALTER TABLE "public"."jp_blogCategories" OWNER TO "postgres";
-
-COMMENT ON COLUMN "public"."jp_blogCategories"."blogId" IS '博客记录id';
-
-COMMENT ON COLUMN "public"."jp_blogCategories"."blogType" IS '博客类型 1代表51cto;2 sina;3 csdn;4 163;5 oschina;6 cnblogs;7 chinaunix';
-
-COMMENT ON COLUMN "public"."jp_blogCategories"."cates" IS '博客分类 以逗号分隔';
