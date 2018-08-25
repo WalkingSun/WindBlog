@@ -1,6 +1,5 @@
 <?php
 
-
 ?>
 <style>
     .checkboxs{
