@@ -278,8 +278,7 @@ class MetaweblogController extends Controller
         $DB = new DB();
 
         $blogIteam = $blogName?$blog[$blogName.'Id']:'';
-        $content = $blog['content']?:file_get_contents($blog['fileurl']);
-
+        $content = $blog['content']?:file_get_contents($blog['fileurl']);//        Common::addLog('error.log',$content);die;
         //xml替换不允许字符 参考： http://note.youdao.com/noteshare?id=f303e349322890f31aaea3bc84345d88&sub=wcp1529043319262675
         $content = str_replace('&','&amp;',$content);
         $content = str_replace('"','&quot;',$content);
