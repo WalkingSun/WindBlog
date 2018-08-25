@@ -64,6 +64,13 @@
 
         </form>
 
+        <div class="form-group form-group-sm" style="padding: 10px 0px;">
+            <font style="color: red">*</font>
+            <c  style="font-size: 0.8em;">
+                关于Mark地址，我习惯将markdown文件放于GitHub,然后去取这个文件的Raw地址。
+            </c>
+        </div>
+
         <div class="form-group form-group-sm" style="margin-top: 30px;">
             <div class="col-md-3 col-md-offset-2">
                 <div class="btn-group">
