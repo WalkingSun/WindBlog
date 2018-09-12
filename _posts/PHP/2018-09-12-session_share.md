@@ -1,6 +1,6 @@
 ---
 layout: post
-title: session更换存储，实现session在多台服务器共享
+title: session更换存储，实现在多台服务器共享
 categories: [PHP, ]
 description:
 keywords: php, session
