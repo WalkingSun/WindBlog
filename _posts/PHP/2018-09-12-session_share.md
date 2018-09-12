@@ -114,4 +114,5 @@ mysql使用memory存贮引擎，设计数据表（sessionid、sessionValue 、�
 
 ## 如果redis是哨兵 master-slave模式，session如何共享？
 没想清楚，咨询了老大，做法比较坑，php.ini修改配置指定redis master ip，有个守护进程的脚本检测哨兵，发生故障哨兵切换，检测到发邮件通知‘人’去手动修改php.ini master的ip，感觉匪夷所思啊！
+
 我的思路是：哨兵模式会有三个redis服务ip端口，客户端连接获取每个redis服务的info信息，如果info里包含master role，则将此master redis服务操作实例交给上面的代码，实现写操作，不知道PHP有没有这种方式，留待以后研究下。
