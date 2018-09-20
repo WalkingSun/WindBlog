@@ -103,7 +103,7 @@ gitment:
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: WalkingSun
-    repo: Gitalk
+    repo: WindBlog
     clientID: 4d696ab7aacc8449082f
     clientSecret: d43ec7f6d0d5941f68830c5ce61f773206429ccd
 # 在使用其它评论组件时可点击显示 Disqus
