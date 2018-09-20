@@ -102,10 +102,10 @@ gitment:
         client_secret: b42a4178e5fd4a7cf63189ef4b1453b05c375709
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: mzlogin
+    owner: WalkingSun
     repo: blog-comments
-    clientID: 8a2cf80f90528b5f008d
-    clientSecret: 35552c3ae3e9908c8185def8a53559452fde31b5
+    clientID: 4d696ab7aacc8449082f
+    clientSecret: d43ec7f6d0d5941f68830c5ce61f773206429ccd
 # 在使用其它评论组件时可点击显示 Disqus
 lazy_load_disqus : false
 
