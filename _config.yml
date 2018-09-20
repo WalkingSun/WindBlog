@@ -81,7 +81,7 @@ collections:
         output: true
         permalink: /wiki/:path/
 
-repository: mzlogin/mzlogin.github.io
+repository: WalkingSun/WalkingSun.github.io
 
 # ---------------- #
 #      Comments    #
@@ -95,7 +95,7 @@ disqus:
     username:
 # https://imsun.net/posts/gitment-introduction/
 gitment:
-    owner: mzlogin
+    owner: WalkingSun
     repo: blog-comments
     oauth:
         client_id: d2e1cbbd298958076462
@@ -103,7 +103,7 @@ gitment:
 # https://github.com/gitalk/gitalk#install
 gitalk:
     owner: WalkingSun
-    repo: blog-comments
+    repo: Gitalk
     clientID: 4d696ab7aacc8449082f
     clientSecret: d43ec7f6d0d5941f68830c5ce61f773206429ccd
 # 在使用其它评论组件时可点击显示 Disqus
