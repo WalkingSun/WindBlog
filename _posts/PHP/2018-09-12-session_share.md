@@ -1,7 +1,7 @@
 ---
 layout: post
 title: session更换存储，实现在多台服务器共享
-categories: [PHP, ]
+categories: [PHP,Nginx ]
 description:
 keywords: php, session
 ---
@@ -10,6 +10,31 @@ keywords: php, session
 web服务器有多台，每台服务器都会存贮自己的session，session无法在多台服务器共享。所以就需要更换session的存贮空间，存贮在一个共用的空间。通常为了读写速度，我们会选择存贮在内存服务上，如redis、mysql的memory存贮引擎等，本文以reddis存贮贯串上下文。
 
 ## session共享
+### nginx ip_hash 或者 url_hash
+#### ip_hash
+```shell
+...
+upstream backserver {
+    ip_hash;
+    server 192.168.0.14:88;
+    server 192.168.0.15:80;
+}
+...
+```
+采用ip_hash指令解决这个问题，如果客户已经访问了某个服务器，当用户再次访问时，会将该请求通过哈希算法，自动定位到该服务器。
+每个请求按访问ip的hash结果分配，这样每个访客固定访问一个后端服务器，解决session的问题。
+### url_hash
+按访问url的hash结果来分配请求，使每个url定向到同一个（对应的）后端服务器，后端服务器为缓存时比较有效。
+```shell
+...
+upstream backserver {
+    server squid1:3128;
+    server squid2:3128;
+    hash $request_uri;
+    hash_method crc32;
+}
+...
+```
 ### php.ini修改配置
 ```
 session.save_handler = redis
