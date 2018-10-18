@@ -7,7 +7,7 @@ keywords: php, session
 ---
 领了台阿里服务器1vCPU 1G，做下测试研究。
 系统 centos7，使用yum安装。
-# Nignx
+# Nginx
 ```
 yum install nginx
 ##开启nginx
