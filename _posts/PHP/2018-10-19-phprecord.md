@@ -1,3 +1,10 @@
+---
+layout: post
+title: 原理分析记录
+categories: [PHP]
+description:
+keywords: php
+---
 做下记录
 
 # PHP版本分TS和NTS，有什么区别？怎么选择?
