@@ -4,7 +4,7 @@ namespace app\models;
 
 
 /**
- * This is the model class for table "jp_blogRecord".
+ * This is the model class for table "JP_blogRecord".
  *
  * @property integer $id
  * @property string $title
@@ -27,7 +27,7 @@ class JpBlogRecord extends Basic
      */
     public static function tableName()
     {
-        return 'jp_blogRecord';
+        return 'JP_blogRecord';
     }
 
     /**

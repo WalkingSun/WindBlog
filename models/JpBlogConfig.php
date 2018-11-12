@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "jp_blogConfig".
+ * This is the model class for table "JP_blogConfig".
  *
  * @property integer $blogType
  * @property string $username
@@ -19,7 +19,7 @@ class JpBlogConfig extends Basic
      */
     public static function tableName()
     {
-        return 'jp_blogConfig';
+        return 'JP_blogConfig';
     }
 
     /**

@@ -5,7 +5,7 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "jp_blogQueue".
+ * This is the model class for table "JP_blogQueue".
  *
  * @property integer $queueId
  * @property integer $blogId
@@ -22,7 +22,7 @@ class JpBlogQueue extends Basic
      */
     public static function tableName()
     {
-        return 'jp_blogQueue';
+        return 'JP_blogQueue';
     }
 
     /**

@@ -48,16 +48,20 @@
                 echo '<div class="field-record-is_valid">
                 <label class="control-label col-md-1">'.$blogName.'分类</label>
                 <div class="checkbox">';
-                foreach ($cate as $v){
+                if($cate){
+                    foreach ($cate as $v){
                     if( strpos($v['title'],'网站分类')!==false ) continue;
                     echo '<label class="checkboxs"><input type="checkbox" value="'.$v['title'].'" name="cnblogsType['.$type.'][]" > '.$v['title'].' </label>';
+                    }
                 }
+
                 echo '    <p class="help-block help-block-error"></p>
 
                 </div>
             </div>
 ';
             }
+
             ?>
 
 

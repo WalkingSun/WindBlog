@@ -36,7 +36,7 @@ class MetaweblogController extends Controller
         $offset = !empty($d['page']) ? $d['page']:1;
         $orderType = ['createtime'=>SORT_DESC];
         $count = $model::find()->select('id')->where(['isDelete'=>0])->count();
-        $pagination = new \yii\data\Pagination([ 'defaultPageSize' => 5, 'totalCount'=>$count,]);//print_r($pagination->limit);die;
+        $pagination = new \yii\data\Pagination([ 'defaultPageSize' => 10, 'totalCount'=>$count,]);//print_r($pagination->limit);die;
         $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType ,$andWhereArray = []);
 
         //查询配置

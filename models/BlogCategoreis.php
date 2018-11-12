@@ -22,7 +22,9 @@ trait BlogCategoreis
      * @return mixed                分类结果
      */
     public function get( $blogType,$blogUsername , $blogPassword ,$blogid, $isCache = 1 ){
+        $result =[];
         $cache = \Yii::$app->cache;
+        $key = $blogType.'_'.$blogUsername.'_'.$blogid;
         if( !$isCache || !$cache->exists($blogType.'_'.$blogUsername.'_'.$blogid) ){
             $blogMetaweblogUrl = Common::MetaweblogUrl($blogType,$blogid);
             $target = new MetaWeblog( $blogMetaweblogUrl );
@@ -31,9 +33,10 @@ trait BlogCategoreis
             $target->setAuth( $username,$passwd );
             $Categories = $target->getCategories($blogid);
             if( empty($Categories[0]) ) return [];
-            $cache->set($blogType.'_'.$blogUsername.'_'.$blogid,json_encode($Categories[0]),60*60*24*30);
+            $result = $Categories[0];
+            $cache->set($key,json_encode($result),60*60*24*30);
         }
-        return json_decode($cache->get($blogType.'_'.$blogUsername.'_'.$blogid),1);
+        return $result?:json_decode($cache->get($key),1);
     }
 
 }

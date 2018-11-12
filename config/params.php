@@ -6,5 +6,6 @@
  * Time: 15:20
  */
 return [
-
+    'gitUser'   =>  'WalkingSun',
+    'Repositories'   =>  'WindBlog',
 ];
