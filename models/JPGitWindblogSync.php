@@ -83,7 +83,13 @@ class JPGitWindblogSync extends Basic
         $blogTypes = Common::blogParamName();
         $blogTypesFlip = array_flip($blogTypes);
         $blogClassInfo = [];
+
+        $blogTypeSeted = JpBlogConfig::find()->select(['blogType'])->where(['isEnable'=>1])->asArray()->all();
+        $blogTypeSeted = array_column($blogTypeSeted,'blogType');
         foreach ($blogTypes as $v){
+            //剔除未配置账户的博客类型
+            if( !in_array( $blogTypesFlip[$v],$blogTypeSeted ) ) continue;
+
             if( isset($tags[$v.'Class']) ){
                 $blogClassInfo[$v] = $tags[$v.'Class'];
             }
@@ -103,7 +109,7 @@ class JPGitWindblogSync extends Basic
                 'isDelete' => '0',
            ];
 
-            if( !self::find()->select([])->where(['git_filename'=>$syncData['git_filename'],'createtime'=>$syncData['createtime']])->asArray()->one() ){
+            if( !self::find()->select([])->where(['git_filename'=>$syncData['git_filename'],'createtime'=>$syncData['createtime'],'isDelete'=>0])->asArray()->one() ){
                 if( $blogRecord =JpBlogRecord::find()->select([])->where(['title'=>$tags['title'],'isDelete'=>0])->asArray()->one() ){
                     $syncData['blogRecord_id'] = $blogRecord['id'];
                 }else{

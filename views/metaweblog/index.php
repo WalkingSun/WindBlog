@@ -86,7 +86,7 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
             <td ><?=$v['id'];?></td>
             <td ><?=$v['title'];?></td>
 <!--            <td >--><?//=$v['content']?:'--';?><!--</td>-->
-            <td ><a href="<?=$v['fileurl'];?>"  target="view_window"><?=$v['cnblogsId']?'查看':'--'//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?></a></td>
+            <td ><a href="<?=$v['fileurl'];?>"  target="view_window"><?=$v['fileurl']?'查看':'--'//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?></a></td>
 <!--            <td ><a href="--><?//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?><!--"  target="view_window">--><?//=$v['cnblogsId']?'查看':'--'//="https://www.cnblogs.com/{$cnblogName}/p/{$v['cnblogsId']}.html";?><!--</a></td>-->
             <?php
             if( $blogConfig ){
