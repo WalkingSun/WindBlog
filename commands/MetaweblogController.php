@@ -26,31 +26,39 @@ class MetaweblogController extends Controller
                 $blogName = Common::blogParamName($v['blogType']);
                 $blogid = $blogConfig['blogid']?:'';
 
-                $blogMetaweblogUrl = Common::MetaweblogUrl($v['blogType'],$blogid);
-                $target = new MetaWeblog( $blogMetaweblogUrl );
-                $target->setAuth( $blogConfig['username'],$blogConfig['password'] );
+                $connection = \Yii::$app->db;
+                $transaction = $connection->beginTransaction();
+                try{
+                    $blogMetaweblogUrl = Common::MetaweblogUrl($v['blogType'],$blogid);
+                    $target = new MetaWeblog( $blogMetaweblogUrl );
+                    $target->setAuth( $blogConfig['username'],$blogConfig['password'] );
 
 
-                $blog = $modelBlogRecord::find()->where(['id'=>$v['blogId']])->asArray()->one();
-                $DB->update($model::tableName(),['publishStatus'=>1],['queueId'=>$v['queueId']]);   //更新队列状态  进行中
+                    $blog = $modelBlogRecord::find()->where(['id'=>$v['blogId']])->asArray()->one();
+                    $DB->update($model::tableName(),['publishStatus'=>1],['queueId'=>$v['queueId']]);   //更新队列状态  进行中
 
-                #执行动作，1 创建，2 更新，3 删除
-                if( $v['action']==1 || $v['action']==2 ){
-                    $v['action'] = $blog[$blogName.'Id'] ? 2:1;
-                }
+                    #执行动作，1 创建，2 更新，3 删除
+                    if( $v['action']==1 || $v['action']==2 ){
+                        $v['action'] = $blog[$blogName.'Id'] ? 2:1;
+                    }
 
-                switch ($v['action']){
-                    case   1:
-                        $this->save($target,$blog,$blogName,$v);
-                        break;
-                    case    2:
-                        $this->save($target,$blog,$blogName,$v);
-                        break;
-                    case    3:
-                        $this->delete($target);
-                        break;
-                    default:
-                        continue;
+                    switch ($v['action']){
+                        case   1:
+                            $this->save($target,$blog,$blogName,$v);
+                            break;
+                        case    2:
+                            $this->save($target,$blog,$blogName,$v);
+                            break;
+                        case    3:
+                            $this->delete($target);
+                            break;
+                        default:
+                            continue;
+                    }
+                    $transaction->commit();
+                }catch (\Exception $e){
+                    Common::addLog('error.log',$e->getMessage());
+                    $transaction->rollback();
                 }
             }
         }
@@ -65,6 +73,13 @@ class MetaweblogController extends Controller
 
         $blogIteam = $blogName?$blog[$blogName.'Id']:'';
         $content = $blog['content']?:file_get_contents($blog['fileurl']);
+
+        $preg = "/---(.|\s?)*---(\s)/";
+        preg_match($preg,mb_substr($content,0,500,"UTF-8"),$match);
+        if( !empty($match[0]) ){
+            $n = strlen($match[0])-1;
+            $content = substr($content,$n);
+        }
 
         //xml替换不允许字符 参考： http://note.youdao.com/noteshare?id=f303e349322890f31aaea3bc84345d88&sub=wcp1529043319262675
         $content = str_replace('&','&amp;',$content);
@@ -85,12 +100,13 @@ class MetaweblogController extends Controller
                 $DB->update($model::tableName(),['publishStatus'=>2,'response'=>'success'],['queueId'=>$v['queueId']]);                   //更新队列状态  发布成功
             }else{
                 $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$target->getErrorMessage()],['queueId'=>$v['queueId']]);                   //更新队列状态  发布失败
-                Common::addLog('error.log',$target->getErrorMessage());
+//                Common::addLog('error.log',$target->getErrorMessage());
+                throw new \Exception($target->getErrorMessage());
             }
         }else{
             if( !$target->editPost( $blogIteam,$params ) ){
                 $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$target->getErrorMessage()],['queueId'=>$v['queueId']]);                   //更新队列状态  发布失败
-                Common::addLog('error.log',$target->getErrorMessage());
+                throw new \Exception($target->getErrorMessage());
             }else{
                 $DB->update($modelBlogRecord::tableName(),[$blogName.'Id'=>$blogIteam],['id'=>$blog['id']]);
                 $DB->update($model::tableName(),['publishStatus'=>2,'response'=>'success'],['queueId'=>$v['queueId']]);                   //更新队列状态  发布成功

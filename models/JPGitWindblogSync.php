@@ -160,7 +160,7 @@ class JPGitWindblogSync extends Basic
 
             $transaction->commit();
         }catch (\Exception $e){
-            Common::addLog('error.log',print_r($e->getMessage(),1));
+            Common::addLog('error.log',$e->getMessage());
             $transaction->rollback();
         }
 
