@@ -104,7 +104,7 @@ class JPGitWindblogSync extends Basic
            ];
 
             if( !self::find()->select([])->where(['git_filename'=>$syncData['git_filename'],'createtime'=>$syncData['createtime']])->asArray()->one() ){
-                if( $blogRecord =JpBlogRecord::find()->select([])->where(['title'=>$tags['title']])->asArray()->one() ){
+                if( $blogRecord =JpBlogRecord::find()->select([])->where(['title'=>$tags['title'],'isDelete'=>0])->asArray()->one() ){
                     $syncData['blogRecord_id'] = $blogRecord['id'];
                 }else{
                     $blogRecordData = [

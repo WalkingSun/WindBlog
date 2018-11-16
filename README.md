@@ -14,13 +14,26 @@
 基于Yii2.0框架，对博客的管理、发布做些自动化。
 
 ### 数据库
-sql文件放在public.sql,数据库名称jump，用的是PostGresql，
-如果你用的事Mysql或者其他数据库，找些工具，例如DBConvert for MySQL & PostgreSQL，做下转换。
+~~sql文件放在public.sql,数据库名称jump，用的是PostGresql，
+如果你用的事Mysql或者其他数据库，找些工具，例如DBConvert for MySQL & PostgreSQL，做下转换。~~
+改变方案使用Yii Migrate数据迁移组件,优点支持各类数据库，控制台进入WindBlog目录,执行
+```
+php ./yii migrate/up
+```
 
 ### 功能
 当前支持 博客园、CSDN、51CTO、sina、163、oscina、chinaunix
 - 初始化设置：配置你需要同步博客的账户信息
 - 博客操作：添加记录、编辑记录、删除记录、同步操作
+- 增加github同步服务。定时从github gh-pages分支上拉取所写博客，进行同步操作，解决手动操作。
+控制台运行：
+```
+php ./yii autosync/index
+```
+- 增加队列处理服务，之前的手动操作还是支持的。
+```
+php ./yii metaweblog/index
+```
 
 复杂度不高，觉得方便吧！
 
