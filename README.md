@@ -26,13 +26,13 @@ php ./yii migrate/up
 - 初始化设置：配置你需要同步博客的账户信息
 - 博客操作：添加记录、编辑记录、删除记录、同步操作
 - 增加github同步服务。定时从github gh-pages分支上拉取所写博客，进行同步操作，解决手动操作。
-控制台运行：
+添加到系统任务(crontab -e)：
 ```
-php ./yii autosync/index
+*/30 * * * * php 【WindBlog路径】/yii autosync/index   #30分钟跑一次
 ```
 - 增加队列处理服务，之前的手动操作还是支持的。
 ```
-php ./yii metaweblog/index
+*/1 * * * * php 【WindBlog路径】/yii metaweblog/index  #每分钟跑一次
 ```
 
 复杂度不高，觉得方便吧！

@@ -24,7 +24,7 @@ class AutosyncController extends Controller
         $GitRawWindBlog = new GitRawWindBlog();
         $gitUser = \Yii::$app->params['gitUser'];
         $Repositories = \Yii::$app->params['Repositories'];
-        $url = "https://github.com/{$gitUser}/{$Repositories}/tree/gh-pages/_posts";
+        $url = "https://github.com/{$gitUser}/{$Repositories}/file-list/gh-pages/_posts";
 
         $client = new \GuzzleHttp\Client(['base_uri' => $url]);
         $dom = new Dom();
@@ -33,14 +33,14 @@ class AutosyncController extends Controller
             $contents = trim($response->getBody()->getContents());
             preg_match("/<table.*?>(.*?)<\/table>/is",$contents,$content);
             $dom->load($content[0]);
-            $lists = $dom->find('.js-navigation-item');
+            $lists = $dom->find('.js-navigation-item');//Common::addLog('error.log',$lists->innerHtml);
             try{
                 foreach ($lists as $v){
                     $fileTag = $v->find('.js-navigation-open');
                     $markfile = $fileTag->text;
                     $tmp = explode('-',$markfile);
                     if( count($tmp)<=1 ) continue;
-                    $href = $fileTag->href;//var_dump($v->innerHtml.'/n');var_dump($v->find('time-ago')->innerHtml);
+                    $href = $fileTag->href;
 
                     //拉取最近限制天数的记录
                     $datetime = $v->find('.age span')->find('time-ago')->datetime;
@@ -50,7 +50,7 @@ class AutosyncController extends Controller
                     //github RAW
                     $url_raw = "https://raw.githubusercontent.com{$href}";
                     $url_raw = str_replace("/blob","",$url_raw);
-                    $raw = file_get_contents($url_raw ,NULL, NULL, 0, 150);Common::addLog('error.log',$raw);
+                    $raw = file_get_contents($url_raw ,NULL, NULL, 0, 500);
                     $preg = "/---(.|\s?)*---(\s)/";
                     preg_match($preg,$raw,$match);
                     $tag = $match?$match[0]:Common::excepDeal("【{$url_raw}】没有设置标签信息");
@@ -60,7 +60,7 @@ class AutosyncController extends Controller
                     $tags = $GitRawWindBlog->tagAnalysis($tag);
 
                     //添加队列服务
-                    $fileData = ['url'=>$url_raw,'markfile'=>$markfile,'fileTime'=>$datetime];
+                    $fileData = ['url'=>$url_raw,'markfile'=>$markfile,'fileTime'=>$datetime];Common::addLog('error.log',$raw);
                     JPGitWindblogSync::getInstance()->addGitServer( $fileData,$tags );
                 }
             }catch (Exception $e){
