@@ -12,13 +12,22 @@ return array (
       '@yii/redis' => $vendorDir . '/yiisoft/yii2-redis',
     ),
   ),
-  'pyurin/yii2-redis-ha' => 
+  'yiisoft/yii2-codeception' => 
   array (
-    'name' => 'pyurin/yii2-redis-ha',
-    'version' => '1.1.6.0',
+    'name' => 'yiisoft/yii2-codeception',
+    'version' => '2.0.6.0',
     'alias' => 
     array (
-      '@pyurin/yii/redisHa' => $vendorDir . '/pyurin/yii2-redis-ha/src',
+      '@yii/codeception' => $vendorDir . '/yiisoft/yii2-codeception',
+    ),
+  ),
+  'yiisoft/yii2-gii' => 
+  array (
+    'name' => 'yiisoft/yii2-gii',
+    'version' => '2.0.5.0',
+    'alias' => 
+    array (
+      '@yii/gii' => $vendorDir . '/yiisoft/yii2-gii',
     ),
   ),
   'yiisoft/yii2-swiftmailer' => 
@@ -30,13 +39,13 @@ return array (
       '@yii/swiftmailer' => $vendorDir . '/yiisoft/yii2-swiftmailer',
     ),
   ),
-  'yiisoft/yii2-codeception' => 
+  'pyurin/yii2-redis-ha' => 
   array (
-    'name' => 'yiisoft/yii2-codeception',
-    'version' => '2.0.6.0',
+    'name' => 'pyurin/yii2-redis-ha',
+    'version' => '1.1.6.0',
     'alias' => 
     array (
-      '@yii/codeception' => $vendorDir . '/yiisoft/yii2-codeception',
+      '@pyurin/yii/redisHa' => $vendorDir . '/pyurin/yii2-redis-ha/src',
     ),
   ),
   'yiisoft/yii2-bootstrap' => 
@@ -64,15 +73,6 @@ return array (
     'alias' => 
     array (
       '@yii/faker' => $vendorDir . '/yiisoft/yii2-faker',
-    ),
-  ),
-  'yiisoft/yii2-gii' => 
-  array (
-    'name' => 'yiisoft/yii2-gii',
-    'version' => '2.0.5.0',
-    'alias' => 
-    array (
-      '@yii/gii' => $vendorDir . '/yiisoft/yii2-gii',
     ),
   ),
 );

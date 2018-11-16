@@ -13,6 +13,8 @@ use app\models\Common;
 use app\models\DB;
 use app\models\JpBlogConfig;
 use app\models\MetaWeblog;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
 use yii\web\Controller;
 
 class MetaweblogController extends Controller
@@ -26,6 +28,29 @@ class MetaweblogController extends Controller
     {
         parent::init();
         $this->data = array_merge(\Yii::$app->request->get(),\Yii::$app->request->post());
+    }
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['index'],
+                'rules' => [
+                    [
+                        'actions' => ['index'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
     }
 
     public function actionIndex(){

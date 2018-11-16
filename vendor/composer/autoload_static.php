@@ -159,8 +159,19 @@ class ComposerStaticInitb1737c96fae6b6444a718bf193109c50
     );
 
     public static $prefixesPsr0 = array (
+        's' => 
+        array (
+            'stringEncode' => 
+            array (
+                0 => __DIR__ . '/..' . '/paquettg/string-encode/src',
+            ),
+        ),
         'P' => 
         array (
+            'PHPHtmlParser' => 
+            array (
+                0 => __DIR__ . '/..' . '/paquettg/php-html-parser/src',
+            ),
             'PHPExcel' => 
             array (
                 0 => __DIR__ . '/..' . '/phpoffice/phpexcel/Classes',
