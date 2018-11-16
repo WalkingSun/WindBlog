@@ -48,7 +48,7 @@ class Common
      * blogType对应参数名称
      * @param $id int 1 51cto;2 sina;3 csdn;4 163;5 oschina;6 cnblogs;7 chinaunix
      */
-    public static function blogParamName( $id ){
+    public static function blogParamName( $id='' ){
         $data = [
             1   =>    '51cto',
             2   =>    'sina',
@@ -58,7 +58,8 @@ class Common
             6   =>    'cnblogs',
             7   =>    'chinaunix',
         ];
-        return $data[$id];
+        if( $id ) return $data[$id];
+        return $data;
     }
 
     public  static function echoJson( $code,$msg,$data=[] ){
@@ -80,7 +81,7 @@ class Common
      */
     public static function addLog( $file , $msg='', $end=0 ){
 
-        $msg = is_string($msg) ? $msg : var_export($msg,1);
+        $msg = is_string($msg) ? $msg : print_r($msg,1);
 
         error_log(date("Y-m-d H:i:s") . "：{$msg}\r\n\r\n", 3, \Yii::$app->basePath . '/runtime/logs/'.$file);
 
@@ -179,5 +180,11 @@ class Common
             return $result;
         }
 
+    }
+
+    public static function excepDeal( $msg ){
+        //todo 发送邮件
+
+        Common::addLog('error.log',$msg);
     }
 }
