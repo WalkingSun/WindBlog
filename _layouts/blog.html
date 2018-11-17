@@ -3,6 +3,11 @@ layout: default
 ---
 
 <section class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
+  <div class="walkingsun" style="display: none;">
+    {% if page.cnblogsClass %} {{page.cnblogsClass}}&mdash; {% endif %}
+
+
+  </div>
 <div class="container">
   <div class="columns">
     <div class="column three-fourths">
@@ -48,8 +53,3 @@ layout: default
 </div>
 </section>
 <!-- /section.content -->
-<div class="walkingsun" style="display: none;">
-    {% if page.cnblogsClass %} {{page.cnblogsClass}}&mdash; {% endif %}
-
-
-</div>
