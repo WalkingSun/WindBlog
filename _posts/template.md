@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: blog
 title: template page
 categories: [cate1, cate2]
 description: some word here
@@ -10,6 +10,7 @@ csdnClass: [Markdown]
 163Class: [Markdown]
 51ctoClass: [Markdown]
 chinaunixClass: [Markdown]
+sinaClass: [Markdown]
 ---
 
 <!--
