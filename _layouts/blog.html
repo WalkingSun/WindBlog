@@ -1,17 +1,6 @@
 ---
 layout: default
 ---
-<div style="display: none;">
-  {% if page.cnblogsClass %}1
-  {% if page.oschinaClass %}2
-  {% if page.csdnClass %}3
-  {% if page.163Class %}4
-  {% if page.51ctoClass %}5
-  {% if page.chinaunixClass %}6
-  {% if page.sinaClass %}7
-
-
-</div>
 
 <section class="collection-head small geopattern" data-pattern-id="{{ page.title | truncate: 15, ''}}">
 <div class="container">
@@ -59,3 +48,8 @@ layout: default
 </div>
 </section>
 <!-- /section.content -->
+<div class="walkingsun" style="display: none;">
+    {% if page.cnblogsClass %} {{page.cnblogsClass}}&mdash; {% endif %}
+
+
+</div>
