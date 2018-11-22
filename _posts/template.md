@@ -23,6 +23,13 @@ csdnClass: 【你的CSDN分类】
 
 可以在网站下添加操作看到你的博客分类，案列是自己的分类，需要自行修改。
 添加这些分类的目的，是可以自动同步到对应的博客网站，新建博客以此模版文件复制创建markdown文件，如果你不需要，请跳过此步。
+
+
+图片地址存放参考：
+本地存放路径/WindBlog/gh-pages/images/blog/b.png
+git上：
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/b.png)
+
 -->
 
 Content here
