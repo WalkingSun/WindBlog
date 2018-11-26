@@ -112,3 +112,83 @@ UNIX决不允许用户进程直接访问存储器的物理地址，进程看到�
 
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181126140351.png)
 
+## setjmp()和longjump()函数
+C程序中，不能用转移到一个标号的方法转移到其他函数中去，但是可以用setjmp()和longjmp()实现从一个函数直接跳至另一个函数，这种控制成为非局部转移。
+不同于正常的函数调用与返回，这种非局部转移可以从最内层活跃函数跳至最外层活跃函数，期间可能间隔好几层函数调用，而正常的函数调用与返回遵循先进后出原则。
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181126222614.png)
+
+## 进程资源
+每一个进程都回受到资源的限制，如进程能够占用的最大存储空间大小、最多能创建的子进程个数、core文件的最大大小、可用的CPU时间最大值、最多能够打开的文件个数等。进程可以查看这些限定值，也可以设置自己的当前资源小于系统资源限制的最大值。
+
+系统规定的资源限制最大值称为硬限制，进程的当前资源限制值称为软限制。软限制超过可能会造成程序返回错误，硬限制超过将导致系统发送信号而终止程序。
+
+所有进程一开始时均从父进程集成资源限制，对资源限制的改变影响进程本身及其子进程继承。
+### 查看和设置资源限制
+getrlimit()和setrlimit()分别用于查看和设置资源限制。
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181126223550.png)
+
+### 资源使用统计
+对进程运行的使用情况进行详细的了解。系统提供getrusage()来报告进程实际运行了多少CPU时间，读写了多少次磁盘，出现多少次缺页，收到多少个信号等。
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181126223848.png)
+
+rusage结构：
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181126223936.png)
+
+## 用户信息
+用户信息包括用户名、用户ID、用户的基本组和附加组等信息。
+
+### 用户数据库
+用户数据库保存所有用户的信息。
+
+/etc/passwd和/etc/shadow都属于用户数据库，前者为口令数据库文件，对所有用户开放；后者为口令影子文件，只对特权用户才能访问。
+
+口令数据库文件/etc/passwd,包含每个用户的几乎所有注册信息,如：
+```
+zkj:x:501:517::/home/zkj:/bin/bash
+```
+七个域表示信息：
+- 用户名
+- 口令域
+- 用户ID
+- 组ID
+- 用户名及其他个人信息。
+- 用户的初始目录
+- 用户的默认shell或注册时运行的初始程序。
+
+passwd结构描述：
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181126225219.png)
+
+### 组数据库
+类似于用户数据库，包含：组文件 /etc/group 和 组口令影子文件 /etc/gshadow。
+
+组文件由四个域组成：组名、组的口令、组ID、组成员。
+
+如：
+```
+users:x:500:zkj,Hc
+```
+
+group结构成员：
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181126225637.png)
+
+## 进程的身份凭证
+进程可以访问属于他自己的一切资源，如果允许，也可以访问同组或其他用户的资源。UNIX系统中，用户、组和附加组关系总是以某种方式遗传给进程和它们创建的文件。用户ID和组ID是进程最基本的身份，也是判断一个进程是否有权限进行某种操作或访问文件的依据。
+
+为了保证系统安全，又能执行某个程序的用户有适当的权限可访问属于这个程序属主的文件或资源，UNIX系统设置了调整用户ID和调整组ID机制允许进程调整其身份。
+
+
+## 调整进程的身份
+进程需要调整它的用户ID或组ID的一个典型列子是login程序。
+
+## 思考
+1. 环境变量和命令行参数有何区别？使用它们的一般原则是什么？访问环境有哪几种方法？
+2. 程序结束时的出口状态有何作用？如果想在程序结束时让系统自动执行某些函数，应当如何实现？
+3. 进程的地址空间包含哪些区域？程序代码位于什么区域？
+4. 进程的堆和栈有何不同？程序如何使用栈空间？如何使用堆空间？
+5. 什么是存储泄露？如何避免它？
