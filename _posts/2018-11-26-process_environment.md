@@ -4,7 +4,7 @@ title: 进程环境
 categories: [服务器, UNIX]
 description:
 keywords: 进程环境, 进程
-cnblogsClass: \[Markdown\],\[随笔分类\]服务器,\[发布为文章\]
+cnblogsClass: \[Markdown\],\[随笔分类\]服务器
 oschinaClass: \[Markdown\],服务器,日常记录
 csdnClass: \[Markdown\]
 163Class: \[Markdown\]
