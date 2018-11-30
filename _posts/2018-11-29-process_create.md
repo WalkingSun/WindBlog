@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 进程创建
+title: 进程控制
 categories: [服务器]
 description:
 keywords: 进程
