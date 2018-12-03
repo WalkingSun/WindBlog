@@ -115,6 +115,21 @@ exec函数调用成功系统将用一个新程序的地址空间替代调用进�
 6个exec之间的关系：
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181202213703.png)
 
-<!-- ## 等待进程完成 -->
+ ## 等待进程完成
+父、子进程可以同时进行，相互之间没有等待。Shell在后台开始一新进程时采用就是这种方式。
+
+不过这种方式并不总是希望的，父进程常常需要等待子进程执行完成后才能继续执行。下述函数用于等待进程的终止：
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181203100919.png)
+
+wait和waitpid函数允许调用进程获取子进程的状态信息。
+
+wait函数首先检查调用进程是否有任何已终止的子进程，如果有的话，它立即返回；如果没有已终止的子进程，wait阻塞调用进程直至有一个子进程终止并在此时立即返回。
+如果调用进程没有任何子进程或wait由子信号而被终端，wait将返回-1并置errno支出错误。
+
+waitpid提供wait未提供的特征：
+- waitpid允许等待某个特定的子进程，而wait返回任意一个已终止进程的状态；
+- waitpid提供wait的非阻塞版本；
+- waitpid支持作业控制。
 
 
+<!-- ## 进程终止和僵死进程 -->
