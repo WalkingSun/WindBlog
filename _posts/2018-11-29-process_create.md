@@ -162,4 +162,23 @@ waitpid提供wait未提供的特征：
 采用技巧是，第一个子进程fork另一个子进程来执行程序并先于第二个子进程终止。由于第一个子进程的父进程调用了waitpid，他不会遗留在系统的僵死进程。而第二个子进程尽管其父进程没有
 调用wait等待它，但由于父进程先于它而终止使得它被init所继承。这使得它是活跃的进程，当它终止时，init将调用wait释放其proc结构，因而不会成为僵死进程。
 
-<!-- ## system函数 -->
+## system函数
+ 可以在一个程序内通过system函数来运行另一个程序并创建一个新的进程（一个程序内执行另一个程序）。
+ ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181204095728.png)
+参数command为要执行的命令字符串，将直接传送给命令解释程序shell，由shell来执行此命令。因为command参数将传递给shell，因此其中可以含有输出重定向，也可以含有管道结构。
+
+实际上system函数是通过fork、waitpid、exec来实现的。首先fork一子进程，由该子进程如下所示调用shell命令解释程序sh来执行命令：
+```
+exec( /bin/sh,"sh","-C",command,(char *)0 );
+```
+因此system有三种返回值：
+- 如果不能启动sh来运行此命令，system返回127。
+- 如果system调用出现其他错误（fork失败或waitpid返回EINTR错误），则返回-1并置errno指明错误；
+- 调用成功，返回shell的终止状态，此终止状态的形式同waitpid返回的终止状态一致。
+
+存在三个问题：
+- 极不灵活，进程对这些子进程没有控制权；
+- 带来很大开销
+- system存在安全漏洞
+
+<!-- ## 进程组 -->
