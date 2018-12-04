@@ -181,4 +181,25 @@ exec( /bin/sh,"sh","-C",command,(char *)0 );
 - 带来很大开销
 - system存在安全漏洞
 
-<!-- ## 进程组 -->
+## 进程组
+每一个进程除了具有进程ID，也属于某个进程组。进程组是一个或多个进程的集合。每一个进程组由一个唯一的进程组ID 标识，进程组ID简记PGID。
+
+函数getpgrp返回调用进程的进程组ID：
+ ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181204142937.png)
+
+每一个进程组有一个组长，它是PID与PGID相同的进程。通常，一个进程从他的父进程继承进程组ID，并且在此组内的所有其他进程都是该进程组长的子孙后代。
+
+进程组长可以创建一个进程组、创建进程组内的进程，以及终止他们。不论进程组长是否终止，只要组内还有一个进程，这个进程组就存在。称从进程组被创建开始至组内最后一个进程离开此进程
+为止这段时间称为进程组的生命周期。最后离开这个进程组的进程可能因为终止了执行或者进入另一个进程组。
+
+通过调用setpgid函数，进程可以改变它的进程组ID从而加入到一个已经存在的进程组中；或者改变自己的进程组ID等于自身的PID而创建一个新的进程组，从而使自己成为新进程组的组长。
+ ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181204145009.png)
+
+属于shell单条命令的这些进程称为一个“进程组”或“作业”，如：
+```
+cat myfile.nr|pic|tbl|troff -ms|lp&
+```
+(cat pic tbl ... )这些进程被安排到同一个进程组里。
+
+<!-- ## 会晤期 -->
+
