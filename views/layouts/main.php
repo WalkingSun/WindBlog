@@ -43,6 +43,7 @@ AppAsset::register($this);
     echo Nav::widget([
         'options' => ['class' => 'navbar-nav navbar-right'],
         'items' => [
+            ['label' => '技术文章', 'url' => ['/index/index']],
             ['label' => '博客自动化', 'url' => ['/metaweblog/index']],
             ['label' => '关于', 'url' => 'https://github.com/WalkingSun/WindBlog/blob/master/README.md'],
 //            ['label' => 'Contact', 'url' => ['/site/contact']],

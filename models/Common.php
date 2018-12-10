@@ -83,7 +83,7 @@ class Common
 
         $msg = is_string($msg) ? $msg : print_r($msg,1);
 
-        error_log(date("Y-m-d H:i:s") . "：{$msg}\r\n\r\n", 3, \Yii::$app->basePath . '/runtime/logs/'.$file);
+        error_log(date("Y-m-d H:i:s") . "：{$msg}\r\n\r\n", 3, \Yii::$app->basePath . '/runtime/logs/'.date('Ymd').$file);
 
         if( $end ){
             exit();

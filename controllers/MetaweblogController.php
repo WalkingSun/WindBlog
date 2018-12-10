@@ -236,9 +236,9 @@ class MetaweblogController extends Controller
 
             $DB = new DB();
             if( !JpBlogConfig::find()->where(['blogType'=>$d['blogType']])->asArray()->one() ){
-                $DB->insert(JpBlogConfig::tableName(),['blogType'=>$d['blogType'],'username'=>$d['username'],'password'=>$d['password'],'blogid'=>$d['blogid'],'isEnable'=>$d['isEnable']]);
+                $DB->insert(JpBlogConfig::tableName(),['blogType'=>$d['blogType'],'username'=>$d['username'],'password'=>$d['password'],'blogid'=>$d['blogid'],'isTOC'=>$d['isTOC'],'isEnable'=>$d['isEnable']]);
             }else{
-                $DB->update(JpBlogConfig::tableName(),['username'=>$d['username'],'password'=>$d['password'],'blogid'=>$d['blogid'],'isEnable'=>$d['isEnable']],['blogType'=>$d['blogType']]);
+                $DB->update(JpBlogConfig::tableName(),['username'=>$d['username'],'password'=>$d['password'],'blogid'=>$d['blogid'],'isTOC'=>$d['isTOC'],'isEnable'=>$d['isEnable']],['blogType'=>$d['blogType']]);
             }
 //            Common::echoJson(200,'设置成功');
         }

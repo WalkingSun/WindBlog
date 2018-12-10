@@ -42,6 +42,17 @@ $blogConfig = \yii\helpers\ArrayHelper::index($blogConfig,'blogType');
                 <span class="glyphicon glyphicon-asterisk star"></span>
                 <label class="explain">如 https://www.cnblogs.com/followyou/，地址Id为followyou</label>
             </div>
+
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-1">开启TOC</label>
+                <div class="col-md-3">
+                    <input class="" type="radio" name="isTOC" value="1" <?=!empty($blogConfig[6]['isTOC'])?'checked':''?> >是</input>
+                    <input class="" type="radio" name="isTOC" value="0"  <?=empty($blogConfig[6]['isTOC'])?'checked':''?>>否</input>
+                </div>
+                <!--                <span class="glyphicon glyphicon-asterisk star"></span>-->
+                <!--                <label class="explain">启用</label>-->
+            </div>
+
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">启用</label>
                 <div class="col-md-3">
@@ -51,6 +62,7 @@ $blogConfig = \yii\helpers\ArrayHelper::index($blogConfig,'blogType');
 <!--                <span class="glyphicon glyphicon-asterisk star"></span>-->
 <!--                <label class="explain">启用</label>-->
             </div>
+
             <div class="form-group form-group-sm" style="margin-top: 30px;">
                 <div class="col-md-3 col-md-offset-2">
                     <div class="btn-group">
@@ -87,6 +99,15 @@ $blogConfig = \yii\helpers\ArrayHelper::index($blogConfig,'blogType');
                 <span class="glyphicon glyphicon-asterisk star"></span>
                 <label class="explain">如 https://my.oschina.net/u/3293841/blog/1933344，地址Id为3293841</label>
             </div>
+
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-1">开启TOC</label>
+                <div class="col-md-3">
+                    <input class="" type="radio" name="isTOC" value="1" <?=!empty($blogConfig[5]['isTOC'])?'checked':''?> >是</input>
+                    <input class="" type="radio" name="isTOC" value="0"  <?=empty($blogConfig[5]['isTOC'])?'checked':''?>>否</input>
+                </div>
+            </div>
+
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">启用</label>
                 <div class="col-md-3">
@@ -132,6 +153,14 @@ $blogConfig = \yii\helpers\ArrayHelper::index($blogConfig,'blogType');
                 </div>
             </div>
             <div class="form-group form-group-sm">
+                <label class="control-label col-md-1">开启TOC</label>
+                <div class="col-md-3">
+                    <input class="" type="radio" name="isTOC" value="1" <?=!empty($blogConfig[3]['isTOC'])?'checked':''?> >是</input>
+                    <input class="" type="radio" name="isTOC" value="0"  <?=empty($blogConfig[3]['isTOC'])?'checked':''?>>否</input>
+                </div>
+            </div>
+
+            <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">启用</label>
                 <div class="col-md-3">
                     <input class="" type="radio" name="isEnable" value="1" <?=!empty($blogConfig[3]['isEnable'])?'checked':''?> >是</input>
@@ -174,6 +203,14 @@ $blogConfig = \yii\helpers\ArrayHelper::index($blogConfig,'blogType');
                     <input class="form-control input-lg" readonly type="text" name="blogid" value="<?=!empty($blogConfig[1]['blogid'])?$blogConfig[1]['blogid']:''?>" placeholder="">
                 </div>
             </div>
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-1">开启TOC</label>
+                <div class="col-md-3">
+                    <input class="" type="radio" name="isTOC" value="1" <?=!empty($blogConfig[1]['isTOC'])?'checked':''?> >是</input>
+                    <input class="" type="radio" name="isTOC" value="0"  <?=empty($blogConfig[1]['isTOC'])?'checked':''?>>否</input>
+                </div>
+            </div>
+
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">启用</label>
                 <div class="col-md-3">

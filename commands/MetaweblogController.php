@@ -11,11 +11,14 @@ use yii\console\Controller;
 class MetaweblogController extends Controller
 {
     public $modelClass= 'app\models\JpBlogQueue';
+    protected $user;
 
     public function actionIndex(){
         $model = $this->modelClass;
         $modelBlogRecord = 'app\models\JpBlogRecord';
         $data = $model::find()->where(['publishStatus'=>0])->asArray()->all();
+
+        $this->user = \app\models\JpBlogConfig::find()->select(['blogType','blogid','isTOC','isEnable'])->asArray()->indexBy('blogType')->all();
 
         $DB = new DB();
 
@@ -87,6 +90,10 @@ class MetaweblogController extends Controller
         $content = str_replace("'",'&apos;',$content);
         $content = str_replace(">",'&gt;',$content);
         $content = str_replace("<",'&lt;',$content);
+
+        //添加TOC
+        if( $this->user[$v['blogType']]['isTOC']  )  $content =  '[TOC] '.$content;
+
         $categories = $blog['cnblogsType']? explode(',',$blog['cnblogsType']) : [ '[Markdown]' ];
         $params = [
             'title'=> $blog['title'],
