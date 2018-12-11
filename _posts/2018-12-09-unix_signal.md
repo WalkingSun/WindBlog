@@ -68,7 +68,15 @@ sinaClass: \[Markdown\]
  ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181210131701.png)
  ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181210131805.png)
 
-<!-- ### 程序错误类信号 -->
+### 程序错误类信号
+程序错误一般指程序作了某种不合法的动作。不过这里所指的程序错误仅仅是那些会导致产生信号的错误，并不是所有错误均生成错误。事实上，大部分错误都不生成错误。如：
+打开一个不存在的文件是一个错误，但它不产生信号而是返回-1并指出错误。
+
+当操作系统或计算机硬件本身检测到一个严重的程序错误生成下述信号。一般而言，这些信号表明程序已经以某种方式严重的崩溃，并且无法正常继续运行。
+这些信号默认动作使程序流产，即使进程终止同时，写出内存信息转储文件core（记录错误原因）到进程的当前工作目录。
+
+ ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181211103831.png)
+ ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20181211103904.png)
 
 <!-- ### 程序中止类信号 -->
 
