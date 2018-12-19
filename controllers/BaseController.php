@@ -15,6 +15,8 @@ use yii;
 class BaseController extends  yii\web\Controller
 {
     public $data;
+    public $user;
+    public $userId;
 
     public function init()
     {
@@ -50,6 +52,11 @@ class BaseController extends  yii\web\Controller
         Common::addLog('request.log',array($moduleID.'/'.$controllerID.'/'.$actionID,$request));
 
         $this->data = self::filterParams( $request );
+
+        if( !Yii::$app->user->isGuest ){
+            $this->user =  Yii::$app->user;
+            $this->userId =  Yii::$app->user->identity->username=='super'?Yii::$app->user->identity->username:Yii::$app->user->identity->getId();
+        }
 
         return parent::beforeAction($action);
     }

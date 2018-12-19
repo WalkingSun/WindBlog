@@ -24,8 +24,8 @@ trait BlogCategoreis
     public function get( $blogType,$blogUsername , $blogPassword ,$blogid, $isCache = 1 ){
         $result =[];
         $cache = \Yii::$app->cache;
-        $key = $blogType.'_'.$blogUsername.'_'.$blogid;
-        if( !$isCache || !$cache->exists($blogType.'_'.$blogUsername.'_'.$blogid) ){
+        $key = \Yii::$app->user->identity->getId().'_'.$blogType.'_'.$blogUsername.'_'.$blogid;
+        if( ( !$isCache || !$cache->exists($blogType.'_'.$blogUsername.'_'.$blogid) || !$cache->get($key) )  ){
             $blogMetaweblogUrl = Common::MetaweblogUrl($blogType,$blogid);
             $target = new MetaWeblog( $blogMetaweblogUrl );
             $username = $blogUsername;

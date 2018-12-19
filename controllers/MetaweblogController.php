@@ -16,8 +16,9 @@ use app\models\MetaWeblog;
 use yii\filters\AccessControl;
 use yii\filters\VerbFilter;
 use yii\web\Controller;
+use yii;
 
-class MetaweblogController extends Controller
+class MetaweblogController extends BaseController
 {
     public $modelClass= 'app\models\JpBlogRecord';
     public $data;
@@ -26,8 +27,7 @@ class MetaweblogController extends Controller
 
     public function init()
     {
-        parent::init();
-        $this->data = array_merge(\Yii::$app->request->get(),\Yii::$app->request->post());
+
     }
 
     public function behaviors()
@@ -57,15 +57,15 @@ class MetaweblogController extends Controller
         $d = $this->data;
         $model =$this->modelClass;
 
-        $filter = ['isDelete'=>0];
+        $filter = ['userId'=>$this->userId ,'isDelete'=>0];
         $offset = !empty($d['page']) ? $d['page']:1;
         $orderType = ['createtime'=>SORT_DESC];
-        $count = $model::find()->select('id')->where(['isDelete'=>0])->count();
-        $pagination = new \yii\data\Pagination([ 'defaultPageSize' => 10, 'totalCount'=>$count,]);//print_r($pagination->limit);die;
+        $count = $model::find()->select('id')->where(['userId'=>$this->userId ,'isDelete'=>0])->count();
+        $pagination = new \yii\data\Pagination([ 'defaultPageSize' => 10, 'totalCount'=>$count,]);
         $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType ,$andWhereArray = []);
 
         //查询配置
-        $configs = JpBlogConfig::find()->where(['isEnable'=>1])->asArray()->all();
+        $configs = JpBlogConfig::find()->where(['userId'=>$this->userId ,'isEnable'=>1])->asArray()->all();
 
         return $this->render('index',['result'=>$this->result,'pagination'=>$pagination,'blogConfig'=>$configs]);
     }
@@ -75,7 +75,7 @@ class MetaweblogController extends Controller
         $model = 'app\models\JpBlogQueue';
 
         //查询配置
-        $configs = JpBlogConfig::find()->where(['isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
+        $configs = JpBlogConfig::find()->where(['userId'=>$this->userId ,'isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
 
         $DB = new DB();
         $data = [];
@@ -124,6 +124,7 @@ class MetaweblogController extends Controller
             $insertData['oschinaId'] = '';
             $insertData['chinaunixId'] = '';
             $insertData['createtime'] = date('Y-m-d');
+            $insertData['userId'] = $this->userId ;
 
             //添加分类
             if( $blogCates = $d['cnblogsType'] ){
@@ -146,7 +147,7 @@ class MetaweblogController extends Controller
         if( empty($d['blogId']) ) Common::echoJson(403,'参数错误');
 
         //查询配置
-        $configs = JpBlogConfig::find()->where(['isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
+        $configs = JpBlogConfig::find()->where(['userId'=>$this->userId ,'isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
         $MetaWeblog = new MetaWeblog();
 
         foreach ($configs as $v){
@@ -155,7 +156,7 @@ class MetaweblogController extends Controller
         }
 
         $model = $this->modelClass;
-        $record = $model::find()->where(['id'=> $d['blogId']])->asArray()->one();
+        $record = $model::find()->where(['userId'=>$this->userId ,'id'=> $d['blogId']])->asArray()->one();
         if( !empty($d['edit']) ){
             $filter = ['id'=>$record['id']];
             $upData['title'] = !empty($d['title']) ? $d['title']:Common::echoJson(403,'请输入标题');
@@ -235,14 +236,14 @@ class MetaweblogController extends Controller
             if( !is_array($Categories) ) Common::echoJson(400,'设置参数有误，请仔细核对下');
 
             $DB = new DB();
-            if( !JpBlogConfig::find()->where(['blogType'=>$d['blogType']])->asArray()->one() ){
-                $DB->insert(JpBlogConfig::tableName(),['blogType'=>$d['blogType'],'username'=>$d['username'],'password'=>$d['password'],'blogid'=>$d['blogid'],'isTOC'=>$d['isTOC'],'isEnable'=>$d['isEnable']]);
+            if( !JpBlogConfig::find()->where(['userId'=>$this->userId ,'blogType'=>$d['blogType']])->asArray()->one() ){
+                $DB->insert(JpBlogConfig::tableName(),['userId'=>$this->userId ,'blogType'=>$d['blogType'],'username'=>$d['username'],'password'=>$d['password'],'blogid'=>$d['blogid'],'isTOC'=>$d['isTOC'],'isEnable'=>$d['isEnable']]);
             }else{
-                $DB->update(JpBlogConfig::tableName(),['username'=>$d['username'],'password'=>$d['password'],'blogid'=>$d['blogid'],'isTOC'=>$d['isTOC'],'isEnable'=>$d['isEnable']],['blogType'=>$d['blogType']]);
+                $DB->update(JpBlogConfig::tableName(),['username'=>$d['username'],'password'=>$d['password'],'blogid'=>$d['blogid'],'isTOC'=>$d['isTOC'],'isEnable'=>$d['isEnable']],['userId'=>$this->userId ,'blogType'=>$d['blogType']]);
             }
 //            Common::echoJson(200,'设置成功');
         }
-        $blogConfig = JpBlogConfig::find()->asArray()->all();
+        $blogConfig = JpBlogConfig::find()->where(['userId'=>$this->userId ,])->asArray()->all();
 
         return $this->render('init',['blogConfig'=>$blogConfig]);
     }
@@ -259,7 +260,7 @@ class MetaweblogController extends Controller
 
         $queue = $model::find()->where(['queueId'=>$d['queueid']])->asArray()->one();
         if( $queue['publishStatus']==2 ) Common::echoJson(400,'博客已发布');
-        $blogConfig = JpBlogConfig::find()->where(['blogType'=>$queue['blogType']])->asArray()->one();
+        $blogConfig = JpBlogConfig::find()->where(['userId'=>$this->userId ,'blogType'=>$queue['blogType']])->asArray()->one();
         $blogName = Common::blogParamName($queue['blogType']);
         $blogid = $blogConfig['blogid']?:'';
 
