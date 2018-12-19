@@ -187,4 +187,70 @@ class Common
 
         Common::addLog('error.log',$msg);
     }
+
+    public static function httpGet( $url ){
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_HTTPHEADER => array(
+                "cache-control: no-cache"
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+
+        curl_close($curl);
+
+        if ($err) {
+            throw new \Exception("cURL Error #:" . $err);
+            return false;
+        } else {
+            return $response;
+        }
+    }
+
+    public static function filter($val,$type='',$de=''){
+        $val=Common::daddslashes($val);   //使用反斜线引用字符串 (对提交数据的过滤)
+        //过滤字符
+        $filterList = [ ';',':','#','%','select','from','insert','update','delete'];
+        $val = str_replace($filterList,'',$val);
+        switch ($type) {
+
+            case 'int':
+                return intval($val);
+                break;
+
+            case 'float':
+                return floatval($val);
+                break;
+
+            default:
+                return htmlspecialchars($val,ENT_QUOTES);   //把预定义的字符转换为 HTML 实体
+                break;
+        }
+    }
+
+    public static function daddslashes($string, $force = 1) {
+        if(is_array($string)) {
+            $keys = array_keys($string);
+            foreach($keys as $key) {
+                $val = $string[$key];
+                unset($string[$key]);
+                $string[addslashes($key)] = Common::daddslashes($val, $force);
+            }
+        } else {
+            $string = addslashes($string);           //在预定义字符之前添加反斜杠的字符串
+        }
+        return $string;
+    }
+
 }

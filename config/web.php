@@ -25,6 +25,7 @@ $config = [
         ],
         'cache' => [
             'class' => 'yii\caching\FileCache',
+            'keyPrefix' => 'jump',    // 唯一键前缀
         ],
         'user' => [
             'identityClass' => 'app\models\User',
@@ -66,11 +67,6 @@ $config = [
 //            'class' => 'yii\redis\Session',
 //            'timeout' => 10000,
 //        ],
-        'cache' => [
-            'class' => 'yii\caching\FileCache',
-            'keyPrefix' => 'jump',    // 唯一键前缀
-
-        ],
         'urlManager' => require(__DIR__ . '/urlmanage.php'),
 
     ],

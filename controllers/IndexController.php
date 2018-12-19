@@ -2,15 +2,40 @@
 
 namespace app\controllers;
 
+use app\models\ArticleFactory;
+use app\models\Common;
 use Yii;
 use yii\filters\AccessControl;
-use yii\web\Controller;
 use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class IndexController extends Controller
+class IndexController extends BaseController
 {
+    public $result;
+
+    public function behaviors()
+    {
+        return [
+            'access' => [
+                'class' => AccessControl::className(),
+                'only' => ['logout'],
+                'rules' => [
+                    [
+                        'actions' => ['logout'],
+                        'allow' => true,
+                        'roles' => ['@'],
+                    ],
+                ],
+            ],
+            'verbs' => [
+                'class' => VerbFilter::className(),
+                'actions' => [
+                    'logout' => ['post'],
+                ],
+            ],
+        ];
+    }
 
     public function actions()
     {
@@ -27,7 +52,16 @@ class IndexController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        $d = $this->data;
+        $data = [
+            'type'   =>  !empty($d['type'])?$d['type']:1,
+            'page'   =>  !empty($d['page'])?$d['page']:1,
+            'size'   =>  !empty($d['size'])?$d['size']:10,
+        ];
+        $this->result =  ArticleFactory::init($data)->list($data);
+        if( !empty( $d['async'] ) ) Common::echoJson(200,$this->result);
+
+        return $this->render('index',['data'=>$this->result]);
     }
 
 }

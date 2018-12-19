@@ -46,19 +46,19 @@ AppAsset::register($this);
             ['label' => '技术文章', 'url' => ['/index/index']],
             ['label' => '博客自动化', 'url' => ['/metaweblog/index']],
             ['label' => '关于', 'url' => 'https://github.com/WalkingSun/WindBlog/blob/master/README.md'],
-//            ['label' => 'Contact', 'url' => ['/site/contact']],
-//            Yii::$app->user->isGuest ? (
-//                ['label' => '登录', 'url' => ['/site/login']]
-//            ) : (
-//                '<li>'
-//                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
-//                . Html::submitButton(
-//                    'Logout (' . Yii::$app->user->identity->username . ')',
-//                    ['class' => 'btn btn-link']
-//                )
-//                . Html::endForm()
-//                . '</li>'
-//            )
+            ['label' => '联系', 'url' => ['/site/contact']],
+            Yii::$app->user->isGuest ? (
+                ['label' => '登录', 'url' => ['/site/login']]
+            ) : (
+                '<li>'
+                . Html::beginForm(['/site/logout'], 'post', ['class' => 'navbar-form'])
+                . Html::submitButton(
+                    '退出 (' . Yii::$app->user->identity->username . ')',
+                    ['class' => 'btn btn-link']
+                )
+                . Html::endForm()
+                . '</li>'
+            )
         ],
     ]);
     NavBar::end();

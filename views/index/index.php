@@ -1,4 +1,3 @@
-<!--region Description-->
 <?php
 /**
  * Created by PhpStorm.
@@ -14,9 +13,8 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>新标签页</title>
-    <link rel="stylesheet" href="assets/ionicons/css/ionicons.min.css">
-    <link rel="stylesheet" href="assets/styles/main.css">
-    <style type="text/css">/*! normalize.scss v0.1.0 | MIT License | based on git.io/normalize */
+    <style type="text/css">
+        /*! normalize.scss v0.1.0 | MIT License | based on git.io/normalize */
         html {
             font-family: sans-serif;
             -ms-text-size-adjust: 100%;
@@ -260,7 +258,7 @@
             display: flex;
             -ms-flex-direction: column;
             flex-direction: column;
-            position: absolute;
+            /*position: absolute;*/
             width: 100%;
             height: 100%;
             background-color: #eceff1;
@@ -432,7 +430,8 @@
         .app-enter {
             opacity: 0
         }</style>
-    <style type="text/css">.welcome-modal-box[_v-173f9211] {
+    <style type="text/css">
+        .welcome-modal-box[_v-173f9211] {
             position: fixed;
             width: 100%;
             height: 100%;
@@ -556,7 +555,8 @@
         .start-btn[disabled][_v-173f9211] {
             background-color: #c2c5cd
         }</style>
-    <style type="text/css">.modal[_v-8c48346e] {
+    <style type="text/css">
+        .modal[_v-8c48346e] {
             width: 40rem;
             min-width: 40rem;
             background-color: #fff;
@@ -720,7 +720,8 @@
             font-size: 1.25rem;
             color: #333
         }</style>
-    <style type="text/css">.modal[_v-0d7475de] {
+    <style type="text/css">
+        .modal[_v-0d7475de] {
             width: 50rem;
             min-width: 50rem;
             background-color: #fff;
@@ -829,7 +830,8 @@
             background-color: #007fff;
             border: 1px solid #007fff
         }</style>
-    <style type="text/css">.modal[_v-e056c89e] {
+    <style type="text/css">
+        .modal[_v-e056c89e] {
             width: 40rem;
             min-width: 40rem;
             background-color: #fff;
@@ -970,7 +972,8 @@
             background-color: #007fff;
             border: 1px solid #007fff
         }</style>
-    <style type="text/css">.navbar[_v-1d5c1ab1] {
+    <style type="text/css">
+        .navbar[_v-1d5c1ab1] {
             position: relative;
             padding: 0 2.5rem 0 1.8rem;
             height: 4.5rem;
@@ -1065,7 +1068,8 @@
             transition: .15s;
             opacity: 1
         }</style>
-    <style type="text/css">.channel-seletor[_v-208eeacb] {
+    <style type="text/css">
+        .channel-seletor[_v-208eeacb] {
             position: relative;
             margin: 0 2rem 0 0;
             height: 100%;
@@ -1162,7 +1166,8 @@
             color: #fff;
             background-color: #007fff
         }</style>
-    <style type="text/css">.download-button[_v-77db9aaa] {
+    <style type="text/css">
+        .download-button[_v-77db9aaa] {
             position: relative;
             -ms-flex: 0 0 1.66667rem;
             flex: 0 0 1.66667rem;
@@ -1242,7 +1247,8 @@
             margin: 0 auto;
             width: 8.33333rem
         }</style>
-    <style type="text/css">.book-banner[_v-dc0f286a] {
+    <style type="text/css">
+        .book-banner[_v-dc0f286a] {
             position: relative;
             -ms-flex: 0 0 1.66667rem;
             flex: 0 0 1.66667rem;
@@ -1465,7 +1471,8 @@
             border-radius: 2px;
             background-color: #fff
         }</style>
-    <style type="text/css">.app-menu[_v-710e44f3] {
+    <style type="text/css">
+        .app-menu[_v-710e44f3] {
             position: relative;
             height: 100%;
             font-size: 1.25rem;
@@ -1640,7 +1647,8 @@
             font-size: 1.2rem;
             color: #fbfbfb
         }</style>
-    <style type="text/css">.source[_v-50254422] {
+    <style type="text/css">
+        .source[_v-50254422] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -1671,11 +1679,13 @@
             color: #e8f1ff;
             background-color: #007fff
         }</style>
-    <style type="text/css">.category-box[_v-257b13ec] {
+    <style type="text/css">
+        .category-box[_v-257b13ec] {
             -ms-flex-positive: 1;
             flex-grow: 1
         }</style>
-    <style type="text/css">.source-selector[_v-09d73f71] {
+    <style type="text/css">
+        .source-selector[_v-09d73f71] {
             position: relative;
             height: 100%;
             font-size: 1.35rem;
@@ -1792,7 +1802,8 @@
         .item:hover .title[_v-09d73f71] {
             opacity: 1
         }</style>
-    <style type="text/css">.hottest[_v-e3db0b5a], .latest[_v-e3db0b5a] {
+    <style type="text/css">
+        .hottest[_v-e3db0b5a], .latest[_v-e3db0b5a] {
             display: inline-block;
             margin: 0 .1rem;
             width: 3.6rem;
@@ -1812,7 +1823,8 @@
         .hottest.active[_v-e3db0b5a]:hover, .hottest[_v-e3db0b5a]:hover, .latest.active[_v-e3db0b5a]:hover, .latest[_v-e3db0b5a]:hover {
             opacity: 1
         }</style>
-    <style type="text/css">.category-selector[_v-251ce02d] {
+    <style type="text/css">
+        .category-selector[_v-251ce02d] {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-align: center;
@@ -1899,7 +1911,8 @@
             color: #fff;
             background-color: #007fff
         }</style>
-    <style type="text/css">.item[_v-16727261] {
+    <style type="text/css">
+        .item[_v-16727261] {
             cursor: pointer
         }
 
@@ -2036,7 +2049,8 @@
         .filled .item[_v-16727261]:last-child {
             margin-bottom: 0
         }</style>
-    <style type="text/css">.spinner[_v-7bc83f1e] {
+    <style type="text/css">
+        .spinner[_v-7bc83f1e] {
             position: absolute;
             padding: 2rem 0;
             left: 0;
@@ -2079,7 +2093,8 @@
                 transform: scaleY(1)
             }
         }</style>
-    <style type="text/css">.source[_v-ac4e867c] {
+    <style type="text/css">
+        .source[_v-ac4e867c] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2100,10 +2115,12 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.period-selector[_v-33fd25cd] {
+    <style type="text/css">
+        .period-selector[_v-33fd25cd] {
             margin-left: .8rem
         }</style>
-    <style type="text/css">.list-selector[_v-28cd1351] {
+    <style type="text/css">
+        .list-selector[_v-28cd1351] {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-align: center;
@@ -2195,7 +2212,8 @@
             color: #fff;
             background-color: #007fff
         }</style>
-    <style type="text/css">.lang-selector[_v-1de3dbca] {
+    <style type="text/css">
+        .lang-selector[_v-1de3dbca] {
             -ms-flex: 0 0 auto;
             flex: 0 0 auto;
             display: -ms-inline-flexbox;
@@ -2305,7 +2323,8 @@
             height: 0;
             border-bottom: 1px solid #e6edf4
         }</style>
-    <style type="text/css">.list[_v-72127795] {
+    <style type="text/css">
+        .list[_v-72127795] {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-wrap: wrap;
@@ -2488,7 +2507,8 @@
             font-size: 12px;
             font-weight: 400
         }</style>
-    <style type="text/css">.source[_v-1aef2d3a] {
+    <style type="text/css">
+        .source[_v-1aef2d3a] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2509,7 +2529,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.source[_v-7fe72fbc] {
+    <style type="text/css">
+        .source[_v-7fe72fbc] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2530,7 +2551,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.list[_v-22598b6b] {
+    <style type="text/css">
+        .list[_v-22598b6b] {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-wrap: wrap;
@@ -2664,7 +2686,8 @@
         .entry-info .like-count .icon[_v-22598b6b] {
             font-size: 1.1rem
         }</style>
-    <style type="text/css">.lazur {
+    <style type="text/css">
+        .lazur {
             display: inline-block;
             position: relative;
             overflow: hidden
@@ -2680,7 +2703,8 @@
             background-position: 50%;
             background-size: cover
         }</style>
-    <style type="text/css">.source[_v-94eddc5c] {
+    <style type="text/css">
+        .source[_v-94eddc5c] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2701,7 +2725,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.source[_v-4a6ed8e6] {
+    <style type="text/css">
+        .source[_v-4a6ed8e6] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2722,7 +2747,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.source[_v-7c966dc2] {
+    <style type="text/css">
+        .source[_v-7c966dc2] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2743,7 +2769,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.source[_v-156c8cdc] {
+    <style type="text/css">
+        .source[_v-156c8cdc] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2764,7 +2791,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.source[_v-89744f24] {
+    <style type="text/css">
+        .source[_v-89744f24] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2785,7 +2813,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.list[_v-7c4e49b0] {
+    <style type="text/css">
+        .list[_v-7c4e49b0] {
             display: -ms-flexbox;
             display: flex;
             -ms-flex-wrap: wrap;
@@ -2923,7 +2952,8 @@
         .meta .votes-count .icon[_v-7c4e49b0] {
             font-size: 1.5em
         }</style>
-    <style type="text/css">.source[_v-63f9f2e2] {
+    <style type="text/css">
+        .source[_v-63f9f2e2] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2944,7 +2974,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.source[_v-80da173c] {
+    <style type="text/css">
+        .source[_v-80da173c] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2965,7 +2996,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.source[_v-e9b4e394] {
+    <style type="text/css">
+        .source[_v-e9b4e394] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -2986,7 +3018,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.source[_v-485df7bc] {
+    <style type="text/css">
+        .source[_v-485df7bc] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -3007,7 +3040,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.waterfall-holder[_v-00b9db1c] {
+    <style type="text/css">
+        .waterfall-holder[_v-00b9db1c] {
             position: relative;
             margin-top: -.4rem;
             margin-left: -.4rem;
@@ -3071,16 +3105,19 @@
         .item-move[_v-00b9db1c] {
             transition: all .5s cubic-bezier(.55, 0, .1, 1)
         }</style>
-    <style type="text/css">.vue-waterfall {
+    <style type="text/css">
+        .vue-waterfall {
             position: relative
         }</style>
-    <style type="text/css">.vue-waterfall-slot {
+    <style type="text/css">
+        .vue-waterfall-slot {
             position: absolute;
             margin: 0;
             padding: 0;
             box-sizing: border-box
         }</style>
-    <style type="text/css">.source[_v-79a61122] {
+    <style type="text/css">
+        .source[_v-79a61122] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -3101,7 +3138,8 @@
             -ms-flex: 1 1 auto;
             flex: 1 1 auto
         }</style>
-    <style type="text/css">.waterfall-holder[_v-067eb3ba] {
+    <style type="text/css">
+        .waterfall-holder[_v-067eb3ba] {
             position: relative;
             margin-top: -.4rem;
             margin-left: -.4rem;
@@ -3165,7 +3203,8 @@
         .item-move[_v-067eb3ba] {
             transition: all .5s cubic-bezier(.55, 0, .1, 1)
         }</style>
-    <style type="text/css">.source[_v-4cdfcf70] {
+    <style type="text/css">
+        .source[_v-4cdfcf70] {
             position: relative;
             display: -ms-flexbox;
             display: flex;
@@ -3596,728 +3635,61 @@
                 <div class="source-navbar" _v-257b13ec="" _v-50254422="">
                     <div class="source-selector" _v-09d73f71="" _v-257b13ec="">
                         <div class="curr" _v-09d73f71="">
-                            <div class="title" _v-09d73f71="" style="color: rgb(4, 74, 171);">掘金</div>
+                            <img class="icon source-icon" _v-09d73f71="" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAGYAAABmCAIAAAC2vXM1AAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyZpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNS1jMDIxIDc5LjE1NTc3MiwgMjAxNC8wMS8xMy0xOTo0NDowMCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTQgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOjlBNjZGODJBNDAyMTExRTZCOEUyOTJCQTE1RTY4NTA5IiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOjlBNjZGODJCNDAyMTExRTZCOEUyOTJCQTE1RTY4NTA5Ij4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6OUE2NkY4Mjg0MDIxMTFFNkI4RTI5MkJBMTVFNjg1MDkiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6OUE2NkY4Mjk0MDIxMTFFNkI4RTI5MkJBMTVFNjg1MDkiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz69bBYBAAAII0lEQVR42uycCUwUVxiAd2Z3OeQUFikgglJg0WoNpqSmYKm21FaMYii9A9W0IWqVpiag1obEKFLbYKlpCB4t2pqWakXFo5oqVWzjVQ1VOaWr3Pcuhwvs7kx/oCWmkZ335tgD3h9CSHhz7Lf//f4Zav7WuzIiOEITBAQZQUaQEWQEGRGCjCAjyAgygowIQUaQEWQE2fgVhWUuI6epWQFOb8/3VrkqPCYpTAzbpDXcbdRr2gfO3u62L2SUBVqMEf7OeclBSjllZg3Dypp1hvyS1tv1+rYeo8HETlxkKdGqD2J9cI/S6U1Hb3QduNzRb2AmFjLQr30rg3kfDqqne2g8dlML+ED1JgSyY+tDfdzEcZeNWsO67+7D73Hu/r1dRTu/v6fy8NonIW4cud6Ve66FsZ6vkzbJoCnxI29SlNeZDeFxT7mLfnKbQCaRKrg60pnLA46uC3VQUOMNWbfeJN3JwUteyFADOwurm7TI0gvrpA1eMhlYqIXVTVpkZXV6CyT3oG4lGWpgZ6FKJnDhGkkvUFLRM8VdGf6Ek9SfJFbtDsHhT83D8VAwjTjsLcv8n5nuwg5HBIqSKeSUQgInVN6oX7VfMx6QPT4npCk3Z3mglzIyyCVY5RgT5ursIIKjgDohIbdausSNsqnJn5ApjpB2LZ7tYb6G55SuPuPSXVJRo2xzWAoM+fM3ps0JdBZCLT6nWgpoNtpi7B1gUgs0ibtrTtzS8lOWyS6KovWhsomDbLQUzypuWphdASrDL/mARHdiIRuRQSO7JKd62ZfV8AfusZCsiZ6v2U3vH+IgqFtmUQOunYKiBXo5TERksuGOI9QSC7aX46rbD6tDqImJbBRc7I4KCAtYpeheAc1hixZMkN7TNMVKEOpLq3pNjGxesAtyKFC2dhurmvttNC+LmuGSlTh1NJUHYgzDwifsGzDVdRq+/6PjUlWPKBeCxC0vORhdPaO3ldscsqVzPVNf8IGcyPwyE8N29g3tIR2+1gkpmJArQrWQFueLuPhe68C7+bU2ZJj7VgYnzJuMUifSFOXiSINZvfOcytddCVbG+6J3GvRympo7bRLKYi8XxfGb2oeDgr4k0dx/hL8z/GAr+bBilm6OANy824T5JW3oqrp35XRbiZj5KUFCogTgLslQAz5+Z4jbWYmYeUBJIDC5FQcZVNFyMZpfG+P9Ln8S4eEs53FsfE4V4spPlwVYHxmnv8cy1dMfhwE7HpX8rrMtiEot5IbFQSb65ARY6G8b1biKW3i1U4/m2n9cHWJlZFAAip6uKuXUxU0RTkq8O0TMIcCT8DN/Md3/T1c7pSgefk0Px6LWqDWU1elRVmYnBVoZWe65lkHxVW3ItQE1rL522qEHKMtmBThZGRmUI/xaWijUSnD8GjhWlMkqCPH8goCYnQyd3rQwu+Lb0nbR9ykA1/l0Nfr6xN01KLew5z0+7Q2Rh6UAFuTi8DPqjBRyKtDL4cMXfaGmETIGAMee/Ch0SU41ymKDie0fZDhLNz9Ppc01f9ihClzW1Wc685cOtO/A5Y4rtb2RwS5uTnyiFSAAa7qBth/eb2CfDXHlVF64JVybsGiLEb58CGdgNby9Xkq0CvIDlJVHrnehLFs828Oavgwrj4vdUQHgeHi9fauQ6moTw6JMiS6P9LQPZKPgYraV484Ng2dErKu3/NzAuWa6j6M9IRtxdqBruANViHX1vVbutrWDgrYzZCOSWdQAwQGrKkBJqcBdsginwp0Zt5UdJshLEAudf737WqS6ug+h9bjkaU+7RAaSWqBBD6NQeKJohwkhvsSEudorMhAoHtAXb10xlXNNZRO3Owv0xosA4j8qAQlnzpvT1H5ONC0zmlj9IJN3oa34lhZFf0AnTtzSIrazZyLU1afKtFEzOPY6HTBn2cREFhPmtj0x4NGOtoKmwII2xvtlxPu19xhXfFXDaSk7ipteneOB0hZXDNfV5oeCrv3NXSpQmFWcOIYJF4UCMDtp6lgflRrep7i4Sc05ZQdE1xy8j3jdrEQO2wSgordWREAGlC5tjkCJ+gAuLzk4KcrL/LLb9aihk3fPy8rIzmwIx2rSp8X5ggmb92iIT8SBUgvf2MLdGxOKLHN5AGKd/KiACZu/zfe/0SCeypGrzc1weU8j5hPGtECT5L2N+ppZ80Sf9OT8wvQGDiJXansthww3b35U1r3kSwnOQmUIbcKUPeb2nPoNTEZhveWQJUerhGioymz6zqkdI6L24wjB4BbNzGYl5NbghlRByFTCHupNmDfZzH/rOgZQTuKP0IxOL6x//et7/9ufruscXPRZpQ7/8UdBn5kWFjwigyAvbxsTWacBZZTIcxLSRwBAC7MrIRNKfWHodQoFpe28H1O30KtFxvIjFr4iRJWs4iZr5mVGYS8Auduo5/3fUbmh6bOnVFbguyuKzU5VH7+JNHN97k63PSE7XabjfSzoZ7POYN5sr9ZyaFDvAGN56xaE7ODvHUJUjDPxSjv0wMzLfyDYvbyz0s5qTMg2eT86vvNUM8qy57Mqyh/n1MCRv/JFlVXeLyI0YmYWNSwId8WdAkst0BiRtzBX7ddAVfTWfO9FM4eKs/LG/pxfmnVSvk6Cox8jfO7fQUGdT8eYzNl1tqVQgmE0e2r+DBrZmG3lkCsi6pdd85KJ1ZUFG4OKBNRnLHNjhzMScExYO2+2KeI/w6SUU5uX+oODU/y3DQG5SPbJJoaVjQ8Rv2CCtABigmz8CnnjJ0FGkBFkBBlBRoQgI8gIMoKMICNCkBFkBBlBRpARIcgEyD8CDADhcCSYyq8ZCAAAAABJRU5ErkJggg==">
+                            <div class="title" _v-09d73f71="" style="color: rgb(4, 74, 171);">博客园</div>
                             <div class="arrow" _v-09d73f71=""></div>
                         </div>
-                        <ul class="source-list" _v-09d73f71="">
-                            <li class="item active" _v-09d73f71="">
-                                <span class="title" _v-09d73f71="">掘金</span></li>
-                        </ul>
                     </div>
                     <div class="category-box" _v-257b13ec="">
-                        <div class="category-selector" _v-251ce02d="" _v-257b13ec="">
-                            <div class="title" _v-251ce02d="">产品</div>
-                            <div class="arrow" _v-251ce02d=""></div>
-                            <ul class="category-list" _v-251ce02d="">
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">首页</span></li>
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">Android</span></li>
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">前端</span></li>
-                                <li class="item active" _v-251ce02d=""><span class="title" _v-251ce02d="">产品</span></li>
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">设计</span></li>
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">iOS</span></li>
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">后端</span></li>
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">人工智能</span></li>
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">阅读</span></li>
-                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">工具资源</span></li>
-                            </ul>
-                        </div>
+<!--                        <div class="category-selector" _v-251ce02d="" _v-257b13ec="">-->
+<!--                            <div class="title" _v-251ce02d="">产品</div>-->
+<!--                            <div class="arrow" _v-251ce02d=""></div>-->
+<!--                            <ul class="category-list" _v-251ce02d="">-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">首页</span></li>-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">Android</span></li>-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">前端</span></li>-->
+<!--                                <li class="item active" _v-251ce02d=""><span class="title" _v-251ce02d="">产品</span></li>-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">设计</span></li>-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">iOS</span></li>-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">后端</span></li>-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">人工智能</span></li>-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">阅读</span></li>-->
+<!--                                <li class="item" _v-251ce02d=""><span class="title" _v-251ce02d="">工具资源</span></li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
                     </div>
                     <div class="order-selector" _v-e3db0b5a="" _v-257b13ec="">
-                        <div class="hottest" _v-e3db0b5a="">热门</div>
+<!--                        <div class="hottest" _v-e3db0b5a="">热门</div>-->
                         <div class="latest active" _v-e3db0b5a="">最新</div>
                     </div>
                 </div>
                 <div class="entry-list" _v-16727261="" _v-50254422="">
                     <ul class="list" _v-16727261="" style="transform: translate(0px, 0px) translateZ(0px);">
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5c0a5bb651882516eb563fb5?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 7 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">7</div>
+
+                        <?php if( $data ){
+                            foreach ($data as $v){
+                                echo " <li class=\"item\" _v-16727261=\"\"><a class=\"item-content\" _v-16727261=\"\" href=\"{$v['link']}\"target=\"_blank\">
+                                <div class=\"badge\" _v-16727261=\"\" title=\"至少已有 {$v['diggs']} 人喜欢\">
+                                    <div class=\"icon ion-arrow-up-b\" _v-16727261=\"\"></div>
+                                    <div class=\"text\" _v-16727261=\"\">{$v['diggs']}</div>
                                 </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="软件测试线上故障规范及模板">软件测试线上故障规范及模板</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Sat, 08 Dec 2018 05:45:22 GMT">2天前</span>
+                                <div class=\"entry-info\" _v-16727261=\"\">
+                                    <div class=\"title\" _v-16727261=\"\" title=\"{$v['title']}\">{$v['title']}</div>
+                                    <div class=\"meta\" _v-16727261=\"\">
+                                        <div class=\"list\" _v-16727261=\"\">
+                                            <div class=\"meta-item\" _v-16727261=\"\">
+                                            <span class=\"text\" _v-16727261=\"\"                                                                              title=\"{$v['published']}\">{$v['published']}</span>
                                             </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 年糕妈妈技术团队 的主页">年糕妈妈技术团队</span>
+                                            <div class=\"meta-item\" _v-16727261=\"\"><span onclick111='window.open(\"{{$v['author']['uri']}}\")' class=\"text\" _v-16727261=\"\" title=\"访问 {$v['author']['name']} 的主页\">{$v['author']['name']}</span>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5c0a0f06f265da616413d257?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 6 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">6</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="有太阳眼镜的外观的AR眼镜 不仅可以接电话也可以听音乐">有太阳眼镜的外观的AR眼镜
-                                        不仅可以接电话也可以听音乐
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Fri, 07 Dec 2018 06:31:35 GMT">3天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 teddyba 的主页">teddyba</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5c0781eff265da614f7016fd?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 5 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">5</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="2018年，Mixin 如何在不可能三角的限制下设计一个高并发和快速确认的闪电网络">
-                                        2018年，Mixin 如何在不可能三角的限制下设计一个高并发和快速确认的闪电网络
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Thu, 06 Dec 2018 09:34:28 GMT">4天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 mixin 的主页">mixin</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item banner" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                                  href="https://cloud.tencent.com/act/group/amd/index?fromSource=gwzcw.1571504.1571504.1571504&amp;utm_source=gold_browser_extension"
-                                                                  target="_blank">
-                                <div class="badge img" _v-16727261=""
-                                     style="background-image: url(&quot;https://user-gold-cdn.xitu.io/154054340980756076fa49a4207dd82ba0770a9d24520.jpg&quot;);"></div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="拼团福利，AMD云服务器8元/月，新用户每买4个月送2个月">
-                                        拼团福利，AMD云服务器8元/月，新用户每买4个月送2个月
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item hoverable" _v-16727261=""><span class="text"
-                                                                                                  _v-16727261=""
-                                                                                                  title="访问掘金商务合作页面">广告</span><span
-                                                        class="text hover" _v-16727261="" title="访问掘金商务合作页面">投放广告</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="团长最高奖励40个月云服务器使用时长，团员最多赠送4个月使用时长。">团长最高奖励40个月云服务器使用时长，团员最多赠送4个月使用时长。</span>
-                                            </div>
-                                        </div>
-                                        <div title="隐藏此条" class="action" _v-16727261="">隐藏</div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5bf75d59e51d4552ba0c66b3?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 12 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">12</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="开源企业级数字化服务平台——Choerodon猪齿鱼发布0.11版本">
-                                        开源企业级数字化服务平台——Choerodon猪齿鱼发布0.11版本
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Wed, 05 Dec 2018 03:40:16 GMT">5天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Choerodon猪齿鱼 的主页">Choerodon猪齿鱼</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5bf513df6fb9a04a0163f1cb?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 5 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">5</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="小白看产品-产品经理入门（一）需求挖掘">小白看产品-产品经理入门（一）需求挖掘
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Mon, 03 Dec 2018 03:47:37 GMT">7天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Mr.🙈 的主页">Mr.🙈</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5c038ccce51d4551584ca310?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 3 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">3</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="[译] 为用户提供安全可靠的体验">[译] 为用户提供安全可靠的体验</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Sun, 02 Dec 2018 07:43:46 GMT">8天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Android_开发者 的主页">Android_开发者</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5c013b16e51d4527c162ab72?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 3 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">3</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="Godot3游戏引擎入门之十：介绍一些常用的节点并开发一个小游戏（上）">
-                                        Godot3游戏引擎入门之十：介绍一些常用的节点并开发一个小游戏（上）
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Sun, 02 Dec 2018 05:04:05 GMT">8天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 spkingr 的主页">spkingr</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5bfe40836fb9a049ab0d50dc?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 6 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">6</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="Cloudopt Extension - 5分钟告诉你强在哪">Cloudopt
-                                        Extension - 5分钟告诉你强在哪
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Wed, 28 Nov 2018 07:15:15 GMT">12天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 t-baby 的主页">t-baby</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5bfc9cc3e51d4566f358b931?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 12 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">12</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="社区产品策划4元素：个人中心、内容、消息盒子、导航">
-                                        社区产品策划4元素：个人中心、内容、消息盒子、导航
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Tue, 27 Nov 2018 02:50:03 GMT">13天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Kevin改变世界的点滴 的主页">Kevin改变世界的点滴</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5bfac233e51d454f5b1f92ba?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 10 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">10</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="人人都是产品经理作者公众号列表，方便收藏学习">
-                                        人人都是产品经理作者公众号列表，方便收藏学习
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Sun, 25 Nov 2018 15:39:31 GMT">15天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 天下雪_ 的主页">天下雪_</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5bfab1836fb9a049e5534c12?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 20 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">20</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="微信机器人能够做些什么事？">微信机器人能够做些什么事？</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Sun, 25 Nov 2018 14:32:25 GMT">15天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 zhuangbiaowei 的主页">zhuangbiaowei</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5bf66114e51d45229468d659?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 1 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">1</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="[译] 为用户提供安全可靠的体验">[译] 为用户提供安全可靠的体验</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Thu, 22 Nov 2018 07:59:58 GMT">18天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 YueYong 的主页">YueYong</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5becf88c5188255e9b619931?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 35 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">35</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="我自己做了一个网盘，希望有人喜欢：）[zt]">
-                                        我自己做了一个网盘，希望有人喜欢：）[zt]
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Thu, 22 Nov 2018 03:12:46 GMT">18天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 pplabs 的主页">pplabs</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5bf614a9f265da611204a665?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 1 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">1</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="[英] Slow Software">[英] Slow Software</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Thu, 22 Nov 2018 02:30:01 GMT">18天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 阴明 的主页">阴明</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5bea5fbf6fb9a049b13dbcb3?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 4 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">4</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="MVP是什么，不是什么">MVP是什么，不是什么</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Wed, 21 Nov 2018 09:52:16 GMT">19天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 产品之道 的主页">产品之道</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5be437b1e51d4554b54b0dbc?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 10 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">10</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="如何设计好出色的数据产品？">如何设计好出色的数据产品？</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Sun, 18 Nov 2018 05:21:17 GMT">22天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 数据分析小助手 的主页">数据分析小助手</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5be39d47f265da611e4d242b?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 5 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">5</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="回忆8年前亲历的·人·肉·双11">回忆8年前亲历的·人·肉·双11</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Sun, 18 Nov 2018 03:34:48 GMT">22天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 产品之道 的主页">产品之道</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5becc9bd5188253765156b80?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 15 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">15</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="负载均衡技术(二）———常用负载均衡服务介绍">
-                                        负载均衡技术(二）———常用负载均衡服务介绍
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Thu, 15 Nov 2018 04:07:43 GMT">25天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 网易云社区 的主页">网易云社区</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5bec0bae5188257b3541cbf0?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 4 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">4</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="时间和空间的维度——智能产品外观研究">时间和空间的维度——智能产品外观研究
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Thu, 15 Nov 2018 03:09:14 GMT">25天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 设计@光荣与梦想 的主页">设计@光荣与梦想</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5be8d65351882517092460f1?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 26 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">26</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="产品经理基本功：高效的原型PRD模版">产品经理基本功：高效的原型PRD模版
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Tue, 13 Nov 2018 02:37:35 GMT">27天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Kevin改变世界的点滴 的主页">Kevin改变世界的点滴</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5be644565188257b3541bf65?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 3 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">3</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="漫谈“感知”与产品设计">漫谈“感知”与产品设计</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Mon, 12 Nov 2018 03:16:35 GMT">28天前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Xmy 的主页">Xmy</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5be38f7ff265da61441f8a8b?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 7 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">7</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="当我们都说开放平台的时候，产品经理在做什么？">
-                                        当我们都说开放平台的时候，产品经理在做什么？
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Fri, 09 Nov 2018 02:46:24 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Kevin改变世界的点滴 的主页">Kevin改变世界的点滴</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5be4388be51d4575f023ad91?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 8 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">8</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="AARRR模型新结合！教你在不同生命阶段如何实现产品用户的增长">
-                                        AARRR模型新结合！教你在不同生命阶段如何实现产品用户的增长
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Fri, 09 Nov 2018 02:45:19 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Aleegra 的主页">Aleegra</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5be4b6436fb9a049fe34a489?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 21 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">21</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="产品经理该如何做好数据埋点？来看这份方法总结！">
-                                        产品经理该如何做好数据埋点？来看这份方法总结！
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Fri, 09 Nov 2018 02:35:00 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 优设网热文 的主页">优设网热文</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5be32478f265da616916b96a?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 4 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">4</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="用户研究 | 产品初期设计方案 - 定性研究方法案例">用户研究 | 产品初期设计方案
-                                        - 定性研究方法案例
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Thu, 08 Nov 2018 04:00:43 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 设计@光荣与梦想 的主页">设计@光荣与梦想</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5be2c4a4e51d453f237ff705?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 7 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">7</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="用户体验地图与服务蓝图">用户体验地图与服务蓝图</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Thu, 08 Nov 2018 03:59:40 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 小煎饼 的主页">小煎饼</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5bd2d366518825278729c42c?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 5 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">5</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="「大数据」这么神奇，可为什么不能指明设计的方向？">
-                                        「大数据」这么神奇，可为什么不能指明设计的方向？
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Wed, 07 Nov 2018 03:27:45 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 一条 PM 的主页">一条 PM</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/entry/5bd6c175518825283663789f?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 4 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">4</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="B类商品详情页设计-1688新版OfferDetail设计洞察及思考">
-                                        B类商品详情页设计-1688新版OfferDetail设计洞察及思考
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Wed, 07 Nov 2018 03:25:59 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 阿里UED发文啦 的主页">阿里UED发文啦</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5bda7277f265da397c03d58a?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 39 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">39</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="优惠券系统应该如何设计？">优惠券系统应该如何设计？</div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Wed, 07 Nov 2018 03:24:47 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 Pedrito666 的主页">Pedrito666</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
-                        <li class="item" _v-16727261=""><a class="item-content" _v-16727261=""
-                                                           href="https://juejin.im/post/5be1092a6fb9a049af6cb7e1?utm_source=gold_browser_extension"
-                                                           target="_blank">
-                                <div class="badge" _v-16727261="" title="至少已有 63 人喜欢">
-                                    <div class="icon ion-arrow-up-b" _v-16727261=""></div>
-                                    <div class="text" _v-16727261="">63</div>
-                                </div>
-                                <div class="entry-info" _v-16727261="">
-                                    <div class="title" _v-16727261="" title="[产品更新] 掘金新动态上线啦，follow me~">[产品更新]
-                                        掘金新动态上线啦，follow me~
-                                    </div>
-                                    <div class="meta" _v-16727261="">
-                                        <div class="list" _v-16727261="">
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="Wed, 07 Nov 2018 03:00:55 GMT">1月前</span>
-                                            </div>
-                                            <div class="meta-item" _v-16727261=""><span class="text" _v-16727261=""
-                                                                                        title="访问 中药接骨散 的主页">中药接骨散</span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </a></li>
+";
+                            }
+                        }
+                        ?>
                         <div class="loading spinner" _v-7bc83f1e="" _v-16727261="">
                             <div class="rect1" _v-7bc83f1e=""></div>
                             <div class="rect2" _v-7bc83f1e=""></div>
