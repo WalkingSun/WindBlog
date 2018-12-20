@@ -11,7 +11,7 @@ class m181219_084242_user extends Migration
             $tableOptions = 'CHARACTER SET utf8 COLLATE utf8_general_ci ENGINE=InnoDB COMMENT="菜单表"';
         }
 
-        $this->createTable('JP_ser', [
+        $this->createTable('JP_user', [
             'userId' => $this->primaryKey(),
             'mobile' => $this->integer(11)->notNull(),
             'password' => $this->string(64)->notNull(),

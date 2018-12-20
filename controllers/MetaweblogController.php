@@ -99,7 +99,7 @@ class MetaweblogController extends BaseController
     public function actionAdd(){
 
         //查询配置
-        $configs = JpBlogConfig::find()->where(['isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
+        $configs = JpBlogConfig::find()->where(['userId'=>$this->userId,'isEnable'=>1])->asArray()->all() or Common::echoJson(400,'请自动化配置');
         $MetaWeblog = new MetaWeblog();
 
        foreach ($configs as $v){
