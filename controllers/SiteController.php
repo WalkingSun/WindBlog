@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Common;
 use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
@@ -9,8 +10,9 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class SiteController extends Controller
+class SiteController extends BaseController
 {
+    public $enableCsrfValidation = false;
     public function behaviors()
     {
         return [
@@ -54,12 +56,19 @@ class SiteController extends Controller
 
     public function actionLogin()
     {
+        $this->layout = 'login';
         if (!Yii::$app->user->isGuest) {
             return $this->goHome();
         }
         $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        $data =$this->data? ['LoginForm'=>$this->data]:'';
+
+        if ($model->load($data) ) {
+            if( !$model->login() ){
+                Common::echoJson(403,$model->errors);
+            }
+            Common::echoJson(200,'登录成功');
+//            return $this->goBack();
         }
         return $this->render('login', [
             'model' => $model,
