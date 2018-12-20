@@ -166,12 +166,12 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
             shadeClose: true,
             shade: 0.8,
             area: ['600px', '90%'],
-            content: '<?=\yii\helpers\Url::to(['metaweblog/checkqueue',['a'=>1]])?>'+'&blogid='+blogid
+            content: '<?=\yii\helpers\Url::to(['metaweblog/checkqueue','a'=>1])?>'+'&blogid='+blogid
         });
     }
 
     UpdateQueue = function updateQueue( queueid ){
-        var url = '<?=\yii\helpers\Url::to(['metaweblog/updatequeue',['a'=>1]])?>&queueid='+queueid;
+        var url = '<?=\yii\helpers\Url::to(['metaweblog/updatequeue','a'=>1])?>&queueid='+queueid;
         $.post(url,{queueid:queueid},function (r) {
             if(r.code==200){
                 layer.msg(r.msg);
@@ -184,7 +184,7 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
     }
 
     Sync = function Sync( queueid ){
-        var url = '<?=\yii\helpers\Url::to(['metaweblog/sync',['a'=>1]])?>&queueid='+queueid;
+        var url = '<?=\yii\helpers\Url::to(['metaweblog/sync','a'=>1])?>&queueid='+queueid;
         var loading = layer.load(0, {shade: false}); //0代表加载的风格，支持0-2
         $.post(url,{queueid:queueid},function (r) {
             parent.layer.close(loading);
