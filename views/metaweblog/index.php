@@ -143,11 +143,11 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
             return false;
         }
         if( type==4 ){
-            var url = '<?php echo \yii\helpers\Url::to(['metaweblog/edit',['a'=>1]])?>'+'&blogId='+blogId;
+            var url = '<?php echo \yii\helpers\Url::to(['metaweblog/edit','a'=>1])?>'+'&blogId='+blogId;
             location.href = url;
             return false;
         }
-        var url = '<?php echo \yii\helpers\Url::to(['metaweblog/queue',['a'=>1]])?>&type='+type;
+        var url = '<?php echo \yii\helpers\Url::to(['metaweblog/queue','a'=>1])?>&type='+type;
        $.post(url,{blogId:blogId,action:type},function (r) {
              if(r.code==200){
                  layer.msg(r.msg);

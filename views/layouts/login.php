@@ -24,8 +24,6 @@ AppAsset::register($this);
     <!--
     @import url();
     <?php $this->registerCssFile("@web/css/style.css");?>
-    <?php $this->registerJsFile("@web/js/jquery-3.3.1.min.js");?>
-    <?php $this->registerJsFile("@web/js/layer/layer.js");?>
     -->
 
     <?php echo Html::cssFile("@web/css/normalize.css");?>
@@ -39,6 +37,8 @@ AppAsset::register($this);
     <?php  echo Html::jsFile("@web/js/snow.js");?>
     <?php  echo Html::jsFile("@web/js/jquery.pure.tooltips.js");?>
     <?php  echo Html::jsFile("@web/js/spop.min.js");?>
+    <?php  echo Html::jsFile("@web/js/layer/layer.js");?>
+
     <script>
         (function() {
             // trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
@@ -167,7 +167,7 @@ AppAsset::register($this);
                 $.post('<?=\yii\helpers\Url::toRoute('/site/login')?>',{username:username,password:password},function(r){
                     console.log(r.code);
                     if(r.code!='200'){
-                        layer.msg(data);
+                        layer.msg(data);return ;
                     }
                 },'json');
                 layer.msg('登录成功');
