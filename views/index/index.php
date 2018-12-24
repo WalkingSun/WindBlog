@@ -5,6 +5,7 @@
  * Date: 2018/12/10
  * Time: 20:41
  */
+$data = $result['list'];
 ?>
 
 <!doctype html>

@@ -391,7 +391,7 @@ AppAsset::register($this);
     <?php
     NavBar::begin([
         'brandLabel' => 'WindBlog',
-        'brandUrl' => 'https://walkingsun.github.io/WindBlog/',    //Yii::$app->homeUrl,
+//        'brandUrl' => 'https://walkingsun.github.io/WindBlog/',    //Yii::$app->homeUrl,
         'options' => [
             'class' => 'navbar-inverse navbar-fixed-top',
         ],
@@ -401,7 +401,8 @@ AppAsset::register($this);
         'items' => [
             ['label' => '技术文章', 'url' => ['/index/index']],
             ['label' => '博客自动化', 'url' => ['/metaweblog/index']],
-            ['label' => '关于', 'url' => 'https://github.com/WalkingSun/WindBlog/blob/master/README.md'],
+            '<li><a id="wbcontact">关于</a></li>',
+//            ['label' => '关于', 'url' => 'https://github.com/WalkingSun/WindBlog/blob/master/README.md'],
             ['label' => '联系', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => '登录', 'url' => ['/site/login']]
@@ -423,4 +424,12 @@ AppAsset::register($this);
 
         <?= $content ?>
 
+    <script>
+        $("#wbcontact").click(function(){
+            window.open('https://github.com/WalkingSun/WindBlog/blob/master/README.md');
+        })
 
+        $(".navbar-brand").click(function(){
+            window.open('https://walkingsun.github.io/WindBlog/');
+        })
+    </script>

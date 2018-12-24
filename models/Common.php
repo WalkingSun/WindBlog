@@ -33,7 +33,7 @@ class Common
             3   =>  'http://write.blog.csdn.net/xmlrpc/index',
             4   =>  'http://os.blog.163.com/word/',
             5   =>  'https://my.oschina.net/action/xmlrpc',
-            6   =>  'http://www.cnblogs.com/'.$blogId.'/services/metaweblog.aspx',
+            6   =>  "https://rpc.cnblogs.com/metaweblog/{$blogId}",//'http://www.cnblogs.com/'.$blogId.'/services/metaweblog.aspx', 地址更改
             7   =>  ' http://blog.chinaunix.net/xmlrpc.php?r=rpc/server',
         ];
 
@@ -200,6 +200,7 @@ class Common
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_FOLLOWLOCATION => 1,
             CURLOPT_HTTPHEADER => array(
                 "cache-control: no-cache"
             ),

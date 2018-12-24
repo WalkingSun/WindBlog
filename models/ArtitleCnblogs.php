@@ -14,13 +14,15 @@ class ArtitleCnblogs implements Article
     protected $homepageUrl = 'http://wcf.open.cnblogs.com/blog/sitehome/paged/{PAGEINDEX}/{PAGESIZE}';
 
     public function list( $data = [] ){
+        $result = [];
         $pageindex = !empty($data['page'])?$data['page']:1;
         $pagesize = !empty($data['size'])?$data['size']:10;
 
         $url = str_replace ( ['{PAGEINDEX}','{PAGESIZE}'] ,  [$pageindex,$pagesize] ,  $this->homepageUrl );
         $response = Common::httpGet( $url );
         $xml = simplexml_load_string($response);
-        $result = $this->analysis( $xml );
+        $result['list'] = $this->analysis( $xml );
+        $result['tag'] = [];
         return $result;
     }
 

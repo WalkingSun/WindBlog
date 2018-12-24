@@ -35,6 +35,9 @@ class BaseController extends  yii\web\Controller
     public function filterParams( $data ){
         if( $data ){
             foreach ( $data as $k=>$v ){
+                if(!is_string($v)){
+                   continue;
+                }
                 $data[$k] = trim(Common::filter($v));
             }
         }
