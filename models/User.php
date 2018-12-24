@@ -7,6 +7,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
     public $id;
     public $username;
     public $password;
+    public $salt;
     public $authKey;
     public $accessToken;
 
@@ -62,6 +63,19 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             if (strcasecmp($user['username'], $username) === 0) {
                 return new static($user);
             }
+        }
+
+        //查询用户信息
+        if( $users = JpUser::find()->select([])->where(['username'=>$username])->one() ){
+            $user = [
+                'id' => $users->userId,
+                'username' => $users->username,
+                'password' => $users->password,
+                'salt' => $users->salt,
+                'authKey' => 'test100key',
+                'accessToken' => $users->userId.'-token',
+            ];
+            return new static($user);
         }
 
         return null;
