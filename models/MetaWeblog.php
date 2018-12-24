@@ -132,7 +132,6 @@ class MetaWeblog {
         foreach( $this->header as $_h_key => $_h_val ){
             $header[] = "{$_h_key}: {$_h_val}";
         }
-
         $ch = curl_init ( $this->url );
         curl_setopt($ch, CURLOPT_URL, $this->url);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);

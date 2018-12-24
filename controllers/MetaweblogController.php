@@ -35,10 +35,9 @@ class MetaweblogController extends BaseController
         return [
             'access' => [
                 'class' => AccessControl::className(),
-                'only' => ['index'],
+                'only' => ['index','init','queue','add','edit','del','updatequeue','sync'],
                 'rules' => [
                     [
-                        'actions' => ['index'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
