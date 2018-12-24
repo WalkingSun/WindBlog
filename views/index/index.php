@@ -6,11 +6,9 @@
  * Time: 20:41
  */
 $data = $result['list'];
+$this->title = '技术文章';
 ?>
 
-<!doctype html>
-<html>
-<head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>新标签页</title>
@@ -3623,7 +3621,7 @@ $data = $result['list'];
         .store img[_v-77e8ca13] {
             width: 100%
         }</style>
-</head>
+
 <body>
 
 <div id="app" class="app-transition" style="">

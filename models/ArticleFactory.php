@@ -28,6 +28,9 @@ class ArticleFactory
                 self::$instance = new ArtitleCnblogs();
                 break;
             case 2:
+                self::$instance = new ArtitleSegment();
+                break;
+            case 3:
                 self::$instance = new ArtitleJuejin();
                 break;
             default:
