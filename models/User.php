@@ -19,13 +19,13 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
             'authKey' => 'test100key',
             'accessToken' => '100-token',
         ],
-        '101' => [
-            'id' => '101',
-            'username' => 'admin',
-            'password' => 'admin111111',
-            'authKey' => 'test101key',
-            'accessToken' => '101-token',
-        ],
+//        '101' => [
+//            'id' => '101',
+//            'username' => 'admin',
+//            'password' => 'admin111111',
+//            'authKey' => 'test101key',
+//            'accessToken' => '101-token',
+//        ],
     ];
 
 
@@ -34,7 +34,20 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public static function findIdentity($id)
     {
-        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
+        if( !isset(self::$users[$id]) ){
+            $users = JpUser::find()->select([])->where(['userId'=>$id])->one();
+            self::$users[$id] = [
+                'id' => $users->userId,
+                'username' => $users->username,
+                'password' => $users->password,
+                'salt' => $users->salt,
+                'authKey' => "test{$users->userId}key",
+                'accessToken' => $users->userId.'-token',
+            ];
+        }
+
+        return new static(self::$users[$id]);
+//        return isset(self::$users[$id]) ? new static(self::$users[$id]) : null;
     }
 
     /**
@@ -72,9 +85,10 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
                 'username' => $users->username,
                 'password' => $users->password,
                 'salt' => $users->salt,
-                'authKey' => 'test100key',
+                'authKey' => "test{$users->userId}key",
                 'accessToken' => $users->userId.'-token',
             ];
+            self::$users[$users->userId] = $user;
             return new static($user);
         }
 
@@ -113,6 +127,9 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
      */
     public function validatePassword($password)
     {
+        if( $this->salt ){
+            return $this->password === md5($password.$this->salt);
+        }
         return $this->password === $password;
     }
 }

@@ -167,7 +167,7 @@ AppAsset::register($this);
                 $.post('<?=\yii\helpers\Url::toRoute('/site/login')?>',{username:username,password:password},function(r){
                     console.log(r.code);
                     if(r.code!='200'){
-                        layer.msg(data);return false;
+                        layer.msg('帐号或密码错误');return false;
                     }else{
                         layer.msg('登录成功');
                         location.href='<?=\yii\helpers\Url::toRoute('/metaweblog/index')?>';
