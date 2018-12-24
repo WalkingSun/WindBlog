@@ -91,7 +91,7 @@ class JPGitWindblogSync extends Basic
             if( !in_array( $blogTypesFlip[$v],$blogTypeSeted ) ) continue;
 
             if( isset($tags[$v.'Class']) ){
-                $blogClassInfo[$v] = $tags[$v.'Class'];
+                $blogClassInfo[$v] = $this->classFormatDeal($tags[$v.'Class']);
             }
         }
         if( !$blogClassInfo ) return false;
@@ -165,5 +165,10 @@ class JPGitWindblogSync extends Basic
             $transaction->rollback();
         }
 
+    }
+
+    //博客分类格式处理
+    protected function classFormatDeal( $data ){
+        return str_replace("\\","",$data);
     }
 }
