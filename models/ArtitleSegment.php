@@ -69,7 +69,8 @@ class ArtitleSegment implements Article
         $list = $dom->find('.widget-tag');
         if($list){
             foreach ($list as $v){
-                $result[] = $v->find('.h4 a')->text;
+                $t = $v->find('.h4 a')->text;
+                $result[$t] = ['id'=>$t,'name'=>$t];
             }
         }
         return $result;
