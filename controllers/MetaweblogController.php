@@ -199,7 +199,7 @@ class MetaweblogController extends BaseController
         $result = [];
         if( $d['blogid'] ){
 
-            $result = $model::find()->where(['blogId'=>$d['blogid']])->asArray()->all();
+            $result = $model::find()->where(['blogId'=>$d['blogid']])->orderBy(['queueId'=>SORT_DESC])->asArray()->all();
 
         }
 

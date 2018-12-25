@@ -222,7 +222,7 @@ class Common
     public static function filter($val,$type='',$de=''){
         $val=Common::daddslashes($val);   //使用反斜线引用字符串 (对提交数据的过滤)
         //过滤字符
-        $filterList = [ ';',':','#','%','select','from','insert','update','delete'];
+        $filterList = [ ';','#','%','select','from','insert','update','delete'];
         $val = str_replace($filterList,'',$val);
         switch ($type) {
 
