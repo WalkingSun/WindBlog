@@ -13,43 +13,67 @@ use PHPHtmlParser\Dom;
 
 class ArtitleJuejin implements Article
 {
+
+//var r = ["架构", "开源", "算法", "GitHub", "面试", "代码规范", "产品", "掘金翻译计划"];
+//e.a = {
+//home: r,
+//frontend: ["前端", "CSS", "JavaScript", "HTML", "React.js", "Vue.js", "Webpack", "微信", "TypeScript"],
+//android: ["Android", "Kotlin", "Android Studio", "gradle", "RxJava", "React Native", "Material Design"],
+//backend: ["后端", "Java", "数据库", "Node.js", "Linux", "PHP", "MySQL", "Redis", "Python", "MongoDB"],
+//ios: ["Mac", "Apple", "Swift", "Xcode", "Objective-C", "macOS"],
+//freebie: r,
+//article: r,
+//ai: ["Python", "机器学习", "NLP", "数据挖掘", "人工智能", "OpenAI", "神经网络", "深度学习", "TensorFlow"],
+//devops: ["运维", "Linux", "Nginx", "服务器", "容器", "Docker", "Kubernetes", "云计算", "连续集成"]
+//}
+
+    public $tag = [
+        'all' => '推荐',
+        '5562b415e4b00c57d9b94ac8' => ['id'=>'5562b415e4b00c57d9b94ac8','name'=>'前端','title'=>'frontend'],
+        '5562b410e4b00c57d9b94a92' => ['id'=>'5562b410e4b00c57d9b94a92','name'=>'Android','title'=>'android'],
+        '5562b419e4b00c57d9b94ae2' => ['id'=>'5562b419e4b00c57d9b94ae2','name'=>'后端','title'=>'backend'],
+        '57be7c18128fe1005fa902de' => ['id'=>'57be7c18128fe1005fa902de','name'=>'人工智能','title'=>'ai'],
+        '5562b405e4b00c57d9b94a41' => ['id'=>'5562b405e4b00c57d9b94a41','name'=>'iOS','title'=>'ios'],
+        '5562b422e4b00c57d9b94b53' => ['id'=>'5562b422e4b00c57d9b94b53','name'=>'工具资源','title'=>'freebie'],
+        '5562b428e4b00c57d9b94b9d' => ['id'=>'5562b428e4b00c57d9b94b9d','name'=>'阅读','title'=>'article'],
+        '5b34a478e1382338991dd3c1' => ['id'=>'5b34a478e1382338991dd3c1','name'=>'运维','title'=>'devops'],
+    ];
+
+
+
     public function list( $data=[] ){
         $result = [];
-        $tag = !empty($data['tag'])?$data['tag']:'php';
-        $dom = new Dom();
-        $url = "https://segmentfault.com/t/{$tag}/blogs";
-        $html = Common::httpGet($url);
-        $dom->load($html);
-        $info = $dom->find('.summary');
+        $tag = !empty($data['tag'])?$data['tag']:'all';
+        $limit = !empty($data['limit'])?$data['limit']:20;
 
-        $result['list'] = $this->analysis($info);
+        $url = "https://timeline-merger-ms.juejin.im/v1/get_entry_by_rank?src=web&limit={$limit}&category={$tag}";
+        $info = Common::httpGet($url);
+        $info = json_decode($info,1);
+        $result['list'] = $this->analysis( $info);
         $result['tag'] = $this->getTag();
 
         return $result;
     }
 
     public function analysis( $data=[] ){
-         $result = [];
-         if( $data ){
-             $k=0;
-             foreach ($data as $v){
-                 $result[$k]['title'] = $v->find('.title a')->text;
-                 $result[$k]['link'] = 'https://segmentfault.com'.$v->find('.title a')->href;
-                 $result[$k]['published'] = '';
-                 if(  $t = $v->find('.author')->find('li span')->text ){
-                     $tt = explode(' ',trim($t));
-                     $result[$k]['published'] = $tt[0].$tt[1];
-                 }
-                 $result[$k]['author']['name'] = $v->find('.author')->find('li span a')->text;
-                 $result[$k]['author']['uri'] = 'https://segmentfault.com'.$v->find('.author')->find('li span a')->href;
-                 $result[$k]['diggs'] = 0;
-                 if(  $t =  $v->find('.author')->find('.bookmark')->title ){
-                     $tt = explode(' ',$t);
-                     $result[$k]['diggs'] = $tt[0];
-                 }
-                 $k++;
-             }
-         }
+        $result = [];
+        if( $data['m']=='ok' ){
+            $k=0;
+            foreach ($data['d']['entrylist'] as $v){
+                $result[$k]['title'] = $v['title'];
+                $result[$k]['content'] = $v['content'];
+                $result[$k]['tags'] = $v['tags'];
+                $result[$k]['link'] = $v['originalUrl'];
+                $result[$k]['published'] = date("Y-m-d H:i",strtotime($v['updatedAt']));
+
+                $result[$k]['author']['name'] = $v['user']['username'];
+                $result[$k]['author']['uri'] = '';
+                $result[$k]['author']['avatar'] = $v['user']['avatarLarge'];
+                $result[$k]['diggs'] = $v['collectionCount'];
+
+                $k++;
+            }
+        }
 
         return $result;
     }
@@ -58,20 +82,8 @@ class ArtitleJuejin implements Article
      * 获取标签
      */
     public function getTag(){
-        $result = [];
-        //todo 分页查询，结果缓存
-        $tagUrl = 'https://segmentfault.com/tags/all';
-        $html = Common::httpGet($tagUrl);
+        //todo  抓取所有分类id
 
-        $dom = new Dom();
-        $dom->load($html);
-
-        $list = $dom->find('.widget-tag');
-        if($list){
-            foreach ($list as $v){
-                $result[] = $v->find('.h4 a')->text;
-            }
-        }
-        return $result;
+        return $this->tag;
     }
 }

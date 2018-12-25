@@ -88,7 +88,7 @@ class User extends \yii\base\Object implements \yii\web\IdentityInterface
                 'authKey' => "test{$users->userId}key",
                 'accessToken' => $users->userId.'-token',
             ];
-            self::$users[$users->userId] = $user;
+//            self::$users[$users->userId] = $user;
             return new static($user);
         }
 
