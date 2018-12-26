@@ -538,3 +538,39 @@ COMPUTE BY 子句的规则：
 <!-- 181 -->
 <!-- todo  每天三十题+模拟；上机题 18道每天2道 -->
 
+## 上机题
+https://docs.microsoft.com/zh-tw/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql?view=sql-server-2017
+
+### sys.dm_exec_query_stats
+```
+sql_handle 這是指查詢所屬批次或預存程序的 Token
+total_worker_time 這個計畫從編譯以來執行所耗用的 CPU 時間總量
+execution_count  計畫從上次編譯以來被執行的次數
+statement_start_offset	表示資料列於其批次或保存物件的文字中所描述之查詢的起始位置
+statement_end_offset 表示資料列於其批次或保存物件的文字中所描述之查詢的結束位置 (由 0 開始並以位元組為單位)。 以前的版本 SQL Server 2014 (12.x)，值為-1 表示批次的結尾。
+```
+### sys.dm_exec_sql_text
+```
+傳回文字的 SQL 批次也就是識別由指定sql_handle
+语法 sys.dm_exec_sql_text(sql_handle | plan_handle)
+```
+
+
+1. 使用SQL语句实现DMV查询，显示当前CPU平均占用时间最高的前12个SQL语句，以CPU平均占用时间从高到低排列。
+```
+  select
+  top 12
+  	sql_handle,
+  	substring(text,
+  	(statement_start_offset)/2+1,
+  	(case statement_end_offset
+  	when -1 then datalength(text)
+  	else statement_end_offset-statement_start_offset
+  	end)/2+1),
+  	total_worker_time/execution_count avg_time
+  from sys.dm_exec_query_stats
+  cross apply sys.dm_exec_sql_text(sql_handle)
+  order by avg_time desc
+
+##cross apply  交叉连接  https://blog.csdn.net/Wikey_Zhang/article/details/77480118
+```
