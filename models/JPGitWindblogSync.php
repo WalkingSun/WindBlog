@@ -169,6 +169,7 @@ class JPGitWindblogSync extends Basic
 
     //博客分类格式处理
     protected function classFormatDeal( $data ){
+        str_replace("\\","",$data);
         return str_replace("\\","",$data);
     }
 }
