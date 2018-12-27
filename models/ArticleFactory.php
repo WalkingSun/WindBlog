@@ -15,6 +15,12 @@ use yii\helpers\ArrayHelper;
 class ArticleFactory
 {
     static private $instance;
+    public static $blogs = [
+        '1'  => '博客园',
+        '2'  => '思否',
+        '3'  => '掘金',
+//        '4'  => '开源中国',
+    ];
 
     private function __construct($config){
 
@@ -38,6 +44,5 @@ class ArticleFactory
         }
         return self::$instance;
     }
-
 
 }

@@ -61,7 +61,8 @@ class IndexController extends BaseController
         $this->result =  ArticleFactory::init($data)->list($data);
         if( !empty( $d['async'] ) ) Common::echoJson(200,$this->result);
 
-        return $this->render('index',['result'=>$this->result]);
+
+        return $this->render('index',['result'=>$this->result, 'blogs' => ArticleFactory::$blogs]);
     }
 
 }

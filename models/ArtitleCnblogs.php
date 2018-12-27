@@ -36,7 +36,7 @@ class ArtitleCnblogs implements Article
                 $result[$k]['id'] = $v['id'];
                 $result[$k]['title'] = $v['title'];
                 $result[$k]['desc'] =  $v['summary'];
-                $result[$k]['published'] = $v['published'];
+                $result[$k]['published'] = date('Y-m-d H:i',strtotime( $v['published'] ));
                 $result[$k]['author'] = (array)$v['author'];
                 $result[$k]['link'] = ((array)$v['link'])['@attributes']['href'];
                 $result[$k]['diggs'] = $v['diggs'];
