@@ -537,8 +537,61 @@ COMPUTE BY 子句的规则：
 
 > 关于并发调度的可串行性概念叙述不正确的是 可串行性导致不能并发执行
 
+> 排它锁(X锁)和共享锁(S锁)
 
-<!-- 181 -->
+> 对两段锁协议的不正确描述是  事务遵守两阶段锁协议不会发生死锁
+
+> 关于封锁的粒度叙述不正确的是   行级锁比表级锁更容易引起死锁
+
+>   客户/服务器结构与其他数据库体系结构的根本区别在于 DBMS和应用分开
+
+> DBMS的基本功能不包括 数据的加工和优化
+
+> 由于进程数目少，内存开销和进程通信开销小，因此，( N+1方案  )是较优的一种
+
+> 线索与进程相比，不具有(   线索可以脱离进程存在    )特征
+
+> 从模块结构考察， DBMS由(  查询处理器和存储管理器  )两大部分组成
+
+> DBMS的层次结构不包括 第5层是硬件层
+
+> 对数据存取层的含义叙述错误的是 数据存取层处理的对象不是单个元组
+
+> RAID
+- RAID是"Redundant Array of Independent Disk"的缩写，中文意思是独立冗
+余磁盘阵列
+- RAID是由多个磁盘驱动器组成的磁盘系统，可提供更高的性能、可靠性、存
+  储容量和更低的成本
+- RAID磁盘阵列支援不需停机的硬盘备援HotSpare
+
+RAID的叙述不正确的是  RAID是数据库正常工作的必需组件
+
+> 关于RAID的优点叙述不正确的是   RAID可以提高存储效率
+
+> 内存参数的调整主要是指Oracle数据库的系统全局区(SGA)的调整， SGA主要(   共享池、数据缓冲区和日志缓冲区   )三部分构成
+
+> 关于缓冲区的概念叙述不正确的是  缓冲区的作用主要是实现数据共享
+
+> 有关缓冲区的说法中不正确的是  缓冲区的作用主要是保证数据安全性
+
+> 构成文件的基本单位是字符，这一类文件称为 流式文件
+
+> 文件的结构不包括 数据集
+
+> 一个关系数据库文件中的各条记录    前后顺序可以任意颠倒，不影响数据库中的数据关系
+
+> 文件系统的多级目录结构是 树形结构
+
+> 关于索引技术有关概念的说法不正确的是 索引可提高安全性
+
+> 索引技术的主要内容不包括 缓冲区调度
+
+> 属于散列技术的处理冲突的方法是  .开放定址法和拉链法
+
+> 散列表的冲突现象叙述不正确的是  冲突可以完全避免
+
+> 关于关系性质的说法中错误的是  表中任意两行可能相同
+<!-- 210 -->
 <!-- todo  每天三十题+模拟；上机题 18道每天2道 -->
 
 ## 上机题
@@ -556,10 +609,28 @@ statement_end_offset 表示資料列於其批次或保存物件的文字中所�
 ```
 傳回文字的 SQL 批次也就是識別由指定sql_handle
 语法 sys.dm_exec_sql_text(sql_handle | plan_handle)
+
+text SQL 查詢的文字。
 ```
 
+```
+datalength  计算长度
 
-1. 使用SQL语句实现DMV查询，显示当前CPU平均占用时间最高的前12个SQL语句，以CPU平均占用时间从高到低排列。
+case
+when ... then...
+when ... then ...
+end
+```
+
+活动监视器位置   管理-》活动监视器
+
+
+1. 使用SQL语句实现DMV查询，显示当前缓存的占用了大部分 CPU 执行时间的前20个批处理或过程，按各个批处理或过程的CPU执行时间降序排列。
+```sql
+select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time desc;
+```
+
+2. 使用SQL语句实现DMV查询，显示当前CPU平均占用时间最高的前12个SQL语句，以CPU平均占用时间从高到低排列。
 ```
   select
   top 12
@@ -577,3 +648,23 @@ statement_end_offset 表示資料列於其批次或保存物件的文字中所�
 
 ##cross apply  交叉连接  https://blog.csdn.net/Wikey_Zhang/article/details/77480118
 ```
+sys.dm_exec_query_optimizer_info   编译的所有信息
+3. 使用SQL语句实现DMV查询，显示出过多编译/重新编译的所有信息，即计数器为optimizations或elapsed time的记录。
+
+```sql
+select *
+from sys.dm_exec_query_optimizer_info
+where
+counter in ('optimizations','elapsed time')
+```
+
+4. 使用SQL语句实现DMV查询，显示10个占用了最多的 CPU 累计使用时间的查询，按累计时间降序排列。
+```sql
+select
+top 10
+	sql_handle,
+	total_worker_time
+from sys.dm_exec_query_stats
+order by total_worker_time desc
+```
+
