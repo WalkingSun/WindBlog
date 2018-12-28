@@ -591,7 +591,51 @@ RAID的叙述不正确的是  RAID是数据库正常工作的必需组件
 > 散列表的冲突现象叙述不正确的是  冲突可以完全避免
 
 > 关于关系性质的说法中错误的是  表中任意两行可能相同
-<!-- 210 -->
+
+> 关于SQL Server的数据复制功能，下列说法中不正确的是   利用数据复制功能支持SQL Server数据和SQL Server数据之间的复制
+
+> 为了实现SQL Server 2005的数据复制，需要包括除(  复制服务器  )外的服务器角色
+
+> SQL Server的数据复制架构通常遵循(  分发→发布→订阅  )的基本架构
+
+> 配置SQL Server的数据复制功能可以通过SQL Server Management Studio的复制配置向导进行，下列不属于复制配置过程的是  创建订阅数据库
+
+> 利用SQL Server 2005的配置管理器，可以实现对各种SQL Server 2005网络协议的配置，但不包括   启用或禁用HTTP
+
+> 利用SQL Server 2005的配置管理器，可以实现对SQL Server的各种参数配置，但不包括  配置客户端IP地址
+
+> 利用SQL Server 2005的配置管理器，可以实现对SQL Server的各种参数配置，但不包括 配置SQL Server使用内存大小
+
+> 利用SQL Server 2005的配置管理器，可以实现对SQL Server的各种参数配置，其中包括  SQL Native Client配置
+
+> 利用SQL Server Management Studio中的活动监视器可以监视服务器上各个进程的情况。例如可以观察一个SELECT语句的进程执行的情况，但不包括下列(  语句执行后的查询结果  )的信息
+
+> 利用SQL Server Management Studio中的活动监视器可以监视服务器上各个进程的情况。例如，可以观察一个DELETE语句的进程执行的情况，但不包括下列(  所占用的CPU时间、内存空间 )的信息。
+
+> 利用SQL Server Management Studio中的活动监视器可以监视服务器上的除了(  按服务器分类的锁   )的信息
+
+> SQL Server Profiler可用于捕捉SQL Server服务器中发生的事件，因而常用来监控户端发送给服务器的语句中的内容，但通常SQL Server Profiler不能用于   分析数据库服务器中数据表之间的关系
+
+> 使用SQL Server Profiler的图形界面新建一个跟踪时，可以配置事件选择，用于指定跟踪的内容，但不包括(  想要关注哪些数据表  )
+
+> SQL Server Profiler可用于捕捉SQL Server服务器中发生的事件，在SQL Server Profiler中以图形化方式查看死锁的步骤不包括  发生死锁时，动态显示表示死锁的图形
+
+> SQLServer Profiler可用于捕捉SQL Server服务器中发生的事件， SQL Server Profiler的事件被划分为多个事件类别，其中不包括 CPU
+
+> SQL Server Profiler可用于捕捉SQL Server服务器中发生的事件，如要将跟踪信息保存到一个SQL Server数据表中，则需要执行除(  指定每个跟踪记录的大小  )外的步骤。
+
+> SQL Server Profiler可用于捕捉SQL Server服务器中发生的事件，如要将跟踪信息保存到一个文件中，则在指定了文件位置和名称后，可以配置其他跟踪属性的选项，但不包括  监控的客户端最大数量
+
+> SQL Server使用不同的锁模式锁定资源，锁的模式确定了并发事务访问资菁、的方式，其中( 更新锁 )能防止常见的死锁
+
+> SQL Server使用不同的锁模式锁定资源，锁的模式确定了并发事务访问资源的方式，其中(  意向锁 )用于建立锁的层次结构
+
+> SQL Server 2005支持三种数据库恢复模型:简单模型、完全模型和大容量日志恢复模型，如果日志文件未被破坏，则其中( 完全模型 )的数据库恢复不会丢失数据
+
+> SQL Server 2005支持三种数据库恢复模型:简单模型、完全模型和大容量日志恢复摸型，用(  简单模型  )能尽量减少操作所需要的存储空间，提高性能
+
+> SQL Server 2005支持三种数据库恢复模型:简单模型、完全模型和大容量日志恢复模型，其中(  简单模型 )无法将数据库恢复到失败点状态
+<!-- 210+30 -->
 <!-- todo  每天三十题+模拟；上机题 18道每天2道 -->
 
 ## 上机题
@@ -668,3 +712,47 @@ from sys.dm_exec_query_stats
 order by total_worker_time desc
 ```
 
+5. 使用SQL语句实现DMV查询，显示当前CPU的信息、计划程序内存的信息和缓冲池的信息（每个至少列出一项以上）。
+sys.dm_os_sys_info  傳回有關電腦以及有關 [SQL Server] 可用和耗用資源的其他有用資訊。
+```
+cpu_count	int	指定系統上的邏輯 CPU 數目。 不可為 Null。
+hyperthread_ratio	int	指定單一實體處理器封裝所公開的邏輯或實體核心數目比率。 不可為 Null。
+physical_memory_in_bytes	bigint 指定電腦上實體記憶體的總數。 不可為 Null。
+virtual_memory_in_bytes	bigint 使用者模式之處理序可用的虛擬記憶體數量。
+bpool_committed 緩衝集區中可以直接在處理虛擬位址空間中存取的 8 KB 緩衝區數目。
+bpool_commit_target 代表可由 SQL Server 記憶體管理員耗用的記憶體數量 (KB)。
+```
+```sql
+select
+	cpu_count,
+	hyperthread_ratio,
+	physical_memory_in_bytes,
+	virtual_memory_in_bytes,
+	bpool_committed,
+	bpool_commit_target
+from sys.dm_os_sys_info
+```
+
+6. 使用SQL语句实现DMV查询，显示当前挂起的 I/O 请求信息，包括database_id, file_id,io_stall,io_pending_ms_ticks,scheduler_address。
+```
+ #sys.dm_io_pending_io_requests  I/O 请求信息
+ scheduler_address 發出這項 I/O 要求所在的排程器。
+ io_pending_ms_ticks  单个I/O在挂起队列中等待的总时间
+
+ #dm_io_virtual_file_stats   I/O 統計資料
+database_id  資料庫的識別碼。
+file_id  檔案識別碼
+io_stall 使用者等候檔案完成 I/O 的總時間 (以毫秒為單位)
+```
+```sql
+select
+	database_id,
+	file_id,
+	io_stall,
+	io_pending_ms_ticks,
+	scheduler_address
+from sys.dm_io_pending_io_requests t1,
+sys.dm_io_virtual_file_stats(null,null) t2
+where t1.io_handle=t2.file_handle
+
+```
