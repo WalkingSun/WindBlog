@@ -798,3 +798,156 @@ sys.dm_io_virtual_file_stats(null,null) t2
 where t1.io_handle=t2.file_handle
 
 ```
+
+7. 素材内容:
+
+   已建数据库“DEMO_3_3_1”，数据库中建有表“Employee”，表结构如下：
+
+<table class="MsoNormalTable" border="1" cellspacing="0" cellpadding="0" style="border-collapse: collapse; border: medium none" id="table1">
+		<tbody><tr style="height: 3.5pt">
+			<td width="99" rowspan="7" style="width: 74.0pt; height: 3.5pt; border: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 0cm; line-height: normal">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">
+			Employee </span></p></td>
+			<td width="151" valign="top" style="width: 113.1pt; height: 3.5pt; border-left: medium none; border-right: 1.0pt solid black; border-top: 1.0pt solid black; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">ID</span></p></td>
+			<td width="104" valign="top" style="width: 78.0pt; height: 3.5pt; border-left: medium none; border-right: 1.0pt solid black; border-top: 1.0pt solid black; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 3.25pt; line-height: normal; layout-grid-mode: char">
+			<span style="font-size: 10.5pt; font-family: 宋体">雇员号</span></p></td>
+			<td width="118" valign="top" style="width: 88.3pt; height: 3.5pt; border-left: medium none; border-right: 1.0pt solid black; border-top: 1.0pt solid black; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" align="center" style="text-align: center; text-indent: 0cm; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">Int</span></p></td>
+			<td width="118" valign="top" style="width: 88.4pt; height: 3.5pt; border-left: medium none; border-right: 1.0pt solid black; border-top: 1.0pt solid black; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">NOT
+			NULL</span></p></td>
+		</tr>
+		<tr>
+			<td width="151" valign="top" style="width: 113.1pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">NAME</span></p></td>
+			<td width="104" valign="top" style="width: 78.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 3.25pt; line-height: normal; layout-grid-mode: char">
+			<span style="font-size: 10.5pt; font-family: 宋体">姓名</span></p></td>
+			<td width="118" valign="top" style="width: 88.3pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" align="center" style="text-align: center; text-indent: 0cm; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">
+			VARCHAR(25)</span></p></td>
+			<td width="118" valign="top" style="width: 88.4pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">NOT
+			NULL</span></p></td>
+		</tr>
+		<tr>
+			<td width="151" valign="top" style="width: 113.1pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">
+			HIREDATE</span></p></td>
+			<td width="104" valign="top" style="width: 78.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 3.25pt; line-height: normal; layout-grid-mode: char">
+			<span style="font-size: 10.5pt; font-family: 宋体">工作日期</span></p></td>
+			<td width="118" valign="top" style="width: 88.3pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" align="center" style="text-align: center; text-indent: 0cm; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">
+			datetime</span></p></td>
+			<td width="118" valign="top" style="width: 88.4pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">NOT
+			NULL</span></p></td>
+		</tr>
+		<tr>
+			<td width="151" valign="top" style="width: 113.1pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">JOB</span></p></td>
+			<td width="104" valign="top" style="width: 78.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 3.25pt; line-height: normal; layout-grid-mode: char">
+			<span style="font-size: 10.5pt; font-family: 宋体">岗位</span></p></td>
+			<td width="118" valign="top" style="width: 88.3pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" align="center" style="text-align: center; text-indent: 0cm; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">
+			VARCHAR(10)</span></p></td>
+			<td width="118" valign="top" style="width: 88.4pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">NOT
+			NULL</span></p></td>
+		</tr>
+		<tr>
+			<td width="151" valign="top" style="width: 113.1pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">SAL</span></p></td>
+			<td width="104" valign="top" style="width: 78.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 3.25pt; line-height: normal; layout-grid-mode: char">
+			<span style="font-size: 10.5pt; font-family: 宋体">工资</span></p></td>
+			<td width="118" valign="top" style="width: 88.3pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" align="center" style="text-align: center; text-indent: 0cm; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">
+			Numeric(8,2)</span></p></td>
+			<td width="118" valign="top" style="width: 88.4pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">&nbsp;</span></p></td>
+		</tr>
+		<tr>
+			<td width="151" valign="top" style="width: 113.1pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">MGR</span></p></td>
+			<td width="104" valign="top" style="width: 78.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 3.25pt; line-height: normal; layout-grid-mode: char">
+			<span style="font-size: 10.5pt; font-family: 宋体">管理者编号</span></p></td>
+			<td width="118" valign="top" style="width: 88.3pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" align="center" style="text-align: center; text-indent: 0cm; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">Int</span></p></td>
+			<td width="118" valign="top" style="width: 88.4pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">&nbsp;</span></p></td>
+		</tr>
+		<tr>
+			<td width="151" valign="top" style="width: 113.1pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">DEPTNO</span></p></td>
+			<td width="104" valign="top" style="width: 78.0pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 3.25pt; line-height: normal; layout-grid-mode: char">
+			<span style="font-size: 10.5pt; font-family: 宋体">部门号</span></p></td>
+			<td width="118" valign="top" style="width: 88.3pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" align="center" style="text-align: center; text-indent: 0cm; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">Int</span></p></td>
+			<td width="118" valign="top" style="width: 88.4pt; border-left: medium none; border-right: 1.0pt solid black; border-top: medium none; border-bottom: 1.0pt solid black; padding-left: 2.85pt; padding-right: 2.85pt; padding-top: 0cm; padding-bottom: 0cm">
+			<p class="MsoNormal" style="text-indent: 21.0pt; line-height: normal; layout-grid-mode: char">
+			<span lang="EN-US" style="font-size: 10.5pt; font-family: 宋体">&nbsp;</span></p></td>
+		</tr>
+	</tbody></table>
+
+
+
+
+
+   具体要求：
+
+   1、完成以下所有操作，并将对应的SQL脚本依次保存至“3.1.1.doc”文件。
+
+   针对表Employee，完成以下操作内容：
+
+   （1）建立存储过程add_emp，输入雇员号、姓名、岗位、工作日期、工资、管理者编号、部门号，为Employee表插入数据。
+
+   （2）建立函数valid_id，根据输入的雇员号，检查雇员是否存在。如果雇员存在，则返回1；否则返回0。
+
+   （3）建立函数get_sal，根据输入的雇员号返回雇员名和工资。调用函数valid_id确定雇员是否存在，不存在则显示消息“该雇员不存在”。
+
+   （4）建立函数get_table,根据输入的部门号返回所有员工信息
+
+   （5）编写存储过程disp_emp，根据输入的部门号，采用游标方式按下列格式输出所有该部门的雇员名、岗位和工资。
+```
+create proc add_emp
+@ID int,
+@NAME varchar(25),
+@HAREDATE datetime,
+@JOB varchar(10),
+@SAL numeric(8,2),
+@MGR int,
+@DEPTNO int
+as
+begin
+	insert into dbo.Employee values(@ID,@NAME,@HAREDATE,@JOB,@SAL,@MGR,@DEPTNO)
+	print 'success'
+end
+```
