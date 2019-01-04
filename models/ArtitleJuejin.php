@@ -43,7 +43,7 @@ class ArtitleJuejin implements Article
 
     public function list( $data=[] ){
         $result = [];
-        $tag = !empty($data['tag'])?$data['tag']:'all';
+        $tag = !empty($data['tag'])?$data['tag']:'5562b419e4b00c57d9b94ae2';//'all';
         $limit = !empty($data['limit'])?$data['limit']:20;
 
         $url = "https://timeline-merger-ms.juejin.im/v1/get_entry_by_rank?src=web&limit={$limit}&category={$tag}";
