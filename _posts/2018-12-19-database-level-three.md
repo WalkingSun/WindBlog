@@ -968,11 +968,105 @@ begin
 	insert into dbo.Employee values(@ID,@NAME,@HAREDATE,@JOB,@SAL,@MGR,@DEPTNO)
 	print 'success'
 end
+
+##插入数据
+exec add_emp 12, '张三', '2018-01-23','DBA', '2','1','1'
 ```
    （2）建立函数valid_id，根据输入的雇员号，检查雇员是否存在。如果雇员存在，则返回1；否则返回0。
+```
+create function valid_id( @id int)
+returns bit
+as
+begin
+declare @count int
+declare @isExit int
 
+select @count=count(ID) from dbo.employee where ID=@id
+if @count >= 1
+	set @isExit=1
+else
+	set @isExit=0
+return @isExit
+end
+```
    （3）建立函数get_sal，根据输入的雇员号返回雇员名和工资。调用函数valid_id确定雇员是否存在，不存在则显示消息“该雇员不存在”。
+```sql
+create function get_sal( @id int )
+returns @tmptable table (name varchar(25), sal numeric(8,2), msg varchar(32))
+begin
+declare @count int
+
+if dbo.valid_id(@id)=1
+    insert into @tmptable select NAME,SAL,'该雇员存在' from dbo.employee where ID=@id
+else
+    insert into @tmptable values('',0.0,'该雇员不存在')
+return
+end
+
+##表值函数调用
+select * from dbo.get_sal(0)
+```
 
    （4）建立函数get_table,根据输入的部门号返回所有员工信息
 
+   ```sql
+   create function get_table(@dep int)
+     returns table
+
+     return select * from dbo.employee where DEPTNO=@dep
+
+     ##查询
+     select * from dbo.get_table(1)
+   ```
+
    （5）编写存储过程disp_emp，根据输入的部门号，采用游标方式按下列格式输出所有该部门的雇员名、岗位和工资。
+        雇员名         岗位           工资
+
+   ————————————————————————
+
+   —————————————————————（此处为数据）
+ ```sql
+ create proc disp_emp
+   @dep int
+   as
+   begin
+   declare @name varchar(25)
+   declare @job varchar(10)
+   declare @sal numeric(8,2)
+   declare youbiao cursor for select NAME,JOB,SAL from dbo.employee where DEPTNO=@DEP
+   open youbiao
+   fetch next from youbiao into @name,@job,@sal
+
+   print '雇员名   岗位   工资   '
+   print '-----------------------'
+
+  while @@fetch_status=0
+  begin
+  print @name+'   '+@job+'   '+cast(@sal as varchar)+'   '
+  fetch next from youbiao into @name,@job,@sal
+  end
+  close youbiao
+   end
+```
+
+> 游标
+```
+#声明一个动态游标
+declare youbiao cursor for select NAME,JOB,SAL from dbo.employee where DEPTNO=@DEP
+
+#打开游标
+open youbiao
+
+#提取数据  next表示当前位置下一个 first表示第一个
+fetch next from youbiao into @name,@job,@sal
+
+#获取游标指针状态 0代表结束
+@@fetch_status
+
+#关闭游标
+close youbiao
+```
+
+> 强制转换 (转换为varchar)
+```sql
+cast( @sal as varchar )
