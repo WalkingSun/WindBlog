@@ -1072,3 +1072,4 @@ close youbiao
 
 ```sql
 cast( @sal as varchar )
+```
