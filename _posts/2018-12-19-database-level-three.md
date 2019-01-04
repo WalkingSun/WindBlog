@@ -1050,6 +1050,7 @@ select * from dbo.get_sal(0)
 ```
 
 > 游标
+
 ```
 #声明一个动态游标
 declare youbiao cursor for select NAME,JOB,SAL from dbo.employee where DEPTNO=@DEP
@@ -1068,5 +1069,6 @@ close youbiao
 ```
 
 > 强制转换 (转换为varchar)
+
 ```sql
 cast( @sal as varchar )
