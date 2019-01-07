@@ -712,6 +712,8 @@ RAID的叙述不正确的是  RAID是数据库正常工作的必需组件
 ## 上机题
 https://docs.microsoft.com/zh-tw/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-query-stats-transact-sql?view=sql-server-2017
 
+参考 http://www.doc88.com/p-7045099355679.html
+
 ### sys.dm_exec_query_stats
 ```
 sql_handle 這是指查詢所屬批次或預存程序的 Token
@@ -757,6 +759,8 @@ select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time
      b、在性能监视器中新建SQL Server: SQL Statistics计数器；
 
      c、在SQL Server Profiler中查看指定性能计数器的情况。
+
+
 
  a、
  ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165403.jpg)
@@ -1115,6 +1119,7 @@ select * from dbo.get_sal(0)
   fetch next from youbiao into @name,@job,@sal
   end
   close youbiao
+  deallocate youbiao  #释放游标
    end
 ```
 
