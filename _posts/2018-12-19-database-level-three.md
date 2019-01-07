@@ -405,7 +405,7 @@ WSC模式中存在的问题：  (1)数据冗余度大  (2)插入操作复杂  (3
 - 如果有且只有一个表符合4NF，同时其中的每个连接依赖被候选键所包含，此表才符合第五依赖
 - 如果只有一个表符合BCNF，同时多值依赖为函数依赖，此表才符合第五范式
 
-> 关系R中的属性全部都是主属性，则R的最高范式必定是  3NF   SS
+> 关系R中的属性全部都是主属性，则R的最高范式必定是  3NF   SSS
 
 ## 码
 ```
@@ -705,6 +705,7 @@ RAID的叙述不正确的是  RAID是数据库正常工作的必需组件
 
 > 根据数据库系统的组织结构，下列视图中( 外部视图 存储视图 )不是全体用户的公共视图
 
+> 规则和check   SSS
 <!-- 210+96+ -->
 <!-- todo  每天三十题+模拟；上机题 18道每天2道 -->
 
@@ -738,11 +739,35 @@ end
 
 活动监视器位置   管理-》活动监视器
 
-
 1. 使用SQL语句实现DMV查询，显示当前缓存的占用了大部分 CPU 执行时间的前20个批处理或过程，按各个批处理或过程的CPU执行时间降序排列。
 ```sql
 select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time desc;
 ```
+
+1.2) 以sa登录数据库，在Master数据库上执行SQL语句Select * from sysobjects；利用SQL Server Management Studio监控数据库服务器，观察当前有多少个进程，哪些登录帐户在访问数据库实例，请在“2.1.1.doc”文档内写出操作步骤，并在该文档内将下列操作界面截屏后保存：
+
+    阅读进程信息，登录帐户信息；
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165122.jpg)
+
+1.3) 打开SQL Server Profiler建立跟踪对数据库活动进行监视，同时打开性能监视器利用SQL Server:SQL Statistics对象监视数据库服务器每秒的编译次数，运行3分钟后，观察重合时间段内SQL Server的活动和上述性能计数器的值，请在“2.1.1.doc”文档内写出操作步骤，并在该文档内将下列三个操作界面截屏后依次保存：
+
+     a、在SQL Server Profiler中新建跟踪testtrace；
+
+     b、在性能监视器中新建SQL Server: SQL Statistics计数器；
+
+     c、在SQL Server Profiler中查看指定性能计数器的情况。
+
+ a、
+ ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165403.jpg)
+
+ b、添加计数器日志，在日志中添加指定计数器（记录跟踪文件地址、性能数据地址）
+![image](https://img-blog.csdn.net/20180628110638829?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1ZvaWRfd29ya2Vy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+c、停止跟踪，停止监视；打开跟踪文件，导入性能数据
+SQL Server Profiler 文件->打开跟踪文件
+SQL Server Profiler 文件->导入性能文件
+![image](https://img-blog.csdn.net/20180628110854590?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1ZvaWRfd29ya2Vy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 2. 使用SQL语句实现DMV查询，显示当前CPU平均占用时间最高的前12个SQL语句，以CPU平均占用时间从高到低排列。
 ```
@@ -827,8 +852,50 @@ where t1.io_handle=t2.file_handle
 
 ```
 
+### 添加维护计划
+7.  1) 利用SQL Server Management Studio的维护计划功能，设置系统每天1：00自动执行增量备份数据库Model到文件夹C:\BACKUP，请在“2.2.1.doc”文档内写出操作步骤，并在该文档内将下列两个操作界面截屏后依次保存：
+
+       a、设置备份数据库任务的界面；
+
+       b、维护计划设置完成的界面。
+
+a. 备份类型选差异（增量备份）
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/aaa.png)
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/bbb.png)
+
+b.
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/ccc.png)
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/ddd.png)
+
+2) 利用SQL Server Agent功能，创建作业job1，设置每天1:00自动完成以下步骤：先删除备份文件C:\BACKUP\Model1.bak，然后对数据库Master进行全备份，并将备份文件保存为C:\BACKUP\Model1.bak，请在“2.2.1.doc”文档内写出操作步骤，并在该文档内将下列三个操作界面截屏后依次保存：
+
+   a、设置删除备份文件的界面；
+
+   b、设置对数据库Model进行全备份的界面；
+
+    c、设置作业计划属性的界面。
+a、
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/ggg.png)
+b、
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/hhh.png)
+c、
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/jjj.png)
+
+#### 注意
+- 删除备份文件
+```
+#类型选操作系统
+del C:\BACKUP\Model1.bak
+```
+
+- 备份数据库到文件地址
+```
+#选择T-SQL
+backup database model to disk='C:\BACKUP\Model1.bak'
+```
+
 ### 存贮过程、函数
-7. 素材内容:
+8. 素材内容:
 
    已建数据库“DEMO_3_3_1”，数据库中建有表“Employee”，表结构如下：
 
@@ -1074,3 +1141,4 @@ close youbiao
 ```sql
 cast( @sal as varchar )
 ```
+
