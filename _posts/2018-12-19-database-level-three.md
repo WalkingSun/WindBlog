@@ -762,6 +762,7 @@ select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time
  ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165403.jpg)
 
  b、添加计数器日志，在日志中添加指定计数器（记录跟踪文件地址、性能数据地址）
+  ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107183331.jpg)
 ![image](https://img-blog.csdn.net/20180628110638829?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1ZvaWRfd29ya2Vy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
 
 c、停止跟踪，停止监视；打开跟踪文件，导入性能数据
