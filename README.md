@@ -14,14 +14,15 @@
 基于Yii2.0框架，对博客的管理、发布做些自动化。
 
 ### 数据库
-~~sql文件放在public.sql,数据库名称jump，用的是PostGresql，
-如果你用的事Mysql或者其他数据库，找些工具，例如DBConvert for MySQL & PostgreSQL，做下转换。~~
-改变方案使用Yii Migrate数据迁移组件,优点支持各类数据库，控制台进入WindBlog目录,执行
+使用Yii Migrate数据迁移组件,优点支持各类数据库，控制台进入WindBlog目录,执行
 ```
 php ./yii migrate/up
 ```
 
 ### 功能
+1. 首页显示博客网站实时的技术博文（支持博客园、掘金、SegmentFault）
+
+2. 博客发布管理
 当前支持 博客园、CSDN、51CTO、sina、163、oscina、chinaunix
 - 初始化设置：配置你需要同步博客的账户信息
 - 博客操作：添加记录、编辑记录、删除记录、同步操作
@@ -38,7 +39,7 @@ php ./yii migrate/up
 复杂度不高，觉得方便吧！
 
 # to do
-平时用的有道云笔记，平时记录什么的都放在上面，所以想打通[有道云笔记](http://note.youdao.com/open/apidoc.html)，可以同步过去;
+平时用的有道云笔记，平时记录什么的都放在上面，所以想打通[有道云笔记](http://note.youdao.com/open/apidoc.html)，可以同步过去（有道云的文档还不是很开放，只对企业开放，噗）;
 可能有使用别的笔记的，如果你有兴趣加入我们。
 
 
