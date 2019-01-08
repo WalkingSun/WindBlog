@@ -777,6 +777,8 @@ select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time
 
 2. 使用SQL语句实现DMV查询，显示当前CPU平均占用时间最高的前12个SQL语句，以CPU平均占用时间从高到低排列。
 
+        sys.dm_exec_query_optimizer_info   编译的所有信息
+        
 ```
   select
   top 12
@@ -794,7 +796,7 @@ select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time
 
 ##cross apply  交叉连接  https://blog.csdn.net/Wikey_Zhang/article/details/77480118
 ```
-sys.dm_exec_query_optimizer_info   编译的所有信息
+
 3. 使用SQL语句实现DMV查询，显示出过多编译/重新编译的所有信息，即计数器为optimizations或elapsed time的记录。
 
 ```sql
