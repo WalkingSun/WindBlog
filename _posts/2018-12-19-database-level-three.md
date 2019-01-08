@@ -715,6 +715,34 @@ https://docs.microsoft.com/zh-tw/sql/relational-databases/system-dynamic-managem
 
 参考 http://www.doc88.com/p-7045099355679.html
 
+1.2) 以sa登录数据库，在Master数据库上执行SQL语句Select * from sysobjects；利用SQL Server Management Studio监控数据库服务器，观察当前有多少个进程，哪些登录帐户在访问数据库实例，请在“2.1.1.doc”文档内写出操作步骤，并在该文档内将下列操作界面截屏后保存：
+
+    阅读进程信息，登录帐户信息；
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165122.jpg)
+
+1.3) 打开SQL Server Profiler建立跟踪对数据库活动进行监视，同时打开性能监视器利用SQL Server:SQL Statistics对象监视数据库服务器每秒的编译次数，运行3分钟后，观察重合时间段内SQL Server的活动和上述性能计数器的值，请在“2.1.1.doc”文档内写出操作步骤，并在该文档内将下列三个操作界面截屏后依次保存：
+
+     a、在SQL Server Profiler中新建跟踪testtrace；
+
+     b、在性能监视器中新建SQL Server: SQL Statistics计数器；
+
+     c、在SQL Server Profiler中查看指定性能计数器的情况。
+
+
+
+ a、
+ ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165403.jpg)
+
+ b、添加计数器日志，在日志中添加指定计数器（记录跟踪文件地址、性能数据地址）
+  ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107183331.jpg)
+![image](https://img-blog.csdn.net/20180628110638829?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1ZvaWRfd29ya2Vy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
+c、停止跟踪，停止监视；打开跟踪文件，导入性能数据
+SQL Server Profiler 文件->打开跟踪文件
+SQL Server Profiler 文件->导入性能文件
+![image](https://img-blog.csdn.net/20180628110854590?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1ZvaWRfd29ya2Vy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
+
 ### sys.dm_exec_query_stats
 ```
 sql_handle 這是指查詢所屬批次或預存程序的 Token
@@ -747,35 +775,8 @@ end
 select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time desc;
 ```
 
-1.2) 以sa登录数据库，在Master数据库上执行SQL语句Select * from sysobjects；利用SQL Server Management Studio监控数据库服务器，观察当前有多少个进程，哪些登录帐户在访问数据库实例，请在“2.1.1.doc”文档内写出操作步骤，并在该文档内将下列操作界面截屏后保存：
-
-    阅读进程信息，登录帐户信息；
-
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165122.jpg)
-
-1.3) 打开SQL Server Profiler建立跟踪对数据库活动进行监视，同时打开性能监视器利用SQL Server:SQL Statistics对象监视数据库服务器每秒的编译次数，运行3分钟后，观察重合时间段内SQL Server的活动和上述性能计数器的值，请在“2.1.1.doc”文档内写出操作步骤，并在该文档内将下列三个操作界面截屏后依次保存：
-
-     a、在SQL Server Profiler中新建跟踪testtrace；
-
-     b、在性能监视器中新建SQL Server: SQL Statistics计数器；
-
-     c、在SQL Server Profiler中查看指定性能计数器的情况。
-
-
-
- a、
- ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165403.jpg)
-
- b、添加计数器日志，在日志中添加指定计数器（记录跟踪文件地址、性能数据地址）
-  ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107183331.jpg)
-![image](https://img-blog.csdn.net/20180628110638829?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1ZvaWRfd29ya2Vy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-
-c、停止跟踪，停止监视；打开跟踪文件，导入性能数据
-SQL Server Profiler 文件->打开跟踪文件
-SQL Server Profiler 文件->导入性能文件
-![image](https://img-blog.csdn.net/20180628110854590?watermark/2/text/aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1ZvaWRfd29ya2Vy/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70)
-
 2. 使用SQL语句实现DMV查询，显示当前CPU平均占用时间最高的前12个SQL语句，以CPU平均占用时间从高到低排列。
+
 ```
   select
   top 12
