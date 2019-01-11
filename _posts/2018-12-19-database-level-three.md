@@ -729,8 +729,6 @@ https://docs.microsoft.com/zh-tw/sql/relational-databases/system-dynamic-managem
 
      c、在SQL Server Profiler中查看指定性能计数器的情况。
 
-
-
  a、
  ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/TIM截图20190107165403.jpg)
 
@@ -776,9 +774,17 @@ select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time
 ```
 
 2. 使用SQL语句实现DMV查询，显示当前CPU平均占用时间最高的前12个SQL语句，以CPU平均占用时间从高到低排列。
+注意
+```
+case 条件
+when 值  then  返回值
+else 返回值
+end
 
-        sys.dm_exec_query_optimizer_info   编译的所有信息
+dataLength  len都可计算文本长度
 
+cross apply  类似 innnerjoin
+```
 ```
   select
   top 12
@@ -798,6 +804,7 @@ select top 20 sql_handle from sys.dm_exec_query_stats order by total_worker_time
 ```
 
 3. 使用SQL语句实现DMV查询，显示出过多编译/重新编译的所有信息，即计数器为optimizations或elapsed time的记录。
+        sys.dm_exec_query_optimizer_info   编译的所有信息
 
 ```sql
 select *
