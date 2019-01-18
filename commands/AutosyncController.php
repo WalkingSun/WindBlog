@@ -61,6 +61,10 @@ class AutosyncController extends Controller
 
                     //添加队列服务
                     $fileData = ['url'=>$url_raw,'markfile'=>$markfile,'fileTime'=>$datetime];Common::addLog('error.log',$raw);
+
+                    //跳过草稿
+                    if( !(strrpos($tags['title'],'draft')===false) ) continue;
+
                     JPGitWindblogSync::getInstance()->addGitServer( $fileData,$tags );
                 }
             }catch (Exception $e){
