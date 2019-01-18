@@ -200,8 +200,9 @@ class Common
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_FOLLOWLOCATION => 1,
+//            CURLOPT_FOLLOWLOCATION => 1,
             CURLOPT_HTTPHEADER => array(
+                "Postman-Token: 4fa2ee01-6bf0-4975-9523-0a69e8812210",
                 "cache-control: no-cache"
             ),
         ));
@@ -210,7 +211,7 @@ class Common
         $err = curl_error($curl);
 
         curl_close($curl);
-
+//        var_dump($url,$response,$err,file_get_contents($url));die;
         if ($err) {
             throw new \Exception("cURL Error #:" . $err);
             return false;

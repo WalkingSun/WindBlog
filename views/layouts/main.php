@@ -46,6 +46,7 @@ AppAsset::register($this);
             ['label' => '技术文章', 'url' => ['/index/index']],
             ['label' => '博客自动化', 'url' => ['/metaweblog/index']],
             '<li><a id="wbcontact">关于</a></li>',
+            '<li><a id="im">Simple IM</a></li>',
             ['label' => '联系', 'url' => ['/site/contact']],
             Yii::$app->user->isGuest ? (
                 ['label' => '登录', 'url' => ['/site/login']]
@@ -89,6 +90,9 @@ AppAsset::register($this);
 
     $(".navbar-brand").click(function(){
         window.open('https://walkingsun.github.io/WindBlog/');
+    })
+    $("#im").click(function(){
+        window.open('http://47.99.189.105:9501/?r=v1/im/simple');
     })
 </script>
 </html>
