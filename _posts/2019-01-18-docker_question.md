@@ -35,16 +35,18 @@ Error response from daemon: Get https://index.docker.io/v1/search?q=centos: read
 
 如果没有新建，如果有，则修改。
 ```
-[root docker]# vi daemon.json
+$ vi daemon.json
  {
    "registry-mirrors": ["https://registry.docker-cn.com"]
  }
 ```
  保存退出。
 
-
 重启docker服务
 
 service docker restart
 
 成功！
+
+# 容器保持固定ip
+ https://yaxin-cn.github.io/Docker/docker-container-use-static-IP.html
