@@ -50,3 +50,14 @@ service docker restart
 
 # 容器保持固定ip
  https://yaxin-cn.github.io/Docker/docker-container-use-static-IP.html
+
+
+# 查看docker连接
+
+查看容器进程号
+
+docker inspect -f '{{.State.Pid}}' <containerid>
+
+查看连接
+
+nsenter -t 1840 -n netstat   #1840为上面操作获取的pid
