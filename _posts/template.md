@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: template page
+title: template page【draft】
 categories: [cate1, cate2]
 description: some word here
 keywords: keyword1, keyword2
@@ -14,6 +14,8 @@ sinaClass: \[Markdown\]
 ---
 
 <!--
+title内容带draft标识草稿
+
 cnblogsClass: 【你的博客园的分类，以逗号分隔，注意\[Markdown\]必须项】
 oschinaClass: 【你的开源中国的分类】
 csdnClass: 【你的CSDN分类】
