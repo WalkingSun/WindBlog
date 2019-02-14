@@ -45,6 +45,7 @@ AppAsset::register($this);
         'items' => [
             ['label' => '技术文章', 'url' => ['/index/index']],
             ['label' => '博客自动化', 'url' => ['/metaweblog/index']],
+            ['label' => '知识复盘', 'url' => ['/recovery/index']],
             '<li><a id="wbcontact">关于</a></li>',
             '<li><a id="im">Simple IM</a></li>',
             ['label' => '联系', 'url' => ['/site/contact']],
@@ -92,7 +93,7 @@ AppAsset::register($this);
         window.open('https://walkingsun.github.io/WindBlog/');
     })
     $("#im").click(function(){
-        window.open('http://47.99.189.105:9501/?r=v1/im/simple');
+        window.open('http://47.99.189.105:91/?r=v1/im/simple');
     })
 </script>
 </html>
