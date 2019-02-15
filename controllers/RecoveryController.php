@@ -89,6 +89,40 @@ class RecoveryController extends BaseController
         Common::echoJson(200,'操作成功');
     }
 
+    public function actionConfig(){
+        $d = $this->data;
+        $model = 'app\models\JpKnowledgeRecoveryConfig';
+
+        $config = $model::find()->select([])->where(['userId'=>$this->userId,'isDelete'=>0])->asArray()->one();
+        if( !empty($d['edit']) ){
+
+            $upData['userId'] = $this->userId;
+            $upData['frequency'] = $d['frequency'];
+            $upData['typeList'] = !empty($d['typeList'])?implode(',',$d['typeList']):'';
+            $upData['tagList'] = !empty($d['tagList'])?implode(',',$d['tagList']):'';
+            $upData['sendEmail'] = $d['sendEmail'];
+            $upData['setEmail'] = $d['setEmail'];
+            $upData['setEmailPwd'] = $d['setEmailPwd'];
+            $upData['setPop3'] = $d['setPop3'];
+            $upData['setSmtp'] = $d['setSmtp'];
+
+            $DB= new DB();
+            if( $config ){
+                $DB->update($model::tableName(),$upData,['userId'=>$this->userId]);
+            }else{
+                $upData['createtime'] = date('Y-m-d H:i:s');
+                $DB->insert($model::tableName(),$upData);
+            }
+            Common::echoJson(200,'success');
+        }
+
+        //查询标签
+        $model = $this->modelClass;
+        $tagAndTypeList = $model::find()->select(['tag','type'])->where(['userId'=>$this->userId])->asArray()->all();
+
+        return $this->render('config',['data'=>$config,'tags'=>$tagAndTypeList]);
+    }
+
     protected function addData( $d,$rData=[] ){
         $model = $this->modelClass;
         if( !empty($d['edit']) ){

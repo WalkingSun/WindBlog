@@ -53,7 +53,7 @@ use yii\helpers\Url;
 
         <a href="<?=\yii\helpers\Url::to(['recovery/add'])?>"> 添加 </a>
 
-        <a style="margin-right: 15px;" href="<?=\yii\helpers\Url::to(['recovery/set'])?>"> 设置 </a>
+        <a style="margin-right: 15px;" href="<?=\yii\helpers\Url::to(['recovery/config'])?>"> 启动复盘 </a>
 
     </div>
 
