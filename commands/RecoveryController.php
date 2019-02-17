@@ -15,7 +15,7 @@ use yii\console\Controller;
  */
 class RecoveryController extends Controller
 {
-    public $limitTime=1;    //限制天数  day
+    public $limitTime=30;    //限制天数  day
 
     public function actionIndex(){
         $DB = new DB();
@@ -62,6 +62,7 @@ class RecoveryController extends Controller
                     'encryption' => 'ssl',  //MAIL_ENCRYPTION加密方式由‘tsl’改成‘ssl’
                 ]);
 
+                //todo 推送模版
                 \Yii::$app->mailer->compose() // compose()渲染一个视图作为邮件内容
                 ->setFrom($config[$v['userId']]['setEmail'])
                     ->setTo($config[$v['userId']]['sendEmail'])

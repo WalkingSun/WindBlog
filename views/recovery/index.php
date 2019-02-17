@@ -81,7 +81,7 @@ use yii\helpers\Url;
             <td ><?=$v['id'];?></td>
             <td ><?=$v['title'];?></td>
             <td ><?=$v['content']?:'--';?></td>
-            <td ><?=$v['href']?:'--';?></td>
+            <td ><a href="<?=$v['href']?>"><?=$v['href']?:'--';?></a></td>
 <!--            <td >--><?//=$v['frequency']?:'--';?><!--</td>-->
             <td ><?=$v['tag']?:'--';?></td>
             <td ><?=$v['type']?:'--';?></td>
