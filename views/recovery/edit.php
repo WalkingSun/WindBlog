@@ -58,15 +58,15 @@ $action = empty($data)?'add':'edit';
                 <span class="glyphicon glyphicon-asterisk star"></span>
                 <label class="explain">请输入标签</label>
             </div>
-            <div class="form-group form-group-sm">
-                <!--    todo  先用文本代替  后期改用插件  -->
-                <label class="control-label col-md-1">频率</label>
-                <div class="col-md-4">
-                    <input class="form-control input-lg" type="text" name="frequency" value="<?=!empty($data['frequency'])?$data['frequency']:'';?>" placeholder="请输入标签">
-                </div>
-                <span class="glyphicon glyphicon-asterisk star"></span>
-                <label class="explain">格式参照 crontab</label>
-            </div>
+<!--            <div class="form-group form-group-sm">-->
+<!--                <!--    todo  先用文本代替  后期改用插件  -->
+<!--                <label class="control-label col-md-1">频率</label>-->
+<!--                <div class="col-md-4">-->
+<!--                    <input class="form-control input-lg" type="text" name="frequency" value="--><?//=!empty($data['frequency'])?$data['frequency']:'';?><!--" placeholder="请输入标签">-->
+<!--                </div>-->
+<!--                <span class="glyphicon glyphicon-asterisk star"></span>-->
+<!--                <label class="explain">格式参照 crontab</label>-->
+<!--            </div>-->
 
 
         </form>

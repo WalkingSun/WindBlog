@@ -93,7 +93,7 @@ AppAsset::register($this);
         window.open('https://walkingsun.github.io/WindBlog/');
     })
     $("#im").click(function(){
-        window.open('http://47.99.189.105:91/?r=v1/im/simple');
+        window.open('http://47.99.189.105:91');
     })
 </script>
 </html>

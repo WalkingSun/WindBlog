@@ -16,17 +16,17 @@
         <form class="form-horizontal ng-pristine ng-valid" method="post" action="" enctype="multipart/form-data">
             <input type="hidden" name="edit" value="1">
             <input type="hidden" name="id" value="<?=!empty($data['id'])?$data['id']:'';?>">
-            <div class="form-group form-group-sm">
-                <label class="control-label col-md-1">频率</label>
-                <div class="col-md-4">
-                    <input class="form-control input-lg" type="text" name="frequency" value="<?=!empty($data['frequency'])?$data['frequency']:'';?>" placeholder="请输入标题">
-                </div>
-                <span class="glyphicon glyphicon-asterisk star"></span>
-                <label class="explain">请输入频率</label>
-            </div>
+<!--            <div class="form-group form-group-sm">-->
+<!--                <label class="control-label col-md-1">频率</label>-->
+<!--                <div class="col-md-4">-->
+<!--                    <input class="form-control input-lg" type="text" name="frequency" value="--><?//=!empty($data['frequency'])?$data['frequency']:'';?><!--" placeholder="请输入标题">-->
+<!--                </div>-->
+<!--                <span class="glyphicon glyphicon-asterisk star"></span>-->
+<!--                <label class="explain">请输入频率</label>-->
+<!--            </div>-->
             <div class="form-group form-group-sm">
                 <label class="control-label col-md-1">发件邮箱</label>
-                <div class="col-md-3">
+                <div class="col-md-4">
                     <input class="form-control input-lg" name="setEmail" value="<?=!empty($data['setEmail'])?$data['setEmail']:'';?>" rows="10" placeholder="内容">
                 </div>
                 <label class="explain">请输入发件邮箱帐号</label>
@@ -46,7 +46,7 @@
                     <input class="form-control input-lg" type="text" name="setPop3" value="<?=!empty($data['setPop3'])?$data['setPop3']:'';?>" placeholder="请输入setPop3">
                 </div>
                 <span class="glyphicon glyphicon-asterisk star"></span>
-<!--                <label class="explain">请输入setPop3</label>-->
+                <label class="explain">请输入POP3</label>
             </div>
 
             <div class="form-group form-group-sm">
@@ -55,7 +55,7 @@
                     <input class="form-control input-lg" type="text" name="setSmtp" value="<?=!empty($data['setSmtp'])?$data['setSmtp']:'';?>" placeholder="请输入地址SMTP">
                 </div>
                 <span class="glyphicon glyphicon-asterisk star"></span>
-<!--                <label class="explain">请输入地址SMTP</label>-->
+                <label class="explain">请输入地址SMTP</label>
             </div>
 
             <div class="form-group form-group-sm">
@@ -72,8 +72,9 @@
                 <div class="checkbox">
                     <?php
                     if($tags){
-                        $setTags = $data?explode(',',$data):[];
-                        foreach ($tags as $v){
+                        $setTags = $data['typeList']?explode(',',$data['typeList']):[];
+                        $typeList = \yii\helpers\ArrayHelper::index($tags,'type');
+                        foreach ($typeList as $v){
                             $checked = in_array($v['type'],$setTags) ? 'checked="checked"':'';
                             echo '<label class="checkboxs"><input type="checkbox"  '.$checked.' value="'.$v['type'].'" name="typeList[]" > '.$v['type'].' </label>';
                         }
@@ -88,8 +89,10 @@
                 <div class="checkbox">
                     <?php
                     if($tags){
-                        $setTags = $data?explode(',',$data):[];
-                        foreach ($tags as $v){
+                        $setTags = $data['tagList']?explode(',',$data['tagList']):[];
+                        $tagList = \yii\helpers\ArrayHelper::index($tags,'tag');
+                        foreach ($tagList as $v){
+                            if( !$v['tag'] ) continue;
                             $checked = in_array($v['tag'],$setTags) ? 'checked="checked"':'';
                             echo '<label class="checkboxs"><input type="checkbox"  '.$checked.' value="'.$v['tag'].'" name="tagList[]" > '.$v['tag'].' </label>';
                         }
@@ -97,6 +100,17 @@
                     ?>
 <!--                    <p class="help-block help-block-error"></p>-->
                 </div>
+            </div>
+
+        </br>
+            <div class="form-group form-group-sm">
+                <label class="control-label col-md-1">启用</label>
+                <div class="col-md-3">
+                    <input class="" type="radio" name="isEnable" value="1" <?=!empty($data['isEnable'])?'checked':''?> >是</input>
+                    <input class="" type="radio" name="isEnable" value="0"  <?=empty($data['isEnable'])?'checked':''?>>否</input>
+                </div>
+                <!--                <span class="glyphicon glyphicon-asterisk star"></span>-->
+                <!--                <label class="explain">启用</label>-->
             </div>
 
         </form>

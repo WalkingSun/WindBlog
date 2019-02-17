@@ -44,4 +44,16 @@ class JpKnowledgeRecovery extends Basic
             'createtime' => 'createtime',
         ];
     }
+
+    public function saveData( $data ){
+        $DB = new DB();
+
+        if( self::find()->where(['title'=>$data['title']])->asArray()->one()  ){
+            return $DB->update(self::tableName(),$data,['title'=>$data['title']]);
+        }else{
+            return $DB->insert(self::tableName(),$data);
+        }
+
+
+    }
 }

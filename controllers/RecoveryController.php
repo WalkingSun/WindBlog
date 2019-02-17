@@ -52,7 +52,7 @@ class RecoveryController extends BaseController
         $orderType = ['createtime'=>SORT_DESC];
         $count = $model::find()->select('id')->where(['userId'=>$this->userId ,'isDelete'=>0])->count();
         $pagination = new \yii\data\Pagination([ 'defaultPageSize' => 10, 'totalCount'=>$count,]);
-        $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType ,$andWhereArray = []);
+        $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType=['id'=>SORT_DESC] ,$andWhereArray = []);
 
         return $this->render('index',['result'=>$this->result,'pagination'=>$pagination,]);
     }
@@ -97,7 +97,7 @@ class RecoveryController extends BaseController
         if( !empty($d['edit']) ){
 
             $upData['userId'] = $this->userId;
-            $upData['frequency'] = $d['frequency'];
+            $upData['frequency'] = !empty($d['frequency'])?$d['frequency']:'';
             $upData['typeList'] = !empty($d['typeList'])?implode(',',$d['typeList']):'';
             $upData['tagList'] = !empty($d['tagList'])?implode(',',$d['tagList']):'';
             $upData['sendEmail'] = $d['sendEmail'];
@@ -105,6 +105,7 @@ class RecoveryController extends BaseController
             $upData['setEmailPwd'] = $d['setEmailPwd'];
             $upData['setPop3'] = $d['setPop3'];
             $upData['setSmtp'] = $d['setSmtp'];
+            $upData['isEnable'] = $d['isEnable'];
 
             $DB= new DB();
             if( $config ){

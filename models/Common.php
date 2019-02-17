@@ -255,4 +255,23 @@ class Common
         return $string;
     }
 
+    public static function sendEmail( $host,$usernamae,$password,$port=25,$encryption,$fromEmail,$toEmail,$title,$content,$body='' ){
+        \Yii::$app->mailer->setTransport([
+            'class' => 'Swift_SmtpTransport',
+            'host' => $host,
+            'username' => $usernamae,
+            'password' => $password,
+            'port' => $port,       //465 阿里对25端口限制
+            'encryption' => $encryption,  //MAIL_ENCRYPTION加密方式由‘tsl’改成‘ssl’
+        ]);
+
+        \Yii::$app->mailer->compose() // compose()渲染一个视图作为邮件内容
+        ->setFrom($fromEmail)
+            ->setTo($toEmail)
+            ->setSubject($title)
+            ->setTextBody($content)
+            ->setHtmlBody($body)
+            ->send();
+
+    }
 }

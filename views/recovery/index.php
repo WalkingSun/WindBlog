@@ -46,6 +46,8 @@ use yii\helpers\Url;
 
 <h4>知识复盘</h4>
 </br>
+<!--todo  知识复盘背景 -->
+
 
 <div class="site-index">
 
@@ -64,9 +66,10 @@ use yii\helpers\Url;
             <th scope="col" style="">标题</th>
             <th  scope="col">内容</th>
             <th  scope="col">连接</th>
-            <th scope="col">频率</th>
+<!--            <th scope="col">频率</th>-->
             <th scope="col">标签</th>
             <th scope="col">分类</th>
+            <th scope="col">备注</th>
             <th scope="col" >创建时间</th>
             <th  scope="col">操作</th>
         </tr>
@@ -79,9 +82,10 @@ use yii\helpers\Url;
             <td ><?=$v['title'];?></td>
             <td ><?=$v['content']?:'--';?></td>
             <td ><?=$v['href']?:'--';?></td>
-            <td ><?=$v['frequency']?:'--';?></td>
+<!--            <td >--><?//=$v['frequency']?:'--';?><!--</td>-->
             <td ><?=$v['tag']?:'--';?></td>
             <td ><?=$v['type']?:'--';?></td>
+            <td ><?=$v['remark']?:'--';?></td>
             <td ><?=$v['createtime']?:'--';?></td>
             <td >
                 <a style="cursor:pointer;" onclick="action('<?=$v['id'];?>',4)">修改</a>

@@ -23,6 +23,9 @@ $config = [
             ],
         ],
         'db' => $db,
+        'mailer' => [
+            'class' => 'yii\swiftmailer\Mailer',
+        ],
     ],
     'params' => $params,
     /*
