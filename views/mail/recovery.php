@@ -107,7 +107,7 @@ use yii\helpers\Html;
             margin: 0em auto 1em;
             font-family: 'Roboto Slab', serif;
         }
-        .newsletter-main input[type="submit"] {
+        #check {
             font-size: 1.2em;
             color: #fff;
             padding: 0.7em 2.5em;
@@ -120,7 +120,7 @@ use yii\helpers\Html;
             cursor:pointer;
             font-family: 'Roboto Slab', serif;
         }
-        .newsletter-main input[type="submit"]:hover {
+        #check:hover {
             background:#4882ce;
         }
         .tlg {
@@ -315,7 +315,7 @@ use yii\helpers\Html;
         <a href="#" class="signup">查看连接进入详情</a>
         <form>
             <input type="text" readonly value="<?=$data['href']?>">
-            <a href="<?=$data['href']?>"><input type="submit" value="查看" ></a>
+            <a href="<?=$data['href']?>" id="check">查看</a>
         </form>
         <div class="design">
             <img src="<?=Yii::$app->params['hostname'].'/img/design.png'?>">
