@@ -26,6 +26,8 @@ class RecoveryController extends Controller
         $users = $userModel::find()->select([])->where(['isDelete'=>0])->asArray()->all();
         array_push($users,['userId'=>'super','username'=>'super']);
 
+        $connection = \Yii::$app->db;
+        $transaction = $connection->beginTransaction();
         try{
             $config = $JpKnowledgeRecoveryConfigModel::find()->where(['isDelete'=>0])->asArray()->indexBy('userId')->all();
                 foreach ($users as $v){
@@ -62,19 +64,21 @@ class RecoveryController extends Controller
                     'encryption' => 'ssl',  //MAIL_ENCRYPTION加密方式由‘tsl’改成‘ssl’
                 ]);
 
-                //todo 推送模版
-                \Yii::$app->mailer->compose() // compose()渲染一个视图作为邮件内容
+                // 推送模版
+                \Yii::$app->mailer->compose('recovery',['data'=>$sendMsg]) // compose()渲染一个视图作为邮件内容
                 ->setFrom($config[$v['userId']]['setEmail'])
                     ->setTo($config[$v['userId']]['sendEmail'])
                     ->setSubject($sendMsg['title'])
                     ->setTextBody($sendMsg['content'])
-                    ->setHtmlBody("<a href='{$sendMsg['href']}'>{$sendMsg['title']}</a>")
+//                    ->setHtmlBody("<a href='{$sendMsg['href']}'>{$sendMsg['title']}</a>")
                     ->send();
 
                 $DB->insert($JpKnowledgeRecoveryLog::tableName(),['userId'=>$v['userId'],'krId'=>$sendMsg['id'],'createtime'=>date('Y-m-d H:i:s'),'remark'=>'发送论题']);
 
             }
+            $transaction->commit();
         }catch (\Exception $e){
+            $transaction->rollBack();
             var_dump($e->getMessage());
             Common::sendEmail($config['super']['setSmtp'],$config['super']['setEmail'],$config['super']['setEmailPwd'],'465','ssl',$config['super']['setEmail'],$config['super']['sendEmail'],'错误信息',$e->getMessage(),$e->getMessage());
         }

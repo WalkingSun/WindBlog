@@ -10,6 +10,10 @@ $config = [
     'basePath' => dirname(__DIR__),
     'bootstrap' => ['log'],
     'controllerNamespace' => 'app\commands',
+    'aliases' => [
+        '@views' => dirname(__DIR__).'/views',
+        '@web' => dirname(__DIR__).'/web',
+    ],
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',
@@ -25,7 +29,13 @@ $config = [
         'db' => $db,
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
+            'viewPath' => '@views/mail',
         ],
+//        'urlManager' => [
+//
+//            'baseUrl' => 'http://47.99.189.105:81/'
+//
+//        ]
     ],
     'params' => $params,
     /*
