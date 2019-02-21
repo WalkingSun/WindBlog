@@ -138,7 +138,8 @@ dns:
 
 > 可以看出docker-compose落地到具体的项目中，当具体的项目需要依赖的环境发生变化或者部署生产，可以在这些项目根目录中建立docker-compose.yml，解决如何管理的问题
 
-> 问题：docker-compose创建容器会发现容器name和定义不一致，没太明白为啥?但是用docker-compose可以管理
+
+> 问题：docker-compose创建容器会发现容器name和定义不一致，但是用docker-compose可以管理，没太明白为啥?
 
 - docker-compose 基本包括了docker的基本命令：
 ```
