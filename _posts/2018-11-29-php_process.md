@@ -3,7 +3,7 @@ layout: blog
 title: PHP安装posix、pctl扩展
 categories: [PHP, 遇到问题]
 description:
-keywords: posix, 遇到问题
+keywords: posix,遇到问题
 cnblogsClass: \[Markdown\],\[随笔分类\]遇到问题
 oschinaClass: \[Markdown\],PHP,服务器,日常记录
 csdnClass: \[Markdown\]
