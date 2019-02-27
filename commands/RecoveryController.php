@@ -6,6 +6,7 @@ use app\models\Common;
 use app\models\DB;
 use app\models\JpBlogConfig;
 use app\models\MetaWeblog;
+use PHPHtmlParser\Dom;
 use yii\console\Controller;
 
 /**
@@ -30,7 +31,7 @@ class RecoveryController extends Controller
         $transaction = $connection->beginTransaction();
         try{
             $config = $JpKnowledgeRecoveryConfigModel::find()->where(['isDelete'=>0])->asArray()->indexBy('userId')->all();
-                foreach ($users as $v){
+            foreach ($users as $v){
                 if( !(isset($config[$v['userId']])  && $config[$v['userId']]['sendEmail'] && $config[$v['userId']]['setEmail'] && $config[$v['userId']]['setEmailPwd'] ) )
                 {
                     Common::addLog('error.log',$v['username'].'邮箱设置不合法');
@@ -49,7 +50,7 @@ class RecoveryController extends Controller
                         if( isset($logs[$v['id']]) ) unset($data[$k]);
                     }
                 }
-               if( !$data ) continue;
+                if( !$data ) continue;
                 sort($data);
                 $randnum = rand(0,count($data)-1);
                 $sendMsg = $data[$randnum];
@@ -108,5 +109,64 @@ class RecoveryController extends Controller
             }
         }
         exit('success!');
+    }
+
+    //segmentfault 收藏同步知识复盘
+    public function actionStarsSync(){
+
+        $data = [];
+        $url = "https://segmentfault.com/u/jueze/bookmarks";
+
+        $dom = new Dom();
+        $dom->load( $this->httpGet($url) );
+        $lists = $dom->find('.profile-mine__content li');
+        if( $lists){
+            foreach ( $lists as $v){
+                $tagHref = $v->find('.profile-mine__content--title')->href;
+                $tag = $v->find('.profile-mine__content--title')->text;
+                $tagHref = 'https://segmentfault.com'.$tagHref;
+                $articles = $this->httpGet($tagHref);
+                $articles = $dom->load($articles);
+                $article = $articles->find('.title');
+                foreach ($article as $v1){
+                    $v1=$v1->find('a');
+                    $data[] = ['userId'=>'super','title'=>$v1->text,'content'=>'','href'=>'https://segmentfault.com'.$v1->href,'tag'=>$tag,'type'=>'','remark'=>'来源SegmentFault','createtime'=>date('Y-m-d H:i:s')];
+                }
+            }
+        }
+
+        $model_new =  new \app\models\JpKnowledgeRecovery;
+        foreach ( $data as $v ){
+            $model_new->saveData($v);
+        }
+        var_dump('success');
+
+    }
+
+    protected function httpGet($url){
+        $curl = curl_init();
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => $url,
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => "",
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 30,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => "GET",
+            CURLOPT_POSTFIELDS => "",
+            CURLOPT_HTTPHEADER => array(
+                "Postman-Token: d42a1ecc-b2fc-4221-8792-50786434efff",
+                "cache-control: no-cache"
+            ),
+        ));
+        $response = curl_exec($curl);
+        $err = curl_error($curl);
+        curl_close($curl);
+        if ($err) {
+            var_dump("cURL Error #:" . $err );
+            Common::addLog('error.log',"cURL Error #:" . $err,1);
+        }
+
+        return $response;
     }
 }

@@ -121,7 +121,7 @@ $cnblogName = !empty($blogConfig['blogid'])?$blogConfig['blogid']:'';
             'prevPageLabel' => '《',
             'nextPageLabel' => '》',
             'lastPageLabel' => '尾页',
-            'maxButtonCount' => 5
+            'maxButtonCount' => 10
         ]);
         ?>
 
