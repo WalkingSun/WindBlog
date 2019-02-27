@@ -61,3 +61,12 @@ docker inspect -f '{{.State.Pid}}' <containerid>
 查看连接
 
 nsenter -t 1840 -n netstat   #1840为上面操作获取的pid
+
+# 容器间通信
+参考文章 https://birdben.github.io/2017/05/02/Docker/Docker实战（二十七）Docker容器之间的通信/
+
+新版docker，在容器B run中使用 --link 【容器A】，这样在容器B中就能与容器A建立连接，如需要用到容器A的ip，进行连接服务：
+```
+# mysql是容器名
+mysql:3306/users?user=root&password=123456
+```
