@@ -13,26 +13,8 @@ chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
 
-<!--
-cnblogsClass: 【你的博客园的分类，以逗号分隔，注意\[Markdown\]必须项】
-oschinaClass: 【你的开源中国的分类】
-csdnClass: 【你的CSDN分类】
-...
+# 安装问题
 
-注：由于'['、']'是jekyll的关键字，故在分类中请加上'\'；
-
-可以在网站下添加操作看到你的博客分类，案列是自己的分类，需要自行修改。
-添加这些分类的目的，是可以自动同步到对应的博客网站，新建博客以此模版文件复制创建markdown文件，如果你不需要，请跳过此步。
-
-
-图片地址存放参考：
-本地存放路径/WindBlog/gh-pages/images/blog/b.png
-git上：
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/b.png)
-
--->
-
-碰到个问题
 ```
 PHP Fatal error: Uncaught Error: Call to undefined function tsingsun\swoole\server\posix_kill() in /data/app/im/vendor/tsingsun/yii2-swoole/src/server/Server.php:248
 ```
@@ -46,4 +28,16 @@ yum install php71w-process  #如果版本是5.6,php56w-process
 yum install php-process
 ```
 一直报错，坑一笔，用上面的方法指定版本轻松安装。
+
+# PECL 扩展管理工具
+PECL 的全称是 The PHP Extension Community Library ，是一个开放的并通过 PEAR(PHP Extension and Application Repository，PHP 扩展和应用仓库)打包格式来打包安装的 PHP扩展库仓库。通过 PEAR 的 Package Manager 的安装管理方式，可以对 PECL 模块进行下载和安装。
+```
+curl -o go-pear.php http://pear.php.net/go-pear.phar
+chmod +x go-pear.php
+/usr/local/php-7.1.13/bin/php go-pear.php
+```
+如安装swoole：
+```
+pecl install swoole
+```
 
