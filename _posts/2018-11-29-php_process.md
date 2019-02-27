@@ -40,4 +40,7 @@ chmod +x go-pear.php
 ```
 pecl install swoole
 ```
-
+升级扩展
+```
+pecl upgrade swoole
+```
