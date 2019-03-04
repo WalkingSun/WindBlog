@@ -299,44 +299,8 @@ class MetaweblogController extends BaseController
 
     protected function save( MetaWeblog $target,$blog ,$blogName='',$queue){
         $model = 'app\models\JpBlogQueue';
-        $modelBlogRecord = 'app\models\JpBlogRecord';
-        $DB = new DB();
-
-        $blogIteam = $blogName?$blog[$blogName.'Id']:'';
-        $content = $blog['content']?:file_get_contents($blog['fileurl']);
-        $content = preg_replace('/\---.*?---/si', '', $content,1);    //过滤 --- jekyll描述信息 的内容
-//        Common::addLog('error.log',$content);die;
-        //xml替换不允许字符 参考： http://note.youdao.com/noteshare?id=f303e349322890f31aaea3bc84345d88&sub=wcp1529043319262675
-        $content = str_replace('&','&amp;',$content);
-        $content = str_replace('"','&quot;',$content);
-        $content = str_replace("'",'&apos;',$content);
-        $content = str_replace(">",'&gt;',$content);
-        $content = str_replace("<",'&lt;',$content);
-        $categories = $blog['cnblogsType']? explode(',',$blog['cnblogsType']) : [ '[Markdown]' ];
-        $params = [
-            'title'=> $blog['title'],
-            'description'=> $content,
-            'categories'=> $categories            //编辑器格式+分类
-        ];
-        if( !$blogIteam ){
-            if( $target->newPost( $params ) ){
-                $blog_id = $target->getBlogId();
-                $DB->update($modelBlogRecord::tableName(),[$blogName.'Id'=>$blog_id],['id'=>$blog['id']]);
-                $DB->update($model::tableName(),['publishStatus'=>2,'response'=>'success'],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布成功
-            }else{
-                $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$target->getErrorMessage()],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布失败
-                throw new \Exception($target->getErrorMessage(),501);
-            }
-        }else{
-            if( !$target->editPost( $blogIteam,$params ) ){
-                $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$target->getErrorMessage()],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布失败
-                throw new \Exception($target->getErrorMessage(),501);
-            }else{
-                $DB->update($modelBlogRecord::tableName(),[$blogName.'Id'=>$blogIteam],['id'=>$blog['id']]);
-                $DB->update($model::tableName(),['publishStatus'=>2,'response'=>'success'],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布成功
-            }
-        }
-        return ;
+        $model_new = new $model;
+        return $model_new->sync( $this->userId, $target,$blog ,$blogName,$queue );
     }
 
 }
