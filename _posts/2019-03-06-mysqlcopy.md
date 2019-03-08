@@ -16,7 +16,7 @@ sinaClass: \[Markdown\]
 #概念
 Mysql主从工作示意图：
 
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog//website/WindBlog/images/blog/WX20190308-150553@2x.png)
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WX20190308-150553@2x.png)
 
 
 #实施
