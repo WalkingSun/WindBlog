@@ -13,41 +13,42 @@ chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
 
-<!--
-title内容带draft标识草稿
+#概念
+Mysql主从工作示意图：
 
-cnblogsClass: 【你的博客园的分类，以逗号分隔，注意\[Markdown\]必须项】
-oschinaClass: 【你的开源中国的分类】
-csdnClass: 【你的CSDN分类】
-...
-
-注：由于'['、']'是jekyll的关键字，故在分类中请加上'\'；
-
-可以在网站下添加操作看到你的博客分类，案列是自己的分类，需要自行修改。
-添加这些分类的目的，是可以自动同步到对应的博客网站，新建博客以此模版文件复制创建markdown文件，如果你不需要，请跳过此步。
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog//website/WindBlog/images/blog/WX20190308-150553@2x.png)
 
 
-图片地址存放参考：
-本地存放路径/WindBlog/gh-pages/images/blog/b.png
-git上：
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/b.png)
-
--->
-
-
+#实施
+## 环境
 mysql版本8.0.5,使用docker模拟，docker-compose配置如下：
 
 ```
+mysql_master:
+      image:  mysql:latest
+      ports:
+        - "3306:3306"
+# hostname 当前容器内可使用        
+      hostname: msmaster
+      volumes:
+        - /data/conf/mysql/conf:/etc/mysql/conf.d
+        - /data/conf/mysql/data:/var/lib/mysql
+      environment:
+            MYSQL_ROOT_PASSWORD: 123456
+ mysql_slave:
+      image:  mysql:latest
+# links 当前容器与mysql_master建立连接，容器内/etc/hosts，可以查看到mysql_master的ip配置
+      links:
+         - mysql_master:mysql_master
+      ports:
+        - "3307:3306"
+      hostname: msslave
+      volumes:
+        - /data/conf/mysql_slave/conf:/etc/mysql/conf.d
+        - /data/conf/mysql_slave/data:/var/lib/mysql
+      environment:
+            MYSQL_ROOT_PASSWORD: 123456
 
-
-```
-
-**遇到坑**
-mysql8 root无grant权限，必须先建账户，再赋权限
-
-```
-CREATE USER 'root'@'%' IDENTIFIED BY '123456';
-GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 ```
 
 
@@ -55,11 +56,11 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 mysql主服务器为从库创建账户
 
 ```
-#创建账户
-CREATE USER 'repl'@'mysql_slave' IDENTIFIED BY 'p4ssword';
+#创建账户 为了方便，没有填从库具体域名，%任意
+CREATE USER 'repl'@'%' IDENTIFIED BY 'p4ssword';
 
 #编码方式
-alter user 'repl'@'mysql_slave' IDENTIFIED with mysql_native_password  by 'p4ssword';
+alter user 'repl'@'%' IDENTIFIED with mysql_native_password  by 'p4ssword';
 
 #分配权限 *.* 代表 库名.表名（*代表全部）
 GRANT REPLICATION SLAVE,REPLICATION CLIENT ON *.* TO 'repl'@'msslave';
@@ -72,26 +73,28 @@ mysql从服务器为主库创建账户
 #创建账户
 CREATE USER 'repl'@'mysql_master' IDENTIFIED BY 'p4ssword';
 
-alter user 'repl'@'mysql_slave' IDENTIFIED with mysql_native_password  by 'p4ssword';
+alter user 'repl'@'mysql_master' IDENTIFIED with mysql_native_password  by 'p4ssword';
 
 #分配权限 *.* 代表 库名.表名（*代表全部）
 GRANT REPLICATION SLAVE,REPLICATION CLIENT ON *.* TO 'repl'@'msmaster';
 
 ```
 
+从库配置账号的目的，为方便提供主从切换。
+
 ## 配置主库从库
 
 master
 ```
 [mysqld]
-log_bin      = mysql_bin
+log_bin      = mysql-bin
 server_id    = 10
 ```
 
 
 slave
 ```
-log_bin           = mysql_bin
+log_bin           = mysql-bin
 server_id         = 2
 # 中继日志的位置和命名
 relay_log         = /var/lib/mysql/mysql-relay-bin
@@ -108,14 +111,15 @@ CHANGE MASTER TO MASTER_HOST='mysql_master',
 MASTER_USER='repl',
 MASTER_PASSWORD='p4ssword',
 MASTER_LOG_FILE='mysql-bin.000001',
-#设置0，从日志开头读起
-MASTER_LOG_POS=0;
+MASTER_LOG_POS=0;    #设置0，从日志开头读起
 
 ```
 
+查看从库状态：
 SHOW SLAVE STATUS\G;
 
-/website/WindBlog/images/blog/WX20190307-160133@2x.png
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WX20190307-160133@2x.png)
+
 
 Slave_IO_Running Slave_SQL_Running Slave_IO_State 三列显示还未开始备库复制
 
@@ -155,9 +159,35 @@ Command: Query
 备库的IO线程和SQL线程状态；
 
 切换到主库查看
+```
+*************************** 2. row ***************************
+     Id: 7
+   User: repl
+   Host: 172.17.0.6:51074
+     db: NULL
+Command: Binlog Dump
+   Time: 2978
+  State: Master has sent all binlog to slave; waiting for more updates
+   Info: NULL
+```
+
+配置成功！
+
+## 从另一个服务器开始复制
+主从复制已经配置好，主库修改数据，从库拉去二进制文件发生错误： Last_SQL_Error: Error executing row event: 'Unknown database 'jump''，原因在复制之前主从数据库数据不一致。
+
+需要初始化备库，或者从其他服务器克隆数据到备库。
 
 
-mysql容器内 cat /etc/hosts  查看网络
 
-遇到问题
- Last_IO_Error: error connecting to master 'repl@mysql_master:3306' - retry-time: 60  retries: 1
+
+## 遇到问题
+1） mysql8 root无grant权限，必须先建账户，再赋权限
+
+```
+CREATE USER 'root'@'%' IDENTIFIED BY '123456';
+GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+```
+2） Last_IO_Error: error connecting to master 'repl@mysql_master:3306' - retry-time: 60  retries: 1
+网络不通，检查hosts是否存在
+
