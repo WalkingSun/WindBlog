@@ -87,12 +87,13 @@ GRANT REPLICATION SLAVE,REPLICATION CLIENT ON *.* TO 'repl'@'msmaster';
 从库配置账号的目的，为方便提供主从切换。
 
 ## 配置主库从库
+配置文件下 /mysql/conf/ /mysql_slave/conf/
 
 master
 ```
 [mysqld]
 log_bin      = mysql-bin
-server_id    = 10
+server_id    = 10  #设置server-id，必须唯一
 ```
 
 
