@@ -36,6 +36,7 @@ disable_functions 限制程序使用一些可以直接执行系统命令的函�
 file_uploads ， PHP 文件上传功能记录 file_uploads 指令决定是否启用，默认值： On 。
 
 2. 以下程序运行结果：（     ）
+
 ```php
    <?
           $str = "LAMP";
@@ -60,12 +61,12 @@ A. str > str1
 B. str < str1
 c. str = str1
 D. str <> str1
-
 ```
 
 strmp（$str1，$str2）函数的意思，比较两个字符串的大小,比较时计算了两个字符串相差（不同）字符的个数一起作为返回。结果是-7。
 
 3. 代码运行后的输出结果为（ ）
+
 ```php
 <?php
    $d=mktime(9, 12, 31, 6, 10, 2015);
@@ -81,6 +82,6 @@ strmp（$str1，$str2）函数的意思，比较两个字符串的大小,比较�
    D. 创建日期是 2015-10-06 09:12:31pm
    
 ```php
- mktime — 取得一个日期的 Unix 时间戳;  即：时，分，秒，月，日，年。
- int mktime ([ int $hour = date("H") [, int $minute = date("i") [, int $second = date("s") [, int$month = date("n") [, int $day = date("j") [, int $year = date("Y") [, int $is_dst = -1 ]]]]]]] )
+mktime — 取得一个日期的 Unix 时间戳;  即：时，分，秒，月，日，年。
+int mktime ([ int $hour = date("H") [, int $minute = date("i") [, int $second = date("s") [, int$month = date("n") [, int $day = date("j") [, int $year = date("Y") [, int $is_dst = -1 ]]]]]]] )
 ```
