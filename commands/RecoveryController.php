@@ -80,7 +80,7 @@ class RecoveryController extends Controller
             $transaction->commit();
         }catch (\Exception $e){
             $transaction->rollBack();
-            var_dump($e->getMessage());
+            var_dump( $e->getLine(),$e->getMessage());
             Common::sendEmail($config['super']['setSmtp'],$config['super']['setEmail'],$config['super']['setEmailPwd'],'465','ssl',$config['super']['setEmail'],$config['super']['sendEmail'],'错误信息',$e->getMessage(),$e->getMessage());
         }
 
