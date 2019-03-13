@@ -14,6 +14,11 @@ sinaClass: \[Markdown\]
 ---
 
 # DNS不可用
+如出现这样的错误：
+```
+ERROR: error pulling image configuration: Get https://production.cloudflare.docker.com/registry-v2/docker/registry/v2/blobs/sha256/88/881bd08c0b08234bd19136957f15e4301097f4646c1e700f7fea26e41fc40069/data?verify=1552449302-pJVj4p2TS9sUquWEjuDZgIA0f7E%3D: dial tcp: lookup production.cloudflare.docker.com on 10.0.2.3:53: no such host
+```
+
 进入 /etc/resolv.conf  添加
 ```
 nameserver 8.8.8.8
