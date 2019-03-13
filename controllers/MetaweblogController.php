@@ -124,6 +124,7 @@ class MetaweblogController extends BaseController
             $insertData['chinaunixId'] = '';
             $insertData['createtime'] = date('Y-m-d');
             $insertData['userId'] = $this->userId ;
+            $insertData['isDelete'] = 0;
 
             //添加分类
             if( $blogCates = $d['cnblogsType'] ){
