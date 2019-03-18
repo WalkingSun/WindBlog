@@ -183,7 +183,19 @@ Command: Binlog Dump
 
 需要初始化备库，或者从其他服务器克隆数据到备库。
 
+(1)主数据库进行锁表操作，不让数据再进行写入动作
+mysql> FLUSH TABLES WITH READ LOCK;
 
+(2)查看主数据库状态
+mysql> show master status;
+
+(3)记录下 FILE 及 Position 的值。
+将主服务器的数据文件（整个/opt/mysql/data目录）复制到从服务器，建议通过tar归档压缩后再传到从服务器解压。
+
+(4)取消主数据库锁定
+mysql> UNLOCK TABLES;
+
+## 负载均衡
 
 
 ## 遇到问题
