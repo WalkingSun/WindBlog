@@ -110,3 +110,15 @@ A. 整形 B. 浮点型 C. 数组 D. 字符串
 调用getdate函数的返回值
 Array ( [seconds] => 37 [minutes] => 34 [hours] => 15 [mday] => 19 [wday] => 3 [mon] => 8 [year] => 2015 [yday] => 230 [weekday] => Wednesday [month] => August [0] => 1439969677 )
 ```
+
+6. 关于mysql_pconnect说法正确的是?( )
+
+ A. 与数据库进行多连接 B. 与mysql_connect功能相同 C. 与＠mysql_connect功能相同 D.与数据库建立持久连接
+ 
+```
+mysql_pconnect() 函数打开一个到 MySQL 服务器的持久连接。
+
+mysql_pconnect() 和 mysql_connect() 非常相似，虽然只多了一个P, 但有两个主要区别：
+
+当连接的时候本函数将先尝试寻找一个在同一个主机上用同样的用户名和密码已经打开的（持久）连接，如果找到，则返回此连接标识而不打开新连接。其次，当脚本执行完毕后到 SQL 服务器的连接不会被关闭，此连接将保持打开以备以 后使用（ mysql_close() 不会关闭由 mysql_pconnect() 建立的连接）
+```
