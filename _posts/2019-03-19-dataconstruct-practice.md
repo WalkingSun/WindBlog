@@ -47,8 +47,17 @@ class ArrayClass:
         self.size +=1
         return self.arr
 
+    # 数组编辑
+    def set(self,index,value):
+        self.arr[index]=value;
+        return self.arr[index]
+
     # 数组查询
-    def select(self):
+    def select(self,index=False):
+        if(index and index>=self.len):
+            return False
+        if(index):
+            return self.arr[index]
         return self.arr
 
     # 数组检索
