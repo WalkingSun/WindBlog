@@ -122,3 +122,25 @@ mysql_pconnect() 和 mysql_connect() 非常相似，虽然只多了一个P, 但�
 
 当连接的时候本函数将先尝试寻找一个在同一个主机上用同样的用户名和密码已经打开的（持久）连接，如果找到，则返回此连接标识而不打开新连接。其次，当脚本执行完毕后到 SQL 服务器的连接不会被关闭，此连接将保持打开以备以 后使用（ mysql_close() 不会关闭由 mysql_pconnect() 建立的连接）
 ```
+
+7. 请看代码，数据库关闭指令将关闭哪个连接标识？(    )
+  
+```
+   <?php
+       $link1 =mysql_connect("localhost","root","");
+       $link2 = mysql_connect("localhost","root","");
+       mysql_close();
+   ?>
+
+```
+
+A. $link1   B. $link2   C. 全部关闭  D. 报错
+
+
+```
+【就近原则】
+mysql_close() 关闭指定的连接标识所关联的到 MySQL 服务器的非持久连接。
+如果没有指定 link_identifier，则关闭上一个打开的连接。
+
+bool mysql_close ([ resource $link_identifier = NULL ] )
+```
