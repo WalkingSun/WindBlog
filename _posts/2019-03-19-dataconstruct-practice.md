@@ -162,7 +162,37 @@ class Solution {
    输出: true
 
 解题思路，运用栈：
+```php
+<?php
+class Solution {
 
+    /**
+     * @param String $s
+     * @return Boolean
+     */
+    function isValid($s) {
+        $ss=[];
+        $length = strlen($s);
+        for($i=0;$i<$length;$i++){
+            $t=substr($s,$i,1);
+            if($t=='('||$t=='['||$t=='{'){
+                array_push($ss,$t);
+            }else{
+                if(empty($ss)) return false;
+                $end = end($ss);
+               if( ($end=='(' && $t==')') || ($end=='[' && $t==']') || ($end=='{' && $t=='}') ){
+                   array_pop($ss);
+               }else{
+                   return false;
+               }
+               
+            }
+        }
+        if($ss) return false;
+        return true;
+    }
+}
+```
 
 
 
@@ -188,7 +218,7 @@ class Solution {
        对于num1中的数字4，第二个数组中没有下一个更大的数字，因此输出 -1。
 
 ```php
-
+<?php
 class Solution {
 
     /**
@@ -204,8 +234,10 @@ class Solution {
             $map[$nums2[$i]]=-1;
             
             while(++$k<$n){
-                 if($nums2[$k]>$nums2[$i])
+                 if($nums2[$k]>$nums2[$i]){
                     $map[$nums2[$i]]=$nums2[$k];
+                    break;
+                 }   
             }   
         }
         
@@ -213,6 +245,12 @@ class Solution {
         for($i=0;$i<count($nums1);$i++){
             $r[]=$map[$nums1[$i]];
         }
+        //测试用例没通过，搞不懂
+        //  while($num=array_pop($nums1)){
+                //       $r[]=$map[$num];
+                // }
+        //array_shift($r);        
+                
         return $r;
         
         
