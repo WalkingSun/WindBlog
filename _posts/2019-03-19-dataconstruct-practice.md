@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 数据结构练习（一）【draft】
+title: 数据结构算法练习（一）
 categories: [数据结构, 算法]
 description: some word here
 keywords: 数据结构
