@@ -21,14 +21,13 @@ class MetaweblogController extends Controller
         $modelBlogRecord = 'app\models\JpBlogRecord';
         $data = $model::find()->where(['publishStatus'=>0])->asArray()->all();
 
-        $this->userConfig = \app\models\JpBlogConfig::find()->select([])->asArray()->indexBy('userId')->all();
-
+        $this->userConfig = \app\models\JpBlogConfig::find()->select([])->asArray()->indexBy(function($r){return $r['userId'].'_'.$r['blogType'];})->all();
         $DB = new DB();
 
         if( $data ){
             foreach ($data as $v){
                 $blog = $modelBlogRecord::find()->where(['id'=>$v['blogId']])->asArray()->one();
-                $blogConfig = $this->userConfig[$blog['userId']];
+                $blogConfig = $this->userConfig[$blog['userId'].'_'.$v['blogType']];
 
                 $blogName = Common::blogParamName($v['blogType']);
                 $blogid = $blogConfig['blogid']?:'';
@@ -63,6 +62,7 @@ class MetaweblogController extends Controller
 
                     $transaction->commit();
                 }catch (\Exception $e){
+                    var_dump($e->getMessage());die;
                     Common::addLog('error.log',$e->getMessage());
                     $transaction->rollback();
                     $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$e->getMessage()],['queueId'=>$v['queueId']]);                   //更新队列状态  发布失败
