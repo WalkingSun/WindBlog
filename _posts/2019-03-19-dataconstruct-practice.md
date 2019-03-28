@@ -13,8 +13,10 @@ chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
 
+# 数组 栈 队列 链表
 
 1. 定义数组类实现动态定义长度，添加，插入，编辑，查询，搜索，排序
+
 ```python
 #!/usr/bin/python
 # -*- coding: UTF-8 -*-
@@ -362,6 +364,7 @@ class Solution {
    输出: 1->2->3
    
    解决：移动节点next指针，进行判断。复杂度O(n)
+   
 ```php
 <?php
 /**
