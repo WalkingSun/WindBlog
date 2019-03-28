@@ -70,6 +70,7 @@ class JpBlogQueue extends Basic
 
         $blogIteam = $blogName?$blog[$blogName.'Id']:'';
         $content = $blog['content']?:file_get_contents($blog['fileurl']);
+        if( $content==false ) throw new \Exception("{$blog['fileurl']} 404 not found");
         $content = preg_replace('/\---.*?---/si', '', $content,1);    //过滤 --- jekyll描述信息 的内容
 
         //xml替换不允许字符 参考： http://note.youdao.com/noteshare?id=f303e349322890f31aaea3bc84345d88&sub=wcp1529043319262675

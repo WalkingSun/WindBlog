@@ -36,11 +36,11 @@ class MetaweblogController extends Controller
                 $connection = \Yii::$app->db;
                 $transaction = $connection->beginTransaction();
                 try{
+
                     $blogMetaweblogUrl = Common::MetaweblogUrl($v['blogType'],$blogid);
                     $target = new MetaWeblog( $blogMetaweblogUrl );
                     $target->setAuth( $blogConfig['username'],$blogConfig['password'] );
-
-                    $DB->update($model::tableName(),['publishStatus'=>1],['queueId'=>$v['queueId']]);   //更新队列状态  进行中
+                    $DB->update('JP_blogQueue',['publishStatus'=>1,'response'=>'continue...'],['queueId'=>$v['queueId']]);   //更新队列状态  进行中
 
                     #执行动作，1 创建，2 更新，3 删除
                     if( $v['action']==1 || $v['action']==2 ){
@@ -60,10 +60,12 @@ class MetaweblogController extends Controller
                         default:
                             continue;
                     }
+
                     $transaction->commit();
                 }catch (\Exception $e){
                     Common::addLog('error.log',$e->getMessage());
                     $transaction->rollback();
+                    $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$e->getMessage()],['queueId'=>$v['queueId']]);                   //更新队列状态  发布失败
                 }
             }
         }
