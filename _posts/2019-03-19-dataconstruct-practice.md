@@ -346,3 +346,49 @@ class Solution {
     }
 }
 ```
+
+6. 给定一个排序链表，删除所有重复的元素，使得每个元素只出现一次。
+   
+   示例 1:
+   
+   输入: 1->1->2
+   
+   输出: 1->2
+   
+   示例 2:
+   
+   输入: 1->1->2->3->3
+   
+   输出: 1->2->3
+   
+   解决：移动节点next指针，进行判断。复杂度O(n)
+```php
+<?php
+/**
+ * Definition for a singly-linked list.
+ * class ListNode {
+ *     public $val = 0;
+ *     public $next = null;
+ *     function __construct($val) { $this->val = $val; }
+ * }
+ */
+class Solution {
+
+    /**
+     * @param ListNode $head
+     * @return ListNode
+     */
+    function deleteDuplicates($head) {
+        $pre = $head;
+        while( $pre->next!==null ){
+            if($pre->val==$pre->next->val){
+                $pre->next=$pre->next?$pre->next->next:null;
+            }else{
+               $pre=$pre->next; 
+            }
+        }
+        
+        return $head;
+    }
+}
+```
