@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: python基础【draft】
+title: python基础
 categories: [python]
 description: python基础
 keywords: python
@@ -212,6 +212,41 @@ and 检查多个条件，全部需命中
 
 or  检查多个条件，一个命中
 
+- while
+
+不断的运行，直到条件不满足为止
+
+break 退出循环
+
+continue 跳过本次操作
+
+在遍历列表的同时取修改数据，使用while更方便。
+
+如：删除包含特定值的所有列表元素
+```python
+perts = ['dog','cat',dog','goldfish','cat','rabbit','cat']
+print(perts)
+while 'cat' in perts:
+    perts.remove('cat')
+print(perts)
+```
+
+如：用户输入来填充字典
+```python
+reponse = {}
+polling_active=True
+while polling_active:
+    name = input("\nwhat's your name")
+    res = input("which mountain would you like to climb someday")
+    reponse[name] = res
+    repeat = input("Would you like let another person repond?(y/n)")
+    if repeat=='n'
+      polling_active = False
+
+print("\n -- poll reponse")
+for name,res in reponse:
+    print("name: "+name+" res:"+res)
+```
 
 # 输入输出
 input()让程序暂停运行，等待用户输入一些文本。获取用户输入后，python将其存储在一个变量。
@@ -220,8 +255,62 @@ message = input("tell me your name")
 print("welconme,"+message)
 ```
 
+# 运算符
+ % 取模 / 取余
 
-# 常见函数
+# 函数
+
+## 定义函数
+关键字def定义
+```python
+def getuser():
+    //函数体
+```
+
+- 使用任意数量的关键字实参
+
+```python
+# 形参**user_info 代表键值对构成的字典
+def build_profile( first, last, **user_info ):
+
+```
+
+## 导入文件函数
+- import pizza 打开pizza.py，并将其中所有的函数复制到当前程序中。
+
+使用某个函数：pizza.function_name()
+
+- 导入特定函数
+
+from moudle_name import function_name
+
+多个函数
+
+from moudle_name import function_0,fuction_1,function_2
+
+调用函数：moudle_name.function_name
+
+
+- 使用as给函数指定别名
+
+from pizza import make_pizza as mp
+
+调用函数：mp(1,2)
+
+- 使用as给模块指定别名
+
+import pizza as p
+
+调用函数：p.make_pizza(1,2)
+
+- 导入模块中的所有函数
+
+from pizza import *
+
+调用函数：
+
+make_pizza(1,2)
+
 
 ## range()
 
@@ -246,6 +335,8 @@ sum(number)
 
 ```
 
+## int
+将字符串转换为int
 
 
 # 注意
