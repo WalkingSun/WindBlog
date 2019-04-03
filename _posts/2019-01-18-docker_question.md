@@ -85,3 +85,18 @@ docker cp 容器名：要拷贝的文件在容器里面的路径       要拷贝
 - 从宿主机拷贝数据到容器
 
 docker cp 要拷贝的文件路径 容器名：要拷贝到容器里面对应的路径
+
+# php连接docker mysql 8.0出错authentication method unknown
+```
+SQLSTATE[HY000] [2054] The server requested authentication method unknown to the client
+```
+
+MySQL 8默认使用了新的密码验证插件：caching_sha2_password，而之前的PHP版本中所带的mysqlnd无法支持这种验证
+
+解决方法两种，一种是升级PHP支持mysql8的新验证插件，另一种mysql验证方式降级。
+
+mysql配置文件 my.cnf添加配置：
+```
+default_authentication_plugin=mysql_native_password
+```
+
