@@ -62,7 +62,7 @@ class MetaweblogController extends Controller
 
                     $transaction->commit();
                 }catch (\Exception $e){
-                    var_dump($e->getMessage());die;
+                    var_dump($e->getMessage());
                     Common::addLog('error.log',$e->getMessage());
                     $transaction->rollback();
                     $DB->update($model::tableName(),['publishStatus'=>3,'response'=>$e->getMessage()],['queueId'=>$v['queueId']]);                   //更新队列状态  发布失败

@@ -94,12 +94,13 @@ class JpBlogQueue extends Basic
             if( $target->newPost( $params ) ){
                 $blog_id = $target->getBlogId();
                 $DB->update($modelBlogRecord::tableName(),[$blogName.'Id'=>$blog_id],['id'=>$blog['id']]);
-                $DB->update($model::tableName(),['publishStatus'=>2,'response'=>'success'],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布成功
+
+                $DB->update($model::tableName(),['publishStatus'=>2,'response'=>'success'],['queueId'=>$queue['queueId']]);                   //更新队列状态  发布失败
 
                 //如果是super用户且类型为博客园，更新到知识复盘
                 if( $userId=='super' && $blogName=='cnblogs'){
                     $kReconery =  new \app\models\JpKnowledgeRecovery;
-                    $krData = ['userId'=>'super','title'=>$blog['title'],'content'=>$content,'href'=>"https://www.cnblogs.com/followyou/p/{$blog_id}.html",'tag'=>'','type'=>$blog['cnblogsType'],'remark'=>'cnblogs','createtime'=>date('Y-m-d H:i:s')];
+                    $krData = ['userId'=>'super','title'=>$blog['title'],'content'=>'','href'=>"https://www.cnblogs.com/followyou/p/{$blog_id}.html",'tag'=>'','type'=>$blog['cnblogsType'],'remark'=>'cnblogs','createtime'=>date('Y-m-d H:i:s')];
                     $kReconery->saveData($krData);
                 }
 
