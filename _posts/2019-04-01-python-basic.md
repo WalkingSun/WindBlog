@@ -338,10 +338,54 @@ sum(number)
 ## int
 将字符串转换为int
 
+# 类
+
+```python
+calss Dog():
+    """备注""""
+    
+    name
+    
+    //构造函数
+    def __init__( self, name ):
+        self.name = name
+    
+    def eat():
+        #函数体
+```
+
+修改属性的方式有三种：使用类的实例来修改；类中的方法来修改；使用方法进行递增（指定特定的值）
+
+- 继承
+
+```python
+class Person(object):   # 定义一个父类
+
+    def talk(self):    # 父类中的方法
+        print("person is talking....")   
+
+
+class Chinese(Person):    # 定义一个子类， 继承Person类
+
+    def walk(self):      # 在子类中定义其自身的方法
+        print('is walking...')
+```
+
+- 导入
+```python
+from car import Car #从car.py导入Car类
+
+from car import Car, ElectricCar   #导入多个类
+
+import car   #导入整个模块
+
+from moudle_name import *  #导入模块所有的类
+```
 
 # 注意
 
 - 避免缩进错误。python根据缩进来判读代码行与前一个代码行的关系。
+- 类的编码风格，类名使用驼峰命名法，即类名单词首字母大写，实例名和模块名小写格式，并在单词间使用下划线。
 
 
 
