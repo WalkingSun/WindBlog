@@ -311,6 +311,35 @@ from pizza import *
 
 make_pizza(1,2)
 
+## 创建一个包含文件各行内容的列表
+使用关键字with时，open()返回的文件对象只在with代码块内可用。如果要在with代码块外访问文件的内容，可在with代码块内将文件存储在一个列表中，并在with代码块外使用该列表。
+```python
+filename = 'pi_digits.txt'
+with open(filename) as file_object:   #file_object 文件对象
+    lines = file_object.readlines()   # readlines()读取文件每一行存储到列表中
+
+for line in lines:
+    print(line.rstrip())              #rstrip()删除首尾空格
+```
+
+要以每次一行的方式检查文件，可对文件对象进行for循环处理：
+```python
+filename = 'pi_digits.txt'
+with open(filename) as file_object:
+    for line in file_object:
+        print(line)
+```
+
+打开读取文件，内容显示在屏幕上
+```python
+filename = 'pi_digits.txt'
+with open(filename) as file_object:
+    contents = file_object.read()         #read() 读取文件内容
+    print(contents)
+```
+
+**关键字with不再访问文件后会关闭文件，无需显示调用close()，这样避免在程序出错，没有关闭文件。**
+
 
 ## range()
 
@@ -335,8 +364,12 @@ sum(number)
 
 ```
 
-## int
-将字符串转换为int
+## int、float
+int()将字符串转换为int
+float()将字符串转换为float
+
+比如当从文件中国读取文件获得一个数字，就需要转换使用。
+
 
 # 类
 
@@ -356,7 +389,7 @@ calss Dog():
 
 修改属性的方式有三种：使用类的实例来修改；类中的方法来修改；使用方法进行递增（指定特定的值）
 
-- 继承
+## 继承
 
 ```python
 class Person(object):   # 定义一个父类
@@ -371,7 +404,7 @@ class Chinese(Person):    # 定义一个子类， 继承Person类
         print('is walking...')
 ```
 
-- 导入
+## 导入
 ```python
 from car import Car #从car.py导入Car类
 
