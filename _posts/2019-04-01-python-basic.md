@@ -311,7 +311,9 @@ from pizza import *
 
 make_pizza(1,2)
 
-## 创建一个包含文件各行内容的列表
+## 文件操作 
+
+- 创建一个包含文件各行内容的列表
 使用关键字with时，open()返回的文件对象只在with代码块内可用。如果要在with代码块外访问文件的内容，可在with代码块内将文件存储在一个列表中，并在with代码块外使用该列表。
 ```python
 filename = 'pi_digits.txt'
@@ -339,6 +341,17 @@ with open(filename) as file_object:
 ```
 
 **关键字with不再访问文件后会关闭文件，无需显示调用close()，这样避免在程序出错，没有关闭文件。**
+
+- 写入空文件
+
+```python
+filename = 'programmering.txt'
+with open(filename,'w') as file_object:
+    file_object.write("I love programmering")
+```
+open第二个实参是打开的模式，'w'是写入模式，'r'是读取模式，'a'是附加模式，'r+'是读取写入模式，默认以只读模式打开。
+
+**python只能将字符串写入文本文件。要将数值存储到文本文件中，必须使用str()转换为字符串格式。**
 
 
 ## range()
@@ -414,6 +427,18 @@ import car   #导入整个模块
 
 from moudle_name import *  #导入模块所有的类
 ```
+
+# 异常
+未对异常进行处理，程序将停止运行，并显示一个traceback（包含有关异常的报告），反之程序可以继续运行。
+
+```python
+try:
+   print(5/0)
+except ZeroDivisionError:
+    print("You can't divide by zero")
+    //pass    #pass跳过异常，充当占位符，提醒程序什么都不做
+```
+
 
 # 注意
 
