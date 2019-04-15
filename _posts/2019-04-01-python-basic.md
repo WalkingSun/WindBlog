@@ -353,6 +353,27 @@ open第二个实参是打开的模式，'w'是写入模式，'r'是读取模式�
 
 **python只能将字符串写入文本文件。要将数值存储到文本文件中，必须使用str()转换为字符串格式。**
 
+## json
+
+- json_dump 数据存储到文件中
+```python
+import json
+numbers = [2,3,5,7,13]
+filename='numbers.json'
+with open(filename,'w') as f_obj:
+    json_dump(numbers,f_obj);
+```
+
+- json_load 数据存储到内存中
+```python
+import json
+filename='numbers.json'
+with open(filename,'w') as f_obj:
+    numbers = dump.load(f_obj)
+print(numbers)
+```
+
+程序间进行数据交互可以使用。
 
 ## range()
 
@@ -439,6 +460,8 @@ except ZeroDivisionError:
     //pass    #pass跳过异常，充当占位符，提醒程序什么都不做
 ```
 
+# 单元测试
+单元测试用于核实函数的某个方面没有问题；测试用例是一组单元测试。
 
 # 注意
 
