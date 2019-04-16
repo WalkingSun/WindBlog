@@ -16,7 +16,49 @@ sinaClass: \[Markdown\]
 # 概念
 
 # 数据结构
+基本数据类型：整数类型、浮点类型、字符类型、逻辑类型
 
+构造数据类型：数组、类、对象、接口
+
+与运算符 &&和&
+
+或运算符 ||和|
+
+异或运算符 ^ 两个表达式一个为真为假，组合表达式就是真
+
+条件表达式 逻辑表达式？表达式1：表示式2
+
+if、while结构类似php
+
+switch多分支开关语句
+```java
+switch(表达式){
+    case 常量表达式1: 语句组1；
+       [ break; ]
+    case 常量表达式1: 语句组1；
+       [ break; ]
+    default:语句块n
+}
+```
+
+## 数组
+声明：
+```
+# 一维数组
+数组类型[] 数组名称；
+数组类型 数组名称[]；
+
+# 二维数组
+数组类型[][] 数组名称;
+数组类型 数组名称[][];
+```
+
+数组对象
+```java
+int[] weeks = new int[7];  #创建数组对象时必须指明这个数组的大小。
+
+int[][] year = new int[52][7];
+```
 
 # 注解
 ```java
@@ -30,8 +72,11 @@ sinaClass: \[Markdown\]
 @Target - 标记这个注解应该是哪种 Java 成员。
 @Inherited - 标记这个注解是继承于哪个注解类(默认 注解并没有继承于任何子类)
 
-# SpringMVC
-@RequestMapping 来映射 Request 请求与处理器
+# SpringBoot
+@Autowired自动导入。
+@RequestMapping(value = "/systems/userinfo", method = {RequestMethod.GET,RequestMethod.POST}, produces = { "application/json"} ) - 来映射 Request 请求与处理器,用来处理地址映射请求的注解
+
+@Aspect  // 使用@Aspect注解声明一个切面
 ```
 
 # 常用函数
