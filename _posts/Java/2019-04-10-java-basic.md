@@ -13,7 +13,7 @@ chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
 
-# 概念
+<!-- # 概念 -->
 
 # 数据结构
 基本数据类型：整数类型、浮点类型、字符类型、逻辑类型
@@ -40,6 +40,44 @@ switch(表达式){
     default:语句块n
 }
 ```
+
+for 循环语句
+```java
+for(初始化表达式;条件表达式;迭代语句){
+    循环体语句;
+}
+
+for(;;){
+    ...
+}
+```
+
+foreach 增强型for循环语句
+```java
+for(数据类型 数据变量:数组){
+    使用数据变量的循环体语句组;
+}
+```
+实例
+```java
+int[] arrays = {1,2,3,4,5};
+for(int element:arrays){
+    System.out.printIn(element);
+}    
+```
+
+标签break 可以终止一个或几个代码块，语法：
+break 标签名称
+```java
+outer:  //定义标签
+for(int i=0;i<3;i++){
+    for(int j=0;j<100;j++){
+        if(j==10) break outer;    //终止outer标签内代码
+    }
+}
+
+```
+
 
 ## 数组
 声明：
@@ -88,7 +126,32 @@ System.out.println("打印数据");
 
 //判断字符串是都为空的方法
 if(s == null || s.length() == 0)
+
+//过滤空格
+username = " sun ";
+username = username.trim()
+
+//字符
 ```
 
+- 操作字符串
+String对象的长度是固定的，不能改变它的内容，也不能附加内容到String对象中。使用'+'号连接字符串达到附加新字符或字符串的目的，但会产生一个新的String实例，即需要额外分配空间。希望节省开销，又想改变字符串内容，可使用StringBuilder。
 
-# 基础包
+StringBuilder类 对象产生默认16个字符的长度，可变长度，附加内容会自动增加长度。
+
+length() 返回长度
+
+indexof() 返回字符串第一次出现的位置
+
+append() 在尾部添加字符串
+
+insert() 在指定为止添加字符串
+
+capcity() 返回该对象目前已经分配的、可容纳的字符总量。
+
+```java
+StringBuilder sb = new StringBuilder();
+sb.append("Greeters");
+```
+
+<!-- # 基础包 -->
