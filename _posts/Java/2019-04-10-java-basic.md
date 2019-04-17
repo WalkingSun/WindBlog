@@ -131,7 +131,11 @@ if(s == null || s.length() == 0)
 username = " sun ";
 username = username.trim()
 
-//字符
+//判断String字符串数组中是否存在某个值
+//优点：使用二分查找法，效率快捷。
+//缺点：查询的数组必须是有序的，如果不是有序的话，使用此方法是没有用的。
+String[] array = {"1","2","3","4"};
+int index = Arryas.binarySearch(array,"2");
 ```
 
 - 操作字符串
