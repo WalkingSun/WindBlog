@@ -274,6 +274,12 @@ def getuser():
 def build_profile( first, last, **user_info ):
 
 ```
+## main函数
+定义的main()函数只有当该Python脚本直接作为执行程序时才会执行
+```python
+if __name__ == '__main__':
+    main()   #执行体
+```
 
 ## 导入文件函数
 - import pizza 打开pizza.py，并将其中所有的函数复制到当前程序中。
