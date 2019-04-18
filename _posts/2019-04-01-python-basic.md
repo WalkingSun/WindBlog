@@ -471,6 +471,10 @@ except ZeroDivisionError:
 # 单元测试
 单元测试用于核实函数的某个方面没有问题；测试用例是一组单元测试。
 
+# 构建工具setup.py
+安装依赖包，类似php composer
+https://www.cnblogs.com/maociping/p/6633948.html
+
 # 注意
 
 - 避免缩进错误。python根据缩进来判读代码行与前一个代码行的关系。
