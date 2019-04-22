@@ -141,7 +141,7 @@ list = (3,4,5)
 
 ```python
 alien = {'color':'green','points':5}
-print(alien.color)
+print(alien['color'])
 ```
 
 字典是一种动态结构，可随时添加键值对。
