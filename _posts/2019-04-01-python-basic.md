@@ -12,6 +12,10 @@ csdnClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
+# 相关概念
+## 包
+是组织一系列相关类和接口的一个命名空间。从概念上理解，可以将包理解成与计算机上不同的文件夹相似。
+
 
 # 运算
 使用两个*表示乘方运算。
@@ -410,6 +414,96 @@ float()将字符串转换为float
 
 比如当从文件中国读取文件获得一个数字，就需要转换使用。
 
+## md5
+
+```python 
+import hashlib
+
+def get_token():
+    md5str = "abc"
+　　#生成一个md5对象
+    m1 = hashlib.md5()
+　　#使用md5对象里的update方法md5转换
+    m1.update(md5str.encode("utf-8"))
+    token = m1.hexdigest()
+    return token
+```
+
+## 时间处理
+
+```python
+import datetime
+
+#获取当前日期和时间：
+now_time = datetime.datetime.now()
+
+#格式化成我们想要的日期：strftime（）
+datetime.datetime.now().strftime('%Y-%m-%d')
+#格式“小时”：
+now_hour=add_hour.strftime('%H')
+
+#在当前时间增加1小时：
+add_hour=datetime.datetime.now()+datetime.timedelta(hours=1)   #需要导入timedelta库
+ 
+# 时间对象，时间字符串，时间戳 处理
+#字符串转datetime：
+ >>> string = '2014-01-08 11:59:58'
+ >>> time1 = datetime.datetime.strptime(string,'%Y-%m-%d %H:%M:%S')
+ >>> print time1
+ 2014-01-08 11:59:58
+ 
+#datetime转字符串：
+ >>> time1_str = datetime.datetime.strftime(time1,'%Y-%m-%d %H:%M:%S')
+ >>> time1_str
+ '2014-01-08 11:59:58'
+ 
+#时间戳转时间对象：
+ 
+ >>>time1 = time.localtime()
+ 
+ >>>time1_str = datetime.datetime.fromtimestamp(time1)
+```
+
+时间格式：
+```
+%a 星期几的简写
+%A 星期几的全称
+%b 月分的简写
+%B 月份的全称
+%c 标准的日期的时间串
+%C 年份的后两位数字
+%d 十进制表示的每月的第几天
+%D 月/天/年
+%e 在两字符域中，十进制表示的每月的第几天
+%F 年-月-日
+%g 年份的后两位数字，使用基于周的年
+%G 年分，使用基于周的年
+%h 简写的月份名
+%H 24小时制的小时
+%I 12小时制的小时
+%j 十进制表示的每年的第几天
+%m 十进制表示的月份
+%M 十时制表示的分钟数
+%n 新行符
+%p 本地的AM或PM的等价显示
+%r 12小时的时间
+%R 显示小时和分钟：hh:mm
+%S 十进制的秒数
+%t 水平制表符
+%T 显示时分秒：hh:mm:ss
+%u 每周的第几天，星期一为第一天 （值从0到6，星期一为0）
+%U 第年的第几周，把星期日做为第一天（值从0到53）
+%V 每年的第几周，使用基于周的年
+%w 十进制表示的星期几（值从0到6，星期天为0）
+%W 每年的第几周，把星期一做为第一天（值从0到53）
+%x 标准的日期串
+%X 标准的时间串
+%y 不带世纪的十进制年份（值从0到99）
+%Y 带世纪部分的十制年份
+%z，%Z 时区名称，如果不能得到时区名称则返回空字符。
+%% 百分号
+```
+
 
 # 类
 
@@ -466,6 +560,11 @@ except ZeroDivisionError:
     //pass    #pass跳过异常，充当占位符，提醒程序什么都不做
 ```
 
+- 主动抛出异常
+
+raise语句 主动抛出异常。 格式： 主动抛出异常终止程序 raise 异常名称(‘异常描述’)
+
+raise RuntimeError('testError')
 
 
 # 单元测试

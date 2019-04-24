@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: java基础【draft】
+title: java基础
 categories: [java, 基础]
 description: 记录java一些基础概念
 keywords: keyword1, keyword2
@@ -119,9 +119,12 @@ int[][] year = new int[52][7];
 @Aspect  // 使用@Aspect注解声明一个切面
 ```
 
-# 常用函数
+# 常用方法
 ```java
 System.out.println("打印数据");
+
+#printf()打印任意数量的对象
+System.out.printf("%s:%d,%s,%s,%s%n",name,idnum,address,phone,eamil);
 
 //java判断字符串相等
  string1.equals(string2)
@@ -159,5 +162,97 @@ capcity() 返回该对象目前已经分配的、可容纳的字符总量。
 StringBuilder sb = new StringBuilder();
 sb.append("Greeters");
 ```
+- 方法的返回值
+方法返回到调用它的代码处：
+    - 完成方法中所有语句；
+    - 遇到return 语句；
+    - 抛出一个异常
+# 类
+
+## 实现接口
+
+```java
+[类修饰符] class类名称 [extends父类名称] [implements接口名称]{
+    //属性、方法、构造函数声明
+}
+```
+修饰符 public private protected
+
+## 声明类的成员属性
+```java
+[方法修饰符] 返回类型 方法名称(方法的参数列表){
+    //方法体语句
+}
+
+```
+无返回值，返回类型标记void
+
+## 方法重载
+一个类中可以存在相同名称不通参数列表（参数数量、类型不同）的方法
+```java
+public class DrawDate{
+    public void draw(String s){
+        //描绘字符串的方法
+        ...
+    }
+    
+    public void(Int i){
+        //描绘整数的方法
+        。。。
+    }
+    
+    public void(int i,double j){
+        //描绘整数和浮点数的方法
+        。。。
+    }
+}
+```
+
+## 实参、形参
+调用对象的方法时，实际向方法传递的参数是实参；而在定义方法时，声明的方法参数就是形参。
+
+成员方法中对形参的改变不会影响到实参。
+
+## 传递任意数量的形参
+可变参数是手工创建一个**数组**的简洁方法。
+
+使用可变参数，在最后一个参数的类型后面跟上省略号'...',空格，参数名。如：
+```java
+public Polygon polygonFrom(Point... Centers){
+
+}
+```
+
+## 协变返回类型
+面向对象的编程中，子类在重写父类的方法时可以改变这个方法的返回值的类型，但前提是子类的返回值是父类返回值的子类。
+还可以使用接口名称作为返回类型，这种情况下，返回的对象必须实现指定的接口。
+
+## this关键字
+在一个实例方法或一个构造器中，this是对当前对象的引用。
+
+## static
+
+- 类变量（静态属性）
+有时候需要对所有对象都通用的变量。
+
+在类中声明含有static修饰符的字段称为'静态属性'或'类变量'。它们与类相关联，而不是对象。每个类变量存贮在内存中固定的为位置。
+
+访问类变量如 Car.Price
+
+- 类方法（静态方法）
+方法使用static修饰符。静态方法的普遍的作用是访问静态属性。
+
+访问如 Car.getPrice()
+
+- 常量
+static与final联合使用，经常用于常量。final修饰符说明这个字段不可更改。
+
+如：
+```java
+static final double PI = 3.14159265358
+```
+
+## 垃圾收集器
+Java运行环境有一个垃圾收集器，它周期性地释放不再被引用的对象的内存。
 
 <!-- # 基础包 -->
