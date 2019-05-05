@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: mysql主从复制【draft】
+title: mysql主从复制
 categories: [mysql, 数据库]
 description: 了解下mysql主从复制的背景，概念，使用流程
 keywords: 主从复制, mysql
@@ -195,7 +195,7 @@ mysql> show master status;
 (4)取消主数据库锁定
 mysql> UNLOCK TABLES;
 
-## 负载均衡
+<!--## 负载均衡-->
 
 
 ## 遇到问题
@@ -208,3 +208,4 @@ GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
 2） Last_IO_Error: error connecting to master 'repl@mysql_master:3306' - retry-time: 60  retries: 1
 网络不通，检查hosts是否存在
 
+<!--## 双主多从，高可用可伸缩-->
