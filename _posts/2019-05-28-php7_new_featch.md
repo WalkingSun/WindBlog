@@ -95,8 +95,52 @@ use Space\{ClassA, ClassB, ClassC as C};
 ```
 
 ## throwable接口
+php7之前，如果代码中有语法错误或者fatal error时，程序会直接报错推出。
+
+php7这种error可以像Exception一样被第一个匹配的try/catch块捕获。如果没有匹配的try/catch块，则调用异常处理函数进行处理。
+如果尚未注册异常处理函数(set_exception_handler())，则按照传统方式处理（fatal error）
+
+```php
+<?
+//Error 捕获语法错误、Fatal eoor
+try{
+    undefindfunc();
+}catch(Error $e){
+    var_dump($e);
+}
+undefindfunc();
+```
+Error 类并非继承Exception类，故不能catch(Exception $e){...}来捕获Error。可以使用catch(Error $e){...},或通过注册
+异常处理函数（set_exception_handler）来捕获Error。
+
 
 ## Closure::call()
+php7之前，动态给一个对象添加方法时，可通过Closure来复制一个闭包对象，并绑定到一个$this对象和作用域：
+```php
+<?php
+Class Test{
+    private $num = 1;
+}
+
+$f = function (){
+    return $this->num+1;
+};
+$test = $f->bindTo(new Test,'Test');
+echo $test();  //2
+```
+
+php7中新加了Closure::call()，可通过call来暂时绑定一个闭包对象到$this对象并调用它：
+```php
+<?php
+class Test{
+    private $num = 1;   
+}
+
+$f = function (){
+    return $this->num+1;
+};
+echo $f->call(new Test);  //2
+```
 
 ## intdiv()
 新的整除函数，在代码中不需要手动转了。
@@ -115,3 +159,10 @@ $arr = [1,2,3];
 ```
 
 注意：此处的[]不是数组的意思，只是list的简略形式。
+
+除了上述，还要很多改变和特性，如：foreach遍历数组不再修改内部指针、一处ASP和script PHP标签、移除了$HTTP_RAW_POST_DATA、匿名类、类常量可见性等。
+
+# 底层原理
+
+## 数组底层实现
+HashTable 链表 数组
