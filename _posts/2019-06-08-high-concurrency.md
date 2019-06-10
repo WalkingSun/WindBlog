@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 高并发分析
-categories: [git]
+categories: [服务器]
 description: 记录git相关操作，理解概念
 keywords: git
 cnblogsClass: \[Markdown\],\[随笔分类\]服务器

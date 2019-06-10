@@ -40,9 +40,27 @@ git上：
 # 计数器方案
 对1秒内的连接做限制，超过限制，拒绝服务。
 
-
-
 # 令牌桶算法
 
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/20190610loutong.png)
+
+假设令牌发放速度是每秒5个，容量是20，下一个请求过去4秒，则现在拥有20个令牌，相当与一秒可以处理20个突发请求的能力。
+
+令牌桶算法对突发流量可以很好的支持。
+
+基于上面算法来计算，如果直接用php会有很大的问题，redis的多个请求高并发下面临很多问题，无法保持原子性。故可使用redis+lua实现多个redis请求原子性操作。
+
+php+redis+lua 实现令牌桶：
+https://segmentfault.com/a/1190000018761106
+
+或者 php另起一个进程或者线程来生成令牌token放入队列中，过来请求出队一个，token拿到就继续业务处理，反之拒绝此请求。
 
 # 漏桶算法
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/20190610loutonga.png)
+
+
+
+> 漏统 VS 令牌桶
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/20190610loutong2lingpaitong.png)
