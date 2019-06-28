@@ -89,7 +89,7 @@ class RecoveryController extends Controller
     }
 
 
-    //cnblogs 同步博客记录到知识复盘
+    //同步站点博客 到知识复盘
     public function actionBlogsync(){
 
         $syncWeb = ArticleFactory::$blogs;
