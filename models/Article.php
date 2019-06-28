@@ -24,4 +24,9 @@ interface  Article
      * @return mixed
      */
     public function analysis( $data=[] );
+
+    /**拉取数据
+     * @return mixed
+     */
+    public function pull();
 }

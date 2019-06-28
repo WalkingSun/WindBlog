@@ -2,6 +2,7 @@
 
 namespace app\commands;
 
+use app\models\ArticleFactory;
 use app\models\Common;
 use app\models\DB;
 use app\models\JpBlogConfig;
@@ -91,23 +92,15 @@ class RecoveryController extends Controller
     //cnblogs 同步博客记录到知识复盘
     public function actionBlogsync(){
 
-        //获取超级用户的cnblog设置
-        $blogConfig = JpBlogConfig::find()->where(['userId'=>'super','blogType'=>6])->asArray()->one();
-
-        $blogMetaweblogUrl = Common::MetaweblogUrl($blogConfig['blogType'],$blogConfig['blogid']);
-        $target = new MetaWeblog( $blogMetaweblogUrl );
-        $target->setAuth( $blogConfig['username'],$blogConfig['password'] );
-
-        if( $data = $target->check() ){
-            $model_new =  new \app\models\JpKnowledgeRecovery;
-            foreach ( $data[0] as $v ){
-                $type = $v['categories']?implode(',',$v['categories']):'';
-
-                $content = '';//(substr($v['description'],0,100));
-                $up = ['userId'=>'super','title'=>$v['title'],'content'=>$content,'href'=>$v['link'],'tag'=>'','type'=>$type,'remark'=>'来源博客园','createtime'=>date('Y-m-d H:i:s') ];
-                $model_new->saveData($up);
+        $syncWeb = ArticleFactory::$blogs;
+        if( $syncWeb ){
+            foreach ($syncWeb as $site){        $site = ['id'=>3];
+                $model =  ArticleFactory::init($site);
+                $model->pull();
             }
         }
+
+
         exit('success!');
     }
 
@@ -143,30 +136,4 @@ class RecoveryController extends Controller
 
     }
 
-    protected function httpGet($url){
-        $curl = curl_init();
-        curl_setopt_array($curl, array(
-            CURLOPT_URL => $url,
-            CURLOPT_RETURNTRANSFER => true,
-            CURLOPT_ENCODING => "",
-            CURLOPT_MAXREDIRS => 10,
-            CURLOPT_TIMEOUT => 30,
-            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-            CURLOPT_CUSTOMREQUEST => "GET",
-            CURLOPT_POSTFIELDS => "",
-            CURLOPT_HTTPHEADER => array(
-                "Postman-Token: d42a1ecc-b2fc-4221-8792-50786434efff",
-                "cache-control: no-cache"
-            ),
-        ));
-        $response = curl_exec($curl);
-        $err = curl_error($curl);
-        curl_close($curl);
-        if ($err) {
-            var_dump("cURL Error #:" . $err );
-            Common::addLog('error.log',"cURL Error #:" . $err,1);
-        }
-
-        return $response;
-    }
 }

@@ -13,6 +13,7 @@ use PHPHtmlParser\Dom;
 
 class ArtitleJuejin implements Article
 {
+    use \app\models\HttpRequestTrait;
 
 //var r = ["架构", "开源", "算法", "GitHub", "面试", "代码规范", "产品", "掘金翻译计划"];
 //e.a = {
@@ -85,5 +86,30 @@ class ArtitleJuejin implements Article
         //todo  抓取所有分类id
 
         return $this->tag;
+    }
+
+    /**
+     * 拉取文章
+     */
+    public function pull():void{
+        //收藏集文章
+        $collectionUrl = 'https://collection-set-ms.juejin.im/v1/getUserCollectionSet?src=web&page=0&pageSize=30&targetUserId=5ba33eb86fb9a05cd24d8f2e';
+        $collections = $this->httpGet( $collectionUrl );
+        $collections = json_decode($collections,1);
+        if( isset($collections['d']['collectionSets']) ){
+            foreach ($collections['d']['collectionSets'] as $v){
+
+                $collectionPage = 'https://juejin.im/collection/'.$v['csId'];
+                $dom = new Dom();
+                $dom->load( $this->httpGet( $collectionPage) );
+                $t = $dom->find('.title-row a');
+                $data[] = ['userId'=>'super','title'=>$t->text,'content'=>'','href'=>'https://juejin.im'.$t->href,'tag'=>$v['title'],'type'=>'','remark'=>'来源Juejin','createtime'=>date('Y-m-d H:i:s')];
+            }
+
+            $model_new =  new \app\models\JpKnowledgeRecovery;
+            foreach ( $data as $v ){
+                $model_new->saveData($v);
+            }
+        }
     }
 }

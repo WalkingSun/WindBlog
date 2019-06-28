@@ -43,7 +43,7 @@ class ArticleFactory
 
     public static function init(array $config = [])
     {
-        $type = $config['type']?:1;
+        $type = $config['type']??$config['id']??1;
         switch ($type){
             case 1:
                 self::$instance = new ArtitleCnblogs();

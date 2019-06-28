@@ -48,6 +48,25 @@ class ArtitleCnblogs implements Article
         return $result;
     }
 
+    //拉取文章
+    public function pull(){
+        //获取超级用户的cnblog设置
+        $blogConfig = JpBlogConfig::find()->where(['userId'=>'super','blogType'=>6])->asArray()->one();
 
+        $blogMetaweblogUrl = Common::MetaweblogUrl($blogConfig['blogType'],$blogConfig['blogid']);
+        $target = new MetaWeblog( $blogMetaweblogUrl );
+        $target->setAuth( $blogConfig['username'],$blogConfig['password'] );
+
+        if( $data = $target->check() ){
+            $model_new =  new \app\models\JpKnowledgeRecovery;
+            foreach ( $data[0] as $v ){
+                $type = $v['categories']?implode(',',$v['categories']):'';
+
+                $content = '';//(substr($v['description'],0,100));
+                $up = ['userId'=>'super','title'=>$v['title'],'content'=>$content,'href'=>$v['link'],'tag'=>'','type'=>$type,'remark'=>'来源博客园','createtime'=>date('Y-m-d H:i:s') ];
+                $model_new->saveData($up);
+            }
+        }
+    }
 
 }

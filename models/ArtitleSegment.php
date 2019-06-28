@@ -13,6 +13,8 @@ use PHPHtmlParser\Dom;
 
 class ArtitleSegment implements Article
 {
+    use \app\models\HttpRequestTrait;
+
     public function list( $data=[] ){
         $result = [];
         $tag = !empty($data['tag'])?$data['tag']:'php';
@@ -74,5 +76,33 @@ class ArtitleSegment implements Article
             }
         }
         return $result;
+    }
+
+    public function pull():void{
+        $data = [];
+        $url = "https://segmentfault.com/u/jueze/bookmarks";
+
+        $dom = new Dom();
+        $dom->load( $this->httpGet($url) );
+        $lists = $dom->find('.profile-mine__content li');
+        if( $lists){
+            foreach ( $lists as $v){
+                $tagHref = $v->find('.profile-mine__content--title')->href;
+                $tag = $v->find('.profile-mine__content--title')->text;
+                $tagHref = 'https://segmentfault.com'.$tagHref;
+                $articles = $this->httpGet($tagHref);
+                $articles = $dom->load($articles);
+                $article = $articles->find('.title');
+                foreach ($article as $v1){
+                    $v1=$v1->find('a');
+                    $data[] = ['userId'=>'super','title'=>$v1->text,'content'=>'','href'=>'https://segmentfault.com'.$v1->href,'tag'=>$tag,'type'=>'','remark'=>'来源SegmentFault','createtime'=>date('Y-m-d H:i:s')];
+                }
+            }
+        }
+
+        $model_new =  new \app\models\JpKnowledgeRecovery;
+        foreach ( $data as $v ){
+            $model_new->saveData($v);
+        }
     }
 }
