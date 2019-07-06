@@ -171,6 +171,7 @@ MySQL允许在同一列建多个索引。
 冗余索引 如创建index(A,B) ,又创建index(A)。大多数情况不需要冗余索引，应尽量扩展已有索引，而不是创建新索引。
 
 ### 优化
+- 索引查询字段类型一致；
 - 最左原则；
 - 最左前缀；
 - 避免多个范围条件;
@@ -182,6 +183,71 @@ MySQL允许在同一列建多个索引。
 索引可以让查询锁定更少的行。
 
 InnoDB在访问行的时候才会对其加锁，索引减少InnoDB访问的行数，从而减少锁的数量，减少锁争用。
+
+### 索引操作
+添加索引：alter table table_name add index index_name(fileds(length);
+
+查看索引：show index from table_name;
+
+删除索引：drop index index_name ON table_name;
+
+模拟：
+
+create table test(
+`a` varchar(32) default '',
+`b` varchar(32) default '',
+`c` int(11) default 0,
+`d` char(64) default ''
+)
+
+index union_index(a,b,c) 联合索引实际生成a、ab、abc索引，遵循最左原则。
+
+a，ab，ba（查询优化器会交换），abc，acb(cb交换) 可以命中索引；
+b,c,bc,cb 无法命中索引。
+
+此时对a加索引index a(a)
+```sql
+explain select * from test where a='1' ;
++----+-------------+-------+------------+------+-----------------+---------------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys   | key           | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+------+-----------------+---------------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | test  | NULL       | ref  | union_index,a   | union_index   | 99      | const |    1 |   100.00 | NULL  |
++----+-------------+-------+------------+------+-----------------+---------------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+```
+可以看到索引会命中到 联合索引union_index上。
+
+此时删除union_index(a,b,c)，重新添加索引union_index(a,b,c)
+```sql
+mysql> alter table test add index union_index(a,b,c);
+Query OK, 0 rows affected (0.01 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> explain select * from test where a='1' ;
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref   | rows | filtered | Extra |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+|  1 | SIMPLE      | test  | NULL       | ref  | a,union_index | a    | 99      | const |    1 |   100.00 | NULL  |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------+
+1 row in set, 1 warning (0.00 sec)
+```
+
+对abc查询
+```sql
+mysql> explain select * from test where a='1' and b='2' and c=1 ;
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------------+
+| id | select_type | table | partitions | type | possible_keys | key  | key_len | ref   | rows | filtered | Extra       |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------------+
+|  1 | SIMPLE      | test  | NULL       | ref  | a,union_index | a    | 99      | const |    1 |    33.33 | Using where |
++----+-------------+-------+------------+------+---------------+------+---------+-------+------+----------+-------------+
+1 row in set, 1 warning (0.00 sec)
+```
+
+可以看到索引会命中到 索引a上。故此推断出，索引的添加顺序影响到索引的命中顺序，也就是说会优先从索引a上查找，如果颠倒union_index和a的添加顺序，会命中union_index。
+
+
+**注意**：索引字段类型查询值不一致，无法命中索引；
+explain通过key_len、ref属性，可以推测下联合索引命中的字段。
 
 # 参考：
 
