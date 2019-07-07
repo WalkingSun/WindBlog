@@ -317,3 +317,5 @@ Extra：关于MYSQL如何解析查询的额外信息
 
 [MYSQL-索引](https://segmentfault.com/a/1190000003072424)
 
+[MYSQL只会用到一个索引](https://www.cnblogs.com/wangchunlan1299/p/7490557.html)
+
