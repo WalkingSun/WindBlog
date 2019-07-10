@@ -51,9 +51,13 @@ class AutosyncController extends Controller
                     $url_raw = "https://raw.githubusercontent.com{$href}";
                     $url_raw = str_replace("/blob","",$url_raw);
                     $raw = file_get_contents($url_raw ,NULL, NULL, 0, 500);
-                    $preg = "/---(.|\s?)*---(\s)/";
-                    preg_match($preg,$raw,$match);
-                    $tag = $match?$match[0]:Common::excepDeal("【{$url_raw}】没有设置标签信息");
+
+                    $t = explode('---',$raw);
+//                    $preg = "/---(.|\s?)*---(\s)/";
+//                    preg_match($preg,$raw,$match);
+//                    $tag = $match?$match[0]:Common::excepDeal("【{$url_raw}】没有设置标签信息");
+
+                    $tag =$t[1]??Common::excepDeal("【{$url_raw}】没有设置标签信息");
                     if( !$tag ) continue;
 
                     //获取解析标签信息
