@@ -325,3 +325,5 @@ Extra：关于MYSQL如何解析查询的额外信息
 
 [MYSQL只会用到一个索引](https://www.cnblogs.com/wangchunlan1299/p/7490557.html)
 
+[MySQL 性能优化神器 Explain 使用分析](https://segmentfault.com/a/1190000008131735#articleHeader5)
+
