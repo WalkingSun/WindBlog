@@ -108,7 +108,6 @@ class JPGitWindblogSync extends Basic
                 'remark' => '',
                 'isDelete' => '0',
            ];
-
             if( !self::find()->select([])->where(['git_filename'=>$syncData['git_filename'],'createtime'=>$syncData['createtime'],'isDelete'=>0])->asArray()->one() ){
                 if( $blogRecord =JpBlogRecord::find()->select([])->where(['userId'=>'super','title'=>$tags['title'],'isDelete'=>0])->asArray()->one() ){
                     $syncData['blogRecord_id'] = $blogRecord['id'];

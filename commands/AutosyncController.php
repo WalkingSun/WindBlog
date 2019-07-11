@@ -44,8 +44,8 @@ class AutosyncController extends Controller
 
                     //拉取最近限制天数的记录
                     $datetime = $v->find('.age span')->find('time-ago')->datetime;
-                    $date = date("Y-m-d H:i:s",strtotime($datetime));
-                    if( $date < date("Y-m-d 00:00:00",strtotime('-'.\Yii::$app->params['limitDays']." day")) ) continue;
+                    $datetime = date("Y-m-d H:i:s",strtotime($datetime));
+                    if( $datetime < date("Y-m-d 00:00:00",strtotime('-'.\Yii::$app->params['limitDays']." day")) ) continue;
 
                     //github RAW
                     $url_raw = "https://raw.githubusercontent.com{$href}";
