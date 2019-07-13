@@ -15,7 +15,6 @@ use app\models\JPGitWindblogSync;
 use GuzzleHttp\Client;
 use PHPHtmlParser\Dom;
 use yii\console\Controller;
-use yii\db\Exception;
 
 class AutosyncController extends Controller
 {
@@ -64,16 +63,18 @@ class AutosyncController extends Controller
                     $tags = $GitRawWindBlog->tagAnalysis($tag);
 
                     //添加队列服务
-                    $fileData = ['url'=>$url_raw,'markfile'=>$markfile,'fileTime'=>$datetime];Common::addLog('error.log',$raw);
+                    $fileData = ['url'=>$url_raw,'markfile'=>$markfile,'fileTime'=>$datetime];
 
                     //跳过草稿
                     if( !(strrpos($tags['title'],'draft')===false) ) continue;
 
                     JPGitWindblogSync::getInstance()->addGitServer( $fileData,$tags );
+
+                    Common::addLog('error.log',"{$tags['title']} 同步成功");
                 }
-            }catch (Exception $e){
+            }catch (\Exception $e){
                 var_dump($e->getMessage());
-                Common::addLog('error.log',print_r($e->getMessage(),1));
+                Common::addLog('error.log',$tags['title'] .' 同步失败 ' . print_r($e->getMessage(),1));
             }
         }
     }

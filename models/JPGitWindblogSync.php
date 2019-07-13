@@ -3,6 +3,7 @@
 namespace app\models;
 
 use Yii;
+use yii\db\Exception;
 
 /**
  * This is the model class for table "JP_gitWindblogSync".
@@ -77,7 +78,6 @@ class JPGitWindblogSync extends Basic
 
         $DB = new DB();
         $connection = \Yii::$app->db;
-        $transaction = $connection->beginTransaction();
 
         //记录博客分类信息
         $blogTypes = Common::blogParamName();
@@ -97,6 +97,7 @@ class JPGitWindblogSync extends Basic
         if( !$blogClassInfo ) return false;
 
         $datetime = date('Y-m-d H:i:s');
+        $transaction = $connection->beginTransaction();
         try{
             //更新最新的博客
            $syncData = [
@@ -157,11 +158,15 @@ class JPGitWindblogSync extends Basic
                 }
                $DB->update('JP_blogRecord',$blogRecordDataUp,['id'=>$syncData['blogRecord_id']]);
             }
+            else{
+                Common::addLog('error.log',"{$fileData['url']} 已同步");
+//                throw new Exception("{$fileData['url']} 已同步");
+            }
 
             $transaction->commit();
-        }catch (\Exception $e){
-            Common::addLog('error.log',$e->getMessage());
+        }catch (Exception $e){
             $transaction->rollback();
+            Common::addLog('error.log',$e->getMessage());
         }
 
     }
