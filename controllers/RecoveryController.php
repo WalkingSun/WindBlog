@@ -48,11 +48,20 @@ class RecoveryController extends BaseController
         $model =$this->modelClass;
 
         $filter = ['userId'=>$this->userId ,'isDelete'=>0];
+        $andWhereArray = [];
+        if( !empty($d['title']) ){
+            $andWhereArray[] = ['like','title',$d['title']];
+        }
+
+        $filter['tag'] = $d['tag']??'';
+        $filter['type'] = $d['type']??'';
+        $filter = array_filter($filter,function ($r){return $r!=null;});
+
         $offset = !empty($d['page']) ? $d['page']:1;
         $orderType = ['createtime'=>SORT_DESC];
         $count = $model::find()->select('id')->where(['userId'=>$this->userId ,'isDelete'=>0])->count();
         $pagination = new \yii\data\Pagination([ 'defaultPageSize' => 10, 'totalCount'=>$count,]);
-        $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType=['id'=>SORT_DESC] ,$andWhereArray = []);
+        $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType=['id'=>SORT_DESC] ,$andWhereArray);
 
         return $this->render('index',['result'=>$this->result,'pagination'=>$pagination,]);
     }

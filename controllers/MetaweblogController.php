@@ -57,11 +57,21 @@ class MetaweblogController extends BaseController
         $model =$this->modelClass;
 
         $filter = ['userId'=>$this->userId ,'isDelete'=>0];
+
+        $andWhereArray = [];
+        if( !empty($d['title']) ){
+            $andWhereArray[] = ['like','title',$d['title']];
+        }
+
+        $filter['cnblogId'] = $d['cnblogId']??'';
+        $filter['cnblogsType'] = $d['cnblogsType']??'';
+
+        $filter = array_filter($filter,function ($r){return $r!=null;});
         $offset = !empty($d['page']) ? $d['page']:1;
         $orderType = ['createtime'=>SORT_DESC];
         $count = $model::find()->select('id')->where(['userId'=>$this->userId ,'isDelete'=>0])->count();
         $pagination = new \yii\data\Pagination([ 'defaultPageSize' => 10, 'totalCount'=>$count,]);
-        $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType ,$andWhereArray = []);
+        $this->result = $model::getList($cols = array(), $filter , $offset , $limit=$pagination->limit , $andWhere='', $orWhere='', $orderType ,$andWhereArray);
 
         //查询配置
         $configs = JpBlogConfig::find()->where(['userId'=>$this->userId ,'isEnable'=>1])->asArray()->all();
