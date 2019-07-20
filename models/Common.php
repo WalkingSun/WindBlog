@@ -100,6 +100,11 @@ class Common
      */
     public static function httpPostByCookie($url,$port='',$header=[],$data='',$returnHeader=false,$cookie=[]){
         $result = [];
+
+        if( is_array($data) ){
+            $data = http_build_query($data);
+        }
+
         $curl = curl_init();
         $dd =  array(
             CURLOPT_URL => $url,
@@ -109,7 +114,7 @@ class Common
             CURLOPT_TIMEOUT => 30,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => "POST",
-            CURLOPT_POSTFIELDS => http_build_query($data),
+            CURLOPT_POSTFIELDS => ($data),
             CURLOPT_HTTPHEADER => $header,
             CURLOPT_FOLLOWLOCATION =>  1,
 //            CURLOPT_COOKIEJAR => \Yii::$app->basePath.'/cookie.txt',
@@ -127,11 +132,11 @@ class Common
         curl_close($curl);//Common::addLog('sign.log',$response);
         if ($err) {
             echo "cURL Error #:" . $err;
-        } else {
+        } else {var_dump($response);
             preg_match_all("/Set-Cookie:(.*)\n/iU",$response,$str); //正则匹配//            print_r($str);die;
             $result['cookie'] = isset($str[1]) ?$str[1]:''; ;
             preg_match("/{.+}/",$response,$str1);
-            $result['response'] =  isset($str1) ?array_pop($str1):''; ;
+            $result['response'] =  isset($str1) ?array_pop($str1):'';
             return $result;
         }
 
@@ -172,12 +177,14 @@ class Common
 
         if ($err) {
             echo "cURL Error #:" . $err;
-        } else {
+        } elseif($returnHeader) {
             preg_match_all("/Set-Cookie:(.*)\n/iU",$response,$str); //正则匹配
             $result['cookie'] = isset($str[1]) ?$str[1]:''; ;
             preg_match("/{.+}/",$response,$str1);
             $result['response'] =  isset($str1) ?array_pop($str1):''; ;
             return $result;
+        }else{
+            return $response;
         }
 
     }
@@ -306,4 +313,18 @@ class Common
         }
     }
 
+    /**解析原始cookie信息
+     * @param $cookiestr
+     * @return mixed
+     */
+    public static function getCookieList( $cookiestr ){
+        $cookies = explode(';',$cookiestr);
+        $cookieArray = [];
+        foreach ($cookies as $v){
+            $t = explode('=',$v);
+            if( count($t)<2 ) continue;
+            $cookieArray[trim($t[0])] = trim($t[1]);
+        }
+        return $cookieArray;
+    }
 }
