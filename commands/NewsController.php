@@ -29,7 +29,7 @@ class NewsController extends Controller
 //        $news2 = $this->getNews('http://top.news.sina.com.cn','news_mil_suda',$top_time,2);       //军事新闻
         $news2 = $this->getNews('http://top.tech.sina.com.cn','tech_news_suda',$top_time,$top_show_num);       //科技新闻
 
-        $newMsg = '';
+        $newMsg = "新闻早班车\r\n";
         $eamilMsg = '';
         if( $news ){
             if( $news1 ) $news['data'] = array_merge($news['data'],$news1['data']);

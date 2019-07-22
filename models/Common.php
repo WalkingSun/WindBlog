@@ -132,7 +132,7 @@ class Common
         curl_close($curl);//Common::addLog('sign.log',$response);
         if ($err) {
             echo "cURL Error #:" . $err;
-        } else {var_dump($response);
+        } else {
             preg_match_all("/Set-Cookie:(.*)\n/iU",$response,$str); //正则匹配//            print_r($str);die;
             $result['cookie'] = isset($str[1]) ?$str[1]:''; ;
             preg_match("/{.+}/",$response,$str1);
@@ -326,5 +326,29 @@ class Common
             $cookieArray[trim($t[0])] = trim($t[1]);
         }
         return $cookieArray;
+    }
+
+    /**
+     * @param $array
+     * @param $find
+     * @return int|string
+     */
+    public static function findByIteration($data,$find,$fileds=null)
+    {
+        foreach ($data as $key => $v)
+        {
+            if( !$fileds ){
+                if($v==$find)
+                {
+                    return $key;
+                }
+            }else{
+                if($v[$fileds]==$find)
+                {
+                    return $key;
+                }
+            }
+
+        }
     }
 }
