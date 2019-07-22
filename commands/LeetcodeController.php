@@ -144,7 +144,7 @@ class LeetcodeController extends Controller
             file_put_contents($leetcodeFile,json_encode($leetcode_logs_exists));
 
             //wx reboot
-            $wxMsg = "【LeetCode】". $problems[$randi]['title'] ."\r\n\r\n". $problems[$randi]['question_url'];
+            $wxMsg = "来到算法题提提神！\r\n\r\n【LeetCode】". $problems[$randi]['title'] ."\r\n\r\n". $problems[$randi]['question_url'];
             $wxRebotData = [
                 'msgtype' => 'text',
                 'text' => [
@@ -153,7 +153,7 @@ class LeetcodeController extends Controller
                     'mentioned_mobile_list'=> [],//'@all' '15026852404'
                 ]
             ];
-//            Common::httpPost('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=b17603f1-7181-4c3e-8167-bd6dcbe9d146',$wxRebotData);
+            Common::httpPost('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=b17603f1-7181-4c3e-8167-bd6dcbe9d146',$wxRebotData);
 
             //推送邮件
             $JpKnowledgeRecoveryConfigModel = 'app\models\JpKnowledgeRecoveryConfig';
