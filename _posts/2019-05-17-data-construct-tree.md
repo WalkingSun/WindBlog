@@ -54,7 +54,7 @@ Class Node{
     - 小于其右子树的所有节点的值
 - 每个子树也是二分搜索树
 
-> 添加新元素
+#### 添加新元素
 
 二分搜索树不包含重复元素，如果想包含重复元素的话，只需定义：左子树小于等于节点；或者右子树大于等于节点。（注意数组链表支持重复元素）
 
@@ -67,9 +67,30 @@ Class Node{
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/Screenshot_20190521-225237.jpg)
 
 
-[二分搜索树操作代码](https://github.com/WalkingSun/Jump/blob/master/models/TreeBinarySearch.php)
+栈实现示意图：
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/Screenshot_20190520-223339.jpg)
+
+二分搜索树的非递归实现比递归实现复杂很多；
+
+中序遍历和后序遍历的非递归实现更复杂；
+
+中序遍历和后序遍历的非递归实现，实际运用不广；
+
+#### 删除操作
+删除任意元素，需注意：
+
+删除节点右边有孩子：
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/tree_del2.png)
+
+删除节点左边有孩子，右边无孩子：
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/tree_del.png)
+
+
+
+> [二分搜索树操作代码](https://github.com/WalkingSun/Jump/blob/master/models/TreeBinarySearch.php)
 ```php
 <?php
+
 /**二分搜索树操作
  * Class TreeBinarySearch
  * @package app\models
@@ -79,6 +100,7 @@ class TreeBinarySearch
     public $val = null;
     public $left = null;
     public $right = null;
+    public $size=0;
 
     public function __construct($value=null){
         $this->val = $value;
@@ -112,6 +134,28 @@ class TreeBinarySearch
         }
     }
 
+    /**
+     * 查询最小值
+     */
+    public function selectMin( $node ){
+        if( $node->left != null ){
+            $this->selectMin($node->left);
+        }
+
+        return $node;
+
+    }
+
+    /**
+     * 查询最大值
+     */
+    public function selectMax( $node ){
+        if( $node->right != null ){
+            $this->selectMax($node->right);
+        }
+
+        return $node;
+    }
 
     public function add2( $node,$value ){
         if(!is_object($node)){
@@ -124,6 +168,7 @@ class TreeBinarySearch
 
         if( $node->val == null ){
             $node->val = $value;
+            $this->size++;
             return $node;
         }
 
@@ -263,6 +308,7 @@ class TreeBinarySearch
         if( $node->left==null ){
             $rightNode = $node->right;
             $node->right = null;
+            $this->size--;
             return $rightNode;
         }
 
@@ -278,20 +324,60 @@ class TreeBinarySearch
         if( $node->right == null ){
             $leftNode = $node->left;
             $node->left = null;
+            $this->size--;
             return $leftNode;
         }
         $node->right = $this->deleteMax($node->right);
         return $node;
     }
+
+    /**
+     * 删除任意节点
+     * @param $node
+     * @param $value
+     */
+    public function delete($value){
+        return $this->deleteByRecursion($this,$value);
+    }
+
+    public function deleteByRecursion($node,$value){
+        if( $this->size==0 )
+            throw new \Exception('节点为空');
+
+        //空返回错误
+        if( $node==null )
+            return false;
+
+        //找到节点 先从左节点找 再又节点  性能较差
+        if(  $node->val != $value ){
+            return $this->deleteByRecursion($node->left,$value) or $this->deleteByRecursion($node->right,$value);
+        }
+
+        //目标节点左右节点为空 返回空
+        if( $node->left==null && $node->right == null ){
+            $node->val=null;
+            $this->size--;
+            return $node;
+        }
+
+        //右节点
+        if( $node->right ){
+            //获取右边最大值
+            $nodeRightMin = $this->selectMin($node->right);
+
+            //当前节点
+            $node->val = $nodeRightMin->val;
+            $node->right = $this->deleteMin($node->right);
+        }else{
+            //获取左节点最大值
+            $nodeLeftMax = $this->selectMax($node->left);
+            $node->val = $nodeLeftMax->val;
+            $node->left = $this->deleteMax($node->left);
+        }
+
+        $this->size--;
+        return $node;
+    }
+
 }
 ```
-
-栈实现示意图：
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/Screenshot_20190520-223339.jpg)
-
-二分搜索树的非递归实现比递归实现复杂很多；
-
-中序遍历和后序遍历的非递归实现更复杂；
-
-中序遍历和后序遍历的非递归实现，实际运用不广；
-
