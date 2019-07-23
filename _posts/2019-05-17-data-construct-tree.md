@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 数据结构-树【draft】
+title: 数据结构-树
 categories: [数据结构, 算法]
 description: 数据结构与算法整理
 keywords: 数据结构,算法
@@ -60,6 +60,7 @@ Class Node{
 
 二分搜索树添加元素的非递归写法和链表很像。
 
+#### 遍历
 遍历类型：前序遍历、中序遍历、后序遍历（递归、队列、栈）、层序遍历
 
 层序遍历：
@@ -77,14 +78,13 @@ Class Node{
 中序遍历和后序遍历的非递归实现，实际运用不广；
 
 #### 删除操作
-删除任意元素，需注意：
+删除最小节点和最大节点相对来说是容易的，删除任意元素，需要考虑多种情况。
 
 删除节点右边有孩子：
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/tree_del2.png)
 
 删除节点左边有孩子，右边无孩子：
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/tree_del.png)
-
 
 
 > [二分搜索树操作代码](https://github.com/WalkingSun/Jump/blob/master/models/TreeBinarySearch.php)
@@ -116,11 +116,26 @@ class TreeBinarySearch
         return $this->add2($node,$value);
     }
 
+    public function selectBinary( $node, $value  ){
+        if( $node->val == $value ){
+            return $node;
+        }
+
+        if( $node->val > $value ){
+            return  $this->selectBinary($node->left,$value);
+        }else{
+            return  $this->selectBinary($node->right,$value);
+        }
+        return false;
+    }
 
     /**查询
      * @param string $type 'pre'前序遍历，'in'中序遍历，'last'后序遍历
      */
-    public function select( $type='pre' ){
+    public function select( $value=null,$type='pre' ){
+        if($value)
+            return $this->selectBinary($this,$value);
+
         switch ( $type ){
             case 'pre':
                 $this->selectPreorderByStack($this);
@@ -348,9 +363,12 @@ class TreeBinarySearch
         if( $node==null )
             return false;
 
-        //找到节点 先从左节点找 再又节点  性能较差
+        //找到节点
         if(  $node->val != $value ){
-            return $this->deleteByRecursion($node->left,$value) or $this->deleteByRecursion($node->right,$value);
+            //先从左节点找 再又节点  性能较差
+//            return $this->deleteByRecursion($node->left,$value) or $this->deleteByRecursion($node->right,$value);
+            //二分查找
+            $node =  $this->select($value);
         }
 
         //目标节点左右节点为空 返回空
@@ -375,7 +393,6 @@ class TreeBinarySearch
             $node->left = $this->deleteMax($node->left);
         }
 
-        $this->size--;
         return $node;
     }
 
