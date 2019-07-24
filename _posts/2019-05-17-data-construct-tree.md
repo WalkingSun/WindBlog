@@ -78,7 +78,11 @@ Class Node{
 中序遍历和后序遍历的非递归实现，实际运用不广；
 
 #### 删除操作
-删除最小节点和最大节点相对来说是容易的，删除任意元素，需要考虑多种情况。
+删除最小节点和最大节点相对来说是容易的
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/tree-minnode.png)
+
+删除任意元素，需要考虑多种情况。
 
 删除节点右边有孩子：
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/tree_del2.png)
