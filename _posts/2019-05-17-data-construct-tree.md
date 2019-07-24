@@ -121,6 +121,10 @@ class TreeBinarySearch
     }
 
     public function selectBinary( $node, $value  ){
+
+        if($node==null)
+            return false;
+
         if( $node->val == $value ){
             return $node;
         }
@@ -130,7 +134,7 @@ class TreeBinarySearch
         }else{
             return  $this->selectBinary($node->right,$value);
         }
-        return false;
+
     }
 
     /**查询
@@ -142,13 +146,13 @@ class TreeBinarySearch
 
         switch ( $type ){
             case 'pre':
-                $this->selectPreorderByStack($this);
+                return $this->selectPreorderByStack($this);
                 break;
             case 'in':
-                $this->selectInorder($this);    //中序结果是顺序结构
+                return $this->selectInorder($this);    //中序结果是顺序结构
                 break;
             case 'last':
-                $this->selectLastorder($this);   //后序遍历 应用：未二分搜索树释放内存
+                return $this->selectLastorder($this);   //后序遍历 应用：未二分搜索树释放内存
                 break;
         }
     }
@@ -399,6 +403,7 @@ class TreeBinarySearch
 
         return $node;
     }
+
 
 }
 ```
