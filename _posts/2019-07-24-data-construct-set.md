@@ -25,6 +25,7 @@ sinaClass: \[Markdown\]
 二分搜索树实现代码参考：
 
 [二分搜索树操作类](https://github.com/WalkingSun/Jump/blob/master/models/TreeBinarySearch.php)
+
 [集合实现类](https://github.com/WalkingSun/Jump/blob/master/models/Set.php)
 
 ```php
