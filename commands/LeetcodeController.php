@@ -31,10 +31,22 @@ class LeetcodeController extends Controller
      * leetcode推送 | tags：  stack 栈；heap 堆；greedy 贪心算法；sort 排序；tree 树；binary-search-tree 二叉搜索树；recursion 递归；queue 队列；array 数组；hash-table 哈希表；linked-list 链表；string 字符串；binary-search 二分查找
      */
     public function actionSend(  ){
-        $url_perssion = 'https://leetcode-cn.com/announcement/api/get_permission/';
         try{
-            $perssion = Common::httpGetByCookie($url_perssion,'',[],true);
-            $cookie = $perssion['cookie'][0];
+
+            $url_problemset = 'https://leetcode-cn.com/problemset/all/';
+            $header = [
+                'accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+                'accept-encoding: gzip, deflate, br',
+                'accept-language: zh-CN,zh;q=0.9',
+                'Upgrade-Insecure-Requests:	1',
+                'user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/75.0.3770.142 Safari/537.36'
+            ];
+            $problemset = Common::httpGetByCookie($url_problemset,'',$header,true);
+            $cookie = $problemset['cookie'][0];
+
+//            $url_perssion = 'https://leetcode-cn.com/announcement/api/get_permission/';
+//            $perssion = Common::httpGetByCookie($url_perssion,'',$header,true,$cookie);
+//            $cookie = $perssion['cookie'][0];
 
             $cookieArray = Common::getCookieList($cookie);
 
@@ -144,7 +156,7 @@ class LeetcodeController extends Controller
             file_put_contents($leetcodeFile,json_encode($leetcode_logs_exists));
 
             //wx reboot
-            $wxMsg = "来到算法题提提神！\r\n\r\n【LeetCode】". $problems[$randi]['title'] ."\r\n\r\n". $problems[$randi]['question_url'];
+            $wxMsg = "来道算法题提提神！\r\n\r\n". $problems[$randi]['title'] ."【LeetCode】\r\n\r\n". $problems[$randi]['question_url'];
             $wxRebotData = [
                 'msgtype' => 'text',
                 'text' => [
