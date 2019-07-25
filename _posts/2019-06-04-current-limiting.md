@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 限流方案分析【draft】
+title: 限流方案分析
 categories: [cate1, cate2]
 description: 应对突发流量的限流方案处理
 keywords: 限流,redis
@@ -12,27 +12,6 @@ csdnClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
-
-<!--
-title内容带draft标识草稿
-
-cnblogsClass: 【你的博客园的分类，以逗号分隔，注意\[Markdown\]必须项】
-oschinaClass: 【你的开源中国的分类】
-csdnClass: 【你的CSDN分类】
-...
-
-注：由于'['、']'是jekyll的关键字，故在分类中请加上'\'；
-
-可以在网站下添加操作看到你的博客分类，案列是自己的分类，需要自行修改。
-添加这些分类的目的，是可以自动同步到对应的博客网站，新建博客以此模版文件复制创建markdown文件，如果你不需要，请跳过此步。
-
-
-图片地址存放参考：
-本地存放路径/WindBlog/gh-pages/images/blog/b.png
-git上：
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/b.png)
-
--->
 
 # 背景
 应对突发流量或者是大流量涌入，为了保护系统不至于崩溃，需要做限流的处理。本文对限流处理做些分析，模拟语言PHP，数据库redis。
@@ -48,7 +27,36 @@ git上：
 
 令牌桶算法对突发流量可以很好的支持。
 
-笔者使用redis悲观锁模拟了下：[传送门](https://github.com/WalkingSun/Jump/blob/master/controllers/CurrentlimitController.php)
+笔者使用redis悲观锁模拟了下：
+
+```php
+<?php
+        $redis = \Yii::$app->redis;
+        $r = 5;  //每秒投放令牌数
+        $c = 20;  //桶总容量
+
+        $lock = $redis->set('lock',1,'EX',60,'NX');
+        if( !$lock ){
+            return $this->tokenBucket();
+        }
+        $w = $redis->get('w')?:0;   //桶剩余容量,初始值为满容量
+        $preTime = $redis->get('preTime')?:0;   //前一个请求的时间点，初始值为0
+        $nowTime = $this->microtime_float();  //当前请求时间点
+
+        $w = min($c,intval($w+($nowTime-$preTime)*$r));//当前剩余容量
+
+        $redis->set('preTime',$nowTime,'EX',3600);
+        $redis->set('w',$w,'EX',3600);
+
+        if( $w>0 ){
+            $redis->decr('w');
+            $redis->del('lock');
+            return true;
+        }else{
+            $redis->del('lock');
+            return false;
+        }
+```
 
 限流日志片段如下：
 ```html
@@ -76,9 +84,88 @@ git上：
 基于上面算法来计算，如果直接用php会有很大的问题，redis的多个请求高并发下面临很多问题，无法保持原子性。故可使用redis+lua实现多个redis请求原子性操作。
 
 php+redis+lua 实现令牌桶：
-https://segmentfault.com/a/1190000018761106
 
-或者 php另起一个进程或者线程来生成令牌token放入队列中，过来请求出队一个，token拿到就继续业务处理，反之拒绝此请求。
+```php
+<?php
+    //获取当前时间戳（毫秒）
+    function microtime_float()
+    {
+        list($usec, $sec) = explode(" ", microtime());
+        return ((float)$usec + (float)$sec);
+    }
+    
+    //lua 语法
+    //local data 代表局部变量
+    //cjson.encode .decode json转换
+    //math.min 取最小值
+    //math.floor 向下取整
+    //redis.call  执行redis脚本
+    $redis = \Yii::$app->redis;
+    $lua = "
+        local data = redis.call('get',KEYS[1])
+        if(data)
+        then
+           local dataJson = cjson.decode(data)
+           local residualCapacity = math.min(KEYS[2],dataJson['residualCapacity']+(KEYS[4]-dataJson['curTime'])*KEYS[3])
+           residualCapacity = math.floor(residualCapacity)
+           if( residualCapacity>0 )
+           then
+               local setData = cjson.encode({residualCapacity=(residualCapacity-1),curTime=KEYS[4],preTime=dataJson['curTime']})
+               redis.call('set',KEYS[1],setData,'EX',KEYS[5])
+           else
+               return -1
+           end
+        else
+             local setData = cjson.encode({residualCapacity=KEYS[2],curTime=KEYS[4]})
+             redis.call('set',KEYS[1],setData,'EX',KEYS[5])
+        end
+        
+        return redis.call('get',KEYS[1])
+        ";
+
+    $key='current_limit';
+    $nowTime = $this->microtime_float();  //当前请求unix时间
+    $capacity=20;  //桶容量
+    $tokenSpeed=10;   //令牌生成速度
+    
+    //EVAL script numkeys key [key ...] arg [arg ...]   numkeys 指定键名参数个数
+    $tokenRes = $redis->eval($lua,5,$key,$capacity,$tokenSpeed,$nowTime,$key_timeout=3600);     //对key设置时间戳，防止持久化
+    if($tokenRes==-1){
+         echo '访问失败';
+         exit;
+    }
+    
+    echo '访问成功';
+```
+
+lua脚本运行效果：
+```log
+2019-07-25 15:09:33：651564038573891997_1564038573.7855_'{"residualCapacity":19,"curTime":"1564038573.7855","preTime":"1564038548.1081"}'
+
+2019-07-25 15:09:34：341564038574902072_1564038574.5805_'{"residualCapacity":19,"curTime":"1564038574.5805","preTime":"1564038573.7855"}'
+
+2019-07-25 15:09:34：371564038574656754_1564038574.6237_'{"residualCapacity":4,"curTime":"1564038574.6237","preTime":"1564038574.6312"}'
+
+2019-07-25 15:09:34：801564038574632846_1564038574.5952_'-1'
+
+2019-07-25 15:09:34：241564038574129130_1564038574.5921_'{"residualCapacity":16,"curTime":"1564038574.5921","preTime":"1564038574.5933"}'
+
+2019-07-25 15:09:34：931564038574891869_1564038574.5847_'{"residualCapacity":14,"curTime":"1564038574.5847","preTime":"1564038574.5921"}'
+
+2019-07-25 15:09:34：811564038574921747_1564038574.5933_'{"residualCapacity":18,"curTime":"1564038574.5933","preTime":"1564038574.5805"}'
+
+2019-07-25 15:09:34：771564038574717631_1564038574.6312_'{"residualCapacity":6,"curTime":"1564038574.6312","preTime":"1564038574.6203"}'
+
+2019-07-25 15:09:34：931564038574541957_1564038574.6135_'-1'
+
+```
+
+参考 https://segmentfault.com/a/1190000018761106
+
+或者 php另起一个进程或者线程来生成令牌token放入队列中，过来请求出队一个，token拿到就继续业务处理，反之拒绝此请求(不够灵活)。
+
+参考coding
+[传送门](https://github.com/WalkingSun/Jump/blob/master/controllers/CurrentlimitController.php)
 
 # 漏桶算法
 
@@ -89,3 +176,5 @@ https://segmentfault.com/a/1190000018761106
 > 漏统 VS 令牌桶
 
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/20190610loutong2lingpaitong.png)
+
+
