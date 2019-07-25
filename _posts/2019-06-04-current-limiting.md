@@ -160,7 +160,13 @@ lua脚本运行效果：
 
 ```
 
-参考 https://segmentfault.com/a/1190000018761106
+**注意**：lua脚本编写时需注意，切不可用变化极大的外部参数来定义变量，redis会对lua脚本创建lua函数，本身占内存，大量的函数生成会很快耗用redis的内存。
+
+参考:
+
+[php 使用 lua+redis 限流，计数器模式，令牌桶模式](https://segmentfault.com/a/1190000018761106)
+
+[Lua脚本](https://redisbook.readthedocs.io/en/latest/feature/scripting.html)
 
 或者 php另起一个进程或者线程来生成令牌token放入队列中，过来请求出队一个，token拿到就继续业务处理，反之拒绝此请求(不够灵活)。
 
