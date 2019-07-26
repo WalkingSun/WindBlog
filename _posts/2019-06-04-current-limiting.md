@@ -177,7 +177,55 @@ lua脚本运行效果：
 
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/20190610loutonga.png)
 
+```php
+<?php
+        $key = 'leakyBucketCurrentLimit';
+        $capacity = 10; //桶容量
+        $outflowSpeed = 10;  //流出速度
+        $nowTime = $this->microtime_float();  //当前请求时间点
 
+        $lua = "
+            local data = redis.call('get',KEYS[1])
+            if data
+            then
+                local dataJson = cjson.decode(data)
+                local capacity = math.max(math.ceil( dataJson['residualCapacity']-(KEYS[4]-dataJson['curTime'])*KEYS[3] ),0)
+                if capacity-KEYS[2]>0
+                then
+                    return -1
+                else
+                    local setData = cjson.encode({residualCapacity=(capacity+1),curTime=KEYS[4],preTime=dataJson['curTime']})
+                    redis.call('set',KEYS[1],setData,'EX',KEYS[5])
+                end
+            else
+               local setData = cjson.encode({residualCapacity=0,curTime=KEYS[4]})
+               redis.call('set',KEYS[1],setData,'EX',KEYS[5])
+            end   
+   
+           return redis.call('get',KEYS[1])
+        ";
+
+        $redis = \Yii::$app->redis;
+        $tokenRes = $redis->eval($lua,5,$key,$capacity,$outflowSpeed,$nowTime,$key_timeout=3600);
+        if( $tokenRes!=-1 )
+                    return true;
+                else
+                    return false;
+```
+
+```log
+2019-07-26 15:38:52：891564126732969386_1564126732.2845_'{"residualCapacity":9,"curTime":"1564126732.2845","preTime":"1564126732.2522"}'
+
+2019-07-26 15:38:52：81564126732763964_1564126732.3442_'{"residualCapacity":10,"curTime":"1564126732.3442","preTime":"1564126732.2845"}'
+
+2019-07-26 15:38:52：271564126732228350_1564126732.4937_'{"residualCapacity":10,"curTime":"1564126732.4937","preTime":"1564126732.3442"}'
+
+2019-07-26 15:38:52：861564126732750011_1564126732.5089_'{"residualCapacity":11,"curTime":"1564126732.5089","preTime":"1564126732.4937"}'
+
+2019-07-26 15:38:52：701564126732665743_1564126732.6324_'{"residualCapacity":11,"curTime":"1564126732.6324","preTime":"1564126732.5089"}'
+
+2019-07-26 15:38:52：21564126732969240_1564126732.7191_'-1'
+```
 
 > 漏统 VS 令牌桶
 
