@@ -25,16 +25,19 @@ class NewsController extends Controller
         $top_time = date('Ymd');
         $top_show_num = 3;
         $news = $this->getNews('http://top.news.sina.com.cn','www_www_all_suda_suda',$top_time,$top_show_num);
-        $news1 = $this->getNews('http://top.news.sina.com.cn','news_society_suda',$top_time,$top_show_num);   //社会新闻
+//        $news1 = $this->getNews('http://top.news.sina.com.cn','news_society_suda',$top_time,$top_show_num);   //社会新闻
 //        $news2 = $this->getNews('http://top.news.sina.com.cn','news_mil_suda',$top_time,2);       //军事新闻
         $news2 = $this->getNews('http://top.tech.sina.com.cn','tech_news_suda',$top_time,$top_show_num);       //科技新闻
 
-        $newMsg = "新闻早班车\r\n";
+        $news_product = $this->getProductNews($top_show_num);
+
+        $newMsg = "新闻早班车\r\n\r\n";
         $eamilMsg = '';
         if( $news ){
-            if( $news1 ) $news['data'] = array_merge($news['data'],$news1['data']);
+            if( !empty($news1) ) $news['data'] = array_merge($news['data'],$news1['data']);
             if( $news2 ) $news['data'] = array_merge($news['data'],$news2['data']);
-//            var_dump($news);die;
+            if( !empty($news_product) ) $news['data'] = array_merge($news['data'],$news_product);
+
             foreach ($news['data'] as $v){
                 $newMsg .= "{$v['title']}\r\n{$v['url']}\r\n\r\n";
                 $eamilMsg .= "<p style=\"font-size: 14px; line-height: 25px; text-align: left; margin: 0;\"><span style='font-size: 17px; mso-ansi-font-size: 18px;'><a href='{$v['url']}'>{$v['title']}</a></span></p>";
@@ -90,6 +93,25 @@ class NewsController extends Controller
             return json_decode( $contents,1);
         }
         return false;
+    }
+
+    /** 产品热点
+     * @param null $nums 限制数量
+     * @return array
+     */
+    protected function getProductNews( $nums=null ){
+        $result = [];
+        $url = 'http://www.woshipm.com/__api/v1/browser/popular?paged=1&action=laodpostphp';
+        $data = Common::httpGet($url);
+        if( $data ){
+            $data = json_decode($data,1);
+            foreach ($data['payload'] as $k=>$v){
+                if($nums && $k>=$nums) break;
+                $result[$k]['title'] = $v['title'];
+                $result[$k]['url'] = $v['permalink'];
+            }
+        }
+        return $result;
     }
 
 }
