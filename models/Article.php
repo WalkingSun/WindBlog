@@ -28,5 +28,5 @@ interface  Article
     /**拉取数据
      * @return mixed
      */
-    public function pull();
+    public function pull( $url );
 }

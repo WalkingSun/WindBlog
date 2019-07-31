@@ -54,6 +54,9 @@ class ArticleFactory
             case 3:
                 self::$instance = new ArtitleJuejin();
                 break;
+            case 4:
+                self::$instance = new ArtitleGithub();
+                break;
             default:
                 break;
         }

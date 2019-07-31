@@ -91,7 +91,7 @@ class ArtitleJuejin implements Article
     /**
      * 拉取文章
      */
-    public function pull():void{
+    public function pull($url=null):void{
         //收藏集文章
         $collectionUrl = 'https://collection-set-ms.juejin.im/v1/getUserCollectionSet?src=web&page=0&pageSize=30&targetUserId=5ba33eb86fb9a05cd24d8f2e';
         $collections = $this->httpGet( $collectionUrl );

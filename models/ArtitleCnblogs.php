@@ -49,7 +49,7 @@ class ArtitleCnblogs implements Article
     }
 
     //拉取文章
-    public function pull(){
+    public function pull($url=''){
         //获取超级用户的cnblog设置
         $blogConfig = JpBlogConfig::find()->where(['userId'=>'super','blogType'=>6])->asArray()->one();
 

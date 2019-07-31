@@ -78,7 +78,7 @@ class ArtitleSegment implements Article
         return $result;
     }
 
-    public function pull():void{
+    public function pull($url=null):void{
         $data = [];
         $url = "https://segmentfault.com/u/jueze/bookmarks";
 
