@@ -10,11 +10,6 @@ namespace app\commands;
 
 
 use app\models\ArticleFactory;
-use app\models\Common;
-use app\models\GitRawWindBlog;
-use app\models\JPGitWindblogSync;
-use GuzzleHttp\Client;
-use PHPHtmlParser\Dom;
 use yii\console\Controller;
 
 class AutosyncController extends Controller
