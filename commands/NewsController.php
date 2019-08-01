@@ -58,7 +58,7 @@ class NewsController extends Controller
             'text' => [
                 'content'=> $newMsg,
 //                'mentioned_list'=> ['高峰;'],//'@all'
-                'mentioned_mobile_list'=> ['15026852404'],//'@all'
+//                'mentioned_mobile_list'=> ['15026852404'],//'@all'
             ]
         ];
         Common::httpPost('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=b17603f1-7181-4c3e-8167-bd6dcbe9d146',$wxRebotData);
