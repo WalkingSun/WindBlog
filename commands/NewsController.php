@@ -101,15 +101,41 @@ class NewsController extends Controller
      */
     protected function getProductNews( $nums=null ){
         $result = [];
-        $url = 'http://www.woshipm.com/__api/v1/browser/popular?paged=1&action=laodpostphp';
+        $url = 'http://www.woshipm.com/__api/v1/browser/popular?paged=1&num=100&action=laodpostphp';
         $data = Common::httpGet($url);
         if( $data ){
             $data = json_decode($data,1);
+            $productNewFile = \Yii::$app->basePath . '/runtime/logs/product_news.log';
+            if( !file_exists($productNewFile) ){
+                file_put_contents($productNewFile,json_encode(['data'=>[]]));
+            }
+            $productNewExits = file_get_contents($productNewFile);
+            $productNewExits = json_decode( $productNewExits,1);
+            if($productNewExits['data']){
+                $counts = count($productNewExits['data']);
+                $outs = $counts-30;
+                if( $outs>0 ){
+                    while($outs--){
+                        array_shift($productNewExits['data']);
+                    }
+                }
+            }
+
+            $posi=0;
             foreach ($data['payload'] as $k=>$v){
-                if($nums && $k>=$nums) break;
+
+                if( in_array($v['id'],$productNewExits['data']) ) continue;
+
+                if($nums && $posi>=$nums) break;
+
                 $result[$k]['title'] = $v['title'];
                 $result[$k]['url'] = $v['permalink'];
+                $productNewExits['data'][] = $v['id'];
+
+                $posi++;
             }
+
+            file_put_contents($productNewFile,json_encode($productNewExits));
         }
         return $result;
     }
