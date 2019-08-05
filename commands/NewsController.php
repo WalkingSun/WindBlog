@@ -24,6 +24,7 @@ class NewsController extends Controller
 
         $top_time = date('Ymd');
         $top_show_num = 3;
+        $entNews = $this->getNews('http://top.ent.sina.com.cn','ent_suda',$top_time,10);
         $news = $this->getNews('http://top.news.sina.com.cn','www_www_all_suda_suda',$top_time,$top_show_num);
 //        $news1 = $this->getNews('http://top.news.sina.com.cn','news_society_suda',$top_time,$top_show_num);   //社会新闻
 //        $news2 = $this->getNews('http://top.news.sina.com.cn','news_mil_suda',$top_time,2);       //军事新闻
@@ -32,6 +33,7 @@ class NewsController extends Controller
         $news_product = $this->getProductNews($top_show_num);
 
         $newMsg = "新闻早班车\r\n\r\n";
+        $entNewMsg = "明姐爱看的八卦\r\n\r\n";
         $eamilMsg = '';
         if( $news ){
             if( !empty($news1) ) $news['data'] = array_merge($news['data'],$news1['data']);
@@ -42,11 +44,13 @@ class NewsController extends Controller
                 $newMsg .= "{$v['title']}\r\n{$v['url']}\r\n\r\n";
                 $eamilMsg .= "<p style=\"font-size: 14px; line-height: 25px; text-align: left; margin: 0;\"><span style='font-size: 17px; mso-ansi-font-size: 18px;'><a href='{$v['url']}'>{$v['title']}</a></span></p>";
             }
+
+            foreach($entNews['data'] as $v){
+                $entNewMsg .= "{$v['title']}\r\n{$v['url']}\r\n\r\n";
+            }
         }
 
         $JpKnowledgeRecoveryConfigModel = 'app\models\JpKnowledgeRecoveryConfig';
-
-        $config = $JpKnowledgeRecoveryConfigModel::find()->where(['userId'=>'super','isDelete'=>0])->asArray()->one();
 
         $maildata = [
             'title'  => '每日摘要',
@@ -62,6 +66,16 @@ class NewsController extends Controller
             ]
         ];
         Common::httpPost('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=b17603f1-7181-4c3e-8167-bd6dcbe9d146',$wxRebotData);
+
+        $wxRebotData = [
+            'msgtype' => 'text',
+            'text' => [
+                'content'=> $entNewMsg,
+            ]
+        ];
+        Common::httpPost('https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key=b17603f1-7181-4c3e-8167-bd6dcbe9d146',$wxRebotData);
+
+        $config = $JpKnowledgeRecoveryConfigModel::find()->where(['userId'=>'super','isDelete'=>0])->asArray()->one();
 
         //发送邮件
         \Yii::$app->mailer->setTransport([
@@ -84,6 +98,7 @@ class NewsController extends Controller
 
 
     public function getNews( $url,$top_cat , $top_time, $top_show_num,$js_var= 'all_1_data01' ){
+        //http://ent.sina.com.cn/hotnews/ent/Daily/
         $url = "{$url}/ws/GetTopDataList.php?top_type=day&top_cat={$top_cat}&top_time={$top_time}&top_show_num={$top_show_num}&top_order=DESC&js_var=$js_var";
         $client = new \GuzzleHttp\Client(['base_uri' => $url]);
         $response = $client->request('GET');
