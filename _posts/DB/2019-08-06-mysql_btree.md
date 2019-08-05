@@ -36,7 +36,13 @@ B+树是为磁盘或其他直接存取辅助设备而设计的一种平衡查找
 B+树的插入必须保证插入后的叶节点中的记录依然排序，同时考虑插入B+树的三种情况。
 
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG301111.jpeg)
-//todo 滕抄下
+
+|       Leaf Page Full    |     Index Page Full  |         操作        |
+|       ----              |          ----        |         ----        |
+|       No                |     NO               |    直接将记录插入叶节点       |
+|       Yes                |     NO               |    1. 拆分Leaf page；2. 将中间的节点放入到Index Page中；3. 小于中间节点的记录放左边；4. 大于等于中间节点的记录放右边；       |
+|       Yes                |     Yes               |    1. 拆分Leaf Page；2. 小于中间节点的记录放左边；3. 大于等于中间节点的记录放右边；4. 拆分Index Page；5. 小于中间节点的记录放左边；6. 大于中间节点的记录放右边；7. 中间节点放入上一层Index Page。       |
+
 
 > 实例分析下B+树
 
