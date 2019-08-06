@@ -35,7 +35,7 @@ B+树是为磁盘或其他直接存取辅助设备而设计的一种平衡查找
 ## B+树的插入操作
 B+树的插入必须保证插入后的叶节点中的记录依然排序，同时考虑插入B+树的三种情况。
 
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG301111.jpeg)
+<!--![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG301111.jpeg)-->
 
 |       Leaf Page Full    |     Index Page Full  |         操作        |
 |       ----              |          ----        |         ----        |
