@@ -63,3 +63,71 @@ B+树的插入必须保证插入后的叶节点中的记录依然排序，同时
 
 页的旋转  避免了页的拆分
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG34.jpeg)
+
+> 旋转发生在Leaf Page已经满了、但是左右兄弟节点没有满的情况下。这时B+树并不会急于去做拆分的操作，而是将记录移到所在页的兄弟节点上。
+
+## B+树删除操作
+
+B+树使用填充因子（fill factor）来控制树的删除变化，50%是填充因子可设的最小值。
+
+删除操作必须保证删除后的叶节点中的记录依然有序，与插入不同的是，删除根据填充因子的变化来衡量。
+
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG301.jpeg)
+
+//todo 删除操作三种情况
+
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG311.jpeg)
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG321.jpeg)
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG331.jpeg)
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WechatIMG341.jpeg)
+
+
+# B+树索引
+B+树索引本质是B+树在数据库中的实现。在数据库中，B+树的高度一般都在2～3层，即在查询某一键值的行记录，最多只需要2～3次IO。
+一般的磁盘每秒至少可以做100次IO，2～3次意味着查询时间只需0.02~0.03秒。
+
+B+树索引分为聚集索引和辅助聚集索引，内部都是B+树，高度平衡，叶节点存放着所有的数据。
+
+## 聚集索引
+
+
+
+## 辅助聚集索引
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
