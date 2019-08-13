@@ -4,7 +4,7 @@ title: 集合
 categories: [数据结构, 算法]
 description: 数据结构与算法整理
 keywords: 数据结构,算法
-cnblogsClass: \[Markdown\],\[随笔分类\]技术集锦
+cnblogsClass: \[Markdown\],\[随笔分类\]数据结构与算法
 oschinaClass: \[Markdown\],日常记录
 csdnClass: \[Markdown\]
 163Class: \[Markdown\]
