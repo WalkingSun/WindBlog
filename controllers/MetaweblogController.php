@@ -65,8 +65,9 @@ class MetaweblogController extends BaseController
 
         $filter['cnblogId'] = $d['cnblogId']??'';
         $filter['cnblogsType'] = $d['cnblogsType']??'';
+        $filter['isDelete'] = 0;
 
-        $filter = array_filter($filter,function ($r){return $r!=null;});
+        $filter = array_filter($filter,function ($r){return $r!==''&&$r!==null;});
         $offset = !empty($d['page']) ? $d['page']:1;
         $orderType = ['createtime'=>SORT_DESC];
         $count = $model::find()->select('id')->where(['userId'=>$this->userId ,'isDelete'=>0])->count();
