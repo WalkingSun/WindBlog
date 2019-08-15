@@ -82,7 +82,7 @@ class RecoveryController extends Controller
         }catch (\Exception $e){
             $transaction->rollBack();
             var_dump( $e->getLine(),$e->getMessage());
-            Common::sendEmail($config['super']['setSmtp'],$config['super']['setEmail'],$config['super']['setEmailPwd'],'465','ssl',$config['super']['setEmail'],$config['super']['sendEmail'],'错误信息',$e->getMessage(),$e->getMessage());
+            Common::sendEmail($config['super']['setSmtp'],$config['super']['setEmail'],$config['super']['setEmailPwd'],'465','ssl',[$config['super']['setEmail']=>'WindBlog By WalkingSun'],$config['super']['sendEmail'],'错误信息',$e->getMessage(),$e->getMessage());
         }
 
         die('success');

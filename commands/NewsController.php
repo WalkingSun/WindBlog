@@ -88,7 +88,7 @@ class NewsController extends Controller
         ]);
 
         \Yii::$app->mailer->compose('news',['data'=>$maildata]) // compose()渲染一个视图作为邮件内容
-        ->setFrom($config['setEmail'])
+        ->setFrom([$config['setEmail']=>'WindBlog By WalkingSun'])
             ->setTo($config['sendEmail'])
             ->setSubject($maildata['title'])
 //            ->setTextBody(11)
