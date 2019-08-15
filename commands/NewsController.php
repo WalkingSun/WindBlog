@@ -25,7 +25,7 @@ class NewsController extends Controller
         $top_time = date('Ymd');
         $top_show_num = 3;
         $entNews = $this->getNews('http://top.ent.sina.com.cn','ent_suda',$top_time,10);  //娱乐头条
-        $news = $this->getNews('http://top.news.sina.com.cn','www_www_all_suda_suda',$top_time,$top_show_num);  //综合新闻
+        $news = $this->getNews('http://top.news.sina.com.cn','www_www_all_suda_suda',$top_time,5);  //综合新闻
 //        $news1 = $this->getNews('http://top.news.sina.com.cn','news_society_suda',$top_time,$top_show_num);   //社会新闻
 //        $news2 = $this->getNews('http://top.news.sina.com.cn','news_mil_suda',$top_time,2);       //军事新闻
         $news2 = $this->getNews('http://top.tech.sina.com.cn','tech_news_suda',$top_time,$top_show_num);       //科技新闻

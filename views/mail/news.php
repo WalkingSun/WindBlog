@@ -9,328 +9,381 @@ use yii\helpers\Html;
 
 
 ?>
-<!DOCTYPE HTML>
-<html>
+<html class=" MacOS">
 <head>
-    <title>Home</title>
-    <style>
-        html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,dl,dt,dd,ol,nav ul,nav li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline;}
-        article, aside, details, figcaption, figure,footer, header, hgroup, menu, nav, section {display: block;}
-        ol,ul{list-style:none;margin:0;padding:0;}
-        blockquote,q{quotes:none;}
-        blockquote:before,blockquote:after,q:before,q:after{content:'';content:none;}
-        table{border-collapse:collapse;border-spacing:0;}
-        /* start editing from here */
-        a{text-decoration:none;}
-        .txt-rt{text-align:right;}/* text align right */
-        .txt-lt{text-align:left;}/* text align left */
-        .txt-center{text-align:center;}/* text align center */
-        .float-rt{float:right;}/* float right */
-        .float-lt{float:left;}/* float left */
-        .clear{clear:both;}/* clear float */
-        .pos-relative{position:relative;}/* Position Relative */
-        .pos-absolute{position:absolute;}/* Position Absolute */
-        .vertical-base{	vertical-align:baseline;}/* vertical align baseline */
-        .vertical-top{	vertical-align:top;}/* vertical align top */
-        .underline{	padding-bottom:5px;	border-bottom: 1px solid #eee; margin:0 0 20px 0;}/* Add 5px bottom padding and a underline */
-        nav.vertical ul li{	display:block;}/* vertical menu */
-        nav.horizontal ul li{	display: inline-block;}/* horizontal menu */
-        img{max-width:100%;}
-        /*end reset*/
-        /*--login start here--*/
-        body{
-            font-size: 100%;
-            background:#166ec4;
-            font-family: 'Roboto Slab', serif;
-        }
-        a {
-            text-decoration: none;
-        }
-        a:hover {
-            transition: 0.5s all;
-            -webkit-transition: 0.5s all;
-            -moz-transition: 0.5s all;
-            -o-transition: 0.5s all;
-        }
-        /*--header start here--*/
-        .newsletter {
-            background: url(../img/banner.jpg)no-repeat;
-            background-size: cover;
-            min-height:600px;
-            width: 60%;
-            margin: 4.5em auto 2em;
-        }
-        .newsletter-main {
-            width: 100%;
-            margin: 0 auto;
-            padding: 0.5em 0em;
-            text-align: center;
-        }
-        .stamp img {
-            width: 13%;
-        }
-        .stamp {
-            text-align: right;
-        }
-        .newsletter-main h1 {
-            font-size:2em;
-            color: #000;
-            font-weight: 300;
-        }
-        .newsletter-main h2{
-            font-size:2em;
-            color: #000;
-            margin: 0em 0em 0.5em 0em;
-        }
-        .newsletter-main p {
-            font-size: 1.1em;
-            color: #000;
-            line-height: 1.5em;
-            width:80%;
-            margin: 0.5em auto 0.5em;
-        }
-        a.signup {
-            font-size: 1.2em;
-            color: #4882ce;
-            font-weight: 600;
-            display: block;
-            margin: 0em 0em 1em 0em;
-        }
-        .newsletter-main input[type="text"] {
-            font-size: 1em;
-            color: #000;
-            padding: 0.8em 1em;
-            border: 3px solid #4882ce;
-            border-radius: 5px;
-            display: inline-block;
-            width: 80%;
-            outline:none;
-            text-align: center;
-            margin: 0em auto 1em;
-            font-family: 'Roboto Slab', serif;
-        }
-        #check {
-            font-size: 1.2em;
-            color: #fff;
-            padding: 0.7em 2.5em;
-            outline: none;
-            border: none;
-            border-radius: 5px;
-            background: #00ab00;
-            display: inline-block;
-            margin-bottom: 1.1em;
-            cursor:pointer;
-            font-family: 'Roboto Slab', serif;
-        }
-        #check:hover {
-            background:#4882ce;
-        }
-        .tlg {
-            margin: 1em 0em 1em 0em;
-        }
-        .tlg-img {
-            float: left;
-            width: 20%;
-        }
-        .tlg-text {
-            float: right;
-            width: 80%;
-            text-align: left;
-        }
-        .tlg-text h3 {
-            font-size:1.6em;
-            color: #166EC4;
-        }
-        .tlg-text h4 {
-            font-size: 1em;
-            color: #000;
-        }
-        .tlg-img img {
-            width:60%;
-        }
-        .clear{
-            clear:both;
-        }
-        /*---copyrights--*/
-        .copy-right {
-            margin: 3em 0em 2em 0em;
-        }
-        .copy-right p {
-            text-align: center;
-            font-size: 1em;
-            color: #fff;
-            line-height: 1.5em;
-            font-family: 'Quicksand', sans-serif;
-        }
-        .copy-right p a{
-            color:#fff;
-        }
-        .copy-right p a:hover{
-            color:#fff;
-            text-decoration:underline;
-            transition: 0.5s all;
-            -webkit-transition: 0.5s all;
-            -moz-transition: 0.5s all;
-            -o-transition: 0.5s all;
-        }
-        /*--media quiries start here--*/
-        @media(max-width:1440px){
-            .newsletter-main p {
-                width: 95%;
+    <meta http-equiv="Content-Type" content="text/html; charset=gb18030">
+    <meta name="referrer" content="origin">
+    <meta name="renderer" content="webkit">
+    <title><?= $data['title'] ?></title>
+    <script>
+        document.domain = "mail.qq.com";
+        function getTop() {
+            var f = arguments.callee, w;
+            !(f.execption) && (f.execption = "");
+            if (!f.t) {
+                try {
+                    w = window;
+                    f.t = w != parent ? (parent.getTop ? parent.getTop() : parent.parent.getTop()) : w;
+                } catch (e) {
+                    f.t = reTryGetTop();
+                    f.execption = e.message;
+                }
             }
-            .newsletter {
-                min-height: 580px;
-            }
+            return f.t;
         }
-        @media(max-width:1280px){
-            .tlg-text h3 {
-                font-size: 1.5em;
+        function reTryGetTop() {
+            var _oWin = window,
+                _oWinParent = parent;
+            try {
+                while (_oWin != _oWinParent) {
+                    _oWin = _oWinParent;
+                    _oWinParent = _oWinParent.parent;
+                }
             }
-            .tlg-text h4 {
-                font-size: 1em;
+            catch (e) {
+                ossLogForSetFrame.getTopException = true;
             }
-            .newsletter-main input[type="submit"] {
-                margin-bottom: 1em;
-            }
-            .newsletter {
-                width: 35%;
-            }
+            return _oWin;
+        };
+        try {
+            window.top = getTop();
+        } catch (e) {
+            eval("var top=getTop();");
         }
-        @media(max-width:1024px){
-            .newsletter {
-                min-height: 600px;
-                width: 45%;
-            }
-            .newsletter {
-                min-height: 580px;
-            }
-        }
-        @media(max-width:768px){
-            .newsletter {
-                width: 57%;
-            }
-        }
-        @media(max-width:640px){
-            .newsletter {
-                width: 72%;
-            }
-        }
-        @media(max-width:480px){
-            .newsletter-main h1 {
-                font-size: 1.5em;
-            }
-            .newsletter-main h2 {
-                font-size: 1.5em;
-            }
-            .newsletter-main p {
-                font-size:0.95em;
-            }
-            a.signup {
-                font-size: 1.1em;
-                margin: 0em 0em 0.7em 0em;
-            }
-            .newsletter-main input[type="text"] {
-                font-size:0.85em;
-                padding: 0.7em 1em;
-            }
-            .newsletter-main input[type="submit"] {
-                font-size:0.9em;
-                margin-bottom: 1.5em;
-            }
-            .tlg-img img {
-                width: 75%;
-            }
-            .tlg-text h3 {
-                font-size: 1.3em;
-            }
-            .tlg-text h4 {
-                font-size:0.8em;
-            }
-            .newsletter {
-                min-height: 475px;
-            }
-            .copy-right p {
-                font-size: 0.9em;
-            }
-        }
-        @media(max-width:384px){
-            .newsletter {
-                width: 80%;
-            }
-        }
-        @media(max-width:320px){
-            .newsletter-main h1 {
-                font-size: 1.5em;
-            }
-            .newsletter-main h2 {
-                font-size: 1.5em;
-            }
-            .newsletter-main p {
-                font-size: 1em;
-            }
-            a.signup {
-                font-size: 1.1em;
-            }
-            .newsletter-main input[type="text"] {
-                font-size: 0.75em;
-                padding: 0.7em 0.5em;
-            }
-            .newsletter-main input[type="submit"] {
-                margin-bottom: 1em;
-            }
-            .design img {
-                width: 70%;
-            }
-            .newsletter {
-                width: 92%;
-                min-height: 425px;
-                margin: 1em auto;
-            }
-            .copy-right {
-                margin: 1em 0em 1em 0em;
-            }
-            .copy-right p {
-                font-size: 0.8em;
-            }
-        }
-        /*--media quiries end here--*/
-    </style>
-    <!-- Custom Theme files -->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <meta name="keywords" content="Easy Subscribe Form Responsive, Login form web template, Sign up Web Templates, Flat Web Templates, Login signup Responsive web template, Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyErricsson, Motorola web design" />
-    <!--google fonts-->
-</head>
-<body>
-<div class="newsletter">
-    <div class="newsletter-main">
-        <div class="stamp">
-            <img src="<?=Yii::$app->params['hostname'].'/img/stamp.png'?>" alt="">
-        </div>
-        <h1><?=$data['title']?></h1>
-        </br>
-<!--        <h2>exclusive goodies!</h2>-->
-        <?php
-        if( $data ){
-            foreach ($data['news'] as $v) {
-                echo "<p style='float:left'><a href='{$v['url']}'>{$v['title']}</a></p></br>";
-            }
-        }?>
-        <div class="design">
-            <img src="<?=Yii::$app->params['hostname'].'/img/design.png'?>">
-        </div>
-<!--        <p>--><?//=$data['content']?><!--</p>-->
-<!--        <a href="#" class="signup">查看连接进入详情</a>-->
-<!--        <form>-->
-<!--            <input type="text" readonly value="--><?//=$data['href']?><!--">-->
-<!--            <a href="--><?//=$data['href']?><!--" id="check">查看</a>-->
-<!--        </form>-->
+        var gsUsed = "320";
+        var gbSupportNW = true;
+        var g_uin = "807493510";
+        window == getTop() && document.write('<script src="https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/all47d640.js"></' + 'script>');
+        (getTop().initPageEvent || function () {
+        })(window);
+    </script>
+    <script>parent.beginStatTime && parent.beginStatTime(window);</script>
+    <script>
+        (function () {
+            getTop().rdVer.check(window, "ZC1206-TMozks0SjK3lfEwRH0eyI98", 27016);
+        })();
+    </script>
+    <link rel="stylesheet" type="text/css"
+          href="https://rescdn.qqmail.com/zh_CN/htmledition/style/webp/comm2010469107.css">
+    <link rel="stylesheet" type="text/css"
+          href="https://rl.mail.qq.com/cgi-bin/getcss?sid=zUsx9qkTFjdjCjpn&amp;ft=skin">
+    <link rel="stylesheet" type="text/css"
+          href="https://rescdn.qqmail.com/zh_CN/htmledition/style/webp/readmail201242eb45.css">
+    <script>
+        getTop().loadJsFileToTop([
+            "https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/readmail245b44b.js",
+            "https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/qmqzoneimg24e6b9.js",
+            "https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/com/kits/qmeditor/qqmail/release/editor47d62d.js",
+            "https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/com/kits/qmpreviewer/js/qmpreviewer392e89.js", "https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/location_identify/location_identify25f2fd.js"
+        ]);
 
+        getTop().loadJsFileToTop(["https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/qmnetdisk38a714.js"]);
+    </script>
+    <script> /*function SendStatusOpt(isIng, isFail)
+         {
+         getTop().show(getTop().S("sendstatusloading", document), isIng);
+         getTop().show(getTop().S("sendstatusloadfail", document), isFail);
+         }
+
+         function GetSendStatusIng()
+         {
+         SendStatusOpt(true, false);
+         }
+
+         function GetSendStatusOK()
+         {
+         SendStatusOpt(false, false);
+         }
+
+         function GetSendStatusFail()
+         {
+         var frame = getTop().S("mailSendStatus", document);
+         if (getTop().isShow("sendstatusloading") && frame.src != "")
+         {
+         SendStatusOpt(false, true);
+         frame.src = "";
+         }
+         }*/
+
+        _sModule = "sendstatus";
+        function StatusOpt(isIng, isFail) {
+            getTop().show(getTop().S(_sModule + "loading", document), isIng);
+            getTop().show(getTop().S(_sModule + "loadfail", document), isFail);
+        }
+
+        function GetStatusIng() {
+            StatusOpt(true, false);
+        }
+
+        function GetStatusOK() {
+            StatusOpt(false, false);
+        }
+
+        function GetStatusFail() {
+            var frame = getTop().S("mail" + _sModule, document);
+            if (getTop().isShow(_sModule + "loading") && frame.src != "") {
+                StatusOpt(false, true);
+                frame.src = "";
+            }
+        }
+
+
+        function checkSenderImg(_aImgObj, _aReportEmail) {
+            var _isLoadGravaterOK = parseInt(_aImgObj.width) == 40 || parseInt(_aImgObj.width) == 96;
+            if (_isLoadGravaterOK) {
+                _aImgObj.parentNode.style.visibility = 'visible';
+            }
+        }
+
+    </script>
+    <style>body {
+            background: #fff;
+            color: #000;
+            font-weight: normal;
+            font-family: "lucida Grande", Verdana, "Microsoft YaHei";
+            padding: 0 7px 6px 4px;
+            margin: 0;
+        }
+
+        .MacOS body {
+            font-family: "lucida Grande", Verdana;
+        }
+
+        .qmbox {
+            padding: 0;
+        }
+
+        .qm_con_body_content {
+            height: auto;
+            min-height: 100px;
+            _height: 100px;
+            word-wrap: break-word;
+            font-size: 14px;
+            font-family: "lucida Grande", Verdana, "Microsoft YaHei";
+        }
+
+        .MacOS .qm_con_body_content {
+            font-family: "lucida Grande", Verdana;
+        }
+
+        body.thumb_list_readmail {
+            padding: 0;
+        }
+
+        .thumb_list_readmail #nextnewDiv, .thumb_list_readmail #nextmail_top, .thumb_list_readmail #nextmail_bt {
+            display: none;
+        }</style>
+</head>
+<body context="ZC1206-TMozks0SjK3lfEwRH0eyI98" module="qmReadMail" md="md" mu="mu" class="">
+<div class="mailcontainer" id="qqmail_mailcontainer">
+    <div id="mainmail" style="position:relative;z-index:1;margin-bottom:12px;"><!-- page end-->
+        <div id="contentDiv" onmouseover="getTop().stopPropagation(event);" onclick="getTop().preSwapLink(event, 'html', 'ZC1206-TMozks0SjK3lfEwRH0eyI98');"
+             style="position:relative;font-size:14px;height:auto;padding:15px 15px 10px 15px;z-index:1;zoom:1;line-height:1.7;"
+             class="body">
+            <div id="qm_con_body">
+                <div id="mailContentContainer" class="qmbox qm_con_body_content qqmail_webmail_only" style="">
+
+
+                    <table class="edm__main" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color: #f6f6f6;" bgcolor="#f6f6f6">
+                        <tbody>
+                        <tr style="border-collapse: collapse;">
+                            <td align="center" bgcolor="#f6f6f6" style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;">
+                                <table class="w640" style="margin: 0 10px;" width="640" cellpadding="0" cellspacing="0" border="0">
+                                    <tbody>
+                                    <tr style="border-collapse: collapse;">
+                                        <td class="w640" width="640" height="5"
+                                            style="border-collapse: collapse; background-color: #009A61;"
+                                            bgcolor="#009A61"></td>
+                                    </tr>
+                                    <tr style="border-collapse: collapse;">
+                                        <td id="header" class="w640" width="640" align="center" bgcolor="#FFFFFF" style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;">
+                                            <div align="center" style="text-align: center;">
+                                                <a href="http://47.99.189.105:81" rel="noopener" target="_blank">
+<!--                                                    <img id="customHeaderImage" label="Header Image" editable="true" width="230" src="http://s.segmentfault.com/img/mail-weekly.png" class="w640" border="0" align="top" style="display: inline; outline: none; text-decoration: none; padding: 30px 0;"></a>-->
+                                                    WindBlog . WalkingSun
+                                                </a>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr class="banner" style="border-collapse: collapse;">
+                                        <td>
+                                            <a href="https://segmentfault.com/n/1330000019932639?utm_source=weekly&amp;utm_medium=email&amp;utm_campaign=email_weekly" rel="noopener" target="_blank"></a>
+                                        </td>
+                                    </tr>
+                                    <tr id="simple-content-row" style="border-collapse: collapse;">
+                                        <td class="w640" width="640" bgcolor="#ffffff" style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;">
+                                            <table class="w640" width="640" cellpadding="0" cellspacing="0" border="0">
+                                                <tbody>
+                                                <tr style="border-collapse: collapse;">
+                                                    <td class="w30" width="30"
+                                                        style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;"></td>
+                                                    <td class="w580" width="580"
+                                                        style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;">
+                                                        <repeater>
+                                                            <layout label="Text only">
+                                                                <table class="w580" width="580" cellpadding="0"
+                                                                       cellspacing="0" border="0">
+                                                                    <tbody>
+                                                                    <tr style="border-collapse: collapse;">
+                                                                        <td class="w580" width="580"
+                                                                            style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;">
+                                                                            <br><br>
+
+                                                                            <p align="left" class="article-title"
+                                                                               style="font-size: 14px; line-height: 1; color: #222222; font-weight: bold; margin-top: 0px; margin-bottom: 18px; font-family: Helvetica, Arial, sans-serif;">
+                                                                                <singleline label="Title">  热点新闻 </singleline>
+                                                                            </p>
+
+                                                                            <div align="left" class="article-content" style="font-size: 13px; line-height: 20px; color: #444444; margin-top: 0px; margin-bottom: 18px; font-family: Helvetica, Arial, sans-serif;">
+                                                                                <multiline label="Description">
+                                                                                    <table>
+                                                                                        <tbody>
+                                                                            <?php
+                                                                            if( $data ){
+                                                                                foreach ($data['news'] as $v) {?>
+                                                                                    <tr style="border-collapse: collapse;">
+                                                                                        <td class="q-item"
+                                                                                            style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 20px; padding: 0 0 15px 0;">
+                                                                                            <a href="<?=$v['url'];?>"
+                                                                                               class="q-title"
+                                                                                               style="color: #009a61; font-weight: bold; text-decoration: none; font-size: 14px;"
+                                                                                               rel="noopener"
+                                                                                               target="_blank"><strong><?=$v['title'];?></strong></a><br>
+                                                                                            <p style="margin: 0;font-family: Source Code Pro,Consolas,Menlo,Monaco,Courier New,monospace;color: #666; ">
+<!--                                                                                                <span>▶ LeanCloud</span><span style="color: #dddddd;">&nbsp; |&nbsp; </span>-->
+                                                                                            </p>
+                                                                                        </td>
+                                                                                    </tr>
+                                                                                <?php }
+                                                                            }?>
+                                                                                        </tbody>
+                                                                                    </table>
+                                                                                </multiline>
+                                                                            </div>
+                                                                            <div style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: #EEE; margin-bottom: 30px;"></div>
+                                                                        </td>
+                                                                    </tr>
+                                                                    </tbody>
+                                                                </table>
+                                                            </layout>
+                                                        </repeater>
+                                                    </td>
+                                                    <td class="w30" width="30"
+                                                        style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;"></td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr class="banner" width="640" style="border-collapse: collapse;">
+                                        <td></td>
+                                    </tr>
+                                    <tr style="border-collapse: collapse;">
+                                        <td class="w640" width="640"
+                                            style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;">
+                                            <table id="footer" class="w640" width="640" cellpadding="0" cellspacing="0"
+                                                   border="0" bgcolor="#5E6E68"
+                                                   style="-webkit-font-smoothing: antialiased; height: 95px;color: #C1D2CB; background-color: #5E6E68;">
+                                                <tbody>
+                                                <tr style="border-collapse: collapse;">
+                                                    <td class="w30" width="30"
+                                                        style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;"></td>
+                                                    <td class="w580" width="580" valign="top"
+                                                        style="border-collapse: collapse;font-family: Helvetica, Arial, sans-serif;">
+                                                        <div style="font-size:13px;color:#ffffff;margin-bottom: 7px;margin-top:25px;">
+                                                            <span>WindBlog —— 帮助你成长的平台</span></div>
+                                                        <div id="permission-reminder" align="left" class="footer-content-left" style="-webkit-text-size-adjust: none; -ms-text-size-adjust: none; font-size: 12px; line-height: 15px; color: #C1D2CB; margin-top: 0px; margin-bottom: 25px; white-space: normal;">
+                                                            <span>
+                                                                <a href="http://47.99.189.105:81" style="color: #C1D2CB;text-decoration: none" rel="noopener" target="_blank">windblog</a>
+                                &nbsp;
+                                                                <span style="color: #C1D2CB;">|</span>
+                                                                &nbsp;
+                                                               <a href="http://47.99.189.105:81" style="color: #C1D2CB;text-decoration: none" rel="noopener" target="_blank">@windblog</a> &nbsp;
+                                                                <span style="color: #C1D2CB;">|</span>&nbsp;
+
+<!--                                                                <a href="http://segmentfault.com/user/settings?tab=notify" style="color: #C1D2CB;text-decoration: none" rel="noopener" target="_blank">退订邮件</a>-->
+                                                            </span>
+                                                        </div>
+                                                    </td>
+                                                    <td class="w30" width="30"
+                                                        style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;">
+
+                                                    </td>
+                                                </tr>
+                                                </tbody>
+                                            </table>
+                                        </td>
+                                    </tr>
+                                    <tr style="border-collapse: collapse;">
+                                        <td class="w640" width="640" height="60"
+                                            style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;"></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <style type="text/css">.qmbox style, .qmbox script, .qmbox head, .qmbox link, .qmbox meta {
+                            display: none !important;
+                        }</style>
+                </div>
+            </div><!-- -->
+            <style>#mailContentContainer .txt {
+                    height: auto;
+                }</style>
+        </div>
+        <script>
+            (function () {
+                var _oImgs = getTop().GelTags("img", getTop().S("mailContentContainer", window));
+                getTop().E(_oImgs, function (_aoItem) {
+                    _aoItem.onerror = function () {
+                        if (this.src && /.*mail\.qq\.com\/cgi-bin\/viewfile.*/i.test(this.src)) {
+                            getTop().LogKV({sValue: 'getinvestigate|readmail|readmail|imgerror'});
+                        }
+                        if (this.src && !/.*mail.qq.com\/cgi-bin.*/.test(this.src) && /http:\/\//.test(this.src) && this.clientHeight * this.clientWidth > 0) {
+                            this.onerror = null;
+                            this.src = "/cgi-bin/get_netres?url=" + encodeURIComponent(this.src) + "&sid=" + getTop().getSid();
+                        }
+                    }
+                });
+            })();
+        </script>
     </div>
 </div>
-<div class="copy-right">
-    <p>Copyright &copy; 2019.来源<a target="_blank" href="<?=Yii::$app->params['hostname']?>">WindBlog</a></p>
-</div>
+<script type="text/javascript" src="https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/speed-report29d207.js"></script>
+<script type="text/javascript" src="https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/bj-report39afc1.js"></script>
+<script type="text/javascript">
+    BJ_REPORT.init({
+        id: 112,
+        url: "https://mail.qq.com/badjs",
+        ignore: [/Script error/i],
+        random: 0.1
+    });
+    var _oTop = getTop();
+    _oTop.waitFor(
+        function () {
+            return _oTop.resetTopFrameError;
+        },
+        function (_abIsOk) {
+            _oTop.resetTopFrameError();
+        });
+
+</script>
+<script type="text/javascript">
+    setTimeout(function () {
+        xly_report.pageSpeed(78500185, window, 0.01);
+    }, 1000);
+</script>
+<script>parent.endStatTime && parent.endStatTime(window,
+        {
+            mailid: "ZC1206-TMozks0SjK3lfEwRH0eyI98",
+            folderid: "1",
+            type: "readmail",
+            rcgi: "readmail",
+            rt: "readmail",
+            rs: "",
+            wm_flowid: "578621522"
+        });</script>
 </body>
 </html>
