@@ -54,7 +54,16 @@ class NewsController extends Controller
 
         $maildata = [
             'title'  => '每日摘要',
-            'news'  => $news['data'],
+            'news'  => [
+                [
+                    'subtitle' => '热点新闻',
+                    'data' => $news['data'],
+                ],
+                [
+                    'subtitle' => '娱乐头条',
+                    'data' => $entNews['data'],
+                ],
+                ],
         ];
 
         $wxRebotData = [

@@ -224,45 +224,51 @@ use yii\helpers\Html;
                                                                 <table class="w580" width="580" cellpadding="0"
                                                                        cellspacing="0" border="0">
                                                                     <tbody>
-                                                                    <tr style="border-collapse: collapse;">
+                                                                        <?php
+                                                                        if( $data ){
+                                                                            foreach ($data['news'] as $v){?>
+                                                                        <tr style="border-collapse: collapse;">
                                                                         <td class="w580" width="580"
                                                                             style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif;">
                                                                             <br><br>
 
                                                                             <p align="left" class="article-title"
                                                                                style="font-size: 14px; line-height: 1; color: #222222; font-weight: bold; margin-top: 0px; margin-bottom: 18px; font-family: Helvetica, Arial, sans-serif;">
-                                                                                <singleline label="Title">  热点新闻 </singleline>
+                                                                                <singleline label="Title">  <?=$v['subtitle'];?> </singleline>
                                                                             </p>
 
                                                                             <div align="left" class="article-content" style="font-size: 13px; line-height: 20px; color: #444444; margin-top: 0px; margin-bottom: 18px; font-family: Helvetica, Arial, sans-serif;">
                                                                                 <multiline label="Description">
                                                                                     <table>
                                                                                         <tbody>
+
                                                                             <?php
-                                                                            if( $data ){
-                                                                                foreach ($data['news'] as $v) {?>
+                                                                                foreach ($v['data'] as $vv) {?>
                                                                                     <tr style="border-collapse: collapse;">
                                                                                         <td class="q-item"
                                                                                             style="border-collapse: collapse; font-family: Helvetica, Arial, sans-serif; font-size: 12px; line-height: 20px; padding: 0 0 15px 0;">
-                                                                                            <a href="<?=$v['url'];?>"
+                                                                                            <a href="<?=$vv['url'];?>"
                                                                                                class="q-title"
                                                                                                style="color: #009a61; font-weight: bold; text-decoration: none; font-size: 14px;"
                                                                                                rel="noopener"
-                                                                                               target="_blank"><strong><?=$v['title'];?></strong></a><br>
+                                                                                               target="_blank"><strong><?=$vv['title'];?></strong></a><br>
                                                                                             <p style="margin: 0;font-family: Source Code Pro,Consolas,Menlo,Monaco,Courier New,monospace;color: #666; ">
 <!--                                                                                                <span>▶ LeanCloud</span><span style="color: #dddddd;">&nbsp; |&nbsp; </span>-->
                                                                                             </p>
                                                                                         </td>
                                                                                     </tr>
                                                                                 <?php }
-                                                                            }?>
+                                                                            ?>
                                                                                         </tbody>
                                                                                     </table>
                                                                                 </multiline>
                                                                             </div>
-                                                                            <div style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: #EEE; margin-bottom: 30px;"></div>
+                                                                            <div style="border-bottom-style: solid; border-bottom-width: 1px; border-bottom-color: #EEE; margin-bottom: 5px;"></div>
                                                                         </td>
-                                                                    </tr>
+                                                                        </tr>
+
+                                                                            <?php    }
+                                                                        }?>
                                                                     </tbody>
                                                                 </table>
                                                             </layout>
@@ -333,57 +339,7 @@ use yii\helpers\Html;
                     height: auto;
                 }</style>
         </div>
-        <script>
-            (function () {
-                var _oImgs = getTop().GelTags("img", getTop().S("mailContentContainer", window));
-                getTop().E(_oImgs, function (_aoItem) {
-                    _aoItem.onerror = function () {
-                        if (this.src && /.*mail\.qq\.com\/cgi-bin\/viewfile.*/i.test(this.src)) {
-                            getTop().LogKV({sValue: 'getinvestigate|readmail|readmail|imgerror'});
-                        }
-                        if (this.src && !/.*mail.qq.com\/cgi-bin.*/.test(this.src) && /http:\/\//.test(this.src) && this.clientHeight * this.clientWidth > 0) {
-                            this.onerror = null;
-                            this.src = "/cgi-bin/get_netres?url=" + encodeURIComponent(this.src) + "&sid=" + getTop().getSid();
-                        }
-                    }
-                });
-            })();
-        </script>
     </div>
 </div>
-<script type="text/javascript" src="https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/speed-report29d207.js"></script>
-<script type="text/javascript" src="https://rescdn.qqmail.com/zh_CN/htmledition/js/webp/bj-report39afc1.js"></script>
-<script type="text/javascript">
-    BJ_REPORT.init({
-        id: 112,
-        url: "https://mail.qq.com/badjs",
-        ignore: [/Script error/i],
-        random: 0.1
-    });
-    var _oTop = getTop();
-    _oTop.waitFor(
-        function () {
-            return _oTop.resetTopFrameError;
-        },
-        function (_abIsOk) {
-            _oTop.resetTopFrameError();
-        });
-
-</script>
-<script type="text/javascript">
-    setTimeout(function () {
-        xly_report.pageSpeed(78500185, window, 0.01);
-    }, 1000);
-</script>
-<script>parent.endStatTime && parent.endStatTime(window,
-        {
-            mailid: "ZC1206-TMozks0SjK3lfEwRH0eyI98",
-            folderid: "1",
-            type: "readmail",
-            rcgi: "readmail",
-            rt: "readmail",
-            rs: "",
-            wm_flowid: "578621522"
-        });</script>
 </body>
 </html>
