@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: 全排列
+title: 输入一个字符串，打印出该字符串的所有排列
 categories: [数据结构]
 description: 获取字符串的全排列
 keywords: 算法
