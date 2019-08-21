@@ -21,8 +21,9 @@ sinaClass: \[Markdown\]
 了解下排列的数学知识：
 
 排列的定义：从n个不同元素中，任取m(m≤n,m与n均为自然数,下同）个元素按照一定的顺序排成一列，叫做从n个不同元素中取出m个元素的一个排列；从n个不同元素中取出m(m≤n）个元素的所有排列的个数，叫做从n个不同元素中取出m个元素的排列数，用符号 A(n,m）表示。
+当m=n时所有的排列情况叫全排列。
 
-计算公式：![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/201908200001.png)
+全排列数f(n)=n!(定义0!=1)=n*(n-1)*(n-2)*...1
 
 
 运用递归。
