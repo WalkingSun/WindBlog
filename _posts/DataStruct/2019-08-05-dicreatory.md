@@ -344,7 +344,7 @@ class DictBtree implements Dict
 }
 ```
 
-## 复杂读分析
+## 复杂度分析
 
 链表 O(n)
 
