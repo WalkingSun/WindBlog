@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: PHP知识点【draft】
+title: PHP被忽略的基础知识
 categories: [PHP, 知识点]
 description: some word here
 keywords: keyword1, keyword2
@@ -12,6 +12,9 @@ csdnClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
+
+持续更新，记录一些值得关注的问题。
+
 
 1. 下列PHP配置项中，哪一个和安全最不相关:() 
 ```
@@ -143,4 +146,141 @@ mysql_close() 关闭指定的连接标识所关联的到 MySQL 服务器的非�
 如果没有指定 link_identifier，则关闭上一个打开的连接。
 
 bool mysql_close ([ resource $link_identifier = NULL ] )
+```
+
+8. 阅读下面代码，解答输出。
+```php
+<?php
+$data = ['a','b','c'];
+
+foreach ($data as $k => &$v){
+    //
+    
+}
+
+var_dump($data);
+
+
+foreach ($data as $k => $v){
+    //
+    
+}
+
+var_dump($data);
+
+```
+
+第一次输出 ['a','b','c']
+
+第二次输出 ['a','b','b']
+
+第一次遍历运用引用 $v的地址指向数组最后一个位置，即c的位置；
+
+第二次遍历将值赋给$v,值a赋给$v,指向c，此时a[2]=a;执行到第二个元素，b赋给$v,赋给$v指向地址a[2],此时数组a[2]=b;执行到第3个元素，此时a[2]=b,b赋给$v,赋给$v指向地址,此时数组a[2]=b
+
+9. 阅读代码，给出解答。
+```php
+<?php
+
+class A{
+    
+    public static function who(){
+        
+        echo __CLASS__;
+        
+    }
+    
+    
+    public static function test(){
+        
+        static::who();
+        
+    }
+    
+     public static function test2(){
+            
+        self::who();
+     }
+}
+
+
+class B extends A{
+    
+    public static function who(){
+        echo __CLASS__;
+    }
+}
+
+B::test();    //B  static指向调用方B，用于后期静态绑定，也可以称之为“静态绑定”，因为它可以用于（但不限于）静态方法的调用。
+B::test2();   //A  self指向其定义所在类
+```
+
+> 自 PHP 5.3.0 起，PHP 增加了一个叫做后期静态绑定的功能，用于在继承范围内引用静态调用的类。
+当进行静态方法调用时，该类名即为明确指定的那个（通常在 :: 运算符左侧部分）；当进行非静态方法调用时，即为该对象所属的类 ------摘自php.net
+
+> 后期静态绑定本想通过引入一个新的关键字表示运行时最初调用的类来绕过限制。简单地说，这个关键字能够让你在上述例子中调用 test() 时引用的类是 B 而不是 A。
+最终决定不引入新的关键字，而是使用已经预留的 static 关键字。 ------摘自php.net
+
+static使用另外一种情况：
+```php
+<?php
+class A {
+    public static function who() {
+        echo __CLASS__;
+    }
+    public static function test() {
+        static::who(); // 后期静态绑定从这里开始
+    }
+}
+
+class B extends A {
+
+}
+?>
+
+B::test();   // A 因为B类中没有who方法，所以不得不又调用A类中的who方法。
+```
+
+
+10. 阅读代码，给出解答。
+```php
+<?php
+class A {
+    public static function  who(){
+        
+        echo __CLASS__;
+        
+    }
+  
+}
+
+
+class B extends A {
+    
+    public static function who(){
+        
+        echo __CLASS__;
+        
+    }
+    
+     
+}
+
+class C extends B{
+    public function who(){
+        
+        echo __CLASS__;
+        
+    }
+    
+     public static function test(){
+            A::who();     //A
+            parent::who();  //B
+            self::who();    //C
+            static::who();  //C
+        }
+}
+
+C::test();
+
 ```
