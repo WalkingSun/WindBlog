@@ -156,7 +156,8 @@ class JPGitWindblogSync extends Basic
                     ];
                     $DB->insert('JP_blogQueue',$queueData);
                 }
-               $DB->update('JP_blogRecord',$blogRecordDataUp,['id'=>$syncData['blogRecord_id']]);
+                $blogRecordDataUp['fileurl'] = $fileData['url'];  //地址路径可能会变更
+                $DB->update('JP_blogRecord',$blogRecordDataUp,['id'=>$syncData['blogRecord_id']]);
             }
             else{
                 Common::addLog('error.log',"{$fileData['url']} 已同步");
