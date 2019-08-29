@@ -1,5 +1,3 @@
----
-layout: blog
 title: 进程环境
 categories: [服务器, UNIX]
 description:
