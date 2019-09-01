@@ -1,5 +1,5 @@
 ---
-layout: post
+layout: blog
 title: MySQL索引分析
 categories: [DB,MySQL]
 description:
