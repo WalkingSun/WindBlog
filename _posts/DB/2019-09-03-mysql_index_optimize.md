@@ -127,7 +127,7 @@ eq_ref | 表连接时基于主键或非NULL的唯一索引完成扫描
 ref | 基于普通索引的等值查询，或者表间等值连接
 fulltext | 全文检索
 ref_or_null |表链接类型是ref，但进行扫描的索引列中包含NULL值
-index_merge | 利用多个索引
+index_merge | 利用多个索引 
 unique_subquery | 子查询中使用唯一索引
 index_subquery  | 子查询中使用普通索引 
 range | 利用索引进行范围查询
