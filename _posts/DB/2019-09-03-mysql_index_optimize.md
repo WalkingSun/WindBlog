@@ -1,10 +1,16 @@
 ---
 layout: blog
 title: 数据库优化
-categories: [DB,MySQL]
-description:
+categories: [DB,mysql]
+description: 了解下mysql优化
 keywords: 索引
 cnblogsClass: \[Markdown\],\[随笔分类\]数据库
+oschinaClass: \[Markdown\],PHP,日常记录
+csdnClass: \[Markdown\]
+163Class: \[Markdown\]
+51ctoClass: \[Markdown\]
+chinaunixClass: \[Markdown\]
+sinaClass: \[Markdown\]
 ---
 
 
