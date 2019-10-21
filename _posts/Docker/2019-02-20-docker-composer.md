@@ -99,6 +99,12 @@ restart: always  一直在线
 > docker-compose ps 查看运行情况
 
 ### 其他选项
+- container_name  
+指定容器名
+```
+   image: php:7.0-fpm
+   container_name:  php7-dev
+```
 - environment
 加入环境变量，可以使用数组或者字典，只有一个key的环境变量可以在运行Compose的机器上找到对应的值，这有助于加密的或者特殊主机的值
 ```
