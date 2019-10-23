@@ -31,7 +31,7 @@ docker inspect -f {{.State.Status}} 【容器】
 docker inspect  -f {{.NetworkSettings.IPAddress}} 【容器】
 ```
 
-## 查询容器日志信息
+## 查询容器日志信息Ω
 docker logs 【容器】
 
 -f 实时打印最新的日志
@@ -263,6 +263,45 @@ ENTRYPOINT ["php", "/var/www/code/easyswoole", "start"]
 docker buil -t easyswoole:1.0 
 
 有了Dockerfile文件，维护就很简单了，只需修改文件内容，重新构建即可，-t还可以指定版本标签。
+
+有几个命令值得关注下：
+
+- docker-php-source
+在PHP容器中创建一个/usr/src/php的目录，里面放了一些自带的文件而已。我们就把它当作一个从互联网中下载下来的PHP扩展源码的存放目录即可。事实上，所有PHP扩展源码扩展存放的路径： /usr/src/php/ext 里面。
+
+```
+docker-php-source extract | delete
+
+参数说明：
+* extract : 创建并初始化 /usr/src/php目录
+* delete : 删除 /usr/src/php目录
+```
+
+- docker-php-ext-install 安装php内核提供的扩展 
+
+docker-php-ext-install pdo_mysql
+
+- docker-php-ext-enable 启用扩展
+
+添加php.ini配置，如：docker-php-ext-enable pdo_mysql
+
+- docker-php-ext-configure    
+一般都是需要跟 docker-php-ext-install搭配使用的。它的作用就是，当你安装扩展的时候，需要自定义配置时，就可以使用它来帮你做到。
+```shell
+FROM php:7.1-fpm
+RUN apt-get update \
+    # 相关依赖必须手动安装
+    && apt-get install -y \
+        libfreetype6-dev \
+        libjpeg62-turbo-dev \
+        libmcrypt-dev \
+        libpng-dev \
+    # 安装扩展
+    && docker-php-ext-install -j$(nproc) iconv mcrypt \
+    # 如果安装的扩展需要自定义配置时
+    && docker-php-ext-configure gd --with-freetype-dir=/usr/include/ --with-jpeg-dir=/usr/include/ \
+    && docker-php-ext-install -j$(nproc) gd
+```
 
 ## 仓库
 docker Hub存放发布镜像的仓库，用户可以在https://hub.docker.com/中注册账号，既可发布镜像。
