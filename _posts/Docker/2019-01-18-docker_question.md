@@ -100,3 +100,16 @@ mysql配置文件 my.cnf添加配置：
 default_authentication_plugin=mysql_native_password
 ```
 
+# docker php容器 fpm总是出现file not found
+
+nginx 配置SCRIPT_FILENNAME 一定要注意  配置的是php容器中代码所在的路径，不是nginx的路径，这个坑坑了我许久!!!
+
+```nginx
+location ~ \.php$ {
+    fastcgi_pass 127.0.0.1:9000;
+    fastcgi_index index.php;
+    #fastcgi_param SCRIPT_FILENAME  $document_root$fastcgi_script_name;
+    fastcgi_param SCRIPT_FILENAME  /var/www/html/$fastcgi_script_name;
+    include fastcgi_params;
+}    
+```
