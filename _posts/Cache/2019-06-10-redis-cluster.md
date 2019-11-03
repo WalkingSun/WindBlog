@@ -20,7 +20,7 @@ Redis官方提供的的集群方案，它是去中心化的，redis-cluster采�
 每个节点都保存其它节点的状态和它负责的槽，当需要在 Redis 集群中放置一个 key-value 时，redis 先对 key 使用 crc16 算法算出一个结果，然后把结果对 16384 求余数，这样每个 key 都会对应一个编号在 0-16383 之间的哈希槽，
 redis 会根据节点数量大致均等的将哈希槽映射到不同的节点
 
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/QQ20191103-185725@2x.png)
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/QQ20191103-213557@2x.png)
 
 ### 跳转
 当客户端向一个错误的节点发出了指令，该节点发现指令的key所在的槽位并不归自己管理，这是会向客户端发送一个特殊的跳转命令携带目标操作的节点地址，告诉客户端去连这个节点去获取数据。
