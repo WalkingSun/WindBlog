@@ -35,6 +35,29 @@ string、hash、list、set、zset、bitmap、HyperLogLog、stream
 Redis 的位数组是自动扩展，如果设置了某个偏移位置超出了现有的内容范围，就会自动将位数组进行零扩充。
 
 来了解几个命令：
-- setbit
+- setbit  key offset value 对 key 所储存的字符串值，设置或清除指定偏移量上的位(bit)。
+- getbit  key offset   对 key 所储存的字符串值，获取指定偏移量上的位(bit)。
+- BITCOUNT key [start] [end] 计算给定字符串中，被设置为 1 的比特位的数量。
+```
+127.0.0.1:6379> setbit s 1 1
+(integer) 0
+127.0.0.1:6379> setbit s 2 1
+(integer) 0
+127.0.0.1:6379> setbit s 4 1
+(integer) 0
+127.0.0.1:6379> setbit s 9 1
+(integer) 0
+127.0.0.1:6379> setbit s 10 1
+(integer) 0
+127.0.0.1:6379> setbit s 13 1
+(integer) 0
+127.0.0.1:6379> setbit s 15 1
+(integer) 0
+127.0.0.1:6379> get s
+"he"   #01101000 01100101  
+127.0.0.1:6379> getbit s 1
+(integer) 1
+127.0.0.1:6379> BITCOUNT s
+(integer) 7
 
-- getbit
+```
