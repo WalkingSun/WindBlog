@@ -113,3 +113,10 @@ location ~ \.php$ {
     include fastcgi_params;
 }    
 ```
+
+# docker 安装amqp扩展
+php7.1-fpm  总提示lib错误
+```
+apt-get -y install librabbitmq-dev
+```
+
