@@ -92,6 +92,10 @@ restart: always  一直在线
 
 > docker-compose up 创建和启用服务   加-d后台运行
 
+> docker-compose up -d 作用是创建与启动容器，会重建有变化的服务器（删掉以前建立的容器）
+  
+> docker-compose up -d --no-create 如果存在与yaml中描述的容器就会直接启动，不会重建
+
 > docker-compose start 启动
 
 > docker-compose stop 停止

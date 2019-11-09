@@ -116,6 +116,9 @@ location ~ \.php$ {
 
 # docker 安装amqp扩展
 php7.1-fpm  总提示lib错误
+
+configure: error: Cannot find libpq-fe.h. Please specify correct PostgreSQL installation path
+
 ```
 apt-get -y install librabbitmq-dev
 ```

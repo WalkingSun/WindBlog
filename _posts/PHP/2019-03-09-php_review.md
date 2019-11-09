@@ -342,3 +342,15 @@ callback ( mixed $a, mixed $b ) : int
 
         var_dump($data);
 ```
+
+# glob
+glob — 寻找与模式匹配的文件路径
+```php
+glob ( string $pattern [, int $flags = 0 ] ) : array
+```
+
+```php
+<?php
+
+glob('./*Ctroller.php');  //模糊匹配当前目录所有控制器文件
+```
