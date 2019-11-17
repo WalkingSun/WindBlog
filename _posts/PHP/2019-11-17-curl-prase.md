@@ -16,7 +16,7 @@ sinaClass: \[Markdown\]
 # 背景
 抓包工具charles抓取的请求curl，是这样：
 ```
-curl -H ':method: POST' -H ':path: /client.action?functionId=signInCouponCenter&clientVersion=8.3.4&build=70302&client=android&d_brand=HUAWEI&d_model=JKM-AL00bxxxxx' -H ':authority: api.m.jd.com' -H ':scheme: https' -H 'cookie:xxxxx' -H 'charset: UTF-8' -H 'accept-encoding: gzip,deflate'  -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' -H 'content-length: 95' -H 'user-agent: okhttp/3.12.1' --data-binary "body=%7B%22monitorRefer%22%3A%22%22%2C%22monitorSource%22%3A%22ccsign_android_index_sign%22%7D&" 'https://api.m.jd.com/client.action?functionId=signInCouponCenter&clientVersion=8.3.4&build=70302&client=android&d_brand=HUAWEI&d_model=JKM-AL00bxxx'
+curl -H ':method: POST' -H ':path: /client.action?functionId=signInCouponCenter&clientVersion=8.3.4&build=70302&client=android&d_brand=HUAWEI&d_model=JKM-AL00bxxxxx' -H ':authority: api.m.jd.com' -H ':scheme: https' -H 'cookie:xxxxx' -H 'charset: UTF-8' -H 'accept-encoding: gzip,deflate'  -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' -H 'content-length: 95' -H 'user-agent: okhttp/3.12.1' --data-binary "body=%22%7D&" 'https://api.m.jd.com/client.action?functionId=signInCouponCenter&clientVersion=8.3.4&build=70302&client=android&d_brand=HUAWEI&d_model=JKM-AL00bxxx'
 ```
 
 拿到这个curl我可以直接在服务器跑这个curl命令，现在我想使用php做脚本，我希望可以便利的转换，不需要我自己写太多代码爬取，写了下如下方法，后面去爬取内容两行代码轻松搞定，舒畅！
@@ -100,7 +100,7 @@ curl -H ':method: POST' -H ':path: /client.action?functionId=signInCouponCenter&
         return $response;
     }
     
-    $curl = "curl -H ':method: POST' -H ':path: /client.action?functionId=signInCouponCenter&clientVersion=8.3.4&build=70302&client=android&d_brand=HUAWEI&d_model=JKM-AL00bxxxxx' -H ':authority: api.m.jd.com' -H ':scheme: https' -H 'cookie:xxxxx' -H 'charset: UTF-8' -H 'accept-encoding: gzip,deflate'  -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' -H 'content-length: 95' -H 'user-agent: okhttp/3.12.1' --data-binary "body=%7B%22monitorRefer%22%3A%22%22%2C%22monitorSource%22%3A%22ccsign_android_index_sign%22%7D&" 'https://api.m.jd.com/client.action?functionId=signInCouponCenter&clientVersion=8.3.4&build=70302&client=android&d_brand=HUAWEI&d_model=JKM-AL00bxxx'";
+    $curl = "curl -H ':method: POST' -H ':path: /client.action?functionId=signInCouponCenter&clientVersion=8.3.4&build=70302&client=android&d_brand=HUAWEI&d_model=JKM-AL00bxxxxx' -H ':authority: api.m.jd.com' -H ':scheme: https' -H 'cookie:xxxxx' -H 'charset: UTF-8' -H 'accept-encoding: gzip,deflate'  -H 'cache-control: no-cache' -H 'content-type: application/x-www-form-urlencoded; charset=UTF-8' -H 'content-length: 95' -H 'user-agent: okhttp/3.12.1' --data-binary "body=xxx" 'https://api.m.jd.com/client.action?functionId=signInCouponCenter&clientVersion=8.3.4&build=70302&client=android&d_brand=HUAWEI&d_model=JKM-AL00bxxx'";
     curlParse($curl);
     
 ```
