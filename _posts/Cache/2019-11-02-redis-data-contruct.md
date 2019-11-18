@@ -15,7 +15,7 @@ sinaClass: \[Markdown\]
 
 # 数据结构
 
-string、hash、list、set、zset、bitmap、HyperLogLog、stream
+string、hash、list、set、zset、bitmap、HyperLogLog、bf（布隆过滤器）、stream
 
 
 常用的前5种类型不做细究，来看看后面一个的结构及用法。
@@ -107,6 +107,8 @@ HyperLogLog 这个数据结构不是免费的，不是说使用这个数据结�
 > 思考：如果你负责开发维护一个大型的网站，有一天老板找产品经理要网站每个网页每天的 UV 数据，然后让你来开发这个统计模块，你会如何实现？
 
 其实老板需要的数据又不需要太精确，105w 和 106w 这两个数字对于老板们来说并没有多大区别，使用HyperLogLog轻松实现。
+
+## 布隆过滤器
 
 
 
