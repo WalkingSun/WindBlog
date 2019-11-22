@@ -113,3 +113,9 @@ location ~ \.php$ {
     include fastcgi_params;
 }    
 ```
+
+#  bash: ps: command not found
+  或者 bash: top: command not found
+```
+apt-get update && apt-get install procps
+```  
