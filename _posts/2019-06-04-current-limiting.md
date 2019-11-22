@@ -17,9 +17,21 @@ sinaClass: \[Markdown\]
 应对突发流量或者是大流量涌入，为了保护系统不至于崩溃，需要做限流的处理。本文对限流处理做些分析，模拟语言PHP，数据库redis。
 
 # 计数器方案
-对1秒内的连接做限制，超过限制，拒绝服务。
+对限制时间内的连接做限制，通过时间点计数递增的形式，判断超过最大连接数，拒绝服务。
+
+缺点也很明显，根据时钟时间点去计数，并不是连续的时间。
+假设对1秒内的连接做限制，最大连接数M，连接发生在第1s的后0.5s过来M个请求，第二秒的前0.5秒内M的请求，在连续的1s内出现2M的请求，严格来说系统会超负荷运行，甚至挂掉。
+
+# 简单限流 借助redis数据结构zset
+计数器方案的缺点很明显，如果可以在一个连续的时间窗口来做限制就满足条件了。借助redis的zset数据结构，zset的score值存放毫秒时间戳，将用户的请求记录时间点，这样时间就是一个滑动的窗口，只要圈出时间窗口，统计计数，就可以
+用来判断限流。而且我们只需要保留这个时间窗口，窗口之外的数据都可以砍掉，避免空间浪费。
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/20191102.png)
+
+这个是把时间范围内的所有时间点记录下来，如果时间点特别很多，或者时间范围10分钟，假设有个1万的值，redis肯定玩不下去。如果要求比较高，下面的方案比较成熟，会比较合适
 
 # 令牌桶算法
+nginx的限流就是这个算法
 
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/20190610loutong.png)
 
@@ -173,6 +185,7 @@ lua脚本运行效果：
 参考coding
 [传送门](https://github.com/WalkingSun/Jump/blob/master/controllers/CurrentlimitController.php)
 
+
 # 漏桶算法
 
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/20190610loutonga.png)
@@ -226,6 +239,8 @@ lua脚本运行效果：
 
 2019-07-26 15:38:52：21564126732969240_1564126732.7191_'-1'
 ```
+
+redis4.0已经提供了限流模块，redis-cell，就是漏桶算法，可以直接使用。
 
 > 漏统 VS 令牌桶
 

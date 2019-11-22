@@ -1,7 +1,7 @@
 ---
 layout: blog
-title: PHP魔术方法【draft】
-categories: [cate1, cate2]
+title: PHP魔术方法
+categories: [PHP]
 description: 魔术方法
 keywords: PHP
 cnblogsClass: \[Markdown\],\[随笔分类\]PHP
@@ -50,6 +50,8 @@ public static __callStatic ( string $name , array $arguments ) : mixed
 
 在静态上下文中调用一个不可访问方法时，__callStatic() 会被调用。
 
+> 方法不存在时也会经过此函数，可以做特殊处理，比如实现一个redis操作类，绝大多数的操作方法可以直接从predis本身的，这时借助__call很容易实现这样的功能
+
 # 属性重载
 ```
 public __set ( string $name , mixed $value ) : void
@@ -68,6 +70,8 @@ public __unset ( string $name ) : void
 参数 $name 是指要操作的变量名称。__set() 方法的 $value 参数指定了 $name 变量的值。
 
 属性重载只能在对象中进行。在静态方法中，这些魔术方法将不会被调用。所以这些方法都不能被 声明为 static
+
+> 属性重载 当属性不存在的时候也会进入魔术方法，可以在方法中做处理，比如依赖注入的setter使用
 
 ```php
 <?php

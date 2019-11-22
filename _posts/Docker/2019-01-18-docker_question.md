@@ -114,8 +114,32 @@ location ~ \.php$ {
 }    
 ```
 
-#  bash: ps: command not found
-  或者 bash: top: command not found
+# docker 安装amqp扩展
+php7.1-fpm  总提示lib错误
+
+configure: error: Cannot find libpq-fe.h. Please specify correct PostgreSQL installation path
+
 ```
-apt-get update && apt-get install procps
-```  
+apt-get -y install librabbitmq-dev
+```
+
+# Docker容器内连接宿主机的Mysql服务器
+
+宿主机在与容器同一局域网的IP地址一般是docker0对应的IP地址段的首个地址（如172.0.17.1）
+我们可以在容器里通过172.0.17.1:3306访问到宿主机的mysql服务器
+
+mysql服务器默认的设置为允许127.0.0.1段的ip地址访问
+所以此时用172.0.17.1:3306仍然无法访问到宿主机
+此时需要在设置一下mysql
+
+```
+ mysql>GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY '123456' WITH GRANT OPTION;
+ mysql>flush privileges;
+// 其中各字符的含义：
+// *.* 对任意数据库任意表有效
+// "root" "123456" 是数据库用户名和密码
+// '%' 允许访问数据库的IP地址，%意思是任意IP，也可以指定IP
+// flush privileges 刷新权限信息
+```
+
+我用vagrant+virtualbox,ipconfig查询本机ip，然后去连，连上了
