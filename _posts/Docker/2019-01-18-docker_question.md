@@ -143,3 +143,9 @@ mysql服务器默认的设置为允许127.0.0.1段的ip地址访问
 ```
 
 我用vagrant+virtualbox,ipconfig查询本机ip，然后去连，连上了
+
+#  bash: ps: command not found
+  或者 bash: top: command not found
+```
+apt-get update && apt-get install procps
+```  
