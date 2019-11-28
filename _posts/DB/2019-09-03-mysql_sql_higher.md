@@ -36,3 +36,44 @@ replace into tbl_name(col_name, ...) select ...
 replace into tbl_name set col_name=value, ...
 ```
 
+# case when then else end
+Case具有两种格式。简单Case函数和Case搜索函数。 
+
+```sql
+--简单Case函数 
+CASE sex 
+         WHEN '1' THEN '男' 
+         WHEN '2' THEN '女' 
+ELSE '其他' END 
+--Case搜索函数 
+CASE WHEN sex = '1' THEN '男' 
+         WHEN sex = '2' THEN '女' 
+ELSE '其他' END 
+```
+
+
+```sql
+/*
+CREATE TABLE `dmp_history_channel_version_event_uid_20190717` (
+    `id` int(11) NOT NULL AUTO_INCREMENT,
+    `channel` varchar(50) NOT NULL COMMENT '渠道',
+    `action` varchar(100) NOT NULL COMMENT '事件',
+    `uid` varchar(100) NOT NULL COMMENT '用户id',
+    `hitnum` int(11) DEFAULT NULL COMMENT '点击数',
+    PRIMARY KEY (`id`,`action`),
+    KEY `uid` (`uid`),
+    KEY `channel` (`channel`)
+  ) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8
+  /*!50100 PARTITION BY KEY (`action`)
+  PARTITIONS 1024 */;
+  
+INSERT INTO `dmp_history_channel_version_event_uid_20190717` VALUES (2, 'a', 'b', '1', 100);
+INSERT INTO `dmp_history_channel_version_event_uid_20190717` VALUES (1, 'a', 'a', '1', 10);
+  */
+SELECT
+SUM(CASE WHEN action in('a','b') THEN hitnum ELSE 0 END) as ad_click
+FROM dmp_history_channel_version_event_uid_20190717
+```
+
+
+https://www.cnblogs.com/clphp/p/6256207.html
