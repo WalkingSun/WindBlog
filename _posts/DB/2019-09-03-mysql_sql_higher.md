@@ -75,5 +75,52 @@ SUM(CASE WHEN action in('a','b') THEN hitnum ELSE 0 END) as ad_click
 FROM dmp_history_channel_version_event_uid_20190717
 ```
 
+# TO_DAYS、 FROM_DAYS
 
-https://www.cnblogs.com/clphp/p/6256207.html
+TO_DAYS(date)给出一个日期 date，返回一个天数(从 0 年开始的天数)：
+
+```sql
+SELECT TO_DAYS('2020-01-01');
++-----------------------+
+| TO_DAYS('2020-01-01') |
++-----------------------+
+|                737790 |
++-----------------------+
+1 row in set (0.00 sec)
+```
+
+FROM_DAYS 跟TO_DAYS相反的过程
+```sql
+
+ SELECT FROM_DAYS(737790);
++-------------------+
+| FROM_DAYS(737790) |
++-------------------+
+| 2020-01-01        |
++-------------------+
+1 row in set (0.00 sec)
+```
+
+常用来划分分区：
+```sql
+CREATE TABLE my_range_datetime(
+    id INT,
+    hiredate DATETIME
+) 
+PARTITION BY RANGE (TO_DAYS(hiredate) ) (
+    PARTITION p1 VALUES LESS THAN ( TO_DAYS('20171202') ),
+    PARTITION p2 VALUES LESS THAN ( TO_DAYS('20171203') ),
+    PARTITION p3 VALUES LESS THAN ( TO_DAYS('20171204') ),
+    PARTITION p4 VALUES LESS THAN ( TO_DAYS('20171205') ),
+    PARTITION p5 VALUES LESS THAN ( TO_DAYS('20171206') ),
+    PARTITION p6 VALUES LESS THAN ( TO_DAYS('20171207') ),
+    PARTITION p7 VALUES LESS THAN ( TO_DAYS('20171208') ),
+    PARTITION p8 VALUES LESS THAN ( TO_DAYS('20171209') ),
+    PARTITION p9 VALUES LESS THAN ( TO_DAYS('20171210') ),
+    PARTITION p10 VALUES LESS THAN ( TO_DAYS('20171211') )，
+    PARTITION p11 VALUES LESS THAN (MAXVALUE) 
+);
+-- MAXVALUE是一个无穷大的值
+```
+
+
