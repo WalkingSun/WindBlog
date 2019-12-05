@@ -125,6 +125,50 @@ fmt.PrintLn(car)
 
 为了避免因为切片是否发生扩容的问题导致bug，最好的处理办法还是在必要时使用 copy 来复制数据，保证得到一个新的切片，以避免后续操作带来预料之外的副作用
 
+## 复制切片元素到另一个切片
+copy()函数，可以迅速的讲一个切片的额数据复制到另一个切片空间中。
+```go
+copy( dest Slice, src Slice []T ) int
+```
+
+copy 的返回值表示实际发生复制的元素个数。
+```go
+package main
+
+import "fmt"
+
+func main()  {
+
+	//引用切片数据
+	ref_Data := src_Data
+
+	//预分配足够多的元素切片
+	copy_data := make([]int,element_Count)
+	//将数据赋值到新的切片空间中
+	copy(copy_data,src_Data)
+
+	//修改原始数据的第一个元素
+	src_Data[0] = 999
+
+	//打印引用切片的第一个元素
+	fmt.Println(ref_Data[0])
+
+	//打印复制切牌呢的第一个和最后一个元素
+	fmt.Println(copy_data[0],copy_data[element_Count-1])
+
+	// 复制原始数据从4到6（不包含）
+    copy(copy_data,src_Data[4:6])
+
+	for i :=0; i < 5; i++ {
+		fmt.Printf("%d ",copy_data[i])
+	}
+}
+
+```
+
+## 从切片中删除元素
+
+
 # 流程判断
 
 - 条件判断 if
