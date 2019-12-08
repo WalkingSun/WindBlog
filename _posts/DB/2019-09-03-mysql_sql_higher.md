@@ -123,4 +123,14 @@ PARTITION BY RANGE (TO_DAYS(hiredate) ) (
 -- MAXVALUE是一个无穷大的值
 ```
 
+# INSERT INTO SELECT
 
+一个表的查询字段作为另一个表的写入
+```sql
+
+INSERT INTO db1_name (field1,field2) SELECT field1,field2 FROM db2_name
+
+```
+ 
+
+  
