@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Go 初学之路
+title: Go初学之路
 categories: [Go, 知识点]
 description: 熟悉
 keywords: Go
@@ -12,7 +12,6 @@ csdnClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
-
 # 简介
 目前正在学Go，做下记录，温故而知新，初学coding的时候可以快速翻查用法，了解原理。
 
