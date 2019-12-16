@@ -725,27 +725,479 @@ func main() {
 }
 ```
 
-## 可变参数
+## 可变参数————参数数量不固定的函数形式
+Go支持可变参数特性，函数声明和调用时没有固定数量的参数，同时也提供了一套方法进行可变参数的多级传递。
+
+```go
+func 函数名(固定参数列表, v ...T) (返回参数列表) {
+    函数体
+}
+```
+
+特性：
+- 可变参数放在函数列表的末尾
+- v为可变参数变量，类型为[]T,也就是拥有多个T元素的类型切片，v和T之间由'...'组成
+- T为可变参数的类型，当T为interface{}时，传入的可以是任意类型。
+
+fmt.Println在使用时，传入值类型不受限制；
+```go
+func Println(a ...interface{}) (n int,err error) {
+    return Fprintln(os.Stdout,a...)
+}    
+```
+
+```go
+fmt.Println(5,"hello", &struct{ a int }{1}, true)
+```
+
+## defer 延迟执行语句
+defer语句会将其后面跟随的语句进行延迟处理。在defer归属的函数即将返回时，将延迟处理的额语句按defer的逆序进行执行。
+就是说defer的语句最后被执行，最后被defer的语句，最先被执行。
+
+```go
+package main
+
+import (
+    "fmt"
+)
+
+func main() {
+    fmt.Println("defer degin")
+    
+    // 将defer放入延迟调用栈
+    defer fmt.Println(1)
+    
+    defer fmt.Println(2)
+    
+    defer fmt.Println(3)
+    
+    fmt.Println("defer end")
+}
 
 
+/*
+defer degin
+defer end
+3
+2
+1
+*/
+```
 
-## Panic异常
+代码的延迟顺序与最终的执行顺序是反向的。
+
+延迟调用是在defer所在函数结束时进行，函数结束可以是正常返回时，也可以是发生宕机时。
+
+### 应用场景
+使用延迟执行语句在函数退出时释放资源
+
+比如打开和关闭文件、加锁和解锁等。在这些操作中，最容易忽略的就是在每个函数退出处正确的释放和关闭资源。
+
+## 处理运行时发生的错误
+
+GO的错误处理思想和设计特征：
+- 一个可能造成错误的函数，需要返回值中返回一个错误接口(error)。如果调用是成功的，错误接口将返回nil，否则返回错误。
+- 在函数调用后需要检查错误，如果发生错误，进行必要的错误处理。
+
+Go开发者将错误处理视为正常开发必须实现的环节，正确处理每一个可能发生错误的函数。
+
+### net包中的例子
+net.Dial()是GO系统包net其中的一个函数，一般用于创建一个Socket连接。
+
+```go
+// return定义了错误返回error
+func Dial(network, address string) (Conn, error) {
+    var d Dialer
+    return d.Dial(network, address）
+}
+```
+### 错误接口定义
+```go
+type error interface {
+    Error() string
+}    
+```
+所有符合Error() strign格式的方法，都能实现错误接口。
+
+Error()方法返回错误的具体描述，使用者可以通过这个字符串知道发生了什么错误。
+
+### 自定义一个错误
+```go
+var error = errors.New("this is an error")
+```
+错误字符串由于相对固定，一般在包作用域声明，应尽量减少在使用时直接使用error.New返回。
+
+> errors包
+```go
+func New(text string) error {
+    return &error String{text}
+}
+    
+// 错误字符串
+type error String struct {
+    s String 
+}
+    
+// 返回发生任何错误
+func (e *error String) Error() string {
+    return e.s
+}    
+```
+
+- 错误定义
+```go
+package main
+
+import (
+	"errors"
+	"fmt"
+)
+
+func Sqrt(f float64) (float64 , error){
+	if f<0 {
+		return 0, errors.New("math: square root of negative number")    //errors.New 可返回一个错误信息
+	}
+
+	//实现
+	return f,nil
+}
+
+//定义一个DivideError结构
+type DivideError struct {
+	dividee int
+	divider int
+}
+
+// 实现Error接口
+func (de *DivideError) Error() string{
+	strFormat :=`
+	cannot proceed, the divider is zero.
+	dividee: %d
+	divider: 0
+`
+	return fmt.Sprintf(strFormat,de.dividee)
+}
+
+// 定义int类型除法运算 函数
+func Divide(varDividee int,varDivider int) (result int, errorMsg string) {
+	if varDivider == 0 {
+		dData := DivideError{
+			dividee: varDividee,
+			divider: varDivider,
+		}
+		errorMsg = dData.Error()
+		return
+	}else{
+		return varDividee / varDivider,""
+	}
+}
+
+
+func main(){
+	/*
+	error类型是一个接口类型，定义如下
+	type error interface {
+		Error() string
+	}
+	*/
+
+	/*
+	_ ,err := Sqrt(-1)
+
+	if err!=nil{
+		fmt.Println(err)
+	}
+	 */
+
+	if result, errorMsg := Divide(100,10); errorMsg == "" {
+		fmt.Println(result)
+	}
+
+	if _, errorMsg := Divide(100,0); errorMsg != "" {
+		fmt.Print(errorMsg)
+	}
+
+}
+
+```
+
+- 在解析中使用自定义错误
+使用errors.New定义的错误字符串的错误类型是无法提供丰富的错误信息的。
+
+如果需要携带错误信息返回，就需要借助自定义结构体实现错误接口。
+
+```go
+package main
+
+import (
+    "fmt"
+)
+    
+// 声明一个解析错误
+type Parse_Error struct {
+	Filename string
+	Line int            // 行号
+
+}
+
+// 实现error接口，返回错误描述
+func (e *Parse_Error) Error() string {
+	return fmt.Sprintf("%s:%d", e.Filename, e.Line)
+}
+
+// 创建一些解析错误
+func new_Parse_Error(filename string, line int) error {
+	return &Parse_Error{filename, line}
+}
+
+func main() {
+
+    var e error
+    // 创建一个错误实例，包含文件名和行号
+    e = new_Parse_Error("main.go",1)
+    
+   	fmt.Println(e.Error())
+   
+   	// 根据错误接口的具体类型，获取详细的错误信息
+   	switch detail := e.(type) {
+   	    case *Parse_Error:
+    		fmt.Printf("Filename: %s Line: %d\n",detail.Filename,detail.Line)
+    	default:
+    		fmt.Printf("other error")
+    }
+
+}
+    
+/*
+main.go:1
+Filename: main.go Line: 1
+*/    
+```
+
+## Panic 宕机 ————程序终止运行
 Go的类型系统会在编译时捕获很多错误，但有些错误只能在运行时检查，如数组访问越界、空指针引用等。这些运行时错误会引起painc异常。
+
+### 手动触发宕机
+Go可以在程序中手动触发宕机，让程序崩溃，这样开发者可以及时的发现粗无，同时减少可能的损失。
+
+GO程序在宕机时，会将堆栈和goroutine信息输出到控制台，所以宕机也可以方便的知晓发生错误的位置。
+
+触发宕机：
+```go
+package main
+func main() {
+    panic("crash")
+}
+
+/*
+panic: crash
+
+goroutine 1 [running]:
+main.main()
+	/website/go/src/test/panic.go:3 +0x39
+exit status 2
+*/
+```
+
+panic()的声明：
+```go
+func panic(v interface{})    // 参数可以是任意类型
+```
+
+### 运行依赖的必备资源缺失时主动触发宕机
+regexp是Go的正则表达式包，正则表达式需要编译后才能使用，而且编译必须是成功后的，表示正则表达式可用。
+
+编译正则表达式有两种：
+- func Compile(expr string) (*Regexp, error)
+- func Must Compile(str string) *Regexp
+
+当编译正则表达式发生错误时，使用panic触发宕机，该函数适用于直接适用正则表达式而无需处理正则表达式错误的情况。
+
+```go
+func Must Compile(str string) *Regexp {
+    regexp, error := Compile(str)   // 调用Compile()是编译正则表达式的入口韩素，该函数返回编译好的正则表达式对象和错误。
+    if error != nil {
+        panic('regexp: Compile(' + quote(str)+ '):' +error.Error())
+    }
+    return regexp   
+}
+```
+手动宕机进行报错的方式不是一种偷懒的方式，反而能迅速报错，终止程序继续运行，防止更大的错误产生。
+
+### 在宕机时触发延迟执行语句
+当panic()触发的宕机发生时，panic()后面的代码将不会被执行，但在panic()函数前面已经运行的defer语句依然会在宕机发生时发生作用。
+
+```go
+package main
+
+import "fmt"
+
+func mian() {
+    defer fmt.Println("宕机后要做的事情1")
+    defer fmt.Println("宕机后要做的事情2")
+    panic("宕机")
+}   
+/*
+宕机后要做的事情2
+宕机后要做的事情1
+panic: 宕机
+
+goroutine 1 [running]:
+main.main()
+	/website/go/src/test/panic.go:10 +0x140
+exit status 2
+*/ 
+```
 
 ## Recover
 通常来说，不应该对panic异常做任何处理，但有时，也许我们可以从异常中恢复，至少我们可以在程序崩溃前，做一些操作
 
+Go没有异常系统，其使用panic触发宕机类似于其他语言的抛出异常，那么recover的宕机恢复机制就对应try/catch机制。
+
+### 让程序在崩溃时继续执行
+
+```go
+package main
+
+import (
+	"fmt"
+	"runtime"
+)
+
+// 崩溃时需要传递的上下文信息
+type panic_Context struct {
+	function string     // 所在函数
+}
+
+// 保护方式运行一个函数
+func Protect_Run(entry func()) {
+	// 延迟处理的函数
+	defer func() {
+
+		// 发生宕机，获取panic传递的上下文并打印
+		err := recover()
+
+		switch err.(type) {
+		case runtime.Error:         // 运行时错误
+			fmt.Println("runtime error:",err)
+		default:
+			fmt.Println("error:", err)
+		}
+	}()
+
+	entry()
+}
+
+func main() {
+	fmt.Println("运行前")
+
+	// 允许一段手动触发的错误
+	Protect_Run(func() {
+
+		fmt.Println("手动宕机前")
+
+		// 使用panic传递上下文
+		panic(&panic_Context{
+			"手动触发panic",
+		})
+
+		fmt.Println("手动宕机后")
+	})
+
+	// 故意造成指针访问错误
+	Protect_Run(func() {
+		fmt.Println("赋值宕机前")
+
+		var a *int
+		*a = 1
+
+		fmt.Println("赋值宕机后")
+	})
+
+	fmt.Println("运行后")
+}
+
+/*
+运行前
+手动宕机前
+error: &{手动触发panic}
+赋值宕机前
+runtime error: runtime error: invalid memory address or nil pointer dereference
+运行后
+*/       
+```
+
+### panic和recover的关系
+panic和defer组合有如下特性：
+- 有panic没recover，程序宕机
+- 有panic也有recover捕获，程序不会宕机。执行完对应的defer后，从宕机点退出当前函数后继续执行。
+
+> panic/recover能模拟其他语言的异常机制，但并不建议代表编写普通函数经常性使用这个特性。
+
+在panic触发的defer函数内，可以继续调用panic，进一步将错误外抛直到程序整体崩溃。
+
+如果想再捕获错误时设置当前函数的返回值，可以对返回值使用命名返回值方式直接进行设置。
 
 
+## 结构体
+Go使用结构体和结构体成员来描述真实世界的实体和实例对应的各种属性。
 
+Go中的类型可以被实例化，使用new或&构造的类型实例的类型是类型的指针。
 
+结构体成员由一系列的成员变量构成，这些成员变量也被称为"字段"。
+- 字段拥有自己的类型和值；
+- 字段名必须唯一；
+- 字段的类型也可以是结构体，甚至是字段所在结构体的类型
 
+Go的结构体与"类"都是符合结构体，但Go中结构体的内嵌配合接口比面向对象具有更高的扩展性和灵活性。
 
+Go不仅结构体能拥有方法，且每种自定义类型也可以拥有自己的方法。
 
+### 定义结构体
+type 类型名struct {
+   字段1 字段1类型
+   字段2 字段2类型
+   ...
+}
 
+### 实例化结构体————为结构体分配内存并初始化
+结构体的定义只是一种内存布局的描述，只有当结构体实例化时，才会真正的分配内存。因此必须在定义结构体并实例化后才能使用结构体的字段。
 
+实例化就是根据结构体定义的格式创建一份与格式一致的内存区域，结构体实例与实例间的内存是完全独立的。
 
+### 基本的实例化形式
+```go
+var ins T
+# T 为结构体类型
+#ins为结构体的实例
+```
 
+### 创建指针类型的结构体
+Go可以使用new关键字对类型（包括结构体、整形、浮点型、字符串等）进行实例化，结构体在实例化后会形成指针类型的结构体。
+
+```go
+ins := new(T)
+# ins: T类型被实例化后保存到ins变量中，ins的类型为*T，属于指针。
+```
+
+Go可以像访问普通结构体一样使用"."访问结构体指针的成员。
+
+```go
+type Player struct {
+    Name string
+    Health_Point int 
+    Magic_Point int
+}
+tank := new(Player)
+tank.Name = "Canon"
+tank.Health_Point = 300
+```
+
+### 取结构体的地址实例化
+```go
+ins := &T{}
+# ins为结构体的实例，类型为*T，是指针类型
+```
 
 
 
