@@ -204,6 +204,45 @@ Go中删除元素的本质：是以删除元素为分界点，将前后两个部
 ## map
 map使用散列表（hash）实现
 
+### 添加关联到map并访问关联和数据
+map[Key_Type]Value_Type
+
+```go
+scene := make(map[string]int)
+scene["route"] = 66
+fmt.Println(scene["route"])
+v :=scene["route2"]    //尝试查找一个不存在的键，返回的将是value_type的默认值
+fmt.Println(v)
+
+/**
+66
+0
+*/
+```
+
+填充内容方式
+```go
+m := map[string]string{
+    "W": "forward",
+    "A": "left",
+    "D": "right"
+}
+```
+并没有使用make，而是使用大括号进行内容定义，就像json格式一样，健值对，并使用逗号分割。
+
+### delete()从map中删除健值对
+```go
+delete(map, 键)
+//map 要删除的实例
+```
+
+### 清空map中的所有元素
+清空map的唯一办法就是重新make一个新的map。
+不用担心垃圾回收的效率，Go中的并行垃圾回收效率比写一个清空函数高效的多。
+
+### 能够在并发环境中使用的map——sync.Map
+Go中的map在并发环境下，只读是线程安全的，同时读写线程不安全。
+
 
 # 流程判断
 
@@ -1230,7 +1269,81 @@ Go的类型或结构体没有构造函数的功能。结构体的初始化过程
 #### 带有父子关系结构体的构造和初始化————模拟父级构造调用
 
 
+## 接口（interface）
+接口实现者不需要关系接口会被怎样使用，调用者也不需要关心接口的实现细节。接口是一种类型，也是一种抽象结构，不会暴露所含数据的格式、类型及结构。
 
+### 接口声明
+
+```go
+type 接口类型名 interface{
+    方法名1（参数列表1） 返回值列表1
+    方法名2（参数列表2） 返回值列表2
+    ...
+}
+```
+
+### 实现接口
+```go
+package main
+
+import (
+	"database/sql"
+	"fmt"
+)
+
+// 定义一个数据写入器
+type DataWriter interface {
+	WriteData(data interface{}) error
+}
+
+// 定义文件结构，用于实现Data Write
+type file struct {
+	Dsn string
+	conn *sql.DB
+}
+
+// 实现DataWriter方法
+func (d *file) WriteData(data interface{}) error{
+	// 模拟数据写入
+	fmt.Println("Write Data:",data)
+	return nil
+}
+
+func main(){
+	//实例化file
+	f := new(file)
+
+	// 声明一个DataWriter的接口
+	var writer DataWriter
+
+	// 接口赋值file，也就是*file类型
+	writer = f
+
+	// 使用DataWriter接口进行数据写入
+	writer.WriteData("data")
+}
+```
+
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/QQ20200101-212508@2x.png)
+
+> 函数名不一致导致报错
+
+试图修改file结构的WriteData()方法名
+```go
+cannot use f (type *file) as type DataWriter in assignment:
+	*file does not implement DataWriter (missing WriteData method)
+```
+
+> 实现接口的方法签名不一致导致的报错
+```func (d *file) WriteData(data int) error```
+```go
+cannot use f (type *file) as type DataWriter in assignment:
+	*file does not implement DataWriter (wrong type for WriteData method)
+		have WriteData(int) error
+		want WriteData(interface {}) error
+```
+
+### 一个类型可以实现多个接口
 
 
 
