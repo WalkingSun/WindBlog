@@ -14,12 +14,6 @@ sinaClass: \[Markdown\]
 ---
 
 
-
-# INSERT INTO ... ON DUPLICATE KEY UPDATE
-
-在INSERT语句末尾指定了ON DUPLICATE KEY UPDATE，并且插入行后会导致在一个UNIQUE索引或PRIMARY KEY中出现重复值，则在出现重复值的行执行UPDATE；如果不会导致唯一值列重复的问题，则插入新行。 
-
-
 # replace into 用法（insert into 的增强版）
 跟insert into功能类似
 
@@ -34,6 +28,47 @@ MySQL replace into 有三种形式：
 replace into tbl_name(col_name, ...) values(...)
 replace into tbl_name(col_name, ...) select ...
 replace into tbl_name set col_name=value, ...
+```
+
+# INSERT INTO ... ON DUPLICATE KEY UPDATE
+
+在INSERT语句末尾指定了ON DUPLICATE KEY UPDATE，并且插入行后会导致在一个UNIQUE索引或PRIMARY KEY中出现重复值，则在出现重复值的行执行UPDATE；如果不会导致唯一值列重复的问题，则插入新行。 
+
+
+## 情景：
+实时数据的更新，如果有新的渠道则插入数据，如果渠道数据已经存在，则更新数据，如果是新增数据，则直接覆盖，如果是时长和次留数据就需要累加更新
+
+### 方法一：
+
+replace into tablename (f1, f2, f3) values(vf1, vf2, vf3),(vvf1, vvf2, vvf3)
+
+
+自动查询主键或唯一索引冲突，如有冲突，会先删除原有的数据记录，然后执行插入新的数据，影响行数2
+
+对于不能覆盖的数据此方法不适用
+
+### 方法二
+INSERT INTO table (a,b,c) VALUES (1,2,3)
+  ON DUPLICATE KEY UPDATE c=c+1;
+
+
+在insert时判断是否已有主键或唯一索引重复，如果有，一句update后面的表达式执行更新，否则，执行插入
+
+性能分析
+在数据库数据量很少的时候，　这两种方式都很快
+
+在数据量大的时候，replace的操作要比insert on duplicate的操作低太多太多，
+
+replace慢的原因,在更新数据的时候，要先删除旧的，然后插入新的，在这个过程中，还要重新维护索引，所以速度慢
+
+insert on duplicate 的更新操作虽然也会更新数据，但其对主键的索引却不会有改变，也就是说，insert　on duplicate　更新对主键索引没有影响.因此对索引的维护成本就低了一些
+
+示例：
+```sql
+INSERT INTO `new_duration` (`channel_name`, `date`, `channel_id`, `u_19`, `click`, `imei_new`, `android_new`, `oaid_new`, `ip_new`, `d_15`, `launch`) 
+VALUES ('qm-gdtsdmpjc2_lf', '2019-12-26', 13792, 1, 0, 1, 0, 0, 0, 1200, 12) 
+ON DUPLICATE KEY UPDATE 
+`u_19`=VALUES(`u_19`) ,`d_15`= `d_15`+VALUES(`d_15`), `launch`= `launch`+VALUES(`launch`), `click`=0,`imei_new`=1,`android_new`=0,`ip_new`=0,`oaid_new`=0;
 ```
 
 # case when then else end
