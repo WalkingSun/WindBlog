@@ -28,3 +28,22 @@ string:=strconv.Itoa(int)
 string:=strconv.FormatInt(int64,10)
 ```
 
+# string、[]byte转换
+string转[]byte
+```go
+var str string = "test"
+
+var data []byte = []byte(str)
+```
+
+[]byte转string
+```go
+var data [10]byte 
+
+byte[0] = 'T'
+
+byte[1] = 'E'
+
+var str string = string(data[:])
+```
+
