@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Goroutine并发控制【draft】
+title: Goroutine并发控制
 categories: [Go, 知识点]
 description: 熟悉
 keywords: Go
@@ -62,10 +62,59 @@ task  5
 
 # 控制Gorutine的数量
 
+```go
+// 控制 Goroutine 数量
+	jobCount := 10
+	group := sync.WaitGroup{}
 
+	// 规定chan容量为3
+	jobsChan := make(chan int,3)
 
+	// 起3个worker
+	workerCount := 3
+	for w:=0; w <= workerCount; w++ {
+		go func(w int){
+			for j := range jobsChan {
+				fmt.Printf("worker %d get chan msg %d \n",w,j)
+				time.Sleep(time.Second)
+				group.Done()
+			}
+		}(w)
+	}
 
+	// 发布消息到chan
+	for j :=0; j < jobCount; j++ {
+		jobsChan <- j
+		group.Add(1)
+		fmt.Printf("index: %d,goroutine Num: %d\n", j, runtime.NumGoroutine())
+	}
 
+	group.Wait()
+```
+
+```go
+worker 1 get chan msg 0 
+index: 0,goroutine Num: 5
+index: 1,goroutine Num: 6
+worker 0 get chan msg 1 
+worker 2 get chan msg 2 
+index: 2,goroutine Num: 5
+index: 3,goroutine Num: 5
+index: 4,goroutine Num: 5
+index: 5,goroutine Num: 5
+index: 6,goroutine Num: 5
+worker 3 get chan msg 3 
+worker 0 get chan msg 4 
+worker 1 get chan msg 7 
+index: 7,goroutine Num: 5
+worker 2 get chan msg 5 
+index: 8,goroutine Num: 5
+index: 9,goroutine Num: 5
+worker 3 get chan msg 6 
+worker 0 get chan msg 8 
+worker 3 get chan msg 9 
+
+```
 
 
 
