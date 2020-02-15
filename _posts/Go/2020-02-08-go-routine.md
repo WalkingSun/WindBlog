@@ -60,15 +60,68 @@ task  5
 
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WX20200208-211451@2x.png)
 
-# 控制Gorutine的数量
+
+# 控制Goroutine数量
+## 令牌桶
+chan+goroutine+sync.WaitGroup方式
+````go
+    jobCount := 10
+	// sync.WaitGroup 监控所有协程的状态，从而保证主协程结束时所有的子协程已经退出
+	group := sync.WaitGroup{}
+	
+    // 定一个桶 桶的容量为2，桶满了阻塞，类似令牌桶。保证每次同时运行的gorutine数量不会超过桶容量，达到每次并发控制gorutine数量
+	buckets := make(chan bool,2)
+	for i:=0;i < jobCount;i++ {
+		buckets <- true
+		group.Add(1)
+		go func(i int) {
+			fmt.Println("task ",i)
+			time.Sleep(time.Second) // 刻意睡 1 秒钟，模拟耗时
+			//fmt.Printf("index: %d,goroutine Num: %d \n", i, runtime.NumGoroutine())
+			<- buckets
+			group.Done()
+		}(i)
+		fmt.Printf("index: %d,goroutine Num: %d \n", i, runtime.NumGoroutine())
+	}
+	group.Wait()
+
+````
+
+```go
+index: 0,goroutine Num: 2 
+index: 1,goroutine Num: 3 
+task  1
+task  0
+task  2
+index: 2,goroutine Num: 2 
+index: 3,goroutine Num: 3 
+task  3
+index: 4,goroutine Num: 3 
+index: 5,goroutine Num: 3 
+task  5
+task  4
+index: 6,goroutine Num: 2 
+index: 7,goroutine Num: 3 
+task  6
+task  7
+index: 8,goroutine Num: 3 
+task  8
+index: 9,goroutine Num: 3 
+task  9
+
+```
+可以看到做到了控制2个2个执行的效果。
+
+## 多worker消费
+起多个worker等待chan；消息发布到chan，根据chan容量阻塞；worker开始消费chan；group.Wait()等待goroutine结束。
 
 ```go
 // 控制 Goroutine 数量
 	jobCount := 10
 	group := sync.WaitGroup{}
 
-	// 规定chan容量为3
-	jobsChan := make(chan int,3)
+	// chan容量为3
+	jobsChan := make(chan int,5)
 
 	// 起3个worker
 	workerCount := 3
