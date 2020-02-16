@@ -42,7 +42,7 @@ class RecoveryController extends Controller
                 $filter = ['userId'=>$v['userId']];
                 $data = $model::find()->select([])->where($filter);
                 if( $config[$v['userId']]['typeList'] ) $data->andWhere(['in','type',explode(',',$config[$v['userId']]['typeList'])]);
-                if( $config[$v['userId']]['tagList'] ) $data->andWhere(['in','tag',explode(',',$config[$v['userId']]['tagList'])]);
+                if( $config[$v['userId']]['tagList'] ) $data->orWhere(['in','tag',explode(',',$config[$v['userId']]['tagList'])]);
                 $data =$data->asArray()->indexBy('id')->all();
                 $logs = $JpKnowledgeRecoveryLog::find()->select('krId')->where(['userId'=>$v['userId']])->andWhere(['>=','createtime',date('Y-m-d H:i:s',strtotime("-{$this->limitTime} day"))])->asArray()->indexBy('krId')->all();
 
