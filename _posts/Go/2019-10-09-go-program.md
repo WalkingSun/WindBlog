@@ -95,6 +95,18 @@ if _, ok := map[key]; ok {
 }
 ```
 
+```go
+    m := make(map[string]string)
+	m["b"] = "1"
+	val,exist := m["a"]
+	val1,exist1 := m["b"]
+	fmt.Println(val,exist)
+	fmt.Println(val1,exist1)
+//	 false
+//    1 true
+
+```
+
 ### delete()从map中删除健值对
 ```go
 delete(map, 键)
