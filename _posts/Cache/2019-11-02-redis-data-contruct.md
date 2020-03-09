@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: redis数据结构及场景【draft】
+title: redis数据结构及场景
 categories: [redis, 事务]
 description: 了解redis的数据结构，应用场景
 keywords: redis, 事务, 乐观锁
