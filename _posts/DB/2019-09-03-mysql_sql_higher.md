@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: mysql高级用法【draft】
+title: mysql高级用法
 categories: [DB,mysql]
 description: 了解下mysql高级用法
 keywords: 索引
