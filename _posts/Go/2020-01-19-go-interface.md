@@ -133,5 +133,152 @@ type Closer interface {
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WX20200330-213252@2x.png)
 
 #### 多个类型实现相同的接口
+一个接口的方法，可以通过在类型中嵌入其他类型或结构体来实现。
+
+使用者并不关心某个接口的方法是通过一个类型完全实现的，还是通过多个结构嵌入到一个结构体中拼接起来共同实现的。
+
+```go
+// 一个服务需要满足能够开启和写日志的功能
+type Service interface {
+        start()                 // 开启服务
+        Log(string)             // 日志输出
+}
+
+// 日志器
+type Logger struct {
+
+}
+
+// 实现service的Log()方法
+func (g *Logger) Log(l string) {
+
+}
+
+// 游戏服务
+type GameService struct {
+        Logger                  // 嵌入日志器
+}
+
+// 实现Service的Start方法
+func (g *Game Service) Start() {
+
+}
+```
+
+### 对结构体数据进行排序
+
+- 实现sort.interface 进行结构体排序
+
+```go
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+// 声明英雄的分类
+type HeroKind int
+
+// 定义Hero kind常量，类似于枚举
+const (
+	None HeroKind = iota
+	Tank
+	Assassin
+	Mage
+)
+
+// 定义英雄名单的结构
+type Hero struct {
+	Name string     // 英雄
+	Kind HeroKind   // 英雄的种类
+}
+
+//将英雄指针的切片定义为Heros类型
+type Heros []*Hero
+
+// 实现sort.Interface接口原色数量的方法
+func (s Heros) Len() int {
+	return len(s)
+}
+
+// 实现sort.interface接口比较元素方法
+func (s Heros) Less(i, j int) bool {
+	// 如果英雄的分类不一致时，优先对分类进行排序
+	if s[i].Kind != s[j].Kind {
+		return s[i].Kind < s[j].Kind
+	}
+
+	// 默认按英雄名字字符升序排列
+	return s[i].Name < s[j].Name
+}
+
+// 实现sort.Interface接口交换元素方法
+func (s Heros) Swap(i, j int) {
+	s[i],s[j] = s[j],s[i]
+}
+
+func main() {
+	heros := Heros{
+		&Hero{"吕布",Tank},
+		&Hero{"李白",Assassin},
+		&Hero{"妲己",Mage},
+		&Hero{"关羽",Tank},
+		&Hero{"诸葛亮",Mage},
+	}
+	sort.Sort(heros)
+
+	for _,v := range heros {
+		fmt.Printf("%+v\n",v)
+	}
+}
+
+```
+结果：
+```go
+&{Name:关羽 Kind:1}
+&{Name:吕布 Kind:1}
+&{Name:李白 Kind:2}
+&{Name:妲己 Kind:3}
+&{Name:诸葛亮 Kind:3}
+
+```
+
+- 使用sort.slice 进行切片元素排序
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
