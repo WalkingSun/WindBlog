@@ -246,18 +246,178 @@ func main() {
 
 - 使用sort.slice 进行切片元素排序
 
+```go
+package main
+
+import (
+	"fmt"
+	"sort"
+)
+
+// 声明英雄的分类
+type HeroKind int
+
+// 定义Hero kind常量，类似于枚举
+const (
+	None = iota
+	Tank
+	Assassin
+	Mage
+)
+
+// 定义英雄名单的结构
+type Hero struct {
+	Name string     // 英雄
+	Kind HeroKind   // 英雄的种类
+}
+
+func main() {
+	heros := []*Hero{
+		{"吕布",Tank},
+		{"李白",Assassin},
+		{"妲己",Mage},
+		{"关羽",Tank},
+		{"诸葛亮",Mage},
+	}
+	sort.Slice(heros, func(i, j int) bool {
+		if heros[i].Kind != heros[j].Kind {
+			return heros[i].Kind < heros[j].Kind
+		}
+		return heros[i].Name < heros[j].Name
+	})
+
+	for _,v := range heros {
+		fmt.Printf("%+v\n",v)
+	}
+}
+```
+使用sort.Slice()不仅可以完成结构体切片排序，还可以对各种切片类型进行自定义排序。
+
+https://books.studygolang.com/The-Golang-Standard-Library-by-Example/chapter03/03.1.html
+
+### 接口的嵌套组合
+接口与接口嵌套组合形成新接口，只要接口的所有方法被实现，则这个接口中的所有嵌套接口的方法均可以被调用。
 
 
+### 接口和类型间转换
+Go中使用接口断言将接口站换乘另外一个接口，也可以将接口转换为另外的类型。
+
+#### 类型断言的格式
+```go
+t := i.(T)
+```
+- i代表接口变量
+- T代表转换的目标类型
+- t代表转换后的变量
+
+如果i没有完全实现T接口的方法，这个语句将会触发宕机。触发宕机不是很友好，因此上面的语句还有一种写法：
+```go
+t,ok := i.(T)
+```
+这种写法下，如果发生接口未实现时，将会把ok置为false，t置为T类型的0值。正常实现时，ok为true。这里ok可以被认为是：i接口是否实现T类型的结果
+
+**接口和其他类型的转换可以在Go语言中自由进行，前提是已经完全实现。接口断言类似于流程控制中的if。但大量类型断言出现时，应使用更为高效的类型分支switch特性。**
+
+##### 类型分支——批量判断空接口中变量的类型
+Go语言的switch不仅可以像其他语言一样实现数值、字符串的判断，还有一种特殊的用途——判断一个接口内保存或实现的类型。
+```go
+switch 接口变量.(type) {
+        case 类型1：
+        // 变量是类型1时的处理
+        case 类型2：
+        // 变量是类型2时的处理
+        ...
+        default:
+        // 其他处理
+}
+```
+
+##### 将接口转换为其他接口
+实现某个接口类型同时实现了另外一个接口，此时可以在两个接口间转换。
+```go
+package main
+
+import "fmt"
+
+//  定义飞行动物接口
+type Flyer interface {
+	Fly()
+}
+
+// 定义行走动物接口
+type Walker interface {
+	Walk()
+}
+
+// 定义鸟类
+type bird struct {
+
+}
+
+// 实现飞行动物接口
+func (b *bird) Fly() {
+	fmt.Println("bird:fly")
+}
+
+// 为鸟添加walk()方法，实现行走动物接口
+func (b *bird) Walk() {
+	fmt.Println("bird: walk")
+}
+
+// 定义猪
+type pig struct {
+
+}
+
+// 为猪添加walk()方法，实现行走动物接口
+func (p *pig) Walk() {
+	fmt.Println("pig: walk")
+}
+
+func main() {
+	// 创建动物的名字到实例的映射
+	animals := map[string]interface{}{
+		"bird": new(bird),
+		"pig": new(pig),
+	}
+
+	// 遍历映射
+	for name, obj := range animals {
+		// 判断对象是否为飞行动物
+		f, isFlyer := obj.(Flyer)
+
+		// 判断对象是否为行走动物
+		w, isWalker := obj.(Walker)
+
+		fmt.Printf("name: %s is Flyer: %v is Walker: %v\n",name,isFlyer,isWalker)
+		if isFlyer {
+			f.Fly()
+		}
+
+		if isWalker {
+			w.Walk()
+		}
+	}
+}
+
+```
 
 
+##### 将接口转换为其他类型
+```go
+	// 接口转换为其他类型
+	p1 := new(pig)
 
+	var a Walker = p1
+	p2 := a.(*pig)
 
+	fmt.Printf("p1=%p p2=%p",p1,p2)
+```
 
+### 空接口类型———— 能保存所有值的类型
+空接口是接口类型的特殊形式，空接口没有任何方法，因此任何类型都无须实现空接口。从实现的角度看，任何值都满足这个接口的需求。因此空接口类型可以保存任何值，也可以从空接口中取出原值。
 
-
-
-
-
+空接口的内部实现保存了对象的类型和指针。使用空接口保存一个数据的过程会比直接用数据对应类型的变量保存稍慢。因此在开发中，**应在需要的地方使用空接口，而不是在所有地方使用空接口**。
 
 
 
