@@ -21,7 +21,7 @@ sinaClass: \[Markdown\]
 ```go
 var a int = 100
 b := 200
-b,a = a,b       # 实现交换
+b,a = a,b       // 实现交换
 ```
 
 # 匿名变量
