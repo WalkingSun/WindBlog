@@ -12,6 +12,7 @@ csdnClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
+
 # 简介
 目前正在学Go，做下记录，温故而知新，初学coding的时候可以快速翻查用法，了解原理。
 
@@ -60,66 +61,7 @@ for k,v := range team{
 [https://www.cnblogs.com/followyou/p/12349883.html](https://www.cnblogs.com/followyou/p/12349883.html)
 
 ## map
-map使用散列表（hash）实现
-
-### 添加关联到map并访问关联和数据
-map[Key_Type]Value_Type
-
-```go
-scene := make(map[string]int)
-scene["route"] = 66
-fmt.Println(scene["route"])
-v :=scene["route2"]    //尝试查找一个不存在的键，返回的将是value_type的默认值
-fmt.Println(v)
-
-/**
-66
-0
-*/
-```
-
-填充内容方式
-```go
-m := map[string]string{
-    "W": "forward",
-    "A": "left",
-    "D": "right"
-}
-```
-并没有使用make，而是使用大括号进行内容定义，就像json格式一样，健值对，并使用逗号分割。
-
-###  判断map中key是否存在
-```go
-if _, ok := map[key]; ok {
-//存在
-}
-```
-
-```go
-    m := make(map[string]string)
-	m["b"] = "1"
-	val,exist := m["a"]
-	val1,exist1 := m["b"]
-	fmt.Println(val,exist)
-	fmt.Println(val1,exist1)
-//	 false
-//    1 true
-
-```
-
-### delete()从map中删除健值对
-```go
-delete(map, 键)
-//map 要删除的实例
-```
-
-### 清空map中的所有元素
-清空map的唯一办法就是重新make一个新的map。
-不用担心垃圾回收的效率，Go中的并行垃圾回收效率比写一个清空函数高效的多。
-
-### 能够在并发环境中使用的map——sync.Map
-Go中的map在并发环境下，只读是线程安全的，同时读写线程不安全。
-
+[https://www.cnblogs.com/followyou/p/12355313.html](https://www.cnblogs.com/followyou/p/12355313.html)
 
 # 流程判断
 
@@ -254,8 +196,8 @@ main() {
     char d[] = "abc:;  //栈
     char *p2;          //栈
     char *p3 = "hello";   //hello在常量区，p3在栈上
-    p1 = （char*)malloc(10);
-    p2 = （char*)malloc(20);     //分配得来的10和20字节的区域就在堆区
+    p1 = (char*)malloc(10);
+    p2 = (char*)malloc(20);     //分配得来的10和20字节的区域就在堆区
     strcpy(p1,"hello");        //hello放在常量区，编译器可能会将它与p3所指向的hello优化成一个地方
 }
 ```
@@ -288,7 +230,7 @@ c := func(a,b int) (c int){
 [https://www.cnblogs.com/followyou/p/12358919.html](https://www.cnblogs.com/followyou/p/12358919.html)
 
 ## 接口（interface）
-
+[https://www.cnblogs.com/followyou/p/12601846.html](https://www.cnblogs.com/followyou/p/12601846.html)
 
 
 
