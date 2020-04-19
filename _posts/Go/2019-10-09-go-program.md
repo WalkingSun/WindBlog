@@ -226,7 +226,7 @@ go func(){
 		c <- 3
 		close(c)
 }()
-//不断chann中获取数据￿
+
 for value :=range c {
 		...
 }
