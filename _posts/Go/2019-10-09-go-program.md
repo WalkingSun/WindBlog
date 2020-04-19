@@ -46,7 +46,7 @@ var team = [3]string{"hammer","soldier","mum"}
 
 ### 根据元素个数确定数组大小
 ```go
-var team = [...]string{"hammer","soldier","mum"}   # ...表示让编译器确定数组大小
+var team = [...]string{"hammer","soldier","mum"}   // ...表示让编译器确定数组大小
 ```
 
 ### 遍历数组
@@ -180,47 +180,7 @@ var a int32 = 1047483647
 b:=int16(a)
 ```
 
-## 堆栈知识
-- 栈区（stack） --存储参数值、局部变量，维护函数调用关系等。
-- 堆区（heap）  --动态内存区域，随时申请和释放，程序自身要对内存泄漏负责
-- 全局区（静态区）  --存储全局和静态变量
-- 字面量区   --常量字符串存储区
-- 程序代码区   --存储二进制代码
 
-```go
-int a=o;    //全局变量
-char *p1;   //全局未初始化区
-main() {
-    static int b=0;   //全局初始化区
-    int c;  //栈
-    char d[] = "abc:;  //栈
-    char *p2;          //栈
-    char *p3 = "hello";   //hello在常量区，p3在栈上
-    p1 = (char*)malloc(10);
-    p2 = (char*)malloc(20);     //分配得来的10和20字节的区域就在堆区
-    strcpy(p1,"hello");        //hello放在常量区，编译器可能会将它与p3所指向的hello优化成一个地方
-}
-```
-
-总体来讲，栈上的变量是局部的，随着局部空间的销毁而销毁，由系统负责。
-
-堆上的变量可以提供全局访问，需要自行处理其声明周期。
-
-# 关键字
-## defer
-defer用于资源的释放，会在函数返回之前进行调用
-
-```go
-var a,b := 1,2
-c := func(a,b int) (c int){
-		c  = a+b
-		defer func() {
-			c = c*2
-		}()
-		return
-	}
-//6
-```
 
 
 ## 函数
