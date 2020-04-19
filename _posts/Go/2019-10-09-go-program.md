@@ -218,18 +218,16 @@ for key, value := range []int{1, 2, 3, 4} {
 
 ### 遍历channel --从通道接收数据
 ```go
-c := make(chan int)
+ch := make(chan int)
 go func(){
 		//往通道内推送数据，然后结束并关闭通道
-		c <- 1
-		c <- 2
-		c <- 3
-		close(c)
+		ch <- 1
+		ch <- 2
+		ch <- 3
+		close(ch)
 }()
-```
-```go
-//其实就是不断的从通道获取数据￿
-for  key, value :=range c {
+//不断的从通道获取数据￿
+for  ... :=range ch {
 		...
 }
 ```
