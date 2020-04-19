@@ -226,9 +226,10 @@ go func(){
 		c <- 3
 		close(c)
 }()
-
+```
+```go
 //其实就是不断的从通道获取数据￿
-for|value|:=|range|c {
+for value :=range c {
 		...
 }
 ```
