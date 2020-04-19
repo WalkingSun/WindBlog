@@ -227,7 +227,5 @@ go func(){
 		close(ch)
 }()
 //不断的从通道获取数据￿
-for  ... :=range ch {
-		...
-}
+for  ...
 ```
