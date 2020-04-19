@@ -229,6 +229,6 @@ go func(){
 
 //其实就是不断的从通道获取数据￿
 for v:=range c {   
-	fmt.Println(v)
+	...
 }
 ```
