@@ -163,21 +163,6 @@ c := func(a,b int) (c int){
 
 # 流程判断
 
-- 条件判断 if
-- 条件循环 for
-- 健值循环  for range
-- 分支选择 switch
-switch 默认情况下 case 最后自带 break 语句，匹配成功后就不会执行其他 case，如果我们需要执行后面的 case，可以使用 fallthrough
-```go
-switch var1 {
-    case val1:
-        fallthrough
-    case val2:
-        ...
-    default:
-        ...
-}
-```
 
 - 跳转 goto
 - 跳出循环 break 和 继续循环 continue
