@@ -196,3 +196,23 @@ for key, value := range []int{1, 2, 3, 4} {
 }
 ```
 
+### 遍历获得字符
+```go
+	str := "hello"
+	for key, value := range str {
+		fmt.Printf("key%d, value 0x%x \n",key ,value)  //%x	十六进制，小写字母，每字节两个字符
+	}
+```
+
+### 遍历map
+```go
+	m := map[string]int{
+		"a" : 1,
+		"b" : 2,
+	}
+	for key, value := range m {
+		fmt.Println(key,value)
+	}
+
+```
+
