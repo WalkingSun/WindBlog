@@ -63,3 +63,93 @@ for k,v := range team{
 ## map
 [https://www.cnblogs.com/followyou/p/12355313.html](https://www.cnblogs.com/followyou/p/12355313.html)
 
+
+## 函数
+[https://www.cnblogs.com/followyou/p/12348259.html](https://www.cnblogs.com/followyou/p/12348259.html)
+
+## 结构体
+[https://www.cnblogs.com/followyou/p/12358919.html](https://www.cnblogs.com/followyou/p/12358919.html)
+
+## 接口（interface）
+[https://www.cnblogs.com/followyou/p/12601846.html](https://www.cnblogs.com/followyou/p/12601846.html)
+
+
+# 流程判断
+
+- 条件判断 if
+- 条件循环 for
+- 健值循环  for range
+- 分支选择 switch
+switch 默认情况下 case 最后自带 break 语句，匹配成功后就不会执行其他 case，如果我们需要执行后面的 case，可以使用 fallthrough
+```go
+switch var1 {
+    case val1:
+        fallthrough
+    case val2:
+        ...
+    default:
+        ...
+}
+```
+- 跳转 goto
+- 跳出循环 break 和 继续循环 continue
+
+## 健值循环（for range）
+可以使用for range遍历数组、切片、字符串、map、及chnnel。
+
+通过for range遍历返回值规律：
+- 数组、切片和字符串返回索引和值；
+- map返回健和值
+- chnnel只返回通道内的值
+
+### 遍历切片、数组
+```go
+for key, value := range []int{1, 2, 3, 4} {
+		fmt.Printf("key%d, value %d\n",key ,value)
+}
+```
+
+### 遍历获得字符
+```go
+	str := "hello"
+	for key, value := range str {
+		fmt.Printf("key%d, value 0x%x \n",key ,value)  //%x	十六进制，小写字母，每字节两个字符
+	}
+```
+
+### 遍历map
+```go
+	m := map[string]int{
+		"a" : 1,
+		"b" : 2,
+	}
+	for key, value := range m {
+		fmt.Println(key,value)
+	}
+
+```
+
+### 遍历channel --从通道接收数据
+
+```go
+c:= make(chan int)
+	go func(){
+		//往通道内推送数据，然后结束并关闭通道
+		c <- 1
+		c <- 2
+		c <- 3
+		close(c)
+	}()
+	for v := range c{   //其实就是不断的从通道获取数据￿
+		fmt.Println(v)
+	}
+```
+
+
+
+
+
+
+
+
+
