@@ -40,13 +40,21 @@ http://web.com/abcd/不匹配，不能匹配正则表达式
 http://web.com/abcde不匹配，不能匹配正则表达式
 ```
 - ~* 不区分大小写的正则匹配
+- ^~ 普通字符匹配，不是正则匹配。如果该选项匹配，只匹配该选项，不匹配别的选项，一般用来匹配目录
+- @ 定义一个命名的location,使用在内部定向时，例如error_page,try_files
 
 ### 查找的顺序及优先级
 当有多条 location 规则时，nginx 有一套比较复杂的规则，优先级如下：
-- 精确匹配 =
-- 前缀匹配 ^~（立刻停止后续的正则搜索）
-- 按文件中顺序的正则匹配 ~或~*
-- 匹配不带任何修饰的前缀匹配。
+
+1). =前缀的指令严格匹配这个查询。如果找到，停止搜索。
+
+2). 所有剩下的常规字符串，最长的匹配。如果这个匹配使用^~前缀，搜索停止。
+
+3). 正则表达式，在配置文件中定义的顺序。
+
+4). 如果第3条规则产生匹配的话，结果被使用。否则，如同从第2条规则被使用。
+
+顺序or优先级： (location =)   >  (location ^~ 路径 最长匹配的意思) > (location ~,~* 正则顺序) > (location 部分起始路径) > (/)
 
 ## rewrite模块
 ### break
@@ -157,7 +165,61 @@ return URL;
 
 有一种特殊情况，就是重定向的url可以指定为此服务器本地的urI，这样的话，nginx会依据请求的协议$scheme， server_name_in_redirect 和 port_in_redirect自动生成完整的 url （此处要说明的是server_name_in_redirect 和port_in_redirect 指令是表示是否将server块中的 server_name 和 listen 的端口 作为redirect用 ）
 
+# 变量
+定义变量
+```
+set $foo hello;
+```
+## 内置变量
+- $request_method  请求方式
+- $args query params
+- $request_uri $request_uri 则用来获取请求最原始的 URI （未经解码，并且包含请求参数）
+- $uri 获取当前请求的 URI（经过解码，并且不含请求参数）
+- $arg_xxx 特别常用的内建变量其实并不是单独一个变量，而是有无限多变种的一群变量，即名字以 arg_ 开头的所有变量，我们估且称之为 $arg_XXX 变量群。一个例子是 $arg_name，这个变量的值是当前请求中名为 name 的参数的值，而且还是未解码的原始形式的值。
+```
+location /test-arg {
+    echo "name: $arg_name";
+    echo "class: $arg_class";
+}
+```
+$arg_name 不仅可以匹配 name 参数，也可以匹配 NAME 参数，抑或是 Name，Nginx 会在匹配参数名之前，自动把原始请求中的参数名调整为全部小写的形式
+- $cookie_XXX 取 cookie 值变量群
+- $http_XXX
 
+## 全局变量
+```
+arg_PARAMETER #这个变量包含GET请求中，如果有变量PARAMETER时的值。
+args #这个变量等于请求行中(GET请求)的参数，如：foo=123&bar=blahblah;
+binary_remote_addr #二进制的客户地址。
+body_bytes_sent #响应时送出的body字节数数量。即使连接中断，这个数据也是精确的。
+content_length #请求头中的Content-length字段。
+content_type #请求头中的Content-Type字段。
+cookie_COOKIE #cookie COOKIE变量的值
+document_root #当前请求在root指令中指定的值。
+document_uri #与uri相同。
+host #请求主机头字段，否则为服务器名称。
+hostname #Set to themachine’s hostname as returned by gethostname
+http_HEADER
+is_args #如果有args参数，这个变量等于”?”，否则等于”"，空值。
+http_user_agent #客户端agent信息
+http_cookie #客户端cookie信息
+limit_rate #这个变量可以限制连接速率。
+query_string #与args相同。
+request_body_file #客户端请求主体信息的临时文件名。
+request_method #客户端请求的动作，通常为GET或POST。
+remote_addr #客户端的IP地址。
+remote_port #客户端的端口。
+remote_user #已经经过Auth Basic Module验证的用户名。
+request_completion #如果请求结束，设置为OK. 当请求未结束或如果该请求不是请求链串的最后一个时，为空(Empty)。
+request_method #GET或POST
+request_filename #当前请求的文件路径，由root或alias指令与URI请求生成。
+request_uri #包含请求参数的原始URI，不包含主机名，如：”/foo/bar.php?arg=baz”。不能修改。
+scheme #HTTP方法（如http，https）。
+server_protocol #请求使用的协议，通常是HTTP/1.0或HTTP/1.1。
+server_addr #服务器地址，在完成一次系统调用后可以确定这个值。
+server_name #服务器名称。
+server_port #请求到达服务器的端口号
+```
 
 
 # 参考

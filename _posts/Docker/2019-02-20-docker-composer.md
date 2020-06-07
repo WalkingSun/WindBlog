@@ -18,6 +18,18 @@ sinaClass: \[Markdown\]
 -->
 
 # 查询容器信息
+## 查看停止的容器
+```
+docker ps -a |grep Exited |awk '{print $1}' 
+```
+## 删除已经停止的容器
+```
+docker rm $(docker ps -a |grep Exited |awk '{print $1}' )
+```
+## 清除镜像
+```
+docker image prune -a # 清除none 且没有跟容器关联的镜像
+```
 ## docker inspcet
 查询信息，包括运行情况、存贮位置、配置参数、网络设置等。
 
