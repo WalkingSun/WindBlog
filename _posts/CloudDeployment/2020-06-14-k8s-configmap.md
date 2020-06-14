@@ -87,7 +87,61 @@ kubectl apply -k .
 
 configmap/special-config-2-c92b5mmcf2 created
 
-```    
+```
+
+> 关于configmap的更新着实躺了个坑,当时也没查到相关资料，就自己动手用shell实现了套。
+```bash
+#!/bin/bash
+
+path=./config
+
+cd $path
+
+# kubectl 更新
+kubectlUpdate() {
+   `rm -rf ../configmap.yaml`
+
+  if [ -f "$1" ];then
+    str=$str"  "$1:" |-\n"$(awk '{print "    "$0}' $1)"\n"
+  else
+    callback=$(ls $1)
+    str="data:\n"
+    for filename in $callback
+    do
+      if [  -d "$1/$filename" ];then
+        continue
+      else
+        # 获取所有配置
+        str=$str"  "$filename:" |-\n"$(awk '{print "    "$0}' $1/$filename)"\n"
+      fi
+    done
+  fi
+
+  # configmap内容写入临时文件configmap.yaml
+  content="---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: $2
+  namespace: namespace"
+  `echo -e "${content}" >> ../configmap.yaml && echo -e "${str}" >> ../configmap.yaml`
+
+  # 更新configmap
+  echo `kubectl apply -f ../configmap.yaml -n bigdata`
+  return
+}
+
+
+# params create
+res_params=`kubectl create configmap params-configmap --from-file=config/ -n [namespace]`
+if [ -z "$res_params" ];then
+  kubectlUpdate config/ params-configmap
+else
+  echo $res_params
+fi
+```
+还是躺了个坑。
+
 ## 查看configmap
 ```bash
 # -0 yaml 代表输出以yaml形式
