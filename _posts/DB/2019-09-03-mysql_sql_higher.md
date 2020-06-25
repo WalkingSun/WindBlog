@@ -152,7 +152,7 @@ PARTITION BY RANGE (TO_DAYS(hiredate) ) (
     PARTITION p7 VALUES LESS THAN ( TO_DAYS('20171208') ),
     PARTITION p8 VALUES LESS THAN ( TO_DAYS('20171209') ),
     PARTITION p9 VALUES LESS THAN ( TO_DAYS('20171210') ),
-    PARTITION p10 VALUES LESS THAN ( TO_DAYS('20171211') )，
+    PARTITION p10 VALUES LESS THAN ( TO_DAYS('20171211') ),
     PARTITION p11 VALUES LESS THAN (MAXVALUE) 
 );
 -- MAXVALUE是一个无穷大的值
@@ -166,6 +166,18 @@ PARTITION BY RANGE (TO_DAYS(hiredate) ) (
 INSERT INTO db1_name (field1,field2) SELECT field1,field2 FROM db2_name
 
 ```
- 
+
+# 分组查询取最新的记录
+```mysql
+SELECT t1.* FROM [table] as t1 
+INNER JOIN
+(
+  SELECT  MAX(id) as id FROM [table] GROUP BY [group condtion] WHERE conditon
+) as t2  
+ON t1.id=t2.id                    
+WHERE [condtion]
+```
+
+规避全表扫描
 
   
