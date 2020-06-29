@@ -53,3 +53,12 @@ ADD 命令的格式和 COPY 命令相同，也是：
 
 - 解压压缩文件并把它们添加到镜像中
 - 从 url 拷贝文件到镜像中
+
+# 构建指定dockerfile、推送到远程仓库
+```bash
+docker build -f ./Dockerfile-dev . -t harbor-reg.km.com/micro/user-cronjob:latest
+# docker build [OPTIONS] PATH | URL | -
+# -t  Name and optionally a tag in the ‘name:tag’ format
+docker push harbor-reg.km.com/bigdata/user-cronjob:latest
+# docker push [OPTIONS] NAME[:TAG]
+```
