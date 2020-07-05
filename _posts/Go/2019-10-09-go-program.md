@@ -231,3 +231,41 @@ for value :=range c {
 		...
 }
 ```
+# 编译
+```bash
+export GOPATH=/home/golang/code
+go build -o main /goinstall                 # 按包编译
+
+go build -o mian main.go lib.go             # 文件列表编译
+
+```
+
+## go run
+命令会编译源码，并且直接执行源码的main()函数，不会在当前目录留下可执行文件。
+
+go run不会在运行目录下生成任何文件，可执行文件被放在临时文件中被执行，工作目录被设置为当前目录。
+在go run的后部可以添加参数，这部分参数会作为代码可以接受的命令行输入提供给程序。
+go run不能使用“go run + 包”的方式进行编译，如需快速编译运行包，需要使用如下步骤来代替：
+- 使用go build生成可执行文件。
+- 运行可执行文件。
+
+## go install
+功能和go build类似，附加参数绝大多数都可以与go build通用。go install只是将编译的中间文件放在GOPATH的pkg目录下，以及固定地将编译结果放在GOPATH的bin目录下。
+
+go install的编译过程有如下规律：
+- go install是建立在GOPATH上的，无法在独立的目录里使用go install。
+- GOPATH下的bin目录放置的是使用go install生成的可执行文件，可执行文件的名称来自于编译时的包名。
+- go install输出目录始终为GOPATH下的bin目录，无法使用-o附加参数进行自定义。
+- GOPATH下的pkg目录放置的是编译期间的中间文件。
+
+# 测试
+go test指定文件时默认执行文件内的所有测试用例。可以使用-run参数选择需要的测试用例单独执行
+
+-v，可以让测试时显示详细的流程
+
+-run跟随的测试用例的名称支持正则表达式，使用-run Test A$即可只执行Test A测试用例（假设TestA、TestAk、TestB、TestC会执行TestA、TestAk）。
+
+```bash
+go test -v -run testA main_test.go
+```
+
