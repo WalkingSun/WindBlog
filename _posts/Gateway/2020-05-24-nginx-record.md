@@ -221,6 +221,23 @@ server_name #服务器名称。
 server_port #请求到达服务器的端口号
 ```
 
+# Module
+## ngx_http_mirror_module
+ implements mirroring of an original request by creating background mirror subrequests. Responses to mirror subrequests are ignored.
+ 通过创建后台镜像子请求实现原始请求的镜像。对镜像子请求的响应将被忽略；
+ 场景：可以做流量复制，不关心响应。作为机房迁移上云的过渡挺合适的，或者说是作为复制请求测试。
+```nginx
+location / {
+    mirror /mirror;
+    proxy_pass http://backend;
+}
+
+location = /mirror {
+    internal;
+    proxy_pass http://test_backend$request_uri;
+}
+``` 
+参考：http://nginx.org/en/docs/http/ngx_http_mirror_module.html
 
 # 参考
 https://segmentfault.com/a/1190000008102599
