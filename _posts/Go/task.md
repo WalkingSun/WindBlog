@@ -1,0 +1,33 @@
+- [ ] 设计模式
+  - [x] 单列模式
+    - [x] 非线程安全
+    - [x] 线程安全
+  - [ ] 工厂模式
+    - [x] 简单工厂模式
+    - [ ] 工厂模式
+    - [ ] 抽象工厂模式
+  - [ ] 单一职责原则
+  - [ ] 开闭原则
+- [ ] Go高级编程阅读
+- [ ] Go刷题
+  - [ ] 刷一题
+- [ ] kafka阅读
+  - [ ] 极客时间
+  - [ ] 书籍
+  - [ ] 
+- [ ] 数据结构
+  - [ ] heap
+    - [x] 查询、添加
+    - [x] 取出元素和Sift Down   
+      - [x] coding
+    - [ ] Heapify和Replace
+      - [ ] coding
+    - [ ] 基于堆的优先队列
+    - [ ] LeetCode上优先队列相关问题
+    - [ ] 和堆相关的、广义队列
+  - [ ] 线段树
+  - [ ] Tire
+  - [ ] AVL
+- [ ] 力扣刷题
+  - [ ] https://leetcode-cn.com/leetbook/
+  - [ ] https://github.com/lifei6671/interview-go
