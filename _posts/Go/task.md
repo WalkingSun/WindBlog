@@ -18,16 +18,15 @@
 - [ ] kafka阅读
   - [ ] 极客时间
   - [ ] 书籍
-  - [ ] 
 - [ ] 数据结构
   - [ ] heap
     - [x] 查询、添加
     - [x] 取出元素和Sift Down   
       - [x] coding
-    - [ ] Heapify和Replace
+    - [x] Heapify和Replace
       - [x] Replace
-      - [ ] Heapify coding 1
-    - [ ] 基于堆的优先队列
+      - [x] Heapify coding 1
+    - [ ] 基于堆的优先队列 1
     - [ ] LeetCode上优先队列相关问题
     - [ ] 和堆相关的、广义队列
   - [ ] 线段树
