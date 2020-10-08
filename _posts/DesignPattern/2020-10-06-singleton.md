@@ -4,7 +4,7 @@ title: 设计模式-单列模式
 categories: [服务器,docker]
 description: 记录docker遇到的坑
 keywords: IM
-cnblogsClass: \[Markdown\],\[随笔分类\]遇到问题,\[随笔分类\]服务器
+cnblogsClass: \[Markdown\],\[随笔分类\]设计模式
 oschinaClass: \[Markdown\],服务器,日常记录
 csdnClass: \[Markdown\]
 163Class: \[Markdown\]
