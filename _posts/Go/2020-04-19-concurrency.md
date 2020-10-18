@@ -32,7 +32,7 @@ runtime.GOMAXPROC(逻辑cpu数量)
  - <1：不修改任何数值。
  - =1：单核心执行。
  - '>1'：多核并发执行
- 
+
  runtime.Num CPU()查询CPU数量，并使用runtime.GOMAXPROCS()函数进行设置，例如：
 ```go
 runtime.GOMAXPROC(runtime.NumCPU())
@@ -134,7 +134,29 @@ default:
 ## 模拟远程过程调用（RPC）
 服务器开发中会使用RPC（Remote Procedure Call，远程过程调用）简化进程间通信的过程。RPC能有效地封装通信过程，让远程的数据收发通信过程看起来就像本地的函数调用一样。
 
+## 控制并发数
 
+- 令牌桶的思路：使用chan的缓冲数来控制每次处理任务的最大并发数
+
+```go
+
+```
+
+
+
+### ## 并发的安全退出
+
+有时候需要通知Gorutine停止运行，特别是当它在错误的方向上。Go语言并没有提供一个直接终止Goroutine的方法，因为这样会导致Goroutine之间的共享变量处在未定义的状态上
+
+- 借助select及sync.WaitGroup控制
+
+  当每个Goroutine收到退出指令退出时一般会进行一定的清理工作，但是退出的清理工作并不能保证被完成，因为main线程并没有等待各个工作Goroutine退出工作完成的机制。结合sync.WaitGroup来改进。
+
+```go
+
+```
+
+- context包
 
 
 

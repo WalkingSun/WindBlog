@@ -40,6 +40,23 @@ export GOPATH=`pwd`
 
 建议开发者不要设置全局的GOPATH，而是随项目设置GOPATH
 
+### 导入
+
+**绝对导入**：从 `$GOPATH/src` 或 `$GOROOT` 或者 `$GOPATH/pkg/mod` 目录下搜索包并导入
+
+**相对导入**：从当前目录中搜索包并开始导入
+
+```go
+import (
+	 "./module1"
+   "../module2"
+   "../../module3"
+   "../module4/module5"
+)
+```
+
+
+
 
 ## 匿名导入包——只导入包但不使用包内类型和数值
 
