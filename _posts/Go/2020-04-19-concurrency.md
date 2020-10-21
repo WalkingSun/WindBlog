@@ -139,12 +139,22 @@ default:
 - 令牌桶的思路：使用chan的缓冲数来控制每次处理任务的最大并发数
 
 ```go
-
+func main() {
+  ch := make(chan int,100)
+  for i := 0; i < 1000; i++ {
+		ch <- i
+    go func(){
+      // deal
+      time.Sleep(time.Second)
+      <- ch
+    }()
+	}
+}
 ```
 
 
 
-### ## 并发的安全退出
+##  并发的安全退出
 
 有时候需要通知Gorutine停止运行，特别是当它在错误的方向上。Go语言并没有提供一个直接终止Goroutine的方法，因为这样会导致Goroutine之间的共享变量处在未定义的状态上
 
@@ -153,14 +163,62 @@ default:
   当每个Goroutine收到退出指令退出时一般会进行一定的清理工作，但是退出的清理工作并不能保证被完成，因为main线程并没有等待各个工作Goroutine退出工作完成的机制。结合sync.WaitGroup来改进。
 
 ```go
+func main() {
+  cancel := make(chan bool)
+  var wg sync.WaitGroup
+  for i :=0; i < 10; i++ {
+    wg.Add(1)
+    go worker(&wg, cancel)
+  }
+  time.Sleep(time.Second)
+  close(cancel)
+  wg.Wait()
+}
 
+func worker(wg *sync.WaitGroup, cancel chan bool) {
+  defer wg.Done()
+  for {
+    select {
+      deafult:
+      cancel <- cancel:
+      return
+    }
+  }
+}
 ```
 
 - context包
 
+标准库增加了一个context包，用来简化对于处理单个请求的多个Goroutine之间与请求域的数据、超时和退出等操作
 
+```go
+func main() {
+  ctx, cancel := context.WithTimeout(context.Background(), 10*time.Second)
+  var wg sync.WaitGroup
+  for i :=0; i < 10; i++ {
+    wg.Add(1)
+    go worker(ctx,&wg)
+  }
+  time.Sleep(time.Second)
+  cancel()
+  wg.Wait()
+}
 
+func worker(ctx context,Context, wg *sync.WaitGroup) error {
+  defer wg.Done()
+  for {
+    select {
+      deafult:
+      cancel <- ctx.Done():
+      return ctx.Err()
+    }
+  }
+}
+```
 
+当并发体超时或main主动停止工作者Goroutine时，每个工作者都可以安全退出。
+
+当main()函数完成工作前，通过调用cancel()来通知后台Goroutine退出，这样就避免了Goroutine的泄漏。
 
 
 

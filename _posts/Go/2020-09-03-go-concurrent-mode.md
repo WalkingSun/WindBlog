@@ -105,5 +105,198 @@ func main() {
 
 
 
-## 生产者/消费者模型
+## 生产-消费模型
+
+```go
+func Producer(out chan int) {
+	for i := 0; i < 1000; i++ {
+		out <- i
+	}
+	close(out)
+}
+
+func Consumer(in chan int, done chan bool) {
+	for v := range in {
+		fmt.Println("receive message ", v)
+	}
+	done <- true
+}
+
+func Producer2(out chan int, wg *sync.WaitGroup) {
+	for i := 0; i < 1000; i++ {
+		wg.Add(1)
+		//go func(){
+		out <- i
+		//}()
+	}
+}
+
+func Consumer2(in chan int, wg *sync.WaitGroup) {
+	for v := range in {
+		fmt.Println("receive message ", v)
+		wg.Done()
+	}
+}
+
+
+func TestProducerConsumer(t *testing.T) {
+	done := make(chan bool, 100)
+	ch := make(chan int)
+	go Producer(ch)
+	go Consumer(ch, done)
+	<-done
+}
+
+func TestProducerConsumer2(t *testing.T) {
+	ch := make(chan int, 10)
+	wg := &sync.WaitGroup{}
+	//Producer2(ch,wg)
+	//go Consumer2(ch, wg)
+	go Consumer2(ch, wg)
+	Producer2(ch, wg)
+	wg.Wait()
+}
+
+```
+
+## 发布订阅模式
+
+```go
+type (
+	subscriber chan interface{} // 订阅者
+	topic      string           // 主题
+)
+
+func NewPublisher(timeout time.Duration, buffer int) *Publisher {
+	return &Publisher{
+		buffer:      buffer,
+		timeout:     timeout,
+		subscribers: make(map[subscriber]topic),
+		wg:          make(map[subscriber]*sync.WaitGroup),
+	}
+}
+
+type Publisher struct {
+	m           sync.RWMutex                   // 读写锁
+	buffer      int                            // 订阅队列缓冲区
+	timeout     time.Duration                  // 发布超时时间
+	subscribers map[subscriber]topic           // 订阅者
+	wg          map[subscriber]*sync.WaitGroup // 等待组
+}
+
+// 订阅主题
+func (p *Publisher) Subscribe(topic topic) chan interface{} {
+	ch := make(chan interface{}, p.buffer)
+	p.m.Lock()
+	defer p.m.Unlock()
+	p.subscribers[ch] = topic
+	p.wg[ch] = &sync.WaitGroup{}
+	return ch
+}
+
+// 取消订阅
+func (p *Publisher) UnSubscribe(sub chan interface{}) {
+	p.m.Lock()
+	defer p.m.Unlock()
+	delete(p.subscribers, sub)
+	close(sub)
+}
+
+// 发布消息
+func (p *Publisher) Publish(topic topic, v interface{}) {
+	p.m.RLock()
+	defer p.m.RUnlock()
+	var wg sync.WaitGroup
+	existTopic := false
+	for sub, topic2 := range p.subscribers {
+		if topic2 == topic {
+			wg.Add(1)
+			go p.sendToTopic(sub, topic, v, &wg)
+			existTopic = true
+		}
+	}
+	if !existTopic {
+		err := fmt.Sprintf("%s", topic) + " topic not exist"
+		panic(err)
+	}
+	wg.Wait()
+}
+
+// 发送主题，设置一定的超时
+func (p *Publisher) sendToTopic(sub subscriber, topic topic, v interface{}, wg *sync.WaitGroup) {
+	defer wg.Done()
+	if topic == "" {
+		return
+	}
+	select {
+	case sub <- v:
+	case <-time.After(p.timeout):
+	}
+	p.wg[sub].Add(1)
+}
+
+// 关闭主题chan
+func (p *Publisher) Close() {
+	p.m.Lock()
+	defer p.m.Unlock()
+	for sub, _ := range p.subscribers {
+		delete(p.subscribers, sub)
+		close(sub)
+	}
+}
+
+func (p *Publisher) Consume(in chan interface{}, dealFunc func(interface{})) {
+	go func() {
+		for v := range in {
+			dealFunc(v)
+			p.wg[in].Done()
+		}
+	}()
+	p.wg[in].Wait()
+}
+
+...
+func TestPublishSubscribe(t *testing.T) {
+	p := NewPublisher(100*time.Microsecond, 10)
+	defer p.Close()
+
+	// 订阅者、订阅主题、主题发布消息
+	tests := []struct {
+		topic topic
+		msg   interface{}
+	}{
+		0: {
+			topic: "book",
+			msg:   "Golang",
+		},
+		1: {
+			topic: "book",
+			msg:   "PHP",
+		},
+		2: {
+			topic: "movie",
+			msg:   "哈利波特",
+		},
+		3: {
+			topic: "movie",
+			msg:   "ring king",
+		},
+		4: {
+			topic: "movie",
+			msg:   "投名状",
+		},
+	}
+
+	msgChans := make([]subscriber, len(tests))
+	for k, tt := range tests {
+		msgChans[k] = p.Subscribe(tt.topic)
+		p.Publish(tt.topic, tt.msg)
+	}
+	for _, msgChan := range msgChans {
+		p.Consume(msgChan, func(i interface{}) {
+			fmt.Printf("receive message %v, subscriber %v \n", i, msgChan)
+		})
+	}
+}
+```
 
