@@ -23,6 +23,6 @@ sinaClass: \[Markdown\]
 - 增强了耦合性。当父类的常量、变量和方法被修改时，需要考虑子类的修改，而且在缺乏规范的环境下，这种修改可能带来非常糟糕的结果——大段的代码需要重构。
 
 ## 里氏替换原则：
-Functions that use pointers or references to base classes mustbe able to use objects of derived classes without knowing it.（所有引用基类的地方必须能透明地使用其子类的对象。）
+Functions that use pointers or references to base classes must be able to use objects of derived classes without knowing it.（所有引用基类的地方必须能透明地使用其子类的对象。）
 
 通俗点讲，只要父类能出现的地方子类就可以出现，而且替换为子类也不会产生任何错误或异常，使用者可能根本就不需要知道是父类还是子类
