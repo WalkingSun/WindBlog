@@ -58,4 +58,8 @@ Define an interface for creating an object,but let subclasses decide whichclass 
 
 缺点：可扩展性，可维护性复杂。扩展一个新的产品类，需要新建一个相应的工厂类，维护还需考虑工厂类和产品类的对应关系。
 
-**复杂的应用采用多工厂的方法，然后再增加一个协调类，避免调用者与各个子工厂交流，协调类的作用是封装子工厂类，对高层模块提供统一的访问接口。**
+**复杂的应用采用多工厂的方法，然后再增加一个协调类，避免调用者与各个子工厂交流，协调类的作用是封装子工厂类，对高层模块提供统一的访问接口。*
+
+
+[自动加载工厂模式](https://github.com/WalkingSun/DesignPattern/tree/master/factory/factory_test.go)
+```go test -v ./factory  -test.run  TestAutoloadFactoryMethod```
