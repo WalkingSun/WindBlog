@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 设计模式-工厂模式
-categories: [服务器,docker]
+categories: [设计模式]
 description: 记录docker遇到的坑
 keywords: IM
 cnblogsClass: \[Markdown\],\[随笔分类\]设计模式
