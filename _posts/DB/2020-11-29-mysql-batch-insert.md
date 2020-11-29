@@ -1,7 +1,8 @@
+---
 layout: blog
 title: MySQL批量更新
 categories: [DB,mysql]
-description: 记录些mysql中遇到的知识点
+description: 了解下mysql高级用法
 keywords: 索引
 cnblogsClass: \[Markdown\],\[随笔分类\]数据库
 oschinaClass: \[Markdown\],PHP,日常记录
@@ -10,6 +11,7 @@ csdnClass: \[Markdown\]
 51ctoClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
+---
 
 MySQL批量更新，相对于一个个更新，效率肯定更快，特别是在有限定时间内需要实现大批量的更新，节约很多时间成本，近期实现也遇到一些坑，做些整理总结。
 
