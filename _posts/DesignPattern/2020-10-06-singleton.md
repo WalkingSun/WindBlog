@@ -2,7 +2,7 @@
 layout: blog
 title: 设计模式-单列模式
 categories: [设计模式]
-description: 记录docker遇到的坑
+description: 
 keywords: IM
 cnblogsClass: \[Markdown\],\[随笔分类\]设计模式
 oschinaClass: \[Markdown\],服务器,日常记录
