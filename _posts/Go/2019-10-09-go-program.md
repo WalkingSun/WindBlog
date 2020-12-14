@@ -258,7 +258,7 @@ go install的编译过程有如下规律：
 - go install输出目录始终为GOPATH下的bin目录，无法使用-o附加参数进行自定义。
 - GOPATH下的pkg目录放置的是编译期间的中间文件。
 
-# 测试
+## go test
 go test指定文件时默认执行文件内的所有测试用例。可以使用-run参数选择需要的测试用例单独执行
 
 -v，可以让测试时显示详细的流程
@@ -268,4 +268,10 @@ go test指定文件时默认执行文件内的所有测试用例。可以使用-
 ```bash
 go test -v -run testA main_test.go
 ```
+## make、new
+分配内存
+
+new(T)会为T类型的新值分配已置0的内存空间，并返回地址（指针）。适用值类型（数组、结构体）。
+
+make(T,args)返回初始化之后的T类型的值，这个值是经过初始化后的T的引用。只适用slice、map、channel。
 
