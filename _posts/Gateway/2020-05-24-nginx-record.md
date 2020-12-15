@@ -187,7 +187,7 @@ $arg_name 不仅可以匹配 name 参数，也可以匹配 NAME 参数，抑或�
 - $http_XXX
 
 ## 全局变量
-```
+```shell
 arg_PARAMETER #这个变量包含GET请求中，如果有变量PARAMETER时的值。
 args #这个变量等于请求行中(GET请求)的参数，如：foo=123&bar=blahblah;
 binary_remote_addr #二进制的客户地址。
@@ -201,8 +201,12 @@ host #请求主机头字段，否则为服务器名称。
 hostname #Set to themachine’s hostname as returned by gethostname
 http_HEADER
 is_args #如果有args参数，这个变量等于”?”，否则等于”"，空值。
+
+# nginx取请求中header的XXX的值
 http_user_agent #客户端agent信息
 http_cookie #客户端cookie信息
+http_origin #origin,而一般跨域请求都会将请求的来源放在origin中（浏览器会往跨域请求的header上面加origin这个header）
+
 limit_rate #这个变量可以限制连接速率。
 query_string #与args相同。
 request_body_file #客户端请求主体信息的临时文件名。
@@ -236,7 +240,7 @@ location = /mirror {
     internal;
     proxy_pass http://test_backend$request_uri;
 }
-``` 
+```
 参考：http://nginx.org/en/docs/http/ngx_http_mirror_module.html
 
 # 参考
