@@ -50,7 +50,7 @@ goroutine属于抢占式任务处理，已经和现有的多线程和多进程�
 ## 通道（channel)---在多个goruntine间通信的管道
 Go语言提倡使用通信的方法代替共享内存，这里通信的方法就是使用通道（channel）
 
-![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/2020-04-19 8.35.17.png)
+![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/2020-04-18.35.17.png)
 
 ### 特性
 任何时候，同时只能有一个goroutine访问通道进行发送和获取数据。goroutine间通过通道就可以通信。
