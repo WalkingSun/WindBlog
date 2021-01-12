@@ -66,12 +66,22 @@ sinaClass: \[Markdown\]
 /opt/app/kafka/bin/kafka-consumer-groups.sh --bootstrap-server 127.0.0.1:9092 --list
 ```
 
+### 获取topic指定时间戳的offset
+
+```
+/opt/app/kafka/bin/kafka-run-class.sh kafka.tools.GetOffsetShell --broker-list 172.16.30.207:9092  -topic send-book-ks -time 1608526800000
+```
+
+上述的-time，为毫秒值，-time=-1表示latest，-2表示earliest
+
 ## zookeeper操作
+
 1.删除Kafka日志文件
 ```
 rm -rf /opt/app/kafka/logs/kafka-logs
 ```
 2.登录Zookeeper
+
 ```
 /opt/app/kafka/bin/zookeeper-shell.sh 172.16.30.207:2181
 ```
@@ -93,10 +103,5 @@ rmr /brokers/topics/cleantopic
 ```
 /opt/app/kafka/bin/kafka-topics.sh --delete --topic test-topic --zookeeper 127.0.0.1:2181
 ```
-
-
-
-
-	
 
 
