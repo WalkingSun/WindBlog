@@ -410,6 +410,7 @@ fmt.Println(5,"hello", &struct{ a int }{1}, true)
 ```
 
 ## defer 延迟执行语句
+
 defer语句会将其后面跟随的语句进行延迟处理。在defer归属的函数即将返回时，将延迟处理的额语句按defer的逆序进行执行。
 就是说defer的语句最后被执行，最后被defer的语句，最先被执行。
 
@@ -447,10 +448,43 @@ defer end
 
 延迟调用是在defer所在函数结束时进行，函数结束可以是正常返回时，也可以是发生宕机时。
 
+defer特性：
+
+- 延迟调用
+- LIFO  多个`defer`调用，**压栈式执行，后入先出**
+- 作用域 **`defer` 和函数绑定**
+- 异常场景 `panic`  `recover`
+
 ### 应用场景
 使用延迟执行语句在函数退出时释放资源
 
 比如打开和关闭文件、加锁和解锁等。在这些操作中，最容易忽略的就是在每个函数退出处正确的释放和关闭资源。
+
+- 并发同步
+
+  ```go
+  var wg sync.WaitGroup
+  
+  for i := 0; i < 2; i++ {
+      wg.Add(1)
+      go func() {
+          defer wg.Done()
+          // 程序逻辑
+      }()
+  }
+  wg.Wait()
+  ```
+
+- 锁场景
+
+  ```go
+  mu.RLock()
+  defer mu.RUnlock()
+  ```
+
+- 资源释放
+
+- panic-recover
 
 ## 处理运行时发生的错误
 
