@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 限流方案分析
-categories: [cate1, cate2]
+categories: [架构, 技术沉淀]
 description: 应对突发流量的限流方案处理
 keywords: 限流,redis
 cnblogsClass: \[Markdown\],\[随笔分类\]架构

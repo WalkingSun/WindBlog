@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 抢购架构设计分析【draft】
-categories: [cate1, cate2]
+categories: [架构, 技术沉淀]
 description: some word here
 keywords: keyword1, keyword2
 cnblogsClass: \[Markdown\],\[随笔分类\]架构

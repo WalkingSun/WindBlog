@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: 数据库基础知识【draft】
-categories: [cate1, cate2]
+categories: [DB]
 description: 数据库基础知识
 keywords: mysql
 cnblogsClass: \[Markdown\],\[随笔分类\]数据库
