@@ -84,6 +84,8 @@ Go语言包会从main包开始检查其引用的所有包，每个包也可能�
 
 在运行时，被最后导入的包会最先初始化并调用init()函数。
 
+![图片](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/ws2/640.png)
+
 ### 工厂模式自动注册————管理多个包的结构体
 
 定义商品接口，base包中定义注册、创建工厂方法
@@ -193,3 +195,12 @@ $  go run design_mode/main.go
 this is a Milk
 this is a Bread
 ```
+
+## 特性
+
+- init（）函数用于程序执行前做包的初始化，比如初始化包里的变量等；
+- 一个包可以出现多个init（）函数，一个源文件也可以包含多个init（）函数；
+- 同一个包中多个 init() 函数的执行顺序没有明确定义，**但是不同包的init函数是根据包导入的依赖关系决定的**;
+- init() 函数在代码中不能被显示调用、不能被引用（赋值给函数变量），否则出现编译错误;
+- 一个包被引用多次，如 A import B,C import B,A import C，B 被引用多次，但 B 包只会初始化一次；
+- 引入包，不可出现死循坏。即 A import B,B import A，这种情况编译失败；

@@ -24,7 +24,61 @@ b := 200
 b,a = a,b       // 实现交换
 ```
 
+# 常量
+
+## iota
+
+**golang语言的常量计数器,只能在常量的表达式中使用。**
+
+iota在const关键字出现时将被重置为0(const内部的第一行之前)，const中每新增一行常量声明将使iota计数一次(iota可理解为const语句块中的行索引)。
+
+- **iota只能在常量的表达式中使用**
+
+- **每次 const 出现时，都会让 iota 初始化为0.【自增长】**
+
+  ```go
+  const a = iota 			// a=0
+  const (
+    b = iota          //b=0
+    c                 //c=1
+  )
+  ```
+
+- **自定义类型**,如time包
+
+  ```go
+  type Weekday int
+  
+  const (
+      Sunday Weekday = iota
+      Monday
+      Tuesday
+      Wednesday
+      Thursday
+      Friday
+      Saturday
+  )	
+  ```
+
+- **可跳过的值**
+
+  ```go
+  type AudioOutput int
+  
+  const (
+      OutMute AudioOutput = iota // 0
+      OutMono                       // 1
+      OutStereo                     // 2
+      _
+      _
+      OutSurround                // 5
+  )
+  ```
+
+  
+
 # 匿名变量
+
 匿名变量 '_'表示，使用匿名变量时，只需要在变量声明的地方使用下划线替换即可。
 ```go
 a,_ = Get_data()
@@ -33,7 +87,13 @@ a,_ = Get_data()
 
 # 数据类型
 整形（int8,int16,int32,int64）、浮点型、布尔型、字符串、数组、切片、结构体、函数（go语言的一种数据类型，可对函数类型的变量进行赋值和获取）、map、通道（channel）
+## 字符
+
+- unit8类型，或者叫byte类型，ASCII码的一个字符；
+- rune类型（int32），代表一个UTF-8字符。使用fmt.sprintf中的“%T”动词可以输出变量的实际类型。
+
 ## 数组
+
 ```go
 var variable_name [SIZE] variable_type
 ```
