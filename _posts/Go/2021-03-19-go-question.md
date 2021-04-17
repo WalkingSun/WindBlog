@@ -278,6 +278,89 @@ func main() {
 }
 ```
 
+15. 下面代码有什么问题？
+
+```
+1const i = 100
+2var j = 123
+3
+4func main() {
+5    fmt.Println(&j, j)
+6    fmt.Println(&i, i)
+7}
+```
+
+16. 下面代码是否能编译通过？如果通过，输出什么？
+
+```go
+ 1func Foo(x interface{}) {
+ 2    if x == nil {
+ 3        fmt.Println("empty interface")
+ 4        return
+ 5    }
+ 6    fmt.Println("non-empty interface")
+ 7}
+ 8func main() {
+ 9    var x *int = nil
+10    Foo(x)
+11}
+```
+
+17. 下面这段代码输出什么？
+
+```go
+1var x = []int{2: 2, 3, 0: 1}
+2
+3func main() {
+4    fmt.Println(x)
+5}
+```
+
+18. 下面代码输出什么？
+
+```go
+ type ConfigOne struct {
+     Daemon string
+ }
+ 
+ func (c *ConfigOne) String() string {
+     return fmt.Sprintf("print: %v", c)
+ }
+ 
+func main() {
+    c := &ConfigOne{}
+    c.String()
+}
+```
+
+19. 下面的代码有什么问题？
+
+```go
+1func main() {  
+2    var x = nil 
+3    _ = x
+4}
+```
+
+20. 下面代码能编译通过吗？
+
+```go
+ type info struct {
+     result int
+ }
+ 
+ func work() (int,error) {
+     return 13,nil
+ }
+ 
+ func main() {
+    var data info
+
+    data.result, err := work() 
+    fmt.Printf("info: %+v\n",data)
+}
+```
+
 # 题解
 
 1. C。知识点：常量，Go 语言中的字符串是只读的。
@@ -373,3 +456,22 @@ func main() {
     ```
 
     range 表达式是副本参与循环
+    
+15. 编译报错`cannot take the address of i`。知识点：常量。常量不同于变量的在运行期分配内存，常量通常会被编译器在预处理阶段直接展开，作为指令数据使用，所以常量无法寻址。
+
+16. `non-empty interface` 考点：interface 的内部结构，我们知道接口除了有静态类型，还有动态类型和动态值，当且仅当动态值和动态类型都为 nil 时，接口类型值才为 nil。这里的 x 的动态类型是 `*int`，所以 x 不为 nil。
+
+17. 输出`[1 0 2 3]`，字面量初始化切片时候，可以指定索引，没有指定索引的元素会在前一个索引基础之上加一，所以输出`[1 0 2 3]`，而不是`[1 3 2]`。
+
+18. 实现String方法，fmt.Sprintf执行对应String方法，造成循环调用。
+
+19. nil 用于表示 interface、函数、maps、slices 和 channels 的“零值”。如果不指定变量的类型，编译器猜不出变量的具体类型，导致编译错误。
+
+20. 编译失败。
+
+    ```shell
+    non-name data.result on left side of :=
+    ```
+
+    不能使用短变量声明设置结构体字段值
+
