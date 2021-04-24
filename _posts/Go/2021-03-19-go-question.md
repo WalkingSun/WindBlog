@@ -361,6 +361,47 @@ func main() {
 }
 ```
 
+21. 下面代码输出什么？
+
+```go
+ func test(x byte)  {
+     fmt.Println(x)
+ }
+ 
+ func main() {
+     var a byte = 0x11 
+     var b uint8 = a
+     var c uint8 = a + b
+     test(c)
+}
+```
+
+22. 下面的代码有什么问题？
+
+```go
+func main() {
+    const x = 123
+    const y = 1.23
+    fmt.Println(x)
+}
+```
+
+23. 下面代码输出什么？
+
+```go
+ const (
+     x uint16 = 120
+     y
+     s = "abc"
+     z
+ )
+ 
+ func main() {
+     fmt.Printf("%T %v\n", y, y)
+    fmt.Printf("%T %v\n", z, z)
+}
+```
+
 # 题解
 
 1. C。知识点：常量，Go 语言中的字符串是只读的。
@@ -474,4 +515,17 @@ func main() {
     ```
 
     不能使用短变量声明设置结构体字段值
+
+21. 34。与 rune 是 int32 的别名一样，byte 是 uint8 的别名，别名类型无序转换，可直接转换。
+
+22. 编译可以通过。知识点：常量。常量是一个简单值的标识符，在程序运行时，不会被修改的量。不像变量，常量未使用是能编译通过的
+
+23. 知识点：常量。
+
+    输出：
+
+    ```
+    uint16 120
+    string abc
+    ```
 
