@@ -14,7 +14,6 @@ sinaClass: \[Markdown\]
 
 ---
 
-```
 # 单列模式
 Ensure a class has only one instance, and provide a global point of access to it.（确保某一个类只有一个实例，而且自行实例化并向整个系统提供这个实例。）
 
@@ -41,4 +40,3 @@ sync.Once是golang标准包中给我们提供了相关的方法，请求实例�
 另外了解到sync.map也可以做到单列模式。
 
 参考文：https://juejin.im/post/5bdbd074e51d450549408fa8
-```

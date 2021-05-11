@@ -1,4 +1,3 @@
----
 layout: blog
 title: supervisor整理【draft】
 categories: [服务器]
@@ -11,7 +10,6 @@ csdnClass: \[Markdown\]
 51ctoClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
----
 
 
 
@@ -25,4 +23,6 @@ supervisorctl restart       //重启es
 supervisorctl update        //配置文件修改后使用该命令加载新的配置
 supervisorctl reload        //重新启动配置中的所有程序
 ```
+
+
 

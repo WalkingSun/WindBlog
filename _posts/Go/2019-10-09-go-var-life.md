@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Go 变量声明周期【draft】
+title: Go 变量生命周期【draft】
 categories: [Go, 知识点]
 description: 熟悉
 keywords: Go

@@ -641,6 +641,67 @@ func main() {
 	}
 ```
 
+## 35. 下面的代码输出什么？
+
+```go
+ func F(n int) func() int {
+	    return func() int {
+		        n++
+		        return n
+		    }
+	}
+
+func main() {
+	    f := F(5)
+	    defer func() {
+		        fmt.Println(f())
+		    }()
+	    defer fmt.Println(f())
+	    i := f()
+	    fmt.Println(i)
+}
+```
+
+
+
+## 36. 下面代码输出什么，请说明？
+
+```go
+ func main() {
+     defer func() {
+         fmt.Print(recover())
+     }()
+     defer func() {
+         defer fmt.Print(recover())
+         panic(1)
+     }()
+     defer recover() 
+    panic(2)
+	}
+```
+
+## 37. 下面的代码输出什么？
+
+```go
+ type T struct {
+     n int
+ }
+ 
+ func main() {
+     ts := [2]T{}
+     for i, t := range &ts {
+         switch i {
+         case 0:
+            t.n = 3
+            ts[1].n = 9
+        case 1:
+            fmt.Print(t.n, " ")
+        }
+    }
+    fmt.Print(ts)
+}
+```
+
 # 题解
 
 ## 1. 
@@ -843,4 +904,16 @@ nil 用于表示 interface、函数、maps、slices 和 channels 的“零值”
 ## 34.
 
 锁失效。将 Mutex 作为匿名字段时，相关的方法必须使用指针接收者，否则会导致锁机制失效。
+
+## 35.
+
+768。知识点：匿名函数、defer()。defer() 后面的函数如果带参数，会优先计算参数，并将结果存储在栈中，到真正执行 defer() 的时候取出。
+
+## 36.
+
+21。recover() 必须在 defer() 函数中调用才有效，所以第 9 行代码捕获是无效的。在调用 defer() 时，便会计算函数的参数并压入栈中，所以执行第 6 行代码时，此时便会捕获 panic(2)；此后的 panic(1)，会被上一层的 recover() 捕获。所以输出 21。
+
+## 37.
+
+9 [{0} {9}]。知识点：for-range 数组指针。for-range 循环中的循环变量 t 是原数组元素的副本。如果数组元素是结构体值，则副本的字段和原数组字段是两个不同的值。
 
