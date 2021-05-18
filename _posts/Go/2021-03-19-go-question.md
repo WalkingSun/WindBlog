@@ -738,6 +738,24 @@ func main() {
 }
 ```
 
+## 40. 下面代码输出什么，为什么？
+
+```go
+func f() {
+    defer func() {
+        if r := recover(); r != nil {
+            fmt.Printf("recover:%#v", r)
+        }
+    }()
+    panic(1)
+    panic(2)
+}
+
+func main() {
+    f()
+}
+```
+
 # 题解
 
 ## 1. 
@@ -960,4 +978,8 @@ nil 用于表示 interface、函数、maps、slices 和 channels 的“零值”
 ## 39.
 
 for {} 独占 CPU 资源导致其他 Goroutine 饿死。
+
+## 40.
+
+recover:1。知识点：panic、recover()。当程序 panic 时就不会往下执行，可以使用 recover() 捕获 panic 的内容。
 
