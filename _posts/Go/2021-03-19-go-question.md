@@ -702,6 +702,42 @@ func main() {
 }
 ```
 
+## 38.下面代码输出什么，请说明原因。
+
+```go
+type Slice []int
+
+func NewSlice() Slice {
+    return make(Slice, 0)
+}
+func (s *Slice) Add(elem int) *Slice {
+    *s = append(*s, elem)
+    fmt.Print(elem)
+    return s
+}
+func main() {
+s := NewSlice()
+    defer s.Add(1).Add(2)
+    s.Add(3)
+}
+```
+
+## 39. 下面代码有什么问题，请说明？
+
+```go
+func main() {
+    runtime.GOMAXPROCS(1)
+
+    go func() {
+        for i:=0;i<10 ;i++  {
+            fmt.Println(i)
+        }
+    }()
+
+    for {}
+}
+```
+
 # 题解
 
 ## 1. 
@@ -916,4 +952,12 @@ nil 用于表示 interface、函数、maps、slices 和 channels 的“零值”
 ## 37.
 
 9 [{0} {9}]。知识点：for-range 数组指针。for-range 循环中的循环变量 t 是原数组元素的副本。如果数组元素是结构体值，则副本的字段和原数组字段是两个不同的值。
+
+## 38.
+
+132。这一题有两点需要注意：1.Add() 方法的返回值依然是指针类型 *Slice，所以可以循环调用方法 Add()；2.defer 函数的参数（包括接收者）是在 defer 语句出现的位置做计算的，而不是在函数执行的时候计算的，所以 s.Add(1) 会先于 s.Add(3) 执行。
+
+## 39.
+
+for {} 独占 CPU 资源导致其他 Goroutine 饿死。
 
