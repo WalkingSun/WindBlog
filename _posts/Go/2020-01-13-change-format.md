@@ -13,7 +13,7 @@ chinaunixClass: \[Markdown\]
 sinaClass: \[Markdown\]
 ---
 
-# string、int、int64相互转换
+# string、int、int64、float64相互转换
 ```go
 #string到int
 int,err:=strconv.Atoi(string)
@@ -26,6 +26,19 @@ string:=strconv.Itoa(int)
 
 #int64到string
 string:=strconv.FormatInt(int64,10)
+
+#float到string
+string := strconv.FormatFloat(float32,'E',-1,32)
+string := strconv.FormatFloat(float64,'E',-1,64)
+// 'b' (-ddddp±ddd，二进制指数)
+// 'e' (-d.dddde±dd，十进制指数)
+// 'E' (-d.ddddE±dd，十进制指数)
+// 'f' (-ddd.dddd，没有指数)
+// 'g' ('e':大指数，'f':其它情况)
+// 'G' ('E':大指数，'f':其它情况)
+
+#string到float64
+float,err := strconv.ParseFloat(string,64)
 ```
 
 # string、[]byte转换
