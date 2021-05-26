@@ -291,7 +291,40 @@ foo := func() {
 foo()
 ```
 
+### 延迟绑定
+
+调用`go func() { xxx }()`的时候，只要没有真正开始执行这段代码，那它还只是一段函数声明。而在这段匿名函数被执行的时候，才是内部变量寻找真正赋值的时候。
+
+```go
+func foo7(x int) []func() {
+    var fs []func()
+    values := []int{1, 2, 3, 5}
+    for _, val := range values {
+        fs = append(fs, func() {
+            fmt.Printf("foo7 val = %d\n", x+val)
+        })
+    }
+    return fs
+}
+
+f7s := foo7(11)
+for _, f7 := range f7s {
+    f7()
+}
+/**
+foo7 val = 16
+foo7 val = 16
+foo7 val = 16
+foo7 val = 16
+**/
+```
+
+
+
+
+
 ### 闭包的记忆效应
+
 被捕获到闭包中的变量让闭包本身拥有了记忆效应，闭包中的逻辑可以修改闭包捕获的变量，变量会跟随闭包生命期一直存在，闭包本身就如同变量一样拥有的记忆效应。
 ```go
 package main
@@ -835,5 +868,4 @@ panic和defer组合有如下特性：
 在panic触发的defer函数内，可以继续调用panic，进一步将错误外抛直到程序整体崩溃。
 
 如果想再捕获错误时设置当前函数的返回值，可以对返回值使用命名返回值方式直接进行设置。
-
 

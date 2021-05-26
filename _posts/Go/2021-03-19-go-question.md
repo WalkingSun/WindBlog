@@ -797,6 +797,26 @@ func main() {
 - A. false
 - B. true
 
+## 43. 下面代码输出什么？
+
+```go
+const (
+    azero = iota
+    aone  = iota
+)
+
+const (
+    info  = "msg"
+    bzero = iota
+    bone  = iota
+)
+
+func main() {
+    fmt.Println(azero, aone)
+    fmt.Println(bzero, bone)
+}
+```
+
 # 题解
 
 ## 1. 
@@ -1076,3 +1096,7 @@ func main() {
 ## 42.
 
 A。Go语言的内存回收机制规定，只要有一个指针指向引用一个变量，那么这个变量就不会被释放（内存逃逸），因此在 Go 语言中返回函数参数或临时变量是安全的。
+
+## 43.
+
+0 1 1 2。知识点：iota 的使用。这道题易错点在 bzero、bone 的值，在一个常量声明代码块中，如果 iota 没出现在第一行，则常量的初始值就是非 0 值。
