@@ -1,6 +1,6 @@
 ---
 layout: blog
-title: Go View Question
+title: Go 内存分析
 categories: [Go, 知识点]
 description: 熟悉
 keywords: Go
