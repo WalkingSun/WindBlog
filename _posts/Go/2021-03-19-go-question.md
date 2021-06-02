@@ -828,6 +828,26 @@ func main() {
 }
 ```
 
+## 45. 下面代码输出什么？
+
+```go
+type P *int
+type Q *int
+
+func main() {
+    var p P = new(int)
+    *p += 8
+    var x *int = p
+    var q Q = x
+    *q++
+    fmt.Println(*p, *q)
+}
+```
+
+- A.8 8
+- B.8 9
+- C.9 9
+
 # 题解
 
 ## 1. 
@@ -1115,3 +1135,7 @@ A。Go语言的内存回收机制规定，只要有一个指针指向引用一�
 ## 44.
 
 输出 []。知识点：拷贝切片。copy(dst, src) 函数返回 len(dst)、len(src) 之间的最小值。如果想要将 src 完全拷贝至 dst，必须给 dst 分配足够的内存空间。
+
+## 45. 
+
+C。指针变量指向相同的地址。
