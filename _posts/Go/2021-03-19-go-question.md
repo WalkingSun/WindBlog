@@ -874,6 +874,39 @@ func main() {
 }
 ```
 
+## 47. 下面两段代码能否编译通过？请简要说明
+
+第一段：
+
+```go
+func f() {}
+func f() {}
+
+func main() {}
+```
+
+第二段：
+
+```go
+func init(){}
+func init(){}
+
+func main() {}
+```
+
+## 48. 下面代码有什么问题？请指出。
+
+```go
+func (m map[string]string) Set(key string, value string) {
+    m[key] = value
+}
+
+func main() {
+    m := make(map[string]string)
+    m.Set("A", "One")
+}
+```
+
 # 题解
 
 ## 1. 
@@ -1180,3 +1213,26 @@ Named Type 有两类：
 - 使用关键字 type 声明的类型；
 
 Unnamed Type 是基于已有的 Named Type 组合一起的类型，例如：struct{}、[]string、interface{}、map[string]bool 等。
+
+## 47.
+
+第二段代码能通过编译。除 init() 函数之外，一个包内不允许有其他同名函数。
+
+## 48. 
+
+编译失败。
+
+Unnamed Type 不能作为方法的接收者。昨天我们讲过 Named Type 与 Unamed Type 的区别，就用 Named Type 来修复下代码：
+
+```
+ 1type User map[string]string
+ 2
+ 3func (m User) Set(key string, value string) {
+ 4    m[key] = value
+ 5}
+ 6
+ 7func main() {
+ 8    m := make(User)
+ 9    m.Set("A", "One")
+10}
+```
