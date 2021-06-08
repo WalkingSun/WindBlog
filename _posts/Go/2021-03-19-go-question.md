@@ -907,6 +907,25 @@ func main() {
 }
 ```
 
+## 49. 下面哪些函数不能通过编译？
+
+```go
+func A(string string) string {
+    return string + string
+}
+
+func B(len int) int {
+    return len + len
+}
+
+func C(val, default string) string {
+    if val == "" {
+        return default
+    }
+    return val
+}
+```
+
 # 题解
 
 ## 1. 
@@ -1224,15 +1243,19 @@ Unnamed Type 是基于已有的 Named Type 组合一起的类型，例如：stru
 
 Unnamed Type 不能作为方法的接收者。昨天我们讲过 Named Type 与 Unamed Type 的区别，就用 Named Type 来修复下代码：
 
+```go
+type User map[string]string
+
+func (m User) Set(key string, value string) {
+    m[key] = value
+}
+
+func main() {
+    m := make(User)
+    m.Set("A", "One")
+}
 ```
- 1type User map[string]string
- 2
- 3func (m User) Set(key string, value string) {
- 4    m[key] = value
- 5}
- 6
- 7func main() {
- 8    m := make(User)
- 9    m.Set("A", "One")
-10}
-```
+
+## 49.
+
+C() 函数不能通过编译。C() 函数的 default 属于关键字。string 和 len 是预定义标识符，可以在局部使用。nil 也可以当做变量使用，不过不建议写这样的代码，可读性不好，小心被接手你代码的人胖揍。**
