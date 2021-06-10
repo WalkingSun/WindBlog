@@ -926,6 +926,24 @@ func C(val, default string) string {
 }
 ```
 
+## 50. 下面代码输出什么？请简要说明。
+
+```go
+type Foo struct {
+    val int
+}
+
+func (f Foo) Inc(inc int) {
+    f.val += inc
+}
+
+func main() {
+    var f Foo
+    f.Inc(100)
+    fmt.Println(f.val)
+}
+```
+
 # 题解
 
 ## 1. 
@@ -1259,3 +1277,8 @@ func main() {
 ## 49.
 
 C() 函数不能通过编译。C() 函数的 default 属于关键字。string 和 len 是预定义标识符，可以在局部使用。nil 也可以当做变量使用，不过不建议写这样的代码，可读性不好，小心被接手你代码的人胖揍。**
+
+## 50.
+
+输出 0。使用值类型接收者定义的方法，调用的时候，使用的是值的副本，对副本操作不会影响的原来的值。如果想要在调用函数中修改原值，可以使用指针接收者定义的方法
+
