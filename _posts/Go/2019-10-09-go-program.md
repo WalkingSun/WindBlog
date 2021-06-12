@@ -99,7 +99,7 @@ var variable_name [SIZE] variable_type
 ```
 数组是一串固定长度的连续内存区域。
 
-### 数组可以在声明时使用初始化列表进行元素设置：
+### 数组可以在声明时使用初始化列表进行元素设置
 ```go
 var team = [3]string{"hammer","soldier","mum"}
 ```
@@ -132,6 +132,69 @@ for k,v := range team{
 
 ## 接口（interface）
 [https://www.cnblogs.com/followyou/p/12601846.html](https://www.cnblogs.com/followyou/p/12601846.html)
+
+## 分类
+
+### Named Type
+
+通过 type 关键字为一个已有的 type 起个别名，像这样 type NewType ExistingType， NewType 就是名字。
+
+Named Type 有两类：
+
+- pre-declarered types（内置类型），比如 int, int64, float, string, bool 等；
+- 使用关键字 type 声明的类型；
+
+pre-declarered types这些基础的数据又可以进一步构成更复杂的类型 array，struct，map，slice，channel 等。
+
+特征：
+
+- 作为一个 function 的 receiver 时，它就拥有了自己的方法；unamed types 则不能；pre-declare types 不能拥有自己的方法，要想定义自己的方法必须定义别名。
+- 属性继承。Named type 不会从它的 underlying type 或 引用 type 继承 method，但是会继承 field；
+
+```go
+type T int
+
+func F(t T) {}
+
+func main() {
+    var q int
+    F(q)
+}
+// 编译失败
+```
+
+
+
+```go
+type T []int
+
+func F(t T) {}
+
+func main() {
+    var q []int
+    F(q)
+}
+// 编译成功
+```
+
+### UnNamed Type
+
+是一个 literal type，也就是没有名字，只有 type 本身，像这样 [6]int 没有名字。
+
+## type embedding
+
+如果一个 type T‘ 被嵌入另一个 type T 作为它的 filed，T’ 的所有 field 和 method 都可以在 T 中使用，这种方法称之为 type embedding。
+
+## underlying type
+
+每一个类型都有自己的 Underlying type ，如果 T 是 pre-declared type 或者 type literal，它们对应的 underlying type 就是自身 T，否则 T 的 underlying type 是 T 定义时引用的类型的 underlying type。
+
+- 如果两个 type 都是 named type ，彼此之间不能相互赋值；
+- 如果两个 type 其中一个是 unamed type，彼此之间可以相互赋值；
+
+总结理解：如果为一个类型起了名字，说明你想要做区分，所以两个 named types 即使 underlying name 相同也是不能相互赋值的。
+
+参考：[理解 go types](https://mp.weixin.qq.com/s?__biz=MzA4NzAzMjk4Mw==&mid=2247483744&idx=1&sn=8d0ff512194daa6572c00cec84577ce2&chksm=903ed498a7495d8e33fc7b497c53966c45a84f3c6a2dc9325f7ac610969fe1d09cda169e6d23#rd)
 
 # 指针
 go拆分两个核心概念
@@ -205,11 +268,87 @@ main() {
 
 堆上的变量可以提供全局访问，需要自行处理其声明周期。
 
-# 注意
+## 注意
 
 - struct指针调用非引用类型的方法会自动解引用，如果是个nil指针会panic；
 
+# 参数传递
+
+> In a function call, the function value and arguments are evaluated in the usual order. After they are evaluated, the parameters of the call are **passed by value** to the function and the called function begins execution.
+> 文档地址：[https://golang.org/ref/spec#C...](https://golang.org/ref/spec#Calls)
+
+官方文档明确说明：**Go里边函数传参只有值传递一种方式**
+
+## 值传递
+
+是指在调用函数时将实际参数复制一份传递到函数中，这样在函数中如果对参数进行修改，将不会影响到实际参数。
+
+```go
+func main() {
+    a := 10
+    fmt.Printf("%#v\n", &a) // (*int)(0xc420018080)
+    vFoo(a)
+}
+
+func vFoo(b int) {
+    fmt.Printf("%#v\n", &b) // (*int)(0xc420018090)
+}
+```
+
+## 指针传递
+
+形参为指向实参地址的指针，当对形参的指向操作时，就相当于对实参本身进行的操作
+
+```go
+func main() {
+    a := 10
+    pa := &a
+    fmt.Printf("value: %#v\n", pa) // value: (*int)(0xc420080008)
+    fmt.Printf("addr: %#v\n", &pa) // addr: (**int)(0xc420088018)
+    pFoo(pa)
+}
+
+func pFoo(p * int) {
+    fmt.Printf("value: %#v\n", p) // value: (*int)(0xc420080008)
+    fmt.Printf("addr: %#v\n", &p) // addr: (**int)(0xc420088028)
+}
+```
+
+定义了一个变量 a，并把地址保存在指针变量 pa 里边了。按照我们定的结论，**Go中只有值传递**，那么指针变量pa传给函数的形参p后，形参将会是它在栈上的一份拷贝，他们本身将各自拥有不同的地址，但是二者的值是一样的（都是变量a的地址）。上面的注释部分是我程序运行后的结果，pa 与 p 的地址各自互不相关，说明在参数传递中发生了值拷贝。
+
+## Go中没有引用传递
+
+> 所谓引用传递是指在调用函数时将实际参数的地址传递到函数中，那么在函数中对参数所进行的修改，将影响到实际参数。
+
+```c++
+void rFoo(int & ref) {
+    printf("%p\n", &ref);// 0x7ffee5aef768
+}
+
+int main() {
+    int a = 10;
+      printf("%p\n", &a);// 0x7ffee7307768
+    int & b = a;
+    printf("%p\n", &b);// 0x7ffee5aef768
+    rFoo(b);
+    return 0;
+}
+```
+
+这里 b 是 a 的别名（引用），因此a、b必定具备相同的地址。那么按照引用传递的定义，实参 b 传给形参 ref 之后，ref 将是 b 的别名（也即a、b、ref都是同一个变量），他们将拥有相同地址。通过在 **rFoo** 函数中的打印信息，可以看到三者具有完全形同的地址，这是所谓的引用传递。
+
+Go中函数调用只有值传递，但是类型引用有引用类型，他们是：**slice**、**map**、**channel**。来看看官方的说法：
+
+> There's a lot of history on that topic. Early on, maps and channels were syntactically pointers and it was impossible to declare or use a non-pointer instance. Also, we struggled with how arrays should work. Eventually we decided that the strict separation of pointers and values made the language harder to use. **Changing these types to act as references to the associated, shared data structures resolved these issues**. This change added some regrettable complexity to the language but had a large effect on usability: Go became a more productive, comfortable language when it was introduced.
+
+## 总结
+
+- Go 中函数传参仅有值传递一种方式；
+- **slice**、**map**、**channel**都是引用类型，但是跟c++的不同；
+- **slice**能够通过函数传参后，修改对应的数组值，是因为 slice 内部保存了引用数组的指针，并不是因为引用传递。
+
 # 关键字
+
 ## defer
 defer用于资源的释放，会在函数返回之前进行调用
 
