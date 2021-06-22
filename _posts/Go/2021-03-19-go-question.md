@@ -280,40 +280,40 @@ func main() {
 
 ## 15. 下面代码有什么问题？
 
-```
-1const i = 100
-2var j = 123
-3
-4func main() {
-5    fmt.Println(&j, j)
-6    fmt.Println(&i, i)
-7}
+```go
+const i = 100
+var j = 123
+
+func main() {
+    fmt.Println(&j, j)
+    fmt.Println(&i, i)
+}
 ```
 
 ## 16. 下面代码是否能编译通过？如果通过，输出什么？
 
 ```go
- 1func Foo(x interface{}) {
- 2    if x == nil {
- 3        fmt.Println("empty interface")
- 4        return
- 5    }
- 6    fmt.Println("non-empty interface")
- 7}
- 8func main() {
- 9    var x *int = nil
-10    Foo(x)
-11}
+ func Foo(x interface{}) {
+     if x == nil {
+         fmt.Println("empty interface")
+         return
+     }
+     fmt.Println("non-empty interface")
+ }
+ func main() {
+     var x *int = nil
+    Foo(x)
+}
 ```
 
 ## 17. 下面这段代码输出什么？
 
 ```go
-1var x = []int{2: 2, 3, 0: 1}
-2
-3func main() {
-4    fmt.Println(x)
-5}
+var x = []int{2: 2, 3, 0: 1}
+
+func main() {
+    fmt.Println(x)
+}
 ```
 
 ## 18. 下面代码输出什么？
@@ -336,10 +336,10 @@ func main() {
 ## 19. 下面的代码有什么问题？
 
 ```go
-1func main() {  
-2    var x = nil 
-3    _ = x
-4}
+func main() {  
+    var x = nil 
+    _ = x
+}
 ```
 
 ## 20. 下面代码能编译通过吗？
