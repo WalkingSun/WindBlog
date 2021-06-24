@@ -944,6 +944,52 @@ func main() {
 }
 ```
 
+## 51. 下面两处打印的值是否相同？请简要说明。
+
+```go
+func main() {
+    var val int
+    println(&val)
+    f(10000)
+    println(&val)
+}
+
+func f(i int) {
+    if i--; i == 0 {
+        return
+    }
+    f(i)
+}
+```
+
+## 52. 下面代码 A 处输出什么？请简要说明。
+
+```go
+func main() {
+    var val int
+
+    a := &val
+    println(a)
+
+    f(10000)
+
+    b := &val
+    println(b)
+
+    println(a == b)  // A
+}
+
+func f(i int) {
+    if i--; i == 0 {
+        return
+    }
+    f(i)
+}
+```
+
+- A. ture
+- B. false
+
 # 题解
 
 ## 1. 
@@ -1281,4 +1327,37 @@ C() 函数不能通过编译。C() 函数的 default 属于关键字。string �
 ## 50.
 
 输出 0。使用值类型接收者定义的方法，调用的时候，使用的是值的副本，对副本操作不会影响的原来的值。如果想要在调用函数中修改原值，可以使用指针接收者定义的方法
+
+## 51.
+
+不同。知识点：栈增长、逃逸分析。每个 groutine 都会分配相应的栈内存，比如 Go 1.11 版本是 2Kb，随着程序运行，栈内存会发生增长或缩小，协程会重新申请栈内存块。就像这个题目，循环调用 f()，发生深度递归，栈内存不断增大，当超过范围时，会重新申请栈内存，所以 val 的地址会变化。
+
+这道题还有个特别注意的地方，如果将 println() 函数换成 fmt.Println() 会发现，打印结果相同。为什么？因为函数 fmt.Println() 使变量 val 发生了逃逸，逃逸到堆内存，即使协程栈内存重新申请，val 变量在堆内存的地址也不会改变。
+
+## 52.
+
+A。这道题和上一道有一定联系，a 是指向变量 val 的指针，我们知道 val 变量的地址发生了改变，a 指向 val 新的地址是由内存管理自动实现的。
+
+```go
+func main() {
+    var val int
+
+    a := &val
+    println(a)
+
+    f(10000)
+
+    b := &val
+    println(b)  // a b 的值相同
+
+    println(a == b)  // A
+}
+
+func f(i int) {
+    if i--; i == 0 {
+        return
+    }
+    f(i)
+}
+```
 
