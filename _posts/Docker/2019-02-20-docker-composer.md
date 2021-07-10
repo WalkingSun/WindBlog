@@ -87,7 +87,7 @@ docker-compose --version
 ```
 
 例如启动wordpress项目,创建wordpress文件夹，文件夹内创建docker-composer.yml文件，内容：
-```
+```makefile
 wordpress:
     image: wordpress
     links:
@@ -105,7 +105,7 @@ restart: always  一直在线
 > docker-compose up 创建和启用服务   加-d后台运行
 
 > docker-compose up -d 作用是创建与启动容器，会重建有变化的服务器（删掉以前建立的容器）
-  
+
 > docker-compose up -d --no-create 如果存在与yaml中描述的容器就会直接启动，不会重建
 
 > docker-compose start 启动
@@ -338,7 +338,6 @@ docker push easyswoole:1.0
 
 **注意**
 docker compose可以判断容器间的依赖并生成正确的启动顺序，但仅仅是启动顺序，每个容器的启动时间不太一致，如果有依赖可能会不能正常交互导致启动失败。
-
 
 
 
