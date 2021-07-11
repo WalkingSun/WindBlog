@@ -15,14 +15,67 @@ sinaClass: \[Markdown\]
 
 # 概念
 
-# 消费
+# 硬件
+
+kafka硬件指标包含磁盘吞吐量、网络吞吐量、内存、磁盘容量、cpu层面：
+
+## 磁盘吞吐量
+
+客户端发送消息，等待服务端消息写入结果。磁盘的写入效率越高，生成消息的延迟就越低；
+
+## 磁盘容量
+
+消息存储所占磁盘空间；
+
+## 网络吞吐量
+
+kafka处理数据流量的瓶颈，每秒可以处理流入流出多大的流量大小，如1MB/s,10MB/s
+
+## 内存
+
+消费者读取消息需要存储到缓存中。
+
+## CPU
+
+客户端发送消息需要压缩处理，来降低网络传输的大小、速度；kafka服务端需要解压消息，设置偏移量，重新要数据压缩到磁盘存储；这需要一定的CPU计算能力。
+
+# 高可用
+
+## 集群
+
+### 配置
+
+broker集群
+
+```shell
+zookeeper.Connect=broker1.id,broker2.id
+```
+
+### 集群的数量如何评估？
+
+1. 集群需要多大的磁盘存储空间？单个broker的存储空间耗用？
+
+   需要10TB的磁盘存储空间，单个broker可以存储2TB，集群的数量：10/2=5。如果启用了数据复制，集群数量：10/2*2=10
+
+2. 集群的处理能力？磁盘吞吐量、网络吞吐量、内存、CPU？
+
+   通常与网络接口处理客户端流量的能力有关，特别是当有多个消费这存在或在数据保留期间流量发生波动时。如果单个broker的网络接口在高峰时段可以达到80%的使用量，并且有两个消费者，那么消费者无法保持峰值，就需要加broker。**如果数据启用了复制功能，则需要把这个额外的消费者考虑在内**。其他内存、磁盘吞吐量、cpu性能问题都可以通过扩展多个broker来解决。
 
 # 常见命令
 ## 创建主题(topic)
-127.0.0.1创建topic,10个分区
+```shell
+# 127.0.0.1创建topic,10个分区
 /opt/app/kafka/bin/kafka-topics.sh --create --zookeeper 127.0.0.1:2181 --topic test-topic --replication-factor 1 --partitions 10
+```
+
+另外配置了auto.create.topics.enble=true,kafka会在以下几种情形下自动创建主题。
+
+- 当一个生产者开始往主体写入消息时；
+- 当一个消费者开始从主题读取消息时；
+- 当任意一个客户端往主题发送原数据请求时；
 
 ## 发消息
+
 ```shell
 /opt/app/kafka/bin/kafka-console-producer.sh  --topic  test-topic   --broker-list 127.0.0.1:9092
 >{"test":"qi-sgssst027_ls","clientRealIp":"127.0.0.1","clientUa":"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_14_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/81.0.4044.138 Safari/537.36"}    # 点击数据
@@ -106,7 +159,7 @@ rmr /brokers/topics/cleantopic
 
 
 
-## Docker-compose部署
+# Docker-compose部署及kafka配置
 
 部署，学习研究
 
@@ -144,7 +197,7 @@ services:
       KAFKA_REPLICA_FETCH_MAX_BYTES: 10000000
       KAFKA_GROUP_MAX_SESSION_TIMEOUT_MS: 60000
       KAFKA_DELETE_RETENTION_MS: 1000
-#     KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092 # 把kafka的地址端口注册给zookeeper，如果是远程访问要改成外网IP,类如Java程序访问出现无法连接。
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://127.0.0.1:9092 # 把kafka的地址端口注册给zookeeper，如果是远程访问要改成外网IP,类如Java程序访问出现无法连接。
       KAFKA_LISTENERS: PLAINTEXT://0.0.0.0:9092 # 配置kafka的监听端口
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
