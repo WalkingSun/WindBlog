@@ -1,7 +1,7 @@
 ---
 layout: blog
 title: Go Context
-categories: [Go, 知识点]
+categories: [Go]
 description: 熟悉
 keywords: Go
 ---
