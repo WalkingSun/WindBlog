@@ -39,3 +39,8 @@ https://support.apple.com/zh-cn/HT201236
   - 截屏默认全屏、局部等；
   - 录屏；
 
+
+
+# .bash_profile不起作用
+soucr ~/.bash_profile
+mac安装了Zsh，执行：source ~/.zshrc
