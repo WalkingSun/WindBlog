@@ -73,3 +73,6 @@ type hmap struct {
    extra *mapextra // optional fields
 }
 ```
+
+参考：
+https://sanyuesha.com/2017/07/26/go-make-and-new/
