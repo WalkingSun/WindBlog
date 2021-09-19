@@ -1,16 +1,11 @@
 ---
 layout: blog
-title: 数据库基础知识【draft】
+title: 数据库基础知识
 categories: [DB]
 description: 数据库基础知识
 keywords: mysql
 cnblogsClass: \[Markdown\],\[随笔分类\]数据库
 oschinaClass: \[Markdown\],PHP,数据库,服务器,工作日志,日常记录,转贴的文章
-csdnClass: \[Markdown\]
-163Class: \[Markdown\]
-51ctoClass: \[Markdown\]
-chinaunixClass: \[Markdown\]
-sinaClass: \[Markdown\]
 ---
 # 基础知识
 记录下基础（平常容易忽视）的知识，细节考虑。
