@@ -1,15 +1,11 @@
+---
 layout: blog
-title: supervisor整理【draft】
+title: supervisor整理
 categories: [服务器]
 description:
 keywords: 高级IO
-cnblogsClass: \[Markdown\],\[随笔分类\]服务器
-oschinaClass: \[Markdown\],服务器,日常记录
-csdnClass: \[Markdown\]
-163Class: \[Markdown\]
-51ctoClass: \[Markdown\]
-chinaunixClass: \[Markdown\]
-sinaClass: \[Markdown\]
+---
+
 
 
 
