@@ -9,6 +9,23 @@ https://learnku.com/go/t/36973
 # go
 ## 包
 ### runtime包里面的方法
+runtime调度器是非常有用的东西，关于runtime包几个方法：
+
+Gosched：让当前线程让出cpu以让其他线程运行，它不会挂起当前线程，因此当前线程未来会继续执行
+
+NumCPU：返回当前系统的CPU核数量
+
+GOMAXPROCS：设置最大的可同时使用的CPU核数
+
+Goexit：退出当前goroutine（但是defer语句会照常执行）
+
+NumGoroutine：返回真该执行和排队的任务总数
+
+GOOS：目标操作系统
+
+GOROOT：返回本机的GO路径
+
+https://www.cnblogs.com/binHome/p/11928542.html
 
 ## test
 go的profile工具？
