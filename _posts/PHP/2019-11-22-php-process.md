@@ -45,3 +45,8 @@ while (pcntl_waitpid(0, $status) != -1) {
 }
 
 ```
+
+
+
+
+https://www.cnblogs.com/ygw1010/p/14627804.html
