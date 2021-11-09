@@ -92,3 +92,11 @@ http和tcp有什么区别
 用netstat看tcp连接的时候有关注过time_wait和close_wait吗？
 
 fork的底层实现方式
+
+
+# 限流熔断
+限流算法
+- 时间点计数法
+-  时间范围计数
+-  漏桶
+-  令牌痛
