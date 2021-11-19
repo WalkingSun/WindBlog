@@ -168,3 +168,11 @@ sub moduke https://git-reference.readthedocs.io/zh_CN/latest/Git-Tools/Submodule
 gRPC PHP https://grpc.io/docs/languages/php/quickstart/
 
 基于 protobuf 自动生成 gin 代码 https://lailin.xyz/post/go-training-week4-protoc-gen-go-gin.html
+
+
+
+gRPC的平滑关闭和服务摘流 https://blog.csdn.net/kevin_tech/article/details/115436043
+
+
+- [ ] grpc服务连接、客户端链接包
+- [ ] proto包抽离
