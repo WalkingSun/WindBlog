@@ -121,6 +121,9 @@ message GroupReply {
 > 外部调用
   使用http:restful风格，还需要做接口对外暴露处理，对输入输出的proto定义规范;项目中需要用的时候再提前调研下。 
 
+
+### 部署
+流水线自动部署
 ### 调试
 服务之间通过protouf协议通信，二进制编码，性能优越，但可读性不友好，寻找可视化的调试工具。
 
@@ -129,6 +132,8 @@ message GroupReply {
 
 参考其他团队整理文章 https://tech.qimao.com/grpc/ ，[bloomrpc](https://github.com/uw-labs/bloomrpc
 )挺方便。
+
+
 
 
 待整理：
@@ -170,9 +175,31 @@ gRPC PHP https://grpc.io/docs/languages/php/quickstart/
 基于 protobuf 自动生成 gin 代码 https://lailin.xyz/post/go-training-week4-protoc-gen-go-gin.html
 
 
+gRPC的平滑关闭和服务摘流 https://cloud.tencent.com/developer/article/1816510
+https://pkg.go.dev/google.golang.org/grpc#Server.GracefulStop
 
-gRPC的平滑关闭和服务摘流 https://blog.csdn.net/kevin_tech/article/details/115436043
+nginx grpc streaming负载均衡的排坑和思考 http://xiaorui.cc/archives/5970
 
+https://zhuanlan.zhihu.com/p/358295000
 
 - [ ] grpc服务连接、客户端链接包
 - [ ] proto包抽离
+
+- [ ] 微服务API库
+- [ ] 服务部署 （流水线）
+  - [ ] ECS
+  - [ ] K8S
+- [ ] MKT应用
+
+
+http://xiaorui.cc/archives/5970
+
+http://nginx.org/en/docs/http/ngx_http_grpc_module.html
+
+https://www.cnblogs.com/gao88/p/12010917.html
+
+在使用nginx proxy_pass upstream的时候，需要配置keepalive，不然nginx做负载均衡转发一律会按照短连接处理。 没想到grpc upstream也要配置keepalive。
+
+https://segmentfault.com/a/1190000016637212
+
+https://blog.csdn.net/kevin_tech/article/details/115436043
