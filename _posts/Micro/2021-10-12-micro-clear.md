@@ -182,15 +182,6 @@ nginx grpc streaming负载均衡的排坑和思考 http://xiaorui.cc/archives/59
 
 https://zhuanlan.zhihu.com/p/358295000
 
-- [ ] grpc服务连接、客户端链接包
-- [ ] proto包抽离
-
-- [ ] 微服务API库
-- [ ] 服务部署 （流水线）
-  - [ ] ECS
-  - [ ] K8S
-- [ ] MKT应用
-
 
 http://xiaorui.cc/archives/5970
 
@@ -203,3 +194,7 @@ https://www.cnblogs.com/gao88/p/12010917.html
 https://segmentfault.com/a/1190000016637212
 
 https://blog.csdn.net/kevin_tech/article/details/115436043
+
+https://golang2.eddycjy.com/posts/ch3/05-call-grpc/#352-grpcdial-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88
+
+https://cloud.tencent.com/developer/article/1375974
