@@ -139,15 +139,7 @@ message GroupReply {
 待整理：
 
 - [ ] 微服务部署
-  - 服务健康检查，持续集成，自动部署，服务过多运维压力
-1. 部署服务，新加服务或修改服务，重启如何不影响调用进程？
-   启动A服务，监听端口：8081；
-   新起B服务，监听端口：8082；
-
-   客户端获取服务列表 [A,B]
-
-   升级：下线A服务，等服务没有客户端链接，重新部署A服务;B服务相同操作；
-
+滚动更新策略：代理服务器负载均衡 + grpc平滑关闭
 
 - [ ] 服务监控、链路追踪、多点故障定位、故障恢复
   - 服务监控可以主动发现系统中的薄弱环节加以优化、重构：当出现故障时，比如服务出现资源、网络瓶颈等情况，如何能够及时感知（调用了哪个服务、输入输出信息），迅速定位问题，找到有效的解决方案。；
@@ -197,4 +189,4 @@ https://blog.csdn.net/kevin_tech/article/details/115436043
 
 https://golang2.eddycjy.com/posts/ch3/05-call-grpc/#352-grpcdial-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88
 
-https://cloud.tencent.com/developer/article/1375974
+带入gRPC：分布式链路追踪 gRPC + Opentracing + Zipkin https://cloud.tencent.com/developer/article/1683454
