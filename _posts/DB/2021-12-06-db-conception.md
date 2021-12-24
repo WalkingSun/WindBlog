@@ -21,6 +21,6 @@ OLAP分类:ROLAP,MOLAP,HOLAP 根据存储数据方式不同划分
 
 （3）HOLAP  HybridOLAP  混合型OLAP    尚无明确定义-根据不同场景变化
 
-
+¬
 # Refer
 OLTP与OLAP https://www.jianshu.com/p/3c5ecfbc28d1
