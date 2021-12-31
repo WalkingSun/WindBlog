@@ -88,7 +88,7 @@ gRPC客户端与服务端通信流程：
 
 倾向第三种，比较灵活。
 
-### protobuf规范
+### protobuf规范  
 protobuf定义及生成序列化、gRPC、客户端代码的结构需要规范化。
 
 ```protocol
