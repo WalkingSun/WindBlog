@@ -189,4 +189,4 @@ https://blog.csdn.net/kevin_tech/article/details/115436043
 
 https://golang2.eddycjy.com/posts/ch3/05-call-grpc/#352-grpcdial-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88
 
-带入gRPC：分布式链路追踪 gRPC + Opentracing + Zipkin https://cloud.tencent.com/developer/article/1683454
+带入gRPC：分布式链路追踪 gRPC + Opentracing + Zipkin https://cloud.tencent.com/developer/article/1683454·
