@@ -8,11 +8,13 @@ keywords: clickhouse, bitmap
 
 
 
-
-
 clickhouse 物化视图应用：https://www.cnblogs.com/zlt2000/p/14626156.html
 
+https://clickhouse.com/docs/zh/engines/table-engines/mergetree-family/aggregatingmergetree/
+
 `物化视图(Materialized View)` 与普通视图不同的地方在于它是一个查询结果的数据库对象(持久化存储)，非常趋近于表；物化视图是数据库中的预计算逻辑+显式缓存，典型的空间换时间思路，所以用得好的话，它可以避免对基础表的频繁查询并复用结果，从而显著提升查询的性能。
+
+应用场景：基础表的数据量比较大，想利用物化视图，提前预计算数据，减少查询sql的是时间
 
 在传统关系型数据库中，Oracle、PostgreSQL、SQL Server等都支持物化视图，而作为MPP数据库的ClickHouse也支持该特性。
 
@@ -70,6 +72,24 @@ The data won’t be further aggregated. The exception is when using an `ENGINE` 
 ```
 
 查询语句可以包含distinct，group by ,order by ,limit,特别注意这些相关联的约束只能应用于每个新插入的数据块中；比如说，如果设置了group by ,这些语句只会应用于新插入的的数据当中，不会作用于已经插入的分区当中；
+
+
+
+http://wiki.km.com/pages/viewpage.action?pageId=30803834
+
+
+
+
+
+聚合函数**组合器** https://clickhouse.com/docs/zh/sql-reference/aggregate-functions/combinators/
+
+
+
+Reference
+
+https://bohutang.me/2020/08/31/clickhouse-and-friends-materialized-view/
+
+https://www.modb.pro/db/61195
 
 
 
