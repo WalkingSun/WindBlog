@@ -88,3 +88,9 @@ Context 是一种非常好的工具，使用它可以很方便地控制取消多
 3. 然后这个保存着 TraceID 的 Context 就可以作为参数在各个协程或者函数间传递。
 4. 在需要记录日志的地方，通过 Context 的 Value 方法获取保存的 TraceID，然后把它和其他日志信息记录下来。
 5. 这样具备同样 TraceID 的日志就可以被串联起来，达到日志跟踪的目的。
+
+
+
+# Refer
+
+如何在 Go 服务中做链路追踪 https://xie.infoq.cn/article/5f37f330f6c8a00087dbcd766

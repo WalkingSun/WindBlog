@@ -24,7 +24,7 @@
 ## 微服务拆分
 
 微服务拆分目的：对业务领域进行拆分，划定微服务的范围，分而治之降低系统的复杂性和可维护性，解耦业务，使项目间的职责更加明确，方便维护扩展。
- 
+
 微服务拆分规范：  
 1. 梳理当前各项目的业务模块（当前项目按照垂直拆分粒度比较大的服务），梳理耦合部分业务逻辑，保证各个服务职责明确。
 2. 基于当前移动联盟业务梳理进行业务、可扩展、可靠性拆分：
@@ -51,7 +51,7 @@ gRPC客户端与服务端通信流程：
 
 # 实施
 目前的微服务框架主流： go micro、 go kit等。
-  
+
 微服务不是银弹，不能说一下子切成微服务指望解决所有问题，首先开发时间成本高，其次开发阶段会导致业务停滞，然后上线切换，新系统问题会多。早期还是运用微服务拆分的理念来约束项目服务边界，使用gRPC来进行RPC调用，来降低项目间的耦合性，后面在考虑某块业务拆分。
 
 整理当前项目模块间的耦合关系：
@@ -88,7 +88,7 @@ gRPC客户端与服务端通信流程：
 
 倾向第三种，比较灵活。
 
-### protobuf规范
+### protobuf规范  
 protobuf定义及生成序列化、gRPC、客户端代码的结构需要规范化。
 
 ```protocol
@@ -121,6 +121,9 @@ message GroupReply {
 > 外部调用
   使用http:restful风格，还需要做接口对外暴露处理，对输入输出的proto定义规范;项目中需要用的时候再提前调研下。 
 
+
+### 部署
+流水线自动部署
 ### 调试
 服务之间通过protouf协议通信，二进制编码，性能优越，但可读性不友好，寻找可视化的调试工具。
 
@@ -131,18 +134,34 @@ message GroupReply {
 )挺方便。
 
 
+
+## 链路追踪
+
+## 全链路跟踪设计
+
+**尽量少写代码**
+
+一个好的全链路跟踪系统不需要用户编写很多跟踪代码。最理想的情况是你不需要任何代码，让框架或库负责处理它，当然这比较困难。 全链路跟踪分成三个跟踪级别：
+
+- 跨进程跟踪 (cross-process)(调用另一个微服务)
+- 数据库跟踪
+- 进程内部的跟踪 (in-process)(在一个函数内部的跟踪)
+
+https://segmentfault.com/a/1190000020450845
+
+
+
+https://codeup.aliyun.com/qimao/go-contrib/leo/blob/main/trace/global.go
+
+https://codeup.aliyun.com/qimao/go-contrib/leo/blob/main/grpc/client.go
+
+
+
+
 待整理：
 
-- [ ] 微服务部署
-  - 服务健康检查，持续集成，自动部署，服务过多运维压力
-1. 部署服务，新加服务或修改服务，重启如何不影响调用进程？
-   启动A服务，监听端口：8081；
-   新起B服务，监听端口：8082；
-
-   客户端获取服务列表 [A,B]
-
-   升级：下线A服务，等服务没有客户端链接，重新部署A服务;B服务相同操作；
-
+- [ ] 微服务部署·
+滚动更新策略：代理服务器负载均衡 + grpc平滑关闭
 
 - [ ] 服务监控、链路追踪、多点故障定位、故障恢复
   - 服务监控可以主动发现系统中的薄弱环节加以优化、重构：当出现故障时，比如服务出现资源、网络瓶颈等情况，如何能够及时感知（调用了哪个服务、输入输出信息），迅速定位问题，找到有效的解决方案。；
@@ -151,7 +170,7 @@ message GroupReply {
 - [ ] 提供对外接口，http结合gin
 - [ ] 服务发现
 
-
+·
 
 # Reference
 
@@ -168,3 +187,28 @@ sub moduke https://git-reference.readthedocs.io/zh_CN/latest/Git-Tools/Submodule
 gRPC PHP https://grpc.io/docs/languages/php/quickstart/
 
 基于 protobuf 自动生成 gin 代码 https://lailin.xyz/post/go-training-week4-protoc-gen-go-gin.html
+
+
+gRPC的平滑关闭和服务摘流 https://cloud.tencent.com/developer/article/1816510
+https://pkg.go.dev/google.golang.org/grpc#Server.GracefulStop
+
+nginx grpc streaming负载均衡的排坑和思考 http://xiaorui.cc/archives/5970
+
+https://zhuanlan.zhihu.com/p/358295000
+
+
+http://xiaorui.cc/archives/5970
+
+http://nginx.org/en/docs/http/ngx_http_grpc_module.html
+
+https://www.cnblogs.com/gao88/p/12010917.html
+
+在使用nginx proxy_pass upstream的时候，需要配置keepalive，不然nginx做负载均衡转发一律会按照短连接处理。 没想到grpc upstream也要配置keepalive。
+
+https://segmentfault.com/a/1190000016637212
+
+https://blog.csdn.net/kevin_tech/article/details/115436043
+
+https://golang2.eddycjy.com/posts/ch3/05-call-grpc/#352-grpcdial-%E5%81%9A%E4%BA%86%E4%BB%80%E4%B9%88
+
+带入gRPC：分布式链路追踪 gRPC + Opentracing + Zipkin https://cloud.tencent.com/developer/article/1683454·
