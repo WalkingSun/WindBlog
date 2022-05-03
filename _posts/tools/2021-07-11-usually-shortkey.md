@@ -26,3 +26,11 @@ keywords: 快捷键
   - 输入本地资源地址上传快捷键方式，Windows/Unix为`Ctrl + Alt + O`，OsX为`Cmd + Opt + O`。
   - 以上三种方式上传时，若选中文本则以选中文本为上传文件名。
 
+
+
+
+![20220221211710](https://raw.githubusercontent.com/WalkingSun/BigdataDocument/main/images/ws2/20220221211710.png)
+
+
+
+
