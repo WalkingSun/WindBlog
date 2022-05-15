@@ -44,3 +44,6 @@ https://support.apple.com/zh-cn/HT201236
 # .bash_profile不起作用
 soucr ~/.bash_profile
 mac安装了Zsh，执行：source ~/.zshrc
+
+# 默认输入法
+https://www.liuvv.com/p/88c7abb.html
