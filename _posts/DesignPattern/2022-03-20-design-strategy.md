@@ -12,3 +12,5 @@ cnblogsClass: \[Markdown\],\[随笔分类\]设计模式
 
 # Refer：
 https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/strategy.html
+
+
