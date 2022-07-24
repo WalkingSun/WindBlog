@@ -20,4 +20,5 @@ sinaClass: \[Markdown\]
 
 
 
-
+正则查询：
+https://prometheus.fuckcloudnative.io/di-san-zhang-prometheus/di-4-jie-cha-xun/basics
