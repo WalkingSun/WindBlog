@@ -10,7 +10,7 @@ csdnClass: \[Markdown\]
 163Class: \[Markdown\]
 51ctoClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
-sinaClass: \[Markdown\]
+sinaClass: \[Markdown
 ---
 
 # string、int、int64、float64相互转换
@@ -39,6 +39,10 @@ string := strconv.FormatFloat(float64,'E',-1,64)
 
 #string到float64
 float,err := strconv.ParseFloat(string,64)
+
+
+# float32转float64 （精度问题解决）
+s, _ := decimal.NewFromFloat32(rawScore[i]).Float64()
 ```
 
 # string、[]byte转换

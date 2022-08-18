@@ -14,7 +14,7 @@ sinaClass: \[Markdown\]
 ---
 
 # 简介
-目前正在学Go，做下记录，温故而知新，初学coding的时候可以快速翻查用法，了解原理。
+目前正在学 #Go ，做下记录，温故而知新，初学coding的时候可以快速翻查用法，了解原理。
 
 # 多重赋值
 多重赋值时，变量的左值和右值按从左到右的顺序赋值
@@ -496,3 +496,4 @@ new(T)会为T类型的新值分配已置0的内存空间，并返回地址（指
 
 make(T,args)返回初始化之后的T类型的值，这个值是经过初始化后的T的引用。只适用slice、map、channel。
 
+obsidian://open?vault=_posts&file=Go%2F2019-10-09-go-var-life
