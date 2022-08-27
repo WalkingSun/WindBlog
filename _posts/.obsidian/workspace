@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Metrics/2022-06-08-grafana.md",
+            "file": "System/2018-11-16-io.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "ep",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -58,8 +58,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -79,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Metrics/2022-06-08-grafana.md",
+                "file": "System/2018-11-16-io.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +95,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Metrics/2022-06-08-grafana.md",
+                "file": "System/2018-11-16-io.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -108,7 +107,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Metrics/2022-06-08-grafana.md"
+                "file": "System/2018-11-16-io.md"
               }
             }
           },
@@ -119,19 +118,21 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": false
               }
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 2
       }
     ],
     "direction": "horizontal",
     "width": 300
   },
-  "active": "4416371278d191d8",
+  "active": "02b7f71b9727064d",
   "lastOpenFiles": [
+    "Go/2020-10-11-go-select.md",
+    "Metrics/2022-06-08-grafana.md",
     "Structure/2021-09-18-prometheus.md",
     "2019-05-12-yii-error.md",
     "Go/2019-10-09-go-var-life.md",
@@ -139,8 +140,6 @@
     "2019-03-13-vagrantbuild.md",
     "2019-02-28-crontab.md",
     "2019-04-01-python-basic.md",
-    "2018-12-19-database-level-three.md",
-    "2018-11-04-react.md",
-    "],[-2],[0],[-3],[],[],[],[.md"
+    "2018-12-19-database-level-three.md"
   ]
 }
