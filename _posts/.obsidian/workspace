@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "System/2018-11-16-io.md",
+            "file": "System/2022-08-27-io-multiplexing.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -78,7 +78,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "System/2018-11-16-io.md",
+                "file": "System/2022-08-27-io-multiplexing.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +95,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "System/2018-11-16-io.md",
+                "file": "System/2022-08-27-io-multiplexing.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -107,7 +107,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "System/2018-11-16-io.md"
+                "file": "System/2022-08-27-io-multiplexing.md"
               }
             }
           },
@@ -127,19 +127,20 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 300,
+    "collapsed": true
   },
-  "active": "02b7f71b9727064d",
+  "active": "7075943a35d4df09",
   "lastOpenFiles": [
+    "System/2021-10-02-server-model.md",
+    "System/2022-08-27-io-multiplexing.md",
+    "System/2018-11-16-io.md",
     "Go/2020-10-11-go-select.md",
     "Metrics/2022-06-08-grafana.md",
     "Structure/2021-09-18-prometheus.md",
     "2019-05-12-yii-error.md",
     "Go/2019-10-09-go-var-life.md",
     "2019-04-10-java-basic.md",
-    "2019-03-13-vagrantbuild.md",
-    "2019-02-28-crontab.md",
-    "2019-04-01-python-basic.md",
-    "2018-12-19-database-level-three.md"
+    "2019-03-13-vagrantbuild.md"
   ]
 }
