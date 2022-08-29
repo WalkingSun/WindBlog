@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "System/2022-08-27-io-multiplexing.md",
+            "file": "Go/2020-01-12-time.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "打点器",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -58,7 +58,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -78,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "System/2022-08-27-io-multiplexing.md",
+                "file": "Go/2020-01-12-time.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -95,7 +96,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "System/2022-08-27-io-multiplexing.md",
+                "file": "Go/2020-01-12-time.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -107,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "System/2022-08-27-io-multiplexing.md"
+                "file": "Go/2020-01-12-time.md"
               }
             }
           },
