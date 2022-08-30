@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2020-01-12-time.md",
+            "file": "Go/2020-10-11-go-select.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "打点器",
+                "query": "file:select",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2020-01-12-time.md",
+                "file": "Go/2020-10-11-go-select.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +96,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2020-01-12-time.md",
+                "file": "Go/2020-10-11-go-select.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -108,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-01-12-time.md"
+                "file": "Go/2020-10-11-go-select.md"
               }
             }
           },
@@ -133,6 +133,7 @@
   },
   "active": "7075943a35d4df09",
   "lastOpenFiles": [
+    "Go/2020-01-12-time.md",
     "System/2022-08-27-io-multiplexing.md",
     "System/2021-10-02-server-model.md",
     "System/2018-11-16-io.md",
@@ -141,7 +142,6 @@
     "Structure/2021-09-18-prometheus.md",
     "2019-05-12-yii-error.md",
     "Go/2019-10-09-go-var-life.md",
-    "2019-04-10-java-basic.md",
-    "2019-03-13-vagrantbuild.md"
+    "2019-04-10-java-basic.md"
   ]
 }
