@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2020-10-11-go-select.md",
+            "file": "CloudDeployment/2020-05-20-k8s-kebectl.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:select",
+                "query": "file:k8s",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2020-10-11-go-select.md",
+                "file": "CloudDeployment/2020-05-20-k8s-kebectl.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +96,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2020-10-11-go-select.md",
+                "file": "CloudDeployment/2020-05-20-k8s-kebectl.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -108,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-10-11-go-select.md"
+                "file": "CloudDeployment/2020-05-20-k8s-kebectl.md"
               }
             }
           },
@@ -133,15 +133,15 @@
   },
   "active": "7075943a35d4df09",
   "lastOpenFiles": [
+    "CloudDeployment/2020-06-14-k8s-configmap.md",
+    "CloudDeployment/2020-06-18-k8s-ingress.md",
+    "CloudDeployment/2020-06-30-k8s-volume.md",
+    "CloudDeployment/2020-08-27-k8s-clear.md",
+    "CloudDeployment/2022-06-15-k8s-helm.md",
+    "CloudDeployment/2020-02-18-k8s-demo.md",
+    "Go/2020-10-11-go-select.md",
     "Go/2020-01-12-time.md",
     "System/2022-08-27-io-multiplexing.md",
-    "System/2021-10-02-server-model.md",
-    "System/2018-11-16-io.md",
-    "Go/2020-10-11-go-select.md",
-    "Metrics/2022-06-08-grafana.md",
-    "Structure/2021-09-18-prometheus.md",
-    "2019-05-12-yii-error.md",
-    "Go/2019-10-09-go-var-life.md",
-    "2019-04-10-java-basic.md"
+    "System/2021-10-02-server-model.md"
   ]
 }
