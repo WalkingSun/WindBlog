@@ -4,12 +4,12 @@
     "type": "split",
     "children": [
       {
-        "id": "7075943a35d4df09",
+        "id": "5810f5a82e90c5a9",
         "type": "leaf",
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2020-01-13-change-format.md",
+            "file": "2019-06-07-git.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:format",
+                "query": "file:git",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2020-01-13-change-format.md",
+                "file": "2019-06-07-git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +96,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2020-01-13-change-format.md",
+                "file": "2019-06-07-git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -108,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-01-13-change-format.md"
+                "file": "2019-06-07-git.md"
               }
             }
           },
@@ -131,17 +131,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "7075943a35d4df09",
+  "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "2019-02-27-git.md",
+    "2019-06-07-git.md",
+    "Go/2020-01-13-change-format.md",
     "Go/2020-10-11-go-select.md",
     "CloudDeployment/2020-08-27-k8s-clear.md",
     "CloudDeployment/2020-05-20-k8s-kebectl.md",
     "CloudDeployment/2020-06-14-k8s-configmap.md",
     "CloudDeployment/2020-06-18-k8s-ingress.md",
     "CloudDeployment/2020-06-30-k8s-volume.md",
-    "CloudDeployment/2022-06-15-k8s-helm.md",
-    "CloudDeployment/2020-02-18-k8s-demo.md",
-    "Go/2020-01-12-time.md",
-    "System/2022-08-27-io-multiplexing.md"
+    "CloudDeployment/2022-06-15-k8s-helm.md"
   ]
 }
