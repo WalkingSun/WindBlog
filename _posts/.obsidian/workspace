@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "2019-06-07-git.md",
+            "file": "Go/2020-01-12-time.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:git",
+                "query": "file:time",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2019-06-07-git.md",
+                "file": "Go/2020-01-12-time.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +96,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2019-06-07-git.md",
+                "file": "Go/2020-01-12-time.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -108,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2019-06-07-git.md"
+                "file": "Go/2020-01-12-time.md"
               }
             }
           },
@@ -133,9 +133,9 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
-    "2019-02-27-git.md",
-    "2019-06-07-git.md",
     "Go/2020-01-13-change-format.md",
+    "2019-06-07-git.md",
+    "2019-02-27-git.md",
     "Go/2020-10-11-go-select.md",
     "CloudDeployment/2020-08-27-k8s-clear.md",
     "CloudDeployment/2020-05-20-k8s-kebectl.md",
