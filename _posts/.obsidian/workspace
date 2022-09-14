@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2020-01-12-time.md",
+            "file": "Go/2021-08-01-go-pipeline.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:time",
+                "query": "file:pip",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2020-01-12-time.md",
+                "file": "Go/2021-08-01-go-pipeline.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +96,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2020-01-12-time.md",
+                "file": "Go/2021-08-01-go-pipeline.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -108,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-01-12-time.md"
+                "file": "Go/2021-08-01-go-pipeline.md"
               }
             }
           },
@@ -133,6 +133,7 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "Go/2020-01-12-time.md",
     "Go/2020-01-13-change-format.md",
     "2019-06-07-git.md",
     "2019-02-27-git.md",
@@ -141,7 +142,6 @@
     "CloudDeployment/2020-05-20-k8s-kebectl.md",
     "CloudDeployment/2020-06-14-k8s-configmap.md",
     "CloudDeployment/2020-06-18-k8s-ingress.md",
-    "CloudDeployment/2020-06-30-k8s-volume.md",
-    "CloudDeployment/2022-06-15-k8s-helm.md"
+    "CloudDeployment/2020-06-30-k8s-volume.md"
   ]
 }
