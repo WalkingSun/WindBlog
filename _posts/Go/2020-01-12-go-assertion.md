@@ -72,3 +72,10 @@ case *int:
 ```
 
 一般swicth的用处会多点。
+
+
+# 问题
+
+##  non-interface type int32 on left
+
+https://blog.csdn.net/textdemo123/article/details/106691620
