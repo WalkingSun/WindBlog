@@ -9,7 +9,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "tools/2022-03-11-makefile.md",
+            "file": "Go/2020-06-16-go-chan.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -41,7 +41,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:make",
+                "query": "file:go ",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +79,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/2022-03-11-makefile.md",
+                "file": "Go/2020-06-16-go-chan.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +96,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tools/2022-03-11-makefile.md",
+                "file": "Go/2020-06-16-go-chan.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -108,7 +108,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tools/2022-03-11-makefile.md"
+                "file": "Go/2020-06-16-go-chan.md"
               }
             }
           },
@@ -131,17 +131,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "5810f5a82e90c5a9",
+  "active": "4416371278d191d8",
   "lastOpenFiles": [
+    "Micro/2021-08-15-grpc-go.md",
+    "Go/2021-09-03-go-reflect.md",
+    "Go/2021-10-31-go-test.md",
+    "2021-12-06-go-view.md",
+    "tools/2022-03-11-makefile.md",
     "Go/2021-01-07-go-mod.md",
     "Go/2020-01-12-go-assertion.md",
     "Go/2020-01-13-change-format.md",
     "Go/2020-10-11-go-select.md",
-    "Go/2021-08-01-go-pipeline.md",
-    "Go/2020-01-12-time.md",
-    "2019-06-07-git.md",
-    "2019-02-27-git.md",
-    "CloudDeployment/2020-08-27-k8s-clear.md",
-    "CloudDeployment/2020-05-20-k8s-kebectl.md"
+    "Go/2021-08-01-go-pipeline.md"
   ]
 }
