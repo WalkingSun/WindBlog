@@ -61,6 +61,12 @@ zookeeper.Connect=broker1.id,broker2.id
 
    通常与网络接口处理客户端流量的能力有关，特别是当有多个消费这存在或在数据保留期间流量发生波动时。如果单个broker的网络接口在高峰时段可以达到80%的使用量，并且有两个消费者，那么消费者无法保持峰值，就需要加broker。**如果数据启用了复制功能，则需要把这个额外的消费者考虑在内**。其他内存、磁盘吞吐量、cpu性能问题都可以通过扩展多个broker来解决。
 
+
+# 架构模式
+## 发布订阅
+[**https://cloud.tencent.com/developer/article/1639449**](https://cloud.tencent.com/developer/article/1639449)
+
+
 # 常见命令
 ## 创建主题(topic)
 ```shell

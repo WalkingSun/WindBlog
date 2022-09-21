@@ -6,15 +6,29 @@
       {
         "id": "5810f5a82e90c5a9",
         "type": "leaf",
+        "dimension": 76.55642023346303,
         "state": {
           "type": "markdown",
           "state": {
-            "file": "tools/2022-03-11-makefile.md",
+            "file": "MQ/2020-06-04-kafka-study.md",
             "mode": "source",
             "backlinks": false,
             "source": false
           }
-        }
+        },
+        "group": "670a672183ccb4bc"
+      },
+      {
+        "id": "f3aca2c74d9400c5",
+        "type": "leaf",
+        "dimension": 23.443579766536963,
+        "state": {
+          "type": "outline",
+          "state": {
+            "file": "MQ/2020-06-04-kafka-study.md"
+          }
+        },
+        "group": "670a672183ccb4bc"
       }
     ],
     "direction": "vertical"
@@ -41,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:makefile",
+                "query": "file:kafka",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -79,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/2022-03-11-makefile.md",
+                "file": "MQ/2020-06-04-kafka-study.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -96,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tools/2022-03-11-makefile.md",
+                "file": "MQ/2020-06-04-kafka-study.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -108,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tools/2022-03-11-makefile.md"
+                "file": "MQ/2020-06-04-kafka-study.md"
               }
             }
           },
@@ -133,12 +147,12 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "tools/2022-03-11-makefile.md",
     "Go/2020-06-16-go-chan.md",
     "Micro/2021-08-15-grpc-go.md",
     "Go/2021-09-03-go-reflect.md",
     "Go/2021-10-31-go-test.md",
     "2021-12-06-go-view.md",
-    "tools/2022-03-11-makefile.md",
     "Go/2021-01-07-go-mod.md",
     "Go/2020-01-12-go-assertion.md",
     "Go/2020-01-13-change-format.md",
