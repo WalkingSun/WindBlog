@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2020-01-13-change-format.md",
+            "file": "DesignPattern/2022-09-22-design-function-option.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Go/2020-01-13-change-format.md"
+            "file": "DesignPattern/2022-09-22-design-function-option.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:go",
+                "query": "file:design",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2020-01-13-change-format.md",
+                "file": "DesignPattern/2022-09-22-design-function-option.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2020-01-13-change-format.md",
+                "file": "DesignPattern/2022-09-22-design-function-option.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-01-13-change-format.md"
+                "file": "DesignPattern/2022-09-22-design-function-option.md"
               }
             }
           },
@@ -146,15 +146,15 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
-    "tools/2022-09-23-go-multi-version.md",
-    "tools/2022-03-11-makefile.md",
-    "tools/2022-01-14-ide.md",
-    "tools/2021-05-02-macos-keyborad-shortcuts.md",
-    "tools/2021-05-03-xmind-keyboard-shortcuts.md",
-    "tools/2021-07-11-usually-shortkey.md",
-    "tools/2021-08-26-vscode.md",
-    "tools/2021-12-24-wps.md",
+    "DesignPattern/2022-03-24-design-template.md",
+    "DesignPattern/2022-09-22-design-function-option.md",
+    "DesignPattern/2020-11-15-design-LiskovSubstitutioPrinciple.md",
+    "DesignPattern/2021-02-15-design-DIP.md",
+    "DesignPattern/2018-09-04-design.md",
     "tools/2021-11-24-design.md",
-    "tools/2021-10-31-github.md"
+    "Micro/2021-09-03-micro-design.md",
+    "DesignPattern/2021-09-03-design-pubsub.md",
+    "Go/2020-01-13-change-format.md",
+    "tools/2022-09-23-go-multi-version.md"
   ]
 }
