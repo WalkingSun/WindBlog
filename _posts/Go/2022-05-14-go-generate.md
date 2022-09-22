@@ -6,6 +6,7 @@ description: 熟悉
 keywords: Go
 ---
 
+# gen
 go generate命令是go 1.4版本里面新添加的一个命令，当运行go generate时，它将扫描与当前包相关的源代码文件，找出所有包含"//go:generate"的特殊注释，提取并执行该特殊注释后面的命令，命令为可执行程序，形同shell下面执行。
 
 有几点需要注意：
@@ -19,3 +20,21 @@ go generate命令是go 1.4版本里面新添加的一个命令，当运行go gen
 Refer:
 
 https://www.jianshu.com/p/a866147021da
+
+
+# 应用
+## 生成对应字符串
+```go
+// Event 事件类型  
+type Event int  
+  
+//go:generate stringer -type Event  
+
+// 定义事件常量  
+const (  
+   Panic Event = iota  
+  
+   ErrRequest
+   )
+```
+
