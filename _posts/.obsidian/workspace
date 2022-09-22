@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2022-09-22-go-sync.md",
+            "file": "tools/2022-09-23-go-multi-version.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Go/2022-09-22-go-sync.md"
+            "file": "tools/2022-09-23-go-multi-version.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2022-09-22-go-sync.md",
+                "file": "tools/2022-09-23-go-multi-version.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2022-09-22-go-sync.md",
+                "file": "tools/2022-09-23-go-multi-version.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2022-09-22-go-sync.md"
+                "file": "tools/2022-09-23-go-multi-version.md"
               }
             }
           },
@@ -146,15 +146,15 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
-    "Go/2021-12-06-go-view.md",
-    "Go/2022-06-15-generic-type.md",
-    "Go/2022-05-14-go-generate.md",
-    "Go/2019-10-09-go-program.md",
-    "Go/2022-09-22-go-sync.md",
-    "Go/2019-10-09-go-var-life.md",
-    "Go/2020-10-21-go-rpc.md",
-    "Go/2021-01-07-go-mod.md",
-    "Micro/2021-08-15-grpc-go.md",
-    "Go/2022-01-20-go-pkg-request-pull-encapsulate.md"
+    "tools/2022-03-11-makefile.md",
+    "tools/2022-09-23-go-multi-version.md",
+    "tools/2022-01-14-ide.md",
+    "tools/2021-05-02-macos-keyborad-shortcuts.md",
+    "tools/2021-05-03-xmind-keyboard-shortcuts.md",
+    "tools/2021-07-11-usually-shortkey.md",
+    "tools/2021-08-26-vscode.md",
+    "tools/2021-12-24-wps.md",
+    "tools/2021-11-24-design.md",
+    "tools/2021-10-31-github.md"
   ]
 }
