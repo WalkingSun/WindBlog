@@ -23,29 +23,37 @@ https://www.jianshu.com/p/a866147021da
 
 
 # 应用
-## String()方法
-定义若干定义为Event的整型常量，为这些常量定义String()方法。
-```go
-//go:generate stringer -type Event  
+## Stringer
 
-// Event 事件类型  
-type Event int  
-  
-// 定义事件常量  
-const (  
-   Panic Event = iota  
-  
-   ErrRequest
-   )
+定义若干定义为整型常量，为这些常量定义String()签名方法。
+```go
+//go:generate stringer -type ```
+Pill
+```  
+
+package painkiller
+
+type Pill int
+
+const (
+    Placebo Pill = iota
+    Aspirin
+    Ibuprofen
+    Paracetamol
+    Acetaminophen = Paracetamol
+)
 ```
 **运行"go generate"命令前，我们需要安装stringer工具**
 ```shell
 go get golang.org/x/tools/cmd/stringer
 ```
 
-执行 ```go generate```当前目录下面生成一个event_string.go文件。
+执行 ```go generate```当前目录下面生成一个pill_string.go文件。
 
+让机器来做这项工作
 
 
 # Refer
 https://go.dev/blog/generate
+
+https://pkg.go.dev/cmd/go
