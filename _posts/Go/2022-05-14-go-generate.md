@@ -23,13 +23,14 @@ https://www.jianshu.com/p/a866147021da
 
 
 # 应用
-## 生成对应字符串
+## String()方法
+定义若干定义为Event的整型常量，为这些常量定义String()方法。
 ```go
+//go:generate stringer -type Event  
+
 // Event 事件类型  
 type Event int  
   
-//go:generate stringer -type Event  
-
 // 定义事件常量  
 const (  
    Panic Event = iota  
@@ -37,4 +38,9 @@ const (
    ErrRequest
    )
 ```
+**运行"go generate"命令前，我们需要安装stringer工具**
+```shell
+go get golang.org/x/tools/cmd/stringer
+```
 
+执行 ```go generate```当前目录下面生成一个event_string.go文件。
