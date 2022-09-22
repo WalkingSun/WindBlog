@@ -127,3 +127,9 @@ func main() {
 
 从测试结果可以看到，三种方式都能完成struct转map，但是reflect方法无法识别结构体中的tag，第三方库只能使用tag structs，所以如果考虑兼容性（考虑到协同开发）和尽量使用官方库的原则，推荐使用第一种方法（json转换）
 
+
+
+
+# 转换工具
+json2go、yaml2go。。。
+https://github.com/miaogaolin/gotl

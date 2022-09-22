@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "tools/2022-09-23-go-multi-version.md",
+            "file": "Go/2020-01-13-change-format.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "tools/2022-09-23-go-multi-version.md"
+            "file": "Go/2020-01-13-change-format.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "tools/2022-09-23-go-multi-version.md",
+                "file": "Go/2020-01-13-change-format.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "tools/2022-09-23-go-multi-version.md",
+                "file": "Go/2020-01-13-change-format.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "tools/2022-09-23-go-multi-version.md"
+                "file": "Go/2020-01-13-change-format.md"
               }
             }
           },
@@ -146,8 +146,8 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
-    "tools/2022-03-11-makefile.md",
     "tools/2022-09-23-go-multi-version.md",
+    "tools/2022-03-11-makefile.md",
     "tools/2022-01-14-ide.md",
     "tools/2021-05-02-macos-keyborad-shortcuts.md",
     "tools/2021-05-03-xmind-keyboard-shortcuts.md",
