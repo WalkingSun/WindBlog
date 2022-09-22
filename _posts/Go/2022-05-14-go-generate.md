@@ -44,3 +44,8 @@ go get golang.org/x/tools/cmd/stringer
 ```
 
 执行 ```go generate```当前目录下面生成一个event_string.go文件。
+
+
+
+# Refer
+https://go.dev/blog/generate
