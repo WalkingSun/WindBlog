@@ -300,3 +300,151 @@ func TestPublishSubscribe(t *testing.T) {
 }
 ```
 
+# 并发模式
+常见的集中并发模式
+## for- select 
+从多个通道读取数据
+## done-channel 模式
+由于 goroutine 不会被垃圾回收，因此很可能导致内存泄漏。
+
+为了避免内存泄漏，goroutine 应该有被触发取消的机制。父 Goroutine 需要通过一个名为 done 的只读通道向其子 Goroutine 发送取消信号。按照惯例，它被设置为第一个参数。
+
+## fanout-channel 模式
+只有 1 个输入 channel，有多个输出 channel，经常用在设计模式中的观察者模式。观察者模式中，当数据发生变动后，多个观察者都会收到这个信号。
+```go
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    // 输入的channel，相当于被观察者
+    ch := make(chan interface{})
+    go func() {
+        for {
+            ch <- time.Now()
+            time.Sleep(3 * time.Second)
+        }
+    }()
+
+    // 观察者
+    out := make([]chan interface{}, 2)
+    for k := range out {
+        out[k] = make(chan interface{})
+    }
+
+    go fanout(ch, out)
+
+    // 是否观察到数据变化
+    for {
+        select {
+        case res := <-out[0]:
+            fmt.Println(res)
+        case res := <-out[1]:
+            fmt.Println(res)
+        }
+    }
+}
+
+func fanout(ch <-chan interface{}, out []chan interface{}) {
+    defer func() {
+        for i := 0; i < len(out); i++ {
+            close(out[i])
+        }
+    }()
+
+    // 订阅被观察者
+    for v := range ch {
+        v := v
+        for i := 0; i < len(out); i++ {
+            i := i
+            out[i] <- v
+        }
+    }
+
+}
+```
+## fanin-channel 模式
+和上面的相反，这个是指多个源 channel 输入，一个目标 channel 输出的情况。
+```go
+package main
+
+import (
+    "fmt"
+    "time"
+)
+
+func main() {
+    // 输入的channel
+    in := make([]chan interface{}, 2)
+    in2 := make([]<-chan interface{}, 2)
+
+    for k := range in {
+        k := k
+        in[k] = make(chan interface{})
+        var inin <-chan interface{} = in[k]
+        in2[k] = inin
+
+        go func() {
+            for {
+                in[k] <- time.Now()
+                time.Sleep(3 * time.Second)
+            }
+        }()
+
+    }
+
+    // 打印输出的channel
+    for v := range fanIn(in2...) {
+        fmt.Println(v)
+    }
+
+}
+
+func fanIn(chans ...<-chan interface{}) <-chan interface{} {
+    switch len(chans) {
+    case 0:
+        c := make(chan interface{})
+        close(c)
+        return c
+    case 1:
+        return chans[0]
+    case 2:
+        return mergeTwo(chans[0], chans[1])
+    default: // 多个channel二分法
+        m := len(chans) / 2
+        return mergeTwo(fanIn(chans[:m]...), fanIn(chans[m:]...))
+    }
+
+}
+
+func mergeTwo(a, b <-chan interface{}) <-chan interface{} {
+    // 针对2个channel输出
+    c := make(chan interface{})
+    go func() {
+        defer close(c)
+        for a != nil || b != nil {
+            select {
+            case v, ok := <-a:
+                if !ok {
+                    a = nil
+                    continue
+                }
+                c <- v
+            case v, ok := <-b:
+                if !ok {
+                    b = nil
+                    continue
+                }
+                c <- v
+            }
+
+        }
+    }()
+    return c
+}
+```
+
+https://blog.waterflow.link/articles/1663551951058

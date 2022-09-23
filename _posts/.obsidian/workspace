@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2021-08-01-go-pipeline.md",
+            "file": "Go/2020-09-03-go-concurrent-mode.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Go/2021-08-01-go-pipeline.md"
+            "file": "Go/2020-09-03-go-concurrent-mode.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:pip",
+                "query": "file:go",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2021-08-01-go-pipeline.md",
+                "file": "Go/2020-09-03-go-concurrent-mode.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2021-08-01-go-pipeline.md",
+                "file": "Go/2020-09-03-go-concurrent-mode.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2021-08-01-go-pipeline.md"
+                "file": "Go/2020-09-03-go-concurrent-mode.md"
               }
             }
           },
@@ -147,15 +147,15 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "Go/2020-06-16-go-chan.md",
+    "Go/2020-09-03-go-concurrent-mode.md",
+    "Go/2020-02-08-go-routine.md",
+    "Go/2021-08-01-go-pipeline.md",
     "Go/2022-09-22-go-open-study.md",
     "Go/2020-01-12-go-time.md",
     "Go/2019-10-09-go-program.md",
     "DesignPattern/2022-09-22-design-function-option.md",
     "DesignPattern/2022-03-24-design-template.md",
-    "DesignPattern/2020-11-15-design-LiskovSubstitutioPrinciple.md",
-    "DesignPattern/2021-02-15-design-DIP.md",
-    "DesignPattern/2018-09-04-design.md",
-    "tools/2021-11-24-design.md",
-    "Micro/2021-09-03-micro-design.md"
+    "DesignPattern/2020-11-15-design-LiskovSubstitutioPrinciple.md"
   ]
 }
