@@ -447,4 +447,10 @@ func mergeTwo(a, b <-chan interface{}) <-chan interface{} {
 }
 ```
 
+## pipeline模式
+动用Go语言的 Go Routine和 Channel可以写出1对多，或多对1的pipeline，也就是Fan In/ Fan Out
+
+
+
+
 https://blog.waterflow.link/articles/1663551951058
