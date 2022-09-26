@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "docker exec",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -72,7 +72,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -144,7 +145,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "5810f5a82e90c5a9",
+  "active": "4416371278d191d8",
   "lastOpenFiles": [
     "DB/2022-01-24-es-study.md",
     "DB/2022-09-26-mongo-db.md",
