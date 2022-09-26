@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2020-09-03-go-concurrent-mode.md",
+            "file": "Go/2022-09-22-go-open-study.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Go/2020-09-03-go-concurrent-mode.md"
+            "file": "Go/2022-09-22-go-open-study.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:go",
+                "query": "jwt",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2020-09-03-go-concurrent-mode.md",
+                "file": "Go/2022-09-22-go-open-study.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2020-09-03-go-concurrent-mode.md",
+                "file": "Go/2022-09-22-go-open-study.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-09-03-go-concurrent-mode.md"
+                "file": "Go/2022-09-22-go-open-study.md"
               }
             }
           },
@@ -147,8 +147,8 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
-    "Go/2020-06-16-go-chan.md",
     "Go/2020-09-03-go-concurrent-mode.md",
+    "Go/2020-06-16-go-chan.md",
     "Go/2020-02-08-go-routine.md",
     "Go/2021-08-01-go-pipeline.md",
     "Go/2022-09-22-go-open-study.md",
