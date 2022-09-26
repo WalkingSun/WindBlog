@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "Go/2020-01-12-go-error.md",
+            "file": "DB/2022-09-26-mongo-db.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "Go/2020-01-12-go-error.md"
+            "file": "DB/2022-09-26-mongo-db.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2020-01-12-go-error.md",
+                "file": "DB/2022-09-26-mongo-db.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2020-01-12-go-error.md",
+                "file": "DB/2022-09-26-mongo-db.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-01-12-go-error.md"
+                "file": "DB/2022-09-26-mongo-db.md"
               }
             }
           },
@@ -144,17 +144,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "2625d575af3b08b5",
+  "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "DB/2022-01-24-es-study.md",
+    "DB/2022-09-26-mongo-db.md",
+    "DB/2018-09-04-trans.md",
+    "Go/2020-01-12-go-error.md",
     "Metrics/2022-06-13-prometheus.md",
     "Structure/2021-09-18-prometheus.md",
     "Structure/2020-09-17-distributed-lock.md",
     "Structure/2021-09-02-ELK.md",
     "Structure/2022-09-26-jwt.md",
-    "Structure/2019-04-25-Concurrent-project.md",
-    "Structure/2022-02-23-user-tag-design.md",
-    "Project/2019-12-01-seckill-architecture.md",
-    "Go/2022-09-22-go-open-study.md",
-    "Go/2020-09-03-go-concurrent-mode.md"
+    "Structure/2019-04-25-Concurrent-project.md"
   ]
 }
