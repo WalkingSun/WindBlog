@@ -49,6 +49,11 @@ Pull 方式正好相反，Agent 本身需要有一定的数据存储能力，Mas
 采用Push方式时，通常每个 Agent都需要配置Master的地址。采用Pull方式时，通常通过批量配置或者自动发现来获取所有采集点。
 
 ### 服务发现
+![基于服务发现与注册中心动态发现监控目标](https://2584451478-files.gitbook.io/~/files/v0/b/gitbook-legacy-files/o/assets%2F-LBdoxo9EmQ0bJP2BuUi%2F-LVSqkQub5oDFvoLr1P2%2F-LVSr9O9L372kPUgr25X%2Fprometheus-sd.png?generation=1546689227531157&alt=media)
+在基于云(IaaS或者CaaS)的基础设施环境中用户可以像使用水、电一样按需使用各种资源（计算、网络、存储）。按需使用就意味着资源的动态性，这些资源可以随着需求规模的变化而变化。
+
+对于Prometheus这一类基于Pull模式的监控系统，显然也无法继续使用的static_configs的方式静态的定义监控目标。
+
 Prometheus 获取被采集的对象，有两种方式：静态文件配置和动态发现。
 1. 静态文件配置
 静态文件配置是一种传统的服务发现方式，一般适用于有固定的监控环境、IP地址和统一的服务接口的场景，需要在配置中指定采集的目标。
@@ -62,6 +67,8 @@ Prometheus动态发现方式获取监控对象。目前支持以下系统获取�
 ◎ 各种服务发现组件，例如DNS、ZooKeeper和Consul等。
 ![](https://s2.loli.net/2022/07/25/aYRldz7WqvADFpS.png)
 
+
+实现细节参考：https://yunlzheng.gitbook.io/prometheus-book/part-ii-prometheus-jin-jie/sd
 
 ### 数据查询
 Prometheus实现了一套自己的数据库语言（PromQL）解析器
