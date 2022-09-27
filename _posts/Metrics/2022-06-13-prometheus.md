@@ -29,7 +29,7 @@ Prometheus指标分为Counter（计数器）、Gauge（仪表盘）、Histogram�
 
 
 ### 数据采集
-Prometheus主要采用 Pull方式采集监控数据。
+Prometheus主要采用 **Pull方式**采集监控数据。
 
 采用Push方式时，Agent主动上报数据，采用Pull方式时，监控中心（Master）拉取 Agent的数据。
 为了兼容 Push方式，Prometheus 提供了 Pushgateway组件
@@ -146,6 +146,4 @@ https://prometheus.fuckcloudnative.io/di-san-zhang-prometheus/di-4-jie-cha-xun/b
 go-application https://prometheus.io/docs/guides/go-application/
 
 
-
-
-<table class="confluenceTable wrapped"><colgroup><col style="width: 127.0px"><col style="width: 63.0px"><col style="width: 45.0px"><col style="width: 45.0px"><col style="width: 133.0px"><col style="width: 99.0px"></colgroup><thead><tr><th class="confluenceTh"><p>压测对象</p></th><th class="confluenceTh"><p>并发数</p></th><th class="confluenceTh"><p>tps</p></th><th class="confluenceTh"><p>rt</p></th><th colspan="1" class="confluenceTh"><p>峰值cpu（core）</p></th><th colspan="1" class="confluenceTh"><p>内存（MB）</p></th></tr></thead><tbody><tr><td class="confluenceTd">test2（bitmap）</td><td class="confluenceTd">20</td><td class="confluenceTd">274</td><td class="confluenceTd">73</td><td colspan="1" class="confluenceTd">0.972</td><td colspan="1" class="confluenceTd">42.33</td></tr><tr><td class="confluenceTd">test2（旧）</td><td class="confluenceTd">20</td><td class="confluenceTd">190</td><td class="confluenceTd">105</td><td colspan="1" class="confluenceTd">0.925</td><td colspan="1" class="confluenceTd">72.18</td></tr><tr><td class="confluenceTd">test2（bitmap）</td><td class="confluenceTd">30</td><td class="confluenceTd">377</td><td class="confluenceTd">79</td><td colspan="1" class="confluenceTd">1.276</td><td colspan="1" class="confluenceTd">37.97</td></tr><tr><td colspan="1" class="confluenceTd">test2（旧）</td><td colspan="1" class="confluenceTd">30</td><td colspan="1" class="confluenceTd">320</td><td colspan="1" class="confluenceTd">94</td><td colspan="1" class="confluenceTd">1.119</td><td colspan="1" class="confluenceTd">77.16</td></tr><tr><td colspan="1" class="confluenceTd">test2（bitmap）</td><td colspan="1" class="confluenceTd">40</td><td colspan="1" class="confluenceTd">432</td><td colspan="1" class="confluenceTd">92</td><td colspan="1" class="confluenceTd">1.468</td><td colspan="1" class="confluenceTd">44.82</td></tr><tr><td colspan="1" class="confluenceTd">test2（旧）</td><td colspan="1" class="confluenceTd">40</td><td colspan="1" class="confluenceTd">326</td><td colspan="1" class="confluenceTd">122</td><td colspan="1" class="confluenceTd">1.717</td><td colspan="1" class="confluenceTd">65.74</td></tr></tbody></table>
+服务发现 https://yunlzheng.gitbook.io/prometheus-book/part-ii-prometheus-jin-jie/sd/why-need-service-discovery
