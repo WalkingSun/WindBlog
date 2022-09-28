@@ -222,14 +222,15 @@ networks: # 容器配置可保证容器在同一网络
 $ docker exec -it kafka bash
 
 # 进入卡夫卡命令 目录下
-$ cd /opt/kafka_2.13-2.7.0/bin/
+$ cd $KAFKA_HOME #/opt/kafka_2.13-2.7.0/bin/
 
 # 运行kafka生产者发送消息
 $ ./kafka-console-producer.sh --broker-list localhost:9092 --topic mmr
 
 # 发送消息
 > {"datas":[{"channel":"","sn":"IJA0101-00002245","time":"1543207156000","value":"80"}],"ver":"1.0"}
- 
+
+# --bootstrap-server localhost:9092 指定远程kafka实例地址
 # 运行kafka消费者接收消息
 $ ./kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic mmr --from-beginning
 
