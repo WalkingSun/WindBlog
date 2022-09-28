@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DB/2021-12-06-clickhouse-make-tag.md",
+            "file": "DB/2022-09-28-clickhouse-base.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "DB/2021-12-06-clickhouse-make-tag.md"
+            "file": "DB/2022-09-28-clickhouse-base.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DB/2021-12-06-clickhouse-make-tag.md",
+                "file": "DB/2022-09-28-clickhouse-base.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DB/2021-12-06-clickhouse-make-tag.md",
+                "file": "DB/2022-09-28-clickhouse-base.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DB/2021-12-06-clickhouse-make-tag.md"
+                "file": "DB/2022-09-28-clickhouse-base.md"
               }
             }
           },
@@ -144,17 +144,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "2625d575af3b08b5",
+  "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "DB/2019-05-31-database-basic.md",
+    "DB/2018-09-04-trans.md",
+    "DB/2022-09-28-clickhouse-base.md",
+    "DB/2021-12-06-clickhouse-make-tag.md",
     "MQ/2020-06-04-kafka-study.md",
     "Metrics/2022-06-13-prometheus.md",
     "System/2018-08-25-linux.md",
     "DB/2022-09-26-mongo-db.md",
     "DB/2022-01-24-es-study.md",
-    "DB/2018-09-04-trans.md",
-    "Go/2020-01-12-go-error.md",
-    "Structure/2021-09-18-prometheus.md",
-    "Structure/2020-09-17-distributed-lock.md",
-    "Structure/2021-09-02-ELK.md"
+    "Go/2020-01-12-go-error.md"
   ]
 }
