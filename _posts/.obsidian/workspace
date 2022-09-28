@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -145,7 +145,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "5810f5a82e90c5a9",
+  "active": "4416371278d191d8",
   "lastOpenFiles": [
     "System/2018-08-25-linux.md",
     "DB/2022-09-26-mongo-db.md",
