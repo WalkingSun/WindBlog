@@ -222,8 +222,9 @@ networks: # 容器配置可保证容器在同一网络
 $ docker exec -it kafka bash
 
 # 进入卡夫卡命令 目录下
-$ cd $KAFKA_HOME #/opt/kafka_2.13-2.7.0/bin/
+$ cd $KAFKA_HOME/bin/ #/opt/kafka_2.13-2.7.0/bin/
 
+#  --broker-list localhost:9092 指定远程kafka实例地址
 # 运行kafka生产者发送消息
 $ ./kafka-console-producer.sh --broker-list localhost:9092 --topic mmr
 
