@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DB/2022-09-28-clickhouse-base.md",
+            "file": "Project/bitmap在过滤场景的应用.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "DB/2022-09-28-clickhouse-base.md"
+            "file": "Project/bitmap在过滤场景的应用.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DB/2022-09-28-clickhouse-base.md",
+                "file": "Project/bitmap在过滤场景的应用.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DB/2022-09-28-clickhouse-base.md",
+                "file": "Project/bitmap在过滤场景的应用.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DB/2022-09-28-clickhouse-base.md"
+                "file": "Project/bitmap在过滤场景的应用.md"
               }
             }
           },
@@ -146,15 +146,15 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "Project/2019-12-01-seckill-architecture.md",
+    "DB/2022-09-28-clickhouse-base.md",
     "DB/2019-05-31-database-basic.md",
     "DB/2018-09-04-trans.md",
-    "DB/2022-09-28-clickhouse-base.md",
     "DB/2021-12-06-clickhouse-make-tag.md",
     "MQ/2020-06-04-kafka-study.md",
     "Metrics/2022-06-13-prometheus.md",
     "System/2018-08-25-linux.md",
     "DB/2022-09-26-mongo-db.md",
-    "DB/2022-01-24-es-study.md",
-    "Go/2020-01-12-go-error.md"
+    "DB/2022-01-24-es-study.md"
   ]
 }
