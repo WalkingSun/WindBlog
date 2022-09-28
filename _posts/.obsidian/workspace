@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:kafka",
+                "query": "file:n",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -72,8 +72,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -145,7 +144,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "5810f5a82e90c5a9",
+  "active": "2625d575af3b08b5",
   "lastOpenFiles": [
     "Project/bitmap在过滤场景的应用.md",
     "Project/2019-12-01-seckill-architecture.md",
