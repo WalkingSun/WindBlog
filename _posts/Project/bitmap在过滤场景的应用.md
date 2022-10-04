@@ -45,7 +45,32 @@ bitmap是一种非常常见的结构，它使用每个二进制位（0或1）来
 # 方案调研
 
 对此调研对比几个bitmap技术实现：
-
+<table>
+<thead>
+<tr>
+<th>bitmap</th>
+<th>优点</th>
+<th>缺点</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>redis bitmap</td>
+<td>不占用本地内存空间</td>
+<td>1. 简单使用getbit（get）、setbit方法，多个bitmap不能进行运算；<br>2.批量计算效率较差，占用网络传输时间，需要额外写运算代码；</td>
+</tr>
+<tr>
+<td>Go集成bitmap（Roaring Bitmap）</td>
+<td>1. 比较丰富的运算函数，不同bitmap可进行与、或、差集运算；<br>2. 本地运算效率很高；<br>3. 压缩位图索引，性能、空间利用率更优</td>
+<td>占用本地内存空间</td>
+</tr>
+<tr>
+<td>其他数据库（ClickHouse）</td>
+<td>1. 比较丰富的位图函数，内部实现也是Roaring Bitmap<br>2. 不占用本地内存空间</td>
+<td>1. 接入有一定复杂度，增加系统复杂性；<br>2.并发性能不太友好；</td>
+</tr>
+</tbody>
+</table>
 结合推荐系统并发较高的特点，以及通过一些性能对比分析，最终决定使用Roaring Bitmap，它的优势很明显，而且相对于之前书籍缓存本地的方案，它的缺点可以忽略不计。
 
 # Roaring Bitmaps应用

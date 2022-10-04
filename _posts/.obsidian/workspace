@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "2019-02-27-git.md",
+            "file": "Project/bitmap在过滤场景的应用.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "2019-02-27-git.md"
+            "file": "Project/bitmap在过滤场景的应用.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "tag:#git/question",
+                "query": "file:bitmap",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -93,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "2019-02-27-git.md",
+                "file": "Project/bitmap在过滤场景的应用.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -110,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "2019-02-27-git.md",
+                "file": "Project/bitmap在过滤场景的应用.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -122,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "2019-02-27-git.md"
+                "file": "Project/bitmap在过滤场景的应用.md"
               }
             }
           },
@@ -147,6 +147,7 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "2019-02-27-git.md",
     "Go/2020-01-19-go-pdo.md",
     "Go/2022-09-22-go-open-study.md",
     "Go/2020-01-12-go-time.md",
@@ -155,7 +156,6 @@
     "DB/2022-09-28-nosql.md",
     "MQ/2020-06-04-kafka-study.md",
     "Project/bitmap在过滤场景的应用.md",
-    "Project/2019-12-01-seckill-architecture.md",
-    "DB/2022-09-28-clickhouse-base.md"
+    "Project/2019-12-01-seckill-architecture.md"
   ]
 }
