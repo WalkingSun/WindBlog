@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:bitmap",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -72,8 +72,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -145,7 +144,7 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "5810f5a82e90c5a9",
+  "active": "2625d575af3b08b5",
   "lastOpenFiles": [
     "2019-02-27-git.md",
     "Go/2020-01-19-go-pdo.md",
