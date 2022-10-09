@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DB/2022-10-0.md",
+            "file": "DB/2022-10-09-mongo-content.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "DB/2022-10-0.md"
+            "file": "DB/2022-10-09-mongo-content.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -92,7 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DB/2022-10-0.md",
+                "file": "DB/2022-10-09-mongo-content.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DB/2022-10-0.md",
+                "file": "DB/2022-10-09-mongo-content.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +121,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DB/2022-10-0.md"
+                "file": "DB/2022-10-09-mongo-content.md"
               }
             }
           },
