@@ -147,6 +147,13 @@ MongoDB权威指南（第3版）
 
 >> 在 MongoDB 中，使用子集合来组织数据在很多场景中是一个好方法。
 
+
+创建集合
+```shell
+# options: 可选参数, 指定有关内存大小及索引的选项
+> db.createCollection(name, options)
+```
+
 ## 2.3 数据库
 
 >> MongoDB 使用集合对文档进行分组，使用数据库对集合进行分组
