@@ -177,12 +177,24 @@ MongoDB权威指南（第3版）
 
 >> 如果你要使用 cms 数据库中的 blog.posts 集合，则该集合的命名空间为 cms.blog.posts。命名空间的长度限制为 120 字节，而实际使用时应该小于 100 字节
 
+配置权限
+
+```shell
+> use admin
+> db.createUser({ user: "admin", pwd: "admin", roles: [ "readWrite" ] })
+```
+
 查询所有数据库列表  
 
 > show dbs
 
 查看当前连接在哪个数据库下面，可以直接输入db
 > db
+
+切换或创建数据库
+```shell
+> use test
+```
 
 ## 2.4 启动MongoDB
 
