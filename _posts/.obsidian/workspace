@@ -8,8 +8,13 @@
         "type": "leaf",
         "dimension": 76.55642023346303,
         "state": {
-          "type": "empty",
-          "state": {}
+          "type": "markdown",
+          "state": {
+            "file": "DB/2022-10-0.md",
+            "mode": "source",
+            "backlinks": false,
+            "source": false
+          }
         },
         "group": "670a672183ccb4bc"
       },
@@ -19,7 +24,9 @@
         "dimension": 23.443579766536963,
         "state": {
           "type": "outline",
-          "state": {}
+          "state": {
+            "file": "DB/2022-10-0.md"
+          }
         },
         "group": "670a672183ccb4bc"
       }
@@ -85,6 +92,7 @@
             "state": {
               "type": "backlink",
               "state": {
+                "file": "DB/2022-10-0.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -101,6 +109,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
+                "file": "DB/2022-10-0.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -111,7 +120,9 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {}
+              "state": {
+                "file": "DB/2022-10-0.md"
+              }
             }
           },
           {
@@ -133,17 +144,17 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "f3aca2c74d9400c5",
+  "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
-    "DB/2022-10-08-mongo-book.md",
     "DB/2022-09-26-mongo-db.md",
+    "DB/2022-09-28-clickhouse-base.md",
     "DB/2022-09-28-nosql.md",
+    "DB/2022-10-08-mongo-book.md",
     "Project/bitmap在过滤场景的应用.md",
     "Project/2019-12-01-seckill-architecture.md",
     "Structure/2019-04-25-Concurrent-project.md",
     "2019-02-27-git.md",
     "Go/2020-01-19-go-pdo.md",
-    "Go/2022-09-22-go-open-study.md",
-    "Go/2020-01-12-go-time.md"
+    "Go/2022-09-22-go-open-study.md"
   ]
 }
