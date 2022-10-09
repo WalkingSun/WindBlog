@@ -8,13 +8,8 @@
         "type": "leaf",
         "dimension": 76.55642023346303,
         "state": {
-          "type": "markdown",
-          "state": {
-            "file": "DB/2022-10-08-mongo-book.md",
-            "mode": "source",
-            "backlinks": false,
-            "source": false
-          }
+          "type": "empty",
+          "state": {}
         },
         "group": "670a672183ccb4bc"
       },
@@ -24,9 +19,7 @@
         "dimension": 23.443579766536963,
         "state": {
           "type": "outline",
-          "state": {
-            "file": "DB/2022-10-08-mongo-book.md"
-          }
+          "state": {}
         },
         "group": "670a672183ccb4bc"
       }
@@ -92,7 +85,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DB/2022-10-08-mongo-book.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +101,6 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DB/2022-10-08-mongo-book.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -120,9 +111,7 @@
             "type": "leaf",
             "state": {
               "type": "outline",
-              "state": {
-                "file": "DB/2022-10-08-mongo-book.md"
-              }
+              "state": {}
             }
           },
           {
@@ -144,10 +133,10 @@
     "width": 300,
     "collapsed": true
   },
-  "active": "2625d575af3b08b5",
+  "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
-    "DB/2022-09-26-mongo-db.md",
     "DB/2022-10-08-mongo-book.md",
+    "DB/2022-09-26-mongo-db.md",
     "DB/2022-09-28-nosql.md",
     "Project/bitmap在过滤场景的应用.md",
     "Project/2019-12-01-seckill-architecture.md",
