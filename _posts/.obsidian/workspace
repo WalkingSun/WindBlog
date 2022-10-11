@@ -10,7 +10,7 @@
         "state": {
           "type": "markdown",
           "state": {
-            "file": "DB/2022-10-09-mongo-content.md",
+            "file": "Go/2021-10-31-go-test.md",
             "mode": "source",
             "backlinks": false,
             "source": false
@@ -25,7 +25,7 @@
         "state": {
           "type": "outline",
           "state": {
-            "file": "DB/2022-10-09-mongo-content.md"
+            "file": "Go/2021-10-31-go-test.md"
           }
         },
         "group": "670a672183ccb4bc"
@@ -55,7 +55,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "file:test",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -72,7 +72,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -92,7 +93,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "DB/2022-10-09-mongo-content.md",
+                "file": "Go/2021-10-31-go-test.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -109,7 +110,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "DB/2022-10-09-mongo-content.md",
+                "file": "Go/2021-10-31-go-test.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -121,7 +122,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "DB/2022-10-09-mongo-content.md"
+                "file": "Go/2021-10-31-go-test.md"
               }
             }
           },
@@ -146,6 +147,7 @@
   },
   "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
+    "DB/2022-10-09-mongo-content.md",
     "DB/2022-09-26-mongo-db.md",
     "DB/2022-09-28-clickhouse-base.md",
     "DB/2022-09-28-nosql.md",
@@ -154,7 +156,6 @@
     "Project/2019-12-01-seckill-architecture.md",
     "Structure/2019-04-25-Concurrent-project.md",
     "2019-02-27-git.md",
-    "Go/2020-01-19-go-pdo.md",
-    "Go/2022-09-22-go-open-study.md"
+    "Go/2020-01-19-go-pdo.md"
   ]
 }
