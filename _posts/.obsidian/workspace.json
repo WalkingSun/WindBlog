@@ -21,19 +21,8 @@
               }
             },
             "group": "670a672183ccb4bc"
-          },
-          {
-            "id": "380f99c3eb0ec020",
-            "type": "leaf",
-            "state": {
-              "type": "release-notes",
-              "state": {
-                "currentVersion": "1.0.0"
-              }
-            }
           }
-        ],
-        "currentTab": 1
+        ]
       },
       {
         "id": "8641219f5708f2a1",
@@ -172,7 +161,7 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "380f99c3eb0ec020",
+  "active": "5810f5a82e90c5a9",
   "lastOpenFiles": [
     "DesignPattern/2021-02-15-design-DIP.md",
     "DesignPattern/2019-09-26-DI.md",
