@@ -64,6 +64,26 @@ byte[1] = 'E'
 var str string = string(data[:])
 ```
 
+# ioutil替换
+
+```go
+For example:
+
+ioutil.ReadFile(...)
+
+would become
+
+os.ReadFile(...)
+
+or
+
+ioutil.ReadAll(...)
+
+would become
+
+io.ReadAll(...)
+```
+
 # struct转map
 
 ## 使用json模块
