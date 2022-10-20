@@ -9,3 +9,4 @@ Gemfile.lock
 ./runtime
 .idea
 .obsidian
+.vscode

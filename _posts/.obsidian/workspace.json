@@ -27,7 +27,7 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Structure/2022-10-20-auth.md",
+                "file": "2019-06-07-git.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
@@ -48,7 +48,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Structure/2022-10-20-auth.md"
+                "file": "2019-06-07-git.md"
               }
             }
           }
@@ -81,7 +81,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "认证",
+                "query": "file:git",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -98,7 +98,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -118,7 +119,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Structure/2022-10-20-auth.md",
+                "file": "2019-06-07-git.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -135,7 +136,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Structure/2022-10-20-auth.md",
+                "file": "2019-06-07-git.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -147,7 +148,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Structure/2022-10-20-auth.md"
+                "file": "2019-06-07-git.md"
               }
             }
           },
@@ -175,15 +176,15 @@
   },
   "active": "e810d0962446b4d4",
   "lastOpenFiles": [
-    "Pasted image 20221020154541.png",
+    "tools/2021-10-31-github.md",
+    "2019-06-07-git.md",
     "Structure/2022-10-20-auth.md",
     "Structure/2022-09-26-jwt.md",
+    "Pasted image 20221020154541.png",
     "Go/2022-09-22-go-open-study.md",
     "Go/2022-10-20-go-file.md",
     "Go/2021-08-01-go-context.md",
     "Go/2021-08-01-go-pipeline.md",
-    "Go/2021-08-22-go-memory-allocate.md",
-    "Go/2021-09-03-go-reflect.md",
-    "Go/2021-10-10-go-view-clear.md"
+    "Go/2021-08-22-go-memory-allocate.md"
   ]
 }
