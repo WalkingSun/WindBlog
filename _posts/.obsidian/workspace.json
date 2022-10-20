@@ -9,18 +9,17 @@
         "dimension": 76.55642023346303,
         "children": [
           {
-            "id": "5810f5a82e90c5a9",
+            "id": "0bcfbe70da59918e",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "Go/2020-01-13-go-change-format.md",
+                "file": "Go/2022-10-20-go-file.md",
                 "mode": "source",
                 "backlinks": false,
                 "source": false
               }
-            },
-            "group": "670a672183ccb4bc"
+            }
           }
         ]
       },
@@ -35,10 +34,9 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-01-13-go-change-format.md"
+                "file": "Go/2022-10-20-go-file.md"
               }
-            },
-            "group": "670a672183ccb4bc"
+            }
           }
         ]
       }
@@ -69,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "file:format",
+                "query": "",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -86,8 +84,7 @@
               "state": {}
             }
           }
-        ],
-        "currentTab": 1
+        ]
       }
     ],
     "direction": "horizontal",
@@ -107,7 +104,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Go/2020-01-13-go-change-format.md",
+                "file": "Go/2022-10-20-go-file.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -124,7 +121,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Go/2020-01-13-go-change-format.md",
+                "file": "Go/2022-10-20-go-file.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -136,7 +133,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Go/2020-01-13-go-change-format.md"
+                "file": "Go/2022-10-20-go-file.md"
               }
             }
           },
@@ -162,17 +159,17 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "5810f5a82e90c5a9",
+  "active": "0bcfbe70da59918e",
   "lastOpenFiles": [
-    "Docker/2020-02-16-dockerfile.md",
-    "Docker/2019-02-20-docker-composer.md",
-    "Docker/2019-01-18-docker_question.md",
-    "Docker/2021-03-16-docker.md",
-    "Docker/2020-06-01-dockerfile-php71.md",
-    "Go/2020-01-13-go-change-format.md",
-    "Metrics/2022-06-13-prometheus.md",
-    "Structure/2021-09-18-prometheus.md",
-    "DesignPattern/2019-09-26-DI.md",
-    "DesignPattern/2021-02-15-design-DIP.md"
+    "Go/2021-08-01-go-context.md",
+    "Go/2022-10-20-go-file.md",
+    "Go/2021-08-01-go-pipeline.md",
+    "Go/2021-08-22-go-memory-allocate.md",
+    "Go/2021-09-03-go-reflect.md",
+    "Go/2021-10-10-go-view-clear.md",
+    "Go/2021-10-31-go-test.md",
+    "Go/2021-12-06-go-view.md",
+    "Go/2021-12-13-go-tool-package.md",
+    "Go/2022-09-22-go-sync.md"
   ]
 }
