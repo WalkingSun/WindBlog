@@ -43,6 +43,12 @@ float,err := strconv.ParseFloat(string,64)
 
 # float32转float64 （精度问题解决）
 s, _ := decimal.NewFromFloat32(rawScore[i]).Float64()
+
+# float64转string
+decimal.NewFromFloat(val).String()
+
+
+# floa
 ```
 
 # string、[]byte转换
