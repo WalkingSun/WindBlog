@@ -67,7 +67,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "oauth",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -84,7 +84,8 @@
               "state": {}
             }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "horizontal",
@@ -159,7 +160,7 @@
   "ribbon": {
     "mostRecentAction": ""
   },
-  "active": "0bcfbe70da59918e",
+  "active": "4416371278d191d8",
   "lastOpenFiles": [
     "Go/2021-08-01-go-context.md",
     "Go/2022-10-20-go-file.md",
