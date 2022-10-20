@@ -41,6 +41,13 @@ string := strconv.FormatFloat(float64,'E',-1,64)
 float,err := strconv.ParseFloat(string,64)
 
 
+
+```
+
+## float64精度运算
+```go
+
+
 # float32转float64 （精度问题解决）
 s, _ := decimal.NewFromFloat32(rawScore[i]).Float64()
 
@@ -48,7 +55,12 @@ s, _ := decimal.NewFromFloat32(rawScore[i]).Float64()
 decimal.NewFromFloat(val).String()
 
 
-# floa
+# float64计算
+decimal.DivisionPrecision = 16 // 保留16位小数,如有更多位，则进行四舍五入保留两位小数
+s, val, l := 10.0, 100.0, 2.0
+sum := decimal.NewFromFloat(s)
+avg := sum.Add(decimal.NewFromFloat(val)).Div(decimal.NewFromFloat(l))
+r, _ = avg.Float64()
 ```
 
 # string、[]byte转换
