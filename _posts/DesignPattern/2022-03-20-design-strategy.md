@@ -20,3 +20,4 @@ cnblogsClass: \[Markdown\],\[随笔分类\]设计模式
 https://design-patterns.readthedocs.io/zh_CN/latest/behavioral_patterns/strategy.html
 
 
+https://www.cnblogs.com/ricklz/p/15464813.html
