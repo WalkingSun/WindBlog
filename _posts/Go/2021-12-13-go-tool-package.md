@@ -18,4 +18,8 @@ https://github.com/spf13/cobra
 import分组管理利器
 https://github.com/incu6us/goimports-reviser
 
+```
+goimports-reviser -rm-unused -set-alias -format ./
+```
+
 https://zhuanlan.zhihu.com/p/411181637
