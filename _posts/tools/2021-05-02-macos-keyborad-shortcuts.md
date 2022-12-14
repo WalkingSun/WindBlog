@@ -47,3 +47,14 @@ mac安装了Zsh，执行：source ~/.zshrc
 
 # 默认输入法
 https://www.liuvv.com/p/88c7abb.html
+
+
+# 压缩
+Mac 上用 unzip 命令解压带密码保护的 zip 文件报错 unsupported compression method 99  
+解决办法： mac自带的解压工具，无法解密加密的文件。不要安装一个7zip的软件，  
+mac上 brew install p7zip  
+然后使用命令 7z x file.zip
+
+
+# 标签页
+https://support.apple.com/zh-cn/guide/mac-help/mchla4695cce/mac
