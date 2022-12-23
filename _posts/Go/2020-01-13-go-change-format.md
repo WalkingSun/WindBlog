@@ -10,7 +10,7 @@ csdnClass: \[Markdown\]
 163Class: \[Markdown\]
 51ctoClass: \[Markdown\]
 chinaunixClass: \[Markdown\]
-sinaClass: \[Markdown\]
+sinaClass: \[Markdown
 ---
 
 # string、int、int64、float64相互转换
@@ -39,6 +39,28 @@ string := strconv.FormatFloat(float64,'E',-1,64)
 
 #string到float64
 float,err := strconv.ParseFloat(string,64)
+
+
+
+```
+
+## float64精度运算
+```go
+
+
+# float32转float64 （精度问题解决）
+s, _ := decimal.NewFromFloat32(rawScore[i]).Float64()
+
+# float64转string
+decimal.NewFromFloat(val).String()
+
+
+# float64计算
+decimal.DivisionPrecision = 16 // 保留16位小数,如有更多位，则进行四舍五入保留两位小数
+s, val, l := 10.0, 100.0, 2.0
+sum := decimal.NewFromFloat(s)
+avg := sum.Add(decimal.NewFromFloat(val)).Div(decimal.NewFromFloat(l))
+r, _ = avg.Float64()
 ```
 
 # string、[]byte转换
@@ -58,6 +80,26 @@ byte[0] = 'T'
 byte[1] = 'E'
 
 var str string = string(data[:])
+```
+
+# ioutil替换
+
+```go
+For example:
+
+ioutil.ReadFile(...)
+
+would become
+
+os.ReadFile(...)
+
+or
+
+ioutil.ReadAll(...)
+
+would become
+
+io.ReadAll(...)
 ```
 
 # struct转map
@@ -123,3 +165,9 @@ func main() {
 
 从测试结果可以看到，三种方式都能完成struct转map，但是reflect方法无法识别结构体中的tag，第三方库只能使用tag structs，所以如果考虑兼容性（考虑到协同开发）和尽量使用官方库的原则，推荐使用第一种方法（json转换）
 
+
+
+
+# 转换工具
+json2go、yaml2go。。。
+https://github.com/miaogaolin/gotl

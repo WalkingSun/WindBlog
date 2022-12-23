@@ -1,0 +1,12 @@
+_site/
+*.swp
+*.~vsd
+\#*\#
+*~
+.DS_Store
+Gemfile.lock
+./.idea
+./runtime
+.idea
+.obsidian
+.vscode

@@ -7,6 +7,10 @@ keywords: clickhouse, bitmap
 ---
 
 
+## client
+```ssh
+docker run -it --rm yandex/clickhouse-client --host cc-uf61wl44q936t43kjo.ads.rds.aliyuncs.com --port 3306  -u sun  --password 222
+```
 
 clickhouse 物化视图应用：https://www.cnblogs.com/zlt2000/p/14626156.html
 

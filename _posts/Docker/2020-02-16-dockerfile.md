@@ -54,6 +54,14 @@ ADD 命令的格式和 COPY 命令相同，也是：
 - 解压压缩文件并把它们添加到镜像中
 - 从 url 拷贝文件到镜像中
 
+```shell
+# 目录添加
+ADD ./config /usr/bin/config
+
+# 文件指定目录
+ADD ./bin/*.sh /usr/bin/
+```
+
 # 构建指定dockerfile、推送到远程仓库
 ```bash
 docker build -f ./Dockerfile-dev . -t harbor-reg.km.com/micro/user-cronjob:latest

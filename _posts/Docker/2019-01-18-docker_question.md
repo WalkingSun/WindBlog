@@ -64,9 +64,9 @@ service docker restart
 docker inspect -f '{{.State.Pid}}' <containerid>
 
 查看连接
-
+```shell
 nsenter -t 1840 -n netstat   #1840为上面操作获取的pid
-
+```
 # 容器间通信
 参考文章 https://birdben.github.io/2017/05/02/Docker/Docker实战（二十七）Docker容器之间的通信/
 
