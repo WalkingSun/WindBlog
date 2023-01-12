@@ -160,8 +160,8 @@ Prometheus 服务器，与大多数用 Go 编写的严格的软件一样，使�
 ```shell
 go tool pprof -http=:6060 http://prometheus:9090/debug/pprof/profile?seconds=30
 ```
-
-
+文档说明：
+https://training.promlabs.com/training/monitoring-and-debugging-prometheus/profiling/profiling-cpu-usage
 
 
 
