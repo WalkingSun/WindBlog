@@ -1,13 +1,13 @@
 ---
 layout: blog
-title: mac快捷键
+title: mac deal
 categories: [工具, 快捷键]
 description: 他山之石
 keywords: Mac
 
 ---
 
-记录些mac常用快捷键，以备不时之需。
+记录些mac常用操作、快捷键，以备不时之需。
 
 官方文档：
 
@@ -58,3 +58,12 @@ mac上 brew install p7zip
 
 # 标签页
 https://support.apple.com/zh-cn/guide/mac-help/mchla4695cce/mac
+
+
+# 端口占用
+查找占用pid
+```
+lsof -i tcp:8080
+
+kill pid
+```
