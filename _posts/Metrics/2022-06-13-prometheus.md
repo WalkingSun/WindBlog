@@ -147,6 +147,8 @@ sum(increase(container_cpu_cfs_periods_total{}[5m])) by (container, pod, namespa
 
 
 ## debug
+profiling https://training.promlabs.com/training/monitoring-and-debugging-prometheus/profiling
+
 ### pprof
 Prometheus 服务器，与大多数用 Go 编写的严格的软件一样，使用标准库中名为 pprof 的包进行检测，该包使用特定格式提供运行时分析信息。
 以这种格式生成的文件随后可以由具有相同名称 (pprof) 的命令行工具读取，该工具使用它们生成分析数据的报告和可视化。 promtool 提供了 debug pprof 子命令，我们可以在以下代码片段中看到它的运行情况：
