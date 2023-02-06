@@ -39,15 +39,10 @@ string := strconv.FormatFloat(float64,'E',-1,64)
 
 #string到float64
 float,err := strconv.ParseFloat(string,64)
-
-
-
 ```
 
 ## float64精度运算
 ```go
-
-
 # float32转float64 （精度问题解决）
 s, _ := decimal.NewFromFloat32(rawScore[i]).Float64()
 
