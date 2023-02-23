@@ -142,6 +142,25 @@ sum(increase(container_cpu_cfs_periods_total{}[5m])) by (container, pod, namespa
 - container_cpu_cfs_periods_total：容器生命周期中度过的 cpu 周期总数
 - container_cpu_cfs_throttled_periods_total：容器生命周期中度过的受限的 cpu 周期总数
 
+2. histogram_quantile
+根据传统直方图或原生直方图计算 φ 分位数 (0 ≤ φ ≤ 1)
+```sql
+-- 计算过去 10 分钟内请求持续时间的第 90 个百分位数
+histogram_quantile(0.9, rate(http_request_duration_seconds_bucket[10m]))
+```
+
+[Promethues Histograms](https://vitzhou.gitbooks.io/study-grpc-go/content/prometheus.html)是测量PRC延迟分布的好方法
+-   grpc_server_handling_seconds_bucket - 包含在各个处理时间桶中按状态和方法计算的RPC计数。 Prometheus可以使用这些桶来估计SLA（[见这里](https://prometheus.io/docs/practices/histograms/)）
+应用
+```sql
+-- Latency P99，计算时间范围内服务99%接口的延迟分布
+-- le 延迟时间
+histogram_quantile(0.99,
+				   sum(irate(grpc_server_handling_seconds_bucket{grpc_service="qimao.bigdata.data.Gateway"}[$interval])) by (grpc_method,le)
+
+)
+```
+
 
 参考：https://cloud.tencent.com/developer/article/1667912
 
