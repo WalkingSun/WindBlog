@@ -161,6 +161,13 @@ histogram_quantile(0.99,
 )
 ```
 
+- offset 指定偏移量
+
+```
+rate(http_requests_total[5m] offset -1w)
+```
+https://prometheus.io/docs/prometheus/latest/querying/basics/
+
 
 参考：https://cloud.tencent.com/developer/article/1667912
 
