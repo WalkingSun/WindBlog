@@ -28,6 +28,7 @@ https://support.apple.com/zh-cn/HT201236
 - **Command-逗号 (,)**：打开最前面的应用的偏好设置。
 
 ## 应用限制地区
+注册APPID，选择香港地区
 https://github.com/oneclickearth/oneclick/blob/main/appleid.md
 
 # 截屏
