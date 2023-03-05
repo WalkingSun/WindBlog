@@ -27,6 +27,9 @@ https://support.apple.com/zh-cn/HT201236
 - **Option-Command-Esc**：[强制退出](https://support.apple.com/zh-cn/HT201276)应用。
 - **Command-逗号 (,)**：打开最前面的应用的偏好设置。
 
+## 应用限制地区
+https://github.com/oneclickearth/oneclick/blob/main/appleid.md
+
 # 截屏
 
 默认情况下，截屏会以“Screen Shot [日期] [时间].png”作为文件名存储到桌面。
