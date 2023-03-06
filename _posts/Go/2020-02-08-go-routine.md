@@ -61,6 +61,24 @@ task  5
 ![image](https://raw.githubusercontent.com/WalkingSun/WindBlog/gh-pages/images/blog/WX20200208-211451@2x.png)
 
 
+
+
+## goroutine执行不带参数方式
+```go
+  
+d := []int{1, 2, 3}  
+for _, v := range d {  
+   // 复制变量防止循环发生变化
+   vv := v  
+   go func() {  
+      fmt.Println(vv)  
+   }()  
+}  
+time.Sleep(1 * time.Second)
+```
+
+
+
 # 控制Goroutine数量
 ## 令牌桶
 chan+goroutine+sync.WaitGroup方式
