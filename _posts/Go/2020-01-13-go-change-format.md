@@ -41,6 +41,11 @@ string := strconv.FormatFloat(float64,'E',-1,64)
 float,err := strconv.ParseFloat(string,64)
 ```
 
+-   uint64转成string：
+```go
+string := strconv.FormatUint(uint64,10)
+```
+
 ## float64精度运算
 ```go
 # float32转float64 （精度问题解决）
