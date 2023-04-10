@@ -25,3 +25,49 @@ goimports-reviser -rm-unused -set-alias -format ./
 https://zhuanlan.zhihu.com/p/411181637
 
 # Diff
+```
+package diff  
+  
+import (  
+   "fmt"  
+   "strings"   "testing"  
+   "github.com/sergi/go-diff/diffmatchpatch")  
+  
+const (  
+   text1 = `  
+Lorem  
+3  
+ipsum  
+2  
+dolor.`  
+   text2 = `  
+1  
+Lorem  
+dolor  
+4  
+sit  
+amet.  
+5`  
+)  
+  
+func TestDiff(t *testing.T) {  
+   dmp := diffmatchpatch.New()  
+  
+   diffs := dmp.DiffMain(text1, text2, false)  
+  
+   dels := ""  
+   adds := ""  
+   for _, v := range diffs {  
+      if v.Type == diffmatchpatch.DiffDelete {  
+         dels += v.Text  
+         continue  
+      }  
+      if v.Type == diffmatchpatch.DiffInsert {  
+         adds += v.Text  
+         continue  
+      }  
+   }  
+   fmt.Println(strings.Split(dels, "\n"), strings.Split(adds, "\n"))  
+   //fmt.Println(dmp.DiffPrettyText(diffs))  
+}
+```
