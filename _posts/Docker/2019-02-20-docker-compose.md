@@ -288,62 +288,6 @@ docker compose可以判断容器间的依赖并生成正确的启动顺序，但
 
 # 案例
 ## hbase
-构建自己的 ARM 版本的 HBase Docker 镜像。以下是一个基本的步骤：
+构建自己的 ARM 版本的 HBase Docker 镜像。
 
-1. 确保你的 ARM 设备已经安装了 Docker。你可以根据你的设备和操作系统的要求进行 Docker 的安装。
-    
-2. 在你的 ARM 设备上创建一个文件夹（比如 `hbase-docker`）用于构建自定义镜像。
-    
-3. 进入该文件夹，并创建一个名为 `Dockerfile` 的文件。
-    
-4. 使用文本编辑器打开 `Dockerfile` 文件，并添加以下内容：
-    
-```
-FROM arm64v8/openjdk:11-jdk
-
-# 安装其他依赖（如果需要）
-
-# 下载并解压 HBase
-RUN wget https://archive.apache.org/dist/hbase/<版本号>/hbase-<版本号>-bin.tar.gz && \
-    tar -xzf hbase-<版本号>-bin.tar.gz && \
-    rm hbase-<版本号>-bin.tar.gz
-
-# 设置环境变量
-ENV HBASE_HOME /hbase-<版本号>
-
-# 添加 HBase 配置文件
-COPY hbase-site.xml $HBASE_HOME/conf/
-
-# 定义工作目录
-WORKDIR $HBASE_HOME
-
-# 开放 HBase Web 界面端口（如果需要）
-EXPOSE 16010
-
-# 启动 HBase
-CMD ["./bin/start-hbase.sh"]
-
-```
-    
-注意要将 `<版本号>` 替换为你想要安装的 HBase 版本号，并根据需要进行其他自定义配置。
-    
-5. 在相同的文件夹中，创建一个名为 `hbase-site.xml` 的文件，用于自定义 HBase 的配置。根据你的需求，添加或修改适当的配置项。
-    
-6. 使用命令行工具进入到 `hbase-docker` 文件夹，并执行以下命令来构建 Docker 镜像：
-    
-    shellCopy Code
-    
-    `docker build -t my-hbase-arm .`
-    
-    这将使用 `Dockerfile` 和相关文件构建名为 `my-hbase-arm` 的自定义 ARM 版本的 HBase 镜像。构建过程可能需要一些时间，取决于你的网络速度和 ARM 设备的性能。
-    
-7. 构建完成后，你可以运行以下命令来启动 HBase 容器：
-    
-    shellCopy Code
-    
-    `docker run -d --name hbase-arm -p 16010:16010 my-hbase-arm`
-    
-    这将在后台启动一个名为 "hbase-arm" 的容器，并将 HBase Web 界面绑定到主机的 16010 端口。
-    
-
-请注意，以上步骤提供了一个基本的指南来构建自定义的 ARM 版本的 HBase Docker 镜像。具体的配置和步骤可能因为你所使用的 HBase 版本和个人需求而有所不同。
+https://segmentfault.com/a/1190000044021884
