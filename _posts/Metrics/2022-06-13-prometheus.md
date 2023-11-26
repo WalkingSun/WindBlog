@@ -75,6 +75,46 @@ Prometheus实现了一套自己的数据库语言（PromQL）解析器
 
 Prometheus支持Grafana等开源显示面板，通过自定义PromQL可以制作丰富的监控视图。Prometheus本身也提供了一个简单的 Web查询控制台，如图2-14所示，Web控制台包含三个主要模块：Graph指标查询，Alerts告警查询、Status状态查询
 
+### 正则匹配
+1. 使用 `=~` 进行正则表达式匹配：
+    
+    ```plaintext
+    http_requests_total{job=~"job[12]"}
+    ```
+    
+    上述查询会匹配包含 `job1` 或 `job2` 的指标。
+    
+2. 使用 `!=` 进行不匹配操作：
+    
+    ```plaintext
+    http_requests_total{job!="job1"}
+    ```
+    
+    上述查询会匹配不包含 `job1` 的指标。
+    
+3. 使用 `:re` 函数进行正则表达式匹配：
+    
+    ```plaintext
+    http_requests_total{job:re="job[12]"}
+    ```
+    
+    上述查询同样会匹配包含 `job1` 或 `job2` 的指标。
+    
+4. 使用 `=~` 进行标签名的正则表达式匹配：
+    
+    ```plaintext
+    {__name__=~"job.*"}
+    ```
+    
+    上述查询会匹配指标名称以 `job` 开头的所有指标。
+
+```
+{__name__=~".*job.*"}
+```
+查询会匹配指标名称包含 `job` 的所有指标。
+
+这些是一些常见的 PromQL 模糊匹配操作。使用这些操作可以灵活地对指标进行匹配和过滤。根据实际需求，可以结合不同的匹配方式来查询所需的指标数据。
+
 ## 语法
 ```sql
 # 指定默认值
@@ -190,7 +230,6 @@ go tool pprof -http=:6060 http://prometheus:9090/debug/pprof/profile?seconds=30
 ```
 文档说明：
 https://training.promlabs.com/training/monitoring-and-debugging-prometheus/profiling/profiling-cpu-usage
-
 
 
 ## 参考
