@@ -71,3 +71,6 @@ lsof -i tcp:8080
 
 kill pid
 ```
+
+# python环境
+https://blog.csdn.net/baidu_30506559/article/details/127386192
