@@ -10,7 +10,9 @@ cnblogsClass: \[Markdown\],\[随笔分类\]服务器,\[随笔分类\]k8s
 # ImagePullBackoff
 secret没配置
 
-# job更新部署失败，提示metadata.nama不可更新
+# job更新部署失败，提示metadata.nama "field is immutable"的错误
+
+在Kubernetes中，Job的某些字段被标记为不可变，这意味着一旦Job被创建，这些字段的值就不能被修改。
 
 job name不可更新，必须保证不能重复，可增加job标识
 
