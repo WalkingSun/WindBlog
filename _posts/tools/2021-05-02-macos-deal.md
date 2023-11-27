@@ -74,3 +74,23 @@ kill pid
 
 # python环境
 https://blog.csdn.net/baidu_30506559/article/details/127386192
+
+
+https://blog.csdn.net/qq_38603174/article/details/134187647
+
+
+```
+# To activate this environment, use
+#
+#     $ conda activate B
+#
+# To deactivate an active environment, use
+#
+#     $ conda deactivate
+
+```
+
+
+
+安装依赖
+https://mofanpy.com/tutorials/python-basic/interactive-python/py-install-env
