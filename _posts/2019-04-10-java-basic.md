@@ -256,3 +256,9 @@ static final double PI = 3.14159265358
 Java运行环境有一个垃圾收集器，它周期性地释放不再被引用的对象的内存。
 
 <!-- # 基础包 -->
+
+
+
+# env
+maven安装
+https://www.cnblogs.com/comefromchina/p/java-maven-vscode-configuration.html
