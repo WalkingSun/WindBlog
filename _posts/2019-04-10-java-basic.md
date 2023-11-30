@@ -262,3 +262,9 @@ Java运行环境有一个垃圾收集器，它周期性地释放不再被引用�
 # env
 maven安装
 https://www.cnblogs.com/comefromchina/p/java-maven-vscode-configuration.html
+
+
+
+mvn dependency:resolve
+
+用于解析项目的依赖关系并下载所需的依赖项。执行这个命令会触发Maven去解析项目的依赖关系，并下载所需的依赖项到本地仓库中。
