@@ -94,3 +94,11 @@ https://blog.csdn.net/qq_38603174/article/details/134187647
 
 安装依赖
 https://mofanpy.com/tutorials/python-basic/interactive-python/py-install-env
+
+
+# 执行su
+用su登录root用户，输入密码，都会提示su:Sorry，然后还怀疑自己记错了密码，其实不然。
+正确方式：
+```
+sudo su
+```
