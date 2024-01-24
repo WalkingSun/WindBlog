@@ -19,7 +19,7 @@ hystrix.CommandConfig{
   MaxConcurrentRequests:  5000, // 最大并发的请求数
   RequestVolumeThreshold: 5, // 请求阈值 熔断器是否打开首先要满足这个条件；（代码中写死了）内请求数量，达到这个请求数量后再根据错误率判断是否要开启熔断；这里的设置表示至少有5个请求才进行ErrorPercentThreshold错误百分比计算，统计10s
   SleepWindow:            3 * 1000, // 熔断开启多久尝试发起一次请求
-  ErrorPercentThreshold:  30, // 误差阈值百分比
+  ErrorPercentThreshold:  30, // 误差阈值百分比。默认值是 50，即窗口时间内超过 50% 的请求失败后会打开熔断器将后续请求快速失败这里设置为30。
  }
 ```
 
