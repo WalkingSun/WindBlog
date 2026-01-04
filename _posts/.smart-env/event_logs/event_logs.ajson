@@ -1,0 +1,12 @@
+
+"event_logs:settings:changed": {"key":"settings:changed","ct":9,"first_at":1767531301299,"last_at":1767531301309,"class_name":"EventLog"},
+"event_logs:event_log:first": {"key":"event_log:first","ct":4,"first_at":1767531301299,"last_at":1767531301307,"class_name":"EventLog"},
+"event_logs:source:initial_scan_started": {"key":"source:initial_scan_started","ct":1,"first_at":1767531301299,"last_at":1767531301299,"class_name":"EventLog"},
+"event_logs:source:initial_scan_completed": {"key":"source:initial_scan_completed","ct":1,"first_at":1767531301307,"last_at":1767531301307,"class_name":"EventLog"},
+"event_logs:settings:changed": {"key":"settings:changed","ct":12,"first_at":1767531301299,"last_at":1767531304342,"class_name":"EventLog"},
+"event_logs:event_log:first": {"key":"event_log:first","ct":8,"first_at":1767531301299,"last_at":1767531304342,"class_name":"EventLog"},
+"event_logs:collection:load_started": {"key":"collection:load_started","ct":5,"first_at":1767531304314,"last_at":1767531304320,"class_name":"EventLog"},
+"event_logs:collection:load_completed": {"key":"collection:load_completed","ct":2,"first_at":1767531304317,"last_at":1767531304338,"class_name":"EventLog"},
+"event_logs:collection:load_halted": {"key":"collection:load_halted","ct":3,"first_at":1767531304318,"last_at":1767531304320,"class_name":"EventLog"},
+"event_logs:sources:imported": {"key":"sources:imported","ct":249,"first_at":1767531304341,"last_at":1767531304584,"class_name":"EventLog"},
+"event_logs:model:changed": {"key":"model:changed","ct":1,"first_at":1767531304342,"last_at":1767531304342,"class_name":"EventLog"},
