@@ -10,3 +10,8 @@ Gemfile.lock
 .idea
 .obsidian
 .vscode
+
+
+
+# Ignore Smart Environment folder
+.smart-env
